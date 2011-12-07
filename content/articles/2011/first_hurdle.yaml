@@ -1,0 +1,68 @@
+title: "The First Honours Hurdle"
+date: 2011-07-18
+content: |
+    It has been just under three weeks since I began focusing on Honours.
+    Progress so far has been reasonably steady -- a burst of productivity followed by periods of debugging.
+    It seems that the parser kicks and bucks like a wild stallion at each of my modifications.
+
+    ## Distractions
+
+    Whilst all the exams, assessments and courses are out of the way, I still have many distractions.
+    I'm balancing on a knife's edge between happily exploring my recent new or renewed interests and losing focus on Honours.
+    Between the daily two hour train trip, catching up with friends, cooking, and general down time, I'm far less productive than I feel I need to be.
+    Whilst I may be making a bit more progress than other Honours students, that doesn't really justify it.
+
+    I have successfully played on the knife edge before, I just need to make sure I don't slip.
+
+    ## Shift-Reduce Parsing
+
+    The process of implementing the shift-reduce parsing algorithm in the C&C framework was surprisingly simple, if you ignore all of the various bugs or inconsistencies that pop up.
+    Apart from a few sharp edges, the C&C framework handled all of the complexities that arose from CCG (combinators, type-raising, lexical rules and so on), each of which would have taken me far longer to implement myself.
+    This also gives me the chance to use the C&C chart parser as a reference implementation against the shift-reduce parser, which makes certain bugs far easier to diagnose (though not necessarily any faster to fix).
+    The code is by no means artistic, but it serves the purpose well enough.
+    There are a few areas that I'd like to go back and clean up from a purely aesthetic point of view, but code refactoring is likely premature and would serve little practical purpose.
+
+    What has bit me is some of the internal design intricacies of the parser.
+    Even though I've worked with the parser before, it's a far more complicated beast than you'd ever hope to imagine.
+    The documentation is lacking, but it's still significantly better than many other parsers and academic projects.
+    Given that, it's important to note that the documentation is well augmented by the people around the [lab](http://schwa.org/).
+    If you have a problem, chances are that someone has already encountered it and they're happy to help me out!
+
+    ## Loopy Stack
+
+    The most annoying problem I had was a "loopy stack" whilst implementing a core piece of the shift-reduce algorithm.
+    The naive shift-reduce algorithm is far less efficient than CKY chart parsing as it doesn't take any advantage of caching.
+    The graph-structured stack allows you to perform caching with the shift-reduce algorithm, and is in fact related to chart parsing in many ways.
+    Strangely, it hasn't been used much in practice, even though the speed advantages it offers are huge.
+    It was proposed in the early 90s and only recently has it resurfaced in the literature.
+
+    The initial implementation of the graph-structured stack was again surprisingly painless.
+    The C&C parser already has to handle equivalence checking due to the way that chart parsing works, so for the most part it was a simple and subtle modification.
+    What wasn't so simple and subtle was the bug that popped up. Somehow I was getting a loop in my stack... This only happens to first year Data Structures students...
+
+    _How the hell was I getting a loopy stack?_
+
+    I spent a great deal of time checking my assumptions, modifying/refactoring my code, following pointers into the abyss and generally going mad.
+    Finally, after far too long, I came across the problem.
+    The C&C chart parser does a bit of magic to help speed up parsing: it re-uses the chart.
+    That's perfectly fine and reasonable, but only if you're expecting it!
+    As the chart was being re-used, previous structures were accidentally finding themselves being actively used again.
+
+    You may ask why those objects still exists -- shouldn't they have been deleted to prevent memory leaks?
+    The C&C parser does another trick that influences this however -- memory pools.
+    Memory pools allow incredibly fast allocation of objects.
+    De-allocation of these small objects is in fact far slower than just reclaiming the memory pool later on.
+    As such, none of the code does a traditional delete when the destructor is called, resulting in a far faster parser (with millions and millions of these small objects created a second) but a quite sinister bug!
+
+    _Stupid loopy stacks causing me madness..!_
+
+    With the loopy stacks delooped however, the shift-reduce algorithm took advantage of caching and hit similar speeds to that of the default chart algorithm.
+
+    ## Current Evil
+
+    As previously mentioned, I go from bursts of productivity to periods of debugging.
+    This is the unhappy debugging period.
+    The parser works but testing over the development corpus for the WSJ shows a loss of 6% F-score against the reference implementation.
+    These bugs aren't easy to diagnose or fix, unfortunately, so I expect progress to be slow.
+
+    _If I can fix this bug in six days, however, then I'll still be on target as far as my timeline is concerned!_

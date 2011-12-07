@@ -1,0 +1,23 @@
+{% extends "skeleton/_body.html"%}
+
+{% block content_body %}
+
+<div class="page-listing">
+  {% for year, pages in articles %}
+  <h2>{{ year }}</h2>
+  <ul>
+    {% for page in pages %}
+    <li class="article_heading">
+        <span class="date">{{ page.date.strftime("%d-%m-%Y") }}</span>
+        <h3>
+          <a href="{{ url_for('get_page', year=page['year'], slug=page['slug']) }}">{{ page.title }}</a>
+        </h3>
+    </li>
+    {% endfor%}
+  </ul>
+  {% endfor %}
+</div>
+
+<div class="clear"></div>
+
+{% endblock %}

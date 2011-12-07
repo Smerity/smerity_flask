@@ -1,0 +1,211 @@
+title: Python to Java - A Survivalist's Guide
+date: 2008-06-01
+content: |
+    ## Aim
+
+    This guide was written originally for Info1903 students at the University of Sydney who after two terms of Python needed to quickly begin coding in Java. This is in no way a replacement for a full Java textbook however and is merely here to allow an easy transition from Python to simple Java programs. In here we'll walk you through a few simple tasks - first a way to print primes.
+
+    ## Basic Syntax and Semantics
+
+    The name of the file (__Name__.java) and class (public class __Name__) must be equal or else the code will not compile. It's convention to capitalise classes in Java.
+
+    Java's syntax is quite different to Python. First, all lines must end with a semicolon (;) and instead of specifying parts of the code with indentation like tabbing Java instead uses curly brackets ({}). Using indentation to mark the beginning and end of code blocks is still considered good practice however and increase readability.
+
+        :::java
+        //Python
+        for ...:
+          if ...:
+            do stuff
+
+        //Java
+        for ... {
+          if ... {
+            do stuff;
+          }
+        }
+
+    ## Down to business...
+
+    In Java everything is a class. When you run Java source code the class will automatically be searched for _public static void main_ to execute. It also can accept command line input, in this case an array of strings called args - we'll return to exactly what that means later.
+
+        :::java
+        //from Primes.java
+        public class Primes {
+          public static void main (String[] args) {
+            ...
+          }
+        }
+
+    The ellipsis (...) is where our main code will go. For our hello world we'll be using Primes.java as a base. Java implements things slightly differently in regards to printing.
+
+        :::java
+        System.out.print(x) // Prints x by itself
+        System.out.println(x) // Prints x + "\n", equivalent of Python's print function
+        System.out.printf(x, var) // Used in string formatting like C's printf, which we'll reference later
+
+    To print our hello world, just inject the println statement into our above code.
+
+        :::java
+        /from Primes.java
+        public class Primes {
+          public static void main (String[] args) {
+            System.out.println("Hello world");
+          }
+        }
+
+    Congratulations - you've written __Hello World__ in Java. Now the next challenge - compiling it. As opposed to Python, which is an interpreted language (ie, translated as it's run), Java is instead a compiled language, and does all the 'translation' in a separate stage. To compile and run Java in a Unix environment such as Usyd's Congo server -
+
+        :::
+        smerity@Loki:~/Coding/Courses/Java Prep/work$ javac Primes.java
+        smerity@Loki:~/Coding/Courses/Java Prep/work$ java Primes
+        Hello world
+        smerity@Loki:~/Coding/Courses/Java Prep/work$
+
+    You've now _compiled_ and _executed_ Hello World. As you progress in Java you'll find it's much easier to use an IDE (integrated development editor) instead of doing everything from the command line. An IDE performs a number of helpful things like syntax/error highlighting, simple navigation between files and auto-completion.
+
+    ## Simple Iteration
+
+    The For loop in Java is quite different to that of Python's. If you've done C, C++ or Javascript however you'll be familiar with it.
+
+        :::java
+        //Python
+        for i in xrange(10):
+          print i
+
+        //Java
+        for (int i=0; i<10; i++) {
+          System.out.println(i);
+        }
+
+    In the case of Java a for loop is split into three separate parts. Using layman's terms, there's the initialiser (run when the loop is first begun which in this case sets i to 0), the while (while i < 10 is true, keep looping) and the iterator (add one to i (i++, the same as i += 1 or i = i + 1) each time we loop).
+
+    ## Variables
+
+    Next important tidbit - Java is a statically typed language. As opposed to Python where x can equal anything (such as a number, a string, a list...), once you say what a variable is in Java it must remain that type. Variables are declared by typing their _(type) (name) = (value)_.
+
+        :::java
+        //Java
+        String name = "Stephen";
+        int age = 18;
+        Boolean male = true; //Booleans only allow true or false - just like Python's True and False
+
+        //This would raise a compilation error as you can't put a number into a 
+        String name = 15; //EXPLODE
+
+    ## Naive Prime Numbers
+
+    Excellent - if you've kept up with me then we're ready to find primes using Java. To do this, we simply combine the simple loops and variables introduced above.
+
+        :::java
+        //from Primes.java
+        public class Primes {
+          public static void main (String[] args) {
+            for (int num=2; num<40; num++) {
+              Boolean prime = true; //We'll assume the number's a prime to start with
+
+              for (int j=2; j <= Math.sqrt(num); j++) {
+                if (num%j == 0) {
+                  prime = false;
+                  break; //We found it's not a prime, so we can bail out of the loop early and save us work
+                }
+              }
+            if (prime) System.out.println(num);
+            /*Notice the above doesn't use curly brackets? It's the same as
+            if (prime) {
+              System.out.println(num);
+            }
+            If you don't use curly brackets Java assumes it ends at the next semicolon (;)*/
+            }
+          }
+        }
+
+    Shake, bake, compile and you have yourself all the primes up to 40. Let's look at the same code in Python, shall we?
+
+        :::python
+        //Python primes
+        import math
+        for num in xrange(2, 40):
+          prime = True
+          for j in xrange(2, int(math.sqrt(num)+1)):
+            if num%j == 0:
+              prime = False
+              break
+          if prime:
+            print num
+
+    ## Primitives and Autoboxing
+
+    If you didn't know, all the variables in Python are classes - string for example is a class containing your string and also a bunch of functions to use with your string (such as _startswith_, _upper_ etc). This isn't true in Java however, as there are things called primitives that store _just_ what you put in. Why is this a problem? Well, in things like Collections (such as ArrayLists) they only accept classes and it won't accept primitives. How are we to fix this? For every primitive there is something called a _wrapper_ class which is a class version of the primitive. To differentiate between the two the primitives are always lower case whilst their wrappers are always uppercase (as classes are by convention uppercase in Java). Autoboxing was introduced to Java to make the transition between primitives and their wrappers a simple process - you'll see an example below.
+
+        :::java
+        int => Integer
+        char => Character
+        none => String
+        boolean => Boolean
+
+        //Autoboxing
+        Integer x = 42;
+        //Without autoboxing the above becomes ...
+        Integer y = new Integer(42);
+        //You can also do all your normal operations with ints instead of Integers
+        x -= 4;
+        y -= new Integer(4);
+
+    Most of the time you don't have to worry about primitives and wrapper classes but when using certain datastructures it becomes very important to have an understanding of them.
+
+    ## Data Structures
+
+    In this section we'll introduce Java's data structures and where they are equivalent to Python's.
+
+    ### List
+
+    Python's list is essentially an array - Java has two similar data structures. First is an array, which is a list with only a set number of 'slots', and second is an ArrayList, which is the closest to Python's list. Notice that for both you need to declare what type of variables it's going to be holding.
+
+        :::java
+        /* Array */
+        String[] numbers = {"one", "two", "three"}; //Creates an array of strings that holds one to three
+        String[] names = new String[10]; //Creates an array named 'names' with enough space for ten strings
+        names[0] = "Smerity";
+        names[1] = "Josh";
+        int i = 0;
+        //Any unused slots are by default null, which is like Python's None
+        while(names[i] != null){
+                System.out.println(names[i]);
+                i++;
+        }
+        //Can also use the length of an array
+        for(i=0; i<numbers.length; i++)
+                System.out.println(numbers[i]);
+
+        /* ArrayList */
+        ArrayList<Integer> primes = new ArrayList<Integer>();
+        primes.add(2);
+        primes.add(3);
+        primes.add(5);
+        for(i=0; i<primes.size(); i++)
+                System.out.println(primes.get(i));
+        //Similar to Python's "for num in numbers:" syntax
+        for(Integer prime : primes)
+                System.out.println(prime);
+
+    ### Dictionary
+
+    Dictionaries are one of the most useful of Python's default data structures. Java of course has similar structures.
+
+        :::java
+        /*HashMap<key_type, value_type>*/
+        //Once again you actually have to say what the types are due to static typing
+        HashMap<Character, Integer> letters = new HashMap<Character, Integer>();
+        //.toCharArray turns "tree" into a Character array of {'t', 'r', 'e', 'e'}
+        for(Character c : "tree".toCharArray()){
+                // The bang (!) means NOT - so if letters does NOT contain the key c ...
+                if (!letters.containsKey(c)) letters.put(c, 0);
+                letters.put(c, letters.get(c)+1);
+        }
+        for(Character c : letters.keySet())
+                System.out.println("Letter "+c+" used "+letters.get(c)+" times.");
+        /*Output -
+        Letter e used 2 times.
+        Letter t used 1 times.
+        Letter r used 1 times.
+        */

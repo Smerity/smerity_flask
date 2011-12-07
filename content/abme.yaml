@@ -1,0 +1,49 @@
+title: "About Me"
+content: |
+    My name is Stephen Merity, though I'm more commonly referred to as Smerity.
+    For more details you can view my <a href="/media/files/resume.pdf">resume</a> or contact me in person at <a href="mailto:smerity@smerity.com">smerity@smerity.com</a>.
+    <!--- I've hung around a number of places on the Internet, including Github, Facebook, LinkedIn and so on. -->
+
+    Searching for _Smerity_ will find most places I've inhabited online.
+    If you're interested, almost all my Facebook communications are public as it allows people to discover a small amount of who I am, and reminds me that even private things on Facebook aren't private.
+
+    <a href="http://www.facebook.com/people/Stephen_Merity/606479711" title="Stephen Merity's Facebook profile" target=_TOP>
+    <img src="http://badge.facebook.com/badge/606479711.159.1065599225.png" border=0 alt="Stephen Merity's Facebook profile">
+    </a>
+
+    [![Smerity @ Google+](/media/images/google-plus.png)](http://profiles.google.com/smerity)
+    &nbsp;&nbsp;
+    [![Smerity @ Github](/media/images/github.png)](https://github.com/Smerity/)
+    &nbsp;&nbsp;
+    <a href="http://au.linkedin.com/in/smerity" >
+    <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x33.png" width="160" height="33" border="0" alt="View Stephen Merity's profile on LinkedIn">
+    </a>
+
+    ## University & Work
+    I've recently completed the [Bachelor of Information Technology](http://sydney.edu.au/courses/Bachelor-of-Information-Technology) at the University of Sydney, receiving First Class Honours and [University Medal](http://en.wikipedia.org/w/index.php?title=University_Medal&oldid=410146835#Australia).
+    When I have time to spare, I also work at [Freelancer.com](http://www.freelancer.com) on data mining and interaction mechanics.
+    In the recent past, I've worked at [Google](http://www.google.com) as an intern on Google AppEngine.
+
+    ## Publications
+    __Integrated Tagging and Pruning via Shift-Reduce CCG Parsing__ (2011) [[pdf]](/media/files/academic/smerity_thesis.pdf)[[bib](/media/bib/smerity_thesis.bib)]  
+    Stephen Merity (supervisor: Dr James R. Curran)  
+    _Honours Thesis, The University of Sydney, Sydney, Australia_
+
+
+    Best Student Presentation: __Frontier Pruning for Shift-Reduce CCG Parsing__ (2011) [[pdf](http://alta.asn.au/events/alta2011/proceedings/pdf/U11-1010.pdf)][[bib](/media/bib/smerity_frontier.bib)][[presentation](/media/files/academic/alta2011_presentation.pdf)]  
+    Stephen Merity and James R. Curran  
+    _Proceedings of the 2011 Australasian Language Technology Association Workshop, ALTA 2011_
+
+    __Accurate Argumentative Zoning with Maximum Entropy models__ (2009) [[pdf](http://aye.comp.nus.edu.sg/nlpir4dl/NLPIR4DL03.pdf)][[bib](/media/bib/smerity_arg_zone.bib)]  
+    Stephen Merity, Tara Murphy and James R. Curran  
+    _Proceedings of the 2009 Workshop on Text and Citation Analysis for Scholarly Digital Libraries, ACL-IJCNLP 2009, pages 19-26_
+
+
+    ## Programming
+    In specific areas of programming, I have a soft spot for Natural Language Processing - a special thanks to [Dr James R. Curran](http://www.it.usyd.edu.au/~james) for introducing it to me.
+    I've also spent a deal of time play with a wide range of programming subtopics, including such things as computer graphics, machine learning and optimization techniques such as linear programming.
+
+    ## NCSS
+    A true "about me" would have to mention NCSS.
+    NCSS is the [National Computer Science School](http://www.ncss.edu.au), a summer school run at the University of Sydney involving talented high school students from all over Australia. Having had the privilege of going there five times (first in 2007 as a student, then in 2008 as a returning student and finally as a tutor in 2009, 2010 and 2011) I can honestly say it was one of the most delightful experiences of my entire life.
+    If you're a student or know someone that general age, sign up to [NCSS](http://www.ncss.edu.au) or into [NCSS Challenge](http://challenge.ncss.edu.au)!

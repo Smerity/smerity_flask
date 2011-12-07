@@ -1,0 +1,39 @@
+title: "Preliminary Timeline for Honours"
+date: 2011-07-11
+content: |
+    To better prepare for Honours, I've begun a loose sketch of my remaining timeline and the tasks I have yet to accomplish. I also set up this aesthetic countdown clock to scare the hell out of me and the other Honours students ;)
+
+    ## Abstract
+
+    The C&C parser currently uses the chart-based CKY algorithm. By replacing this with the shift-reduce algorithm, it is possible to get both higher speeds and even higher accuracy in parsing.
+    The primary task will be modifying the existing C&C parser minimally so that close comparisons can be made to the existing C&C parser.
+    Once this is accomplished, allowing ambiguity in PoS and CCG tags may allow higher accuracy through more accurate language models.
+    Finally, through aggressive pruning of the search space, parsing speeds can be improved hopefully without a significant impact on accuracy.
+
+    ## Implement Shift-Reduce Algorithm
+    _July 4th - July 24th (~3 weeks)_
+
+    + Explore the C&C Parser and identify all places that need to be modified
+    + Modify parser to use shift-reduce algorithm instead of the CKY algorithm
+    + Create all data and run evaluation tests on the current C&C parser
+
+    ## Integrate with and Extend the C&C Parser
+    _July 25th - 4th September (~6 weeks)_
+
+    + Train perceptron/MIRA to drive search decisions during parsing
+    + Use beam search on top of supertagging to improve parsing speed
+
+    ## Optimisation and Evaluation
+    _5th September - 2nd October (~4 weeks)_
+
+    ALTA 2011 Deadline: _14th September_
+
+    + In-place PoS/CCG tagging to improve accuracy and allow better disambiguation
+    + Investigate issues related to speed, such as aggressive pruning of search tree or engineering decisions and choices made by the C&C framework
+    + Evaluate against CCGbank dependencies and identify errors that occur
+    + Compare this parser against C&C and Zhang and Clark's shift-reduce CCG parser directly
+
+    ## Poster and Final Thesis Write-up
+    _3rd October - ... (~4 weeks)_
+
+    ACL 2012 Deadline: _15th January_
