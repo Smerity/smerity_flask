@@ -48,16 +48,16 @@ def get_page(year, slug, get_dict=False):
   page = load_page(fn)
   if not page: abort(404)
   if get_dict: return page
-  return render_template("_post.html", page=page)
+  return render_template("page.html", page=page)
 
 @app.route("/articles/articles.html")
 def articles():
   articles = get_articles()
-  return render_template("skeleton/_listing.html", page={"title": "Articles"}, articles=get_articles())
+  return render_template("listing.html", page={"title": "Articles"}, articles=get_articles())
 
 @app.route("/")
 def index():
-  return render_template("skeleton/_body.html",
+  return render_template("page.html",
       page = {
         "title":Markup("&uarr; Look! Up there! &uarr;"),
         "content":Markup("<div align='center'><img class='smooth' src='media/images/mouse.jpg' /></div>")
@@ -66,11 +66,11 @@ def index():
 
 @app.route("/abme.html")
 def about():
-  return render_template("_staticpage.html", page=load_page("content/abme.yaml"))
+  return render_template("page.html", page=load_page("content/abme.yaml"))
 
 @app.route("/define.html")
 def define():
-  return render_template("_staticpage.html", page=load_page("content/define.yaml"))
+  return render_template("page.html", page=load_page("content/define.yaml"))
 
 @app.route("/404.html")
 def get_404():
@@ -83,7 +83,7 @@ def get_404():
     "content": """<h2>Page not found</h2>
     <p><em>Programmer Zen:</em> This page returns a 200 OK if viewed at <a href='/404.html'>404.html</a> and a 404 Not Found otherwise.</p>"""
   }
-  return render_template("_staticpage.html", page=page)
+  return render_template("page.html", page=page)
 
 @app.errorhandler(404)
 def page_not_found(e):

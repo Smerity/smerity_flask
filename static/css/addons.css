@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Vollkorn Regular'), local('Vollkorn-Regular'), url('/media/css/Vollkorn-Regular.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'Shadows Into Light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Shadows Into Light'), local('ShadowsIntoLight'), url('/media/css/ShadowsIntoLight.ttf') format('woff');
+}
+
+h1, h2, h3, h4, h5, h6, .funky_font {
+  font-family: 'Shadows into Light', serif;
+  font-weight: normal;
+  color: #443;
+}
+
+body {
+  font-family: "Vollkorn", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+pre {
+  background: #fbfbfb;
+
+  margin: 15px auto;
+  padding: 8px;
+  line-height: 1.3em;
+  width: 85%;
+
+  -moz-box-shadow:inset 3px 3px 3px #aa9;
+  -webkit-box-shadow:inset 3px 3px 3px #aa9;
+  box-shadow:inset 3px 3px 3px #aa9;
+}
+
+img.smooth {
+  margin: 1em;
+
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+
+  -webkit-box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.1);
+}

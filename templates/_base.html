@@ -1,0 +1,37 @@
+{% extends "_skeleton.html" %}
+
+{% block title %}Smerity.com{% if page.title %}: {{page.title}}{% endif %}{% endblock %}
+
+{% block head %}
+<link rel="shortcut icon" href="/media/images/favicon.ico">
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/media/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/media/css/pygments.css">
+<link rel="stylesheet" type="text/css" href="/media/css/addons.css">
+<style type="text/css">
+  body {
+    padding-top: 60px;
+  }
+</style>
+{% endblock %}
+
+{% block header %}
+<header class="topbar">
+  <nav class="topbar topbar-inner container-fluid">
+    <a class="brand funky_font" href="/">Smerity</a>
+    <ul class="nav">
+      <li><a href="/articles/articles.html">Articles</a></li>
+      <li><a href="/abme.html">About Me</a></li>
+      <li><a href="/define.html">Define Me</a></li>
+    </ul>
+  </nav>
+</header>
+{% endblock %}
+
+{% block footer %}
+<footer>
+  &copy; Stephen Merity
+</footer>
+{% endblock %}
