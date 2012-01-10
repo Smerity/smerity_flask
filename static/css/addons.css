@@ -95,3 +95,7 @@ img.smooth {
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
+
+ul.no_disc {
+  list-style: none;
+}

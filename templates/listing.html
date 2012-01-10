@@ -5,7 +5,7 @@
 
   {% for year, pages in articles %}
   <h2>{{ year }}</h2>
-  <ul>
+  <ul class="no_disc">
     {% for page in pages %}
     <li class="article_heading">
         <span class="date">{{ page.date.strftime("%d-%m-%Y") }}</span>
