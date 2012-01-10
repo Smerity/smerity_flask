@@ -5,6 +5,7 @@
   src: local('Vollkorn Regular'), local('Vollkorn-Regular'), url('/media/css/Vollkorn-Regular.ttf') format('woff');
 }
 
+/*
 @font-face {
   font-family: 'Shadows Into Light';
   font-style: normal;
@@ -19,7 +20,6 @@
   src: local('Dancing Script'), local('DancingScript'), url('/media/css/DancingScript-Regular.ttf') format('woff');
 }
 
-/*
 @font-face {
   font-family: 'Quattrocento';
   font-style: normal;
@@ -67,6 +67,8 @@ img.smooth {
 .topbar {
   background: black url(top.png) repeat;
 
+  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -74,4 +76,22 @@ img.smooth {
 .topbar .brand:hover {
   background-color: rgba(255, 255, 255, 0.00);
   text-decoration: underline;
+}
+
+.container {
+  padding: 2em;
+  margin-bottom: 1em;
+
+  background: white;
+  border: 1px solid #ccc;
+
+  /*
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+  */
+
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
 }
