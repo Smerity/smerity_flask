@@ -47,7 +47,6 @@ content: |
 
     GitHub's error pages both have aesthetic value (a [Star Wars themed octocat](https://github.com/404) and a [Wile E. Coyote style octocat](https://github.com/500)) and have received interest from [the tech community](http://news.ycombinator.com/item?id=2056629).
     As they return __200 OK__, the links from the community positively impact their Google PageRank.
-    <!-- In case you're interested in the 3D effect achieved using [parallax scrolling](http://en.wikipedia.org/wiki/Parallax_scrolling), there's a Javascript library called [jParallax](http://webdev.stephband.info/jparallax/) that may interest you. -->
     <div align="center">
     <img src="/media/images/articles/2011/blippy_404.jpg" class="smooth" alt="Blippy's 404 an animated cow" />
     </div>
