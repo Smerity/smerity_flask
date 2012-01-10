@@ -12,14 +12,31 @@
   src: local('Shadows Into Light'), local('ShadowsIntoLight'), url('/media/css/ShadowsIntoLight.ttf') format('woff');
 }
 
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Dancing Script'), local('DancingScript'), url('/media/css/DancingScript-Regular.ttf') format('woff');
+}
+
+/*
+@font-face {
+  font-family: 'Quattrocento';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Quattrocento'), local('Quattrocento-Regular'), url('/media/css/Quattrocento-Regular.ttf') format('woff');
+}
+*/
+
 h1, h2, h3, h4, h5, h6, .funky_font {
-  font-family: 'Shadows into Light', serif;
+  font-family: 'Vollkorn', sans-serif;
   font-weight: normal;
   color: #443;
 }
 
 body {
-  font-family: "Vollkorn", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Vollkorn", "Helvetica Neue", Helvetica, Arial, serif;
+  background: white url(bg.png) repeat;
 }
 
 pre {
@@ -45,4 +62,16 @@ img.smooth {
   -webkit-box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.topbar {
+  background: black url(top.png) repeat;
+
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Remove white alpha hover */
+.topbar .brand:hover {
+  background-color: rgba(255, 255, 255, 0.00);
+  text-decoration: underline;
 }
