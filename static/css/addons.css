@@ -52,16 +52,21 @@ pre {
   box-shadow:inset 3px 3px 3px #aa9;
 }
 
+img {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 img.smooth {
-  margin: 1em;
+  border: 1px solid #ccc;
 
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
 
-  -webkit-box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.15);
 }
 
 .topbar {
@@ -98,4 +103,10 @@ img.smooth {
 
 ul.no_disc {
   list-style: none;
+}
+
+/* http://stackoverflow.com/questions/5734199/margin0-auto-not-working */
+.center {
+  display: block;
+  margin:0px auto;
 }

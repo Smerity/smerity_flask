@@ -12,7 +12,7 @@ content: |
     Repeat this for each of the triangles that have just been created.
     For more details, I'd encourage you to look elsewhere.
 
-    <center><canvas id="display" width="600" height="305"></canvas></center>
+    <canvas class="center" id="display" width="600" height="305"></canvas>
     <script src="/media/experiments/sierpinski/serp.js"></script>
 
     For the programmers out there, this sort of structure is quite easily created recursively.
@@ -36,4 +36,4 @@ content: |
     The code used to generate it performs the exact same steps each time, so should always produce the same result.
     This is seen in other browsers such as Firefox.
 
-    <center><img src="/media/images/articles/2011/heisenbug/wtf_sierpinski_chrome_small.png" /></center>
+    <img class="center" src="/media/images/articles/2011/heisenbug/wtf_sierpinski_chrome_small.png" />
