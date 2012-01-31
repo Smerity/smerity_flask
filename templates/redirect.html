@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+
+{% block title %}
+Redirecting you...
+{% endblock %}
+
+{% block content %}
+<h1>Redirecting...</h1>
+
+<meta http-equiv="refresh" content="0; url={{ redirect_url }}">
+
+<p>That page has been relocated due to a recent robotic rebellion... You can't trust droids =[</p>
+
+<p>If you're not redirected automagically, <a href="{{ redirect_url }}">click here</a>.</p>
+{% endblock %}

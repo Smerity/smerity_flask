@@ -1,0 +1,72 @@
+title: "Google Internship Reflection"
+date: 2010-02-01
+content: |
+    <div class="alert-message error">
+    <em>Disclaimer:</em> These views are my own and do not reflect those of Google or any other employer
+    </div>
+
+    Last year I submitted an application for a [Google Australia internship](http://www.google.com.au/intl/en/jobs/index.html) over the summer. After a while I was called back to set up a time for a set of phone interviews, proceeding until either I was knocked out of the running or accepted for the summer.
+
+    The phone interviews were composed of an initial non-technical screener and two technical interviews of less complexity than I'd been expecting. Although the interviews weren't trivial they were obviously not as rigorous as the interviews for permanent positions. It felt like the main thing that was being checked was that the candidate had a love of technology and that the facts from the resume were truthful. There was a focus on ensuring I knew all the languages I listed on the resume, including the ones I noted less experience with. This could be due to the fact that resumes are often padded with every language the candidate has ever done _Hello World_ in.
+
+    _The general advice is to be honest_.
+
+    They're looking for people who have the capability and desire to learn, not necessarily people who have the exact skillset they already need. You're not going to have previous experience with many of Google's internal tools so they need to be confident that you're an independent learner. They're also looking for the people with a passion for computer science and technology, who are interested in the intricacies of their field.
+
+    ## The Experience
+
+    ### Hello World
+
+    The initial week was a shock to the system. You're introduced to your host and team, given a pet project to work on to get acquainted and then given a set of tutorials, videos and examples to work through. As I said, they're after self motivated learners. You're left to your own devices for the rest of the week to learn and explore, which is actually a great experience =]
+
+    ### NDA and the _Secret Sauce_
+
+    A common complaint about Google is their handling of NDAs, that employees can't openly discuss a great deal of the work they do. I can understand how this can be annoying to people external to the company but internally it's absolutely necessary due to how open the culture is. Internally the vast majority of 'secret' projects are exposed to the employees - even to me as an intern. In the first week I heard about dozens of new and upcoming projects, many of which have since been released (such as [Google Goggles](http://www.google.com/mobile/goggles/), [Nexus One](http://www.google.com/phone/), [automatic captions on Youtube](http://googleblog.blogspot.com/2009/11/automatic-captions-in-youtube.html), [addition of more spoken languages on Google Translate](http://googletranslate.blogspot.com/2010/05/giving-voice-to-more-languages-on.html), [Google Prediction API](http://code.google.com/apis/predict/) and so on).
+
+    With so many people knowing the details of so many confidential projects there comes a danger. How much can you comment on a project you've heard of? The issue comes that even if the project is released you can't be sure the details you're releasing have been explicitly released, accidentally leaked or just unknown. As such the safest option is not to mention anything unless you've been given an extremely explicit 'go ahead'.
+
+    In my opinion this is the best solution as any other will come at the expense of the internal open atmosphere of Google.
+
+    ### Work Ethic and Atmosphere
+
+    There's this idea that working for Google must be a ridiculously hard slog where stay at your desk late into the night. This isn't necessarily true - I did see cases of that, but they weren't forced in any way. The time which you come to work and leave is entirely up to you - some people came to work just before midday to throw their stuff down and then they'd go to lunch. Working from home isn't an issue and there's a great deal of technology to support that.
+
+    As an intern I wanted to make sure I had a clear work/home split. I only stayed late a handful of nights, primarily towards the end of my project when trying to finish things off. To be honest, if I had external VPN style access (which interns don't get access to and has become more strictly controlled since the Google China incident) I would likely have worked from home a bit more, but this likely would have been on pet projects using Google's resources that weren't related directly to my internship work. For the others at the company it seemed to vary depending on each person. On the few nights I stayed late the office was fairly deserted although a few employees seemed to prefer arriving later in the day and working into the night. How much work the average person put in at home I can't be sure but it would likely be necessary at times due to the global nature of Google - video-conferencing from the laptop or being on-call would be the two most common things to come to mind.
+
+    The 20% Time that Google is known so well for is both better and worse than I expected. Some employees feel their work is too much by itself and feel like they can't 'spare' 20% of their time. Others have that time to spare and have done some great things with it - many Google projects that have been open sourced are a result of these people devoting their time and expertise to this. 20% time also lowers the barrier of entry to other projects internally so it becomes substantially easier to fix that annoying bug in a project you like or try out and then shift to another project. Many projects have '20% Lists' of small tasks that would be good ideas for an engineer's time.
+
+    The tech talks at Google were one of the things that attracted me most. The breadth and depth of topics covered always amazed me and I'm thankful they make them [publically available](http://www.youtube.com/user/GoogleTechTalks) to a larger audience. They serve both as a way to pull in interesting projects and research that is happening external to Google and also to allow Googlers to internally spread their work and advice to others. As an intern I was able to attend almost all the tech talks scheduled with only a surprisingly small number of topics considered too confidential for me to attend.
+
+    Whilst at Google Sydney I attended a number of interesting talks - the vast majority of them were technical in nature but others explored a wider range of issues and topics (such as having an economics professor come in and speak about the recent financial crisis). There were two surprises attending them as a Googler though. Firstly, there were of course some internal tech talks that the world never sees, many of them just as fascinating (if not more) as the ones posted publically. On the negative side though it's not like Youtube - if after five or ten miutes you realise the tech talk isn't what you expected escaping it is fairly difficult. If I had a company laptop with VPN to the Google network I probably wouldn't have minded as I could work but I felt stuck in a handful of the talks. Tat shows I probably wasn't as discriminative as I should have been with the talks I attended.
+
+    ## What I Learned @ Google
+
+    ### Learning New Things All The Time - ProtoBuffer, Unit Tests, Internal Libraries, Internal Components
+
+    It may surprise you just how many of Google's internal libraries and tools are available publically - things like [Protocol Buffers](http://code.google.com/apis/protocolbuffers/), [Google Web Toolkit](http://code.google.com/webtoolkit/), [Google Collections Library](http://code.google.com/p/google-collections/), [Google Closure compiler](http://code.google.com/p/closure-compiler/), [Google Sparsehash](http://code.google.com/p/google-sparsehash/), [google-gtags](http://code.google.com/p/google-gtags/), [jarjar](http://code.google.com/p/jarjar/) - [check out a large list at code.google.com](http://code.google.com/hosting/search?q=label:Google). Most of those tools I used in some capacity internally. The surprising thing however is that the entire list there is barely the start of their internal arsenal. When you get to Google and start looking around you truly feel like a little kid in a candy store. Even if you had studied and worked with every single library that Google has publically released there are so many things you'll have never seen before.
+
+    Every day I'd come across some new tool or technology to learn and use - I wouldn't have it any other way.
+
+    ### Code Reviews, Style Guides and Unit Tests
+
+    At Google there's a huge emphasis on [code reviews](http://code.google.com/p/rietveld/) and [style guides](http://code.google.com/p/google-styleguide/), both of which I appreciated a great deal. The style guides mean that even the production code bases are quite reasonable (which is especially helpful for an intern seeing it for the first time) and the code reviews improve your craft by having others actively checking through your logic and reasoning. If you're interested many of the tools that Google uses internally (including their [style guides](http://code.google.com/p/google-styleguide/), a [Mondrian style code review tool](http://code.google.com/appengine/articles/rietveld.html) and [Google's C++ unit testing framework](http://code.google.com/p/googletest)) have been open sourced.
+
+    + Before any commit (except to your personal repository) your code must be reviewed and [LGTMed](http://acronyms.thefreedictionary.com/LGTM) by at least one other person. Comments are on both the language itself and the logic and reasoning in your code. If the reviewer is confused by some part of the code and needs further explanation, chances are that explanation should be in the comments or at least documented somewhere. This is practised regardless of your status - programmers such as Guido van Rossum and Rob Pike aren't exempt and get their code reviewed just like everyone else.
+    + Following the Google style guide is necessary. Even if I don't agree with a few of the rules the fact that everything is standardised (or near standardised for some of the projects) means substantially improved code quality in general. To commit code either the author or one of the reviewers must have readability in that programming language, which means that they've been internally certified in the language by other Googlers. This in most cases ensures you've followed the style guide sufficiently.
+    + If it hasn't been unit tested it may as well not be working. There are some gigantuan unit tests in the internal code bases I was using and they're all incredibly useful. This is hugely appreciated for an intern modifying a production system they've never had experience with before. In the optimal case you'd know every change modifying a line of code would make, but in the real world many systems are so large and complex that you can't necessarily guarantee the behaviour without having a far more intimate knowledge of the code than you can acquire in only three months.
+
+    ## What I Miss @ Google
+
+    As valuable as the experience at Google was it of course had to come to an end. Many jobs are transient and an internship is more transient than most =] Here I'm trying to recall some of the things I miss most about the place.
+
+    ### The Tools, Tech and Resources
+
+    The technology available at your fingertips is truly stunning at Google. I can't emphasise that point enough. Google have released many pieces of their internal arsenal but there are just as many held inside due to their interdependencies on other projects, either because they can't release a glob of code or because a single piece that's depended on is considered a trade secret.
+
+    The other amazing thing about Google is their resources. As you might imagine, it's incredibly easy to acquisition machines for experiments. Their datasets may also be unparalleled and although they've released some [interesting](http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC2006T13) [ones](http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC2009T25) that's still only a drop from their ocean.
+
+    ### The People
+
+    The intellectual atmosphere at Google is quite electrifying. Although a technological company the talks certainly weren't limited to that - one I remember distinctly was calculating the safe ascent rate for divers to prevent decompression sickness. Others were of course more technical, such as some of the limitations of hash tables, stories of ancient architecture by some of the team and arbitrary arguments about programming languages, but all of them were fascinating.
+
+    Even on the university campus that mixture is difficult to cultivate. All the people I had the opportunity to work with were bright and competent but on top of that they were also from vastly different backgrounds and age groups.
