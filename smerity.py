@@ -70,7 +70,7 @@ def noogler():
   return render_template("redirect.html", redirect_url="/articles/2010/noogler2010.html")
 
 @app.route("/interviews.html")
-def noogler():
+def interviews():
   return render_template("redirect.html", redirect_url="/articles/2009/interviews.html")
 
 ### General pages
