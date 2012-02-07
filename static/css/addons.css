@@ -110,3 +110,22 @@ ul.no_disc {
   display: block;
   margin:0px auto;
 }
+
+body {
+  font-size: 15px
+}
+
+p {
+  font-size: 15px;
+}
+
+.metadata h1 {
+  margin-bottom: 4px;
+}
+
+.metadata .post-date {
+  font-size: 19px;
+  font-weight: 300;
+  margin: 10px;
+  margin-top: 4px;
+}

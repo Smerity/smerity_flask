@@ -21,6 +21,45 @@
 </style>
 {% endblock %}
 
+{% block js %}
+<script type="text/javascript" src="/media/js/jquery.min.js"></script>
+<script type="text/javascript">
+  // TODO: Work out why "_trackr || ..." raises a Reference Error...
+  (function() {
+    var cookieName = "__tk_tkn";
+
+    // http://www.kaushik.net/avinash/standard-metrics-revisited-time-on-page-and-time-on-site/
+    // http://stackoverflow.com/questions/3534524/how-does-the-embedded-google-analytics-javascript-works
+
+    // Return back random number of length 16
+    var rnd = function() {return String(Math.random()).slice(2,18);};
+
+    // Get the cookie if it exists
+    var cookiePattern = new RegExp('(^|;)[ ]*' + cookieName + '=([^;]*)'),
+    cookieMatch = cookiePattern.exec(document.cookie);
+    var token;
+    if (cookieMatch) {
+      token = cookieMatch[2];
+    } else {
+      // If the cookie doesn't exist, generate a token and store it
+      token = rnd();
+      document.cookie = cookieName + "=" + token + ";path=/";
+    }
+
+    var ref = document.referrer;
+
+    var tk = document.createElement('script'); tk.type = 'text/javascript'; tk.async = true;
+    tk.src = "http://127.0.0.1:1337/trackr/" + token;
+    tk.src += "?rnd=" + rnd();
+    if (ref) {
+      tk.src += "&ref=" + ref;
+    }
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(tk, s);
+  })();
+</script>
+{% endblock %}
+
 {% block header %}
 <header class="topbar">
   <nav class="topbar topbar-inner container-fluid">

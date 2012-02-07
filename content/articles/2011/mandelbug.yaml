@@ -27,7 +27,7 @@ content: |
     As computers are deterministic, the same input will result in the same output every time.
 
     Mandelbugs are caused when computers exhibit chaotic or non-deterministic behaviour.
-    These bugs are caused by true non-determinism sneaking in to programs or the computer's interactions are so complex that it appears non-deterministic to a human.
+    These bugs are caused by true non-determinism sneaking in to programs or as the computer's interactions are so complex that it appears non-deterministic to a human.
 
     Below is an example of a Mandelbug seen during the creation of a Sierpinski triangle in Google Chrome.
     The expected result is on the left -- the completed triangle itself.
