@@ -1,0 +1,14 @@
+title: "NCSS"
+date: 2012-01-17
+hidden: true
+content: |
+    In my recent experiments with Coffescript and Canvas I've come across a Mandelbug in Google Chrome.
+    This post won't go into too much detail about the Mandelbug I myself experienced.
+    Instead, it's more a general outline of what these "bugs" are and what limitations they may eventually place on technological advances as a whole.
+
+    ## Sierpinski Triangle What?
+
+    The [Sierpinski Triangle](http://en.wikipedia.org/wiki/Sierpinski_triangle) is an aesthetically pleasing fractal that can be constructed quite simply even with pen and paper.
+    Start with a triangle and then drawn an upside down triangle inside of it.
+    Repeat this for each of the triangles that have just been created.
+    For more details, I'd encourage you to look elsewhere.

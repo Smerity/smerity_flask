@@ -1,0 +1,98 @@
+title: "PJAX and Flask"
+date: 2012-02-19
+content: |
+    Recently _37signals_ wrote about [improving the speed, both real and perceived, of their web application Basecamp Next](http://37signals.com/svn/posts/3112-how-basecamp-next-got-to-be-so-damn-fast-without-using-much-client-side-ui).
+    Of the techniques discussed, they primarily focused around PJAX, extreme caching ([cache all the things!](http://www.quickmeme.com/meme/504s/)) and infinite scrolling.  
+    Here I'll focus just on PJAX, but the rest of the article is certainly worth reading!
+
+    ## Assuming I know what AJAX is, WTH is PJAX?
+
+    AJAX is commonly used to dynamically reload contents on a page without having to reload the page fully.
+    Without a full page reload the client side experience is substantially improved: smoother, faster and less data shuffled back and forth.
+    Unfortunately AJAX can add unwanted complexity to the codebase and doesn't degrade well for users with no Javascript.
+
+    [PJAX](https://github.com/defunkt/jquery-pjax) provides a number of advantages without complicating the code substantially:
+
+    + Positive impact on the user experience (no full page reload, similar to AJAX)
+    + Degrades cleanly when Javascript is disabled
+    + Doesn't confuse / hide the user's interaction with the site from Google Analytics
+    + Page titles and the back button work as expected
+    <!--+ Minimal additional code complexity-->
+
+    Although all these benefits come into play, the main one to consider is simply this: _transmitting and redrawing a page fully when there are shared elements is a waste_.
+
+    ## Simple PJAX Example
+
+    Imagine a fairly standard webpage layout which involves a main piece of content surrounded by a header and footer.
+
+          ::html
+          <html>
+            <head>
+              <title>...</title>
+              <script>...JS that is reloaded and reconsidered each time...</script>
+              <style>...Style that is reloaded and reconsidered each time...</style>
+            </head>
+
+            <body>
+              <header>...</header>
+
+              <div id="main-content">
+              </div>
+
+              <footer>..</footer>
+            </body>
+          </html>
+
+    Everything before and after __#main-content__ other than the title, is a waste (assuming the Javascript and CSS styles are shared between pages).
+    When PJAX requests a page, all it needs to receive is a subset of above, the title and the contents of a one element you want replaced, in this case, __#main-content__.
+
+          ::html
+          <title>...</title>
+          <!-- contents of #main-content -->
+
+    For more details, I recommend reading the [brief README](https://github.com/defunkt/jquery-pjax) at PJAX's Github repository.
+
+    ## Using PJAX in Flask
+
+    Whenever PJAX makes a request to the webserver it sets a specific header to true: __X-PJAX__.
+    Flask's default template engine, Jinja2, is already supplied with contextual information about the headers through the _request_ object, so we can simply use that to modify the template.
+
+    Note that when __X-PJAX__ is not set in the headers, Flask/Jinja2 degrade to rendering and returning the full webpage.
+
+          ::html
+          {% if "X-PJAX" not in request.headers %}
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8">
+          {% endif %}
+
+              <title>{% block title %}{% endblock %}</title>
+
+          {% if "X-PJAX" not in request.headers %}
+              {% block head %}{% endblock %}
+              {% block css %}{% endblock %}
+              {% block js %}{% endblock %}
+            </head>
+            {% block body %}
+            <body>
+              {% block header %}
+              <header>...</header>
+              {% endblock %}
+              <div id="main-content">
+          {% endif %}
+
+              {% block content %}
+              {% endblock %}
+
+          {% if "X-PJAX" not in request.headers %}
+              </div>
+              {% block footer %}
+              <footer>...</footer>
+              {% endblock %}
+            </body>
+          </html>
+          {% endif %}
+
+    If you use this as a base template (___base.html__ or similar), all the pages that can benefit from PJAX will.
+    Best of all, next to zero programmer attention is required!

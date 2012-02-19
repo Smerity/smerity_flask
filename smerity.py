@@ -30,7 +30,8 @@ def get_articles(base_directory="content/articles/"):
       page = get_page(int(year), slug, get_dict=True)
       page["year"] = year
       page["slug"] = slug
-      pages.append(page)
+      if "hidden" not in page or page["hidden"] != True:
+        pages.append(page)
     pages.sort(key=lambda x: x["date"], reverse=True)
     articles.append((year, pages))
   return sorted(articles, reverse=True)
