@@ -1,9 +1,11 @@
 title: "PJAX and Flask"
 date: 2012-02-19
 content: |
+    __
     Recently _37signals_ wrote about [improving the speed, both real and perceived, of their web application Basecamp Next](http://37signals.com/svn/posts/3112-how-basecamp-next-got-to-be-so-damn-fast-without-using-much-client-side-ui).
     Of the techniques discussed, they primarily focused around PJAX, extreme caching ([cache all the things!](http://www.quickmeme.com/meme/504s/)) and infinite scrolling.  
     Here I'll focus just on PJAX, but the rest of the article is certainly worth reading!
+    __
 
     ## Assuming I know what AJAX is, WTH is PJAX?
 

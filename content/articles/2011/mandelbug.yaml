@@ -1,9 +1,11 @@
 title: "Chromium Fractal plated Heisenbugs, Mandelbugs and Schrödinbugs"
 date: 2011-12-15
 content: |
+    __
     In my recent experiments with Coffescript and Canvas I've come across a Mandelbug in Google Chrome.
     This post won't go into too much detail about the Mandelbug I myself experienced.
     Instead, it's more a general outline of what these "bugs" are and what limitations they may eventually place on technological advances as a whole.
+    __
 
     ## Sierpinski Triangle What?
 
