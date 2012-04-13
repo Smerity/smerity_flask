@@ -1,0 +1,13 @@
+title: "Old Shared Servers..."
+date: 2012-03-29
+hidden: true
+content: |
+    __
+    On the weekend I caught up with Chris Lloyd, one of the co-founders of [Minefold](https://minefold.com/).
+    During our extended cafe / lunch / afternoon chat session, we touched upon a number of things I think it's important to note for posterity.
+    __
+
+    + virtualenv
+    + easy_install
+    + pip
+    + pip -> rest

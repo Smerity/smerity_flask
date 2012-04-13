@@ -1,0 +1,95 @@
+title: A Light Benchmark of Hetzner's 512MB VPS
+date: 2012-04-12
+content: |
+    Virtual Private Servers are always a trade-off as you're never getting access to the raw metal.
+
+    ## The Hetzner VPS
+    The [Hetzner VPS range](http://www.hetzner.de/en/hosting/produktmatrix_vserver/vserver-produktmatrix) has a few key advantages to consider over other VPS providers such as [Linode](http://www.linode.com/) or [Amazon EC2](http://aws.amazon.com/ec2/pricing/).
+
+    + Competitive pricing (especially if you're not European and don't need to pay the 19% VAT)
+    + Memory, disk and transfer well above the competition
+    + Transfer is 100Mbit/s until you hit your bandwidth cap at which point it falls to 10Mbit/s
+
+    For the benchmarks below, I'm testing on the [__vServer VQ 7__](http://www.hetzner.de/en/hosting/produkte_vserver/vq7) which features:
+
+    + 512MB of RAM
+    + 20GB hard drive
+    + 1TB of transfer (incoming / internal traffic not counted)
+    + Single CPU (3074Mhz according to _/proc/cpuinfo_)
+    + Price tag of 7,90 Euro (including 19% VAT)
+
+    <p class="alert alert-info">
+    The benchmarks below are to give you a general idea of the performance of the VPS.
+    Noisy neighbors can have a significant impact on performance and these tests do not run long enough to show their possible impact.
+    <!--
+    <br />
+    <span class="label label-info">Noisy neighbors:</span>&nbsp; when other active VPS instances sharing the same physical hardware result in negative performance
+    -->
+    </p>
+
+    ## Activation
+    Activation all occurred fairly quickly and cleanly, especially when you factor in the difference in time between Sydney, Australia and Nuremberg, Germany (-8 hours).
+    Strangely though, they did request a passport scan at the start of the sign-up process.
+    If you're a maniacal super-villain you'd best have your fake passport handy.
+
+    + Order request made: (13:16 Sydney &rarr; 5:16 Nuremberg)
+    + Request for passport: (17:31 Sydney &rarr; 9:31 Nuremberg)
+    + Sent passport scan to Hetzner (18:24 Sydney &rarr; 10:24 Nuremberg)
+    + Server access details received (20:33 Sydney &rarr; 12:33 Nuremberg)
+
+    ## Bandwidth Test
+    The bandwidth test from _cachefly_ indicates it can essentially max out the 100Mbit/s network card (10.9M/s &rarr; 87 megabits/s).
+
+        :::bash
+        smerity@Ubuntu-1110-oneiric-64-minimal:~$ wget http://cachefly.cachefly.net/100mb.test
+        --2012-04-12 15:56:29--  http://cachefly.cachefly.net/100mb.test
+        Resolving cachefly.cachefly.net... 140.99.93.175
+        Connecting to cachefly.cachefly.net|140.99.93.175|:80... connected.
+        HTTP request sent, awaiting response... 200 OK
+        Length: 104857600 (100M) [application/octet-stream]
+        Saving to: `100mb.test'
+        100%[================================================>] 104,857,600 10.8M/s in 9.4s
+        2012-04-12 15:56:38 (10.9 MB/s) - `100mb.test' saved [104857600/104857600]
+
+    ## Redis Benchmark
+    When viewing these benchmarks, note that the Hetzner VPS only has a single CPU.
+    Whilst Redis only takes advantage of a single core, it needs to share that with the Redis benchmarking program as well, which will likely severly impede the benchmark results.
+
+        :::java
+        smerity@Ubuntu-1110-oneiric-64-minimal:~/redis-2.4.10/src$ ./redis-benchmark -q -n 100000
+        PING_INLINE: 52056.22 requests per second
+        PING_BULK: 51948.05 requests per second
+        SET: 61462.82 requests per second
+        GET: 57903.88 requests per second
+        INCR: 64102.57 requests per second
+        LPUSH: 66050.20 requests per second
+        LPOP: 60532.69 requests per second
+        SADD: 60204.70 requests per second
+        SPOP: 49091.80 requests per second
+        LPUSH (needed to benchmark LRANGE): 59453.03 requests per second
+        LRANGE_100 (first 100 elements): 18433.18 requests per second
+        LRANGE_300 (first 300 elements): 9101.67 requests per second
+        LRANGE_500 (first 450 elements): 8402.66 requests per second
+        LRANGE_600 (first 600 elements): 6651.59 requests per second
+        MSET (10 keys): 37907.50 requests per second
+
+    ## Hard drive speed tests
+
+        :::java
+        smerity@Ubuntu-1110-oneiric-64-minimal:~$ dd if=/dev/zero of=test bs=64k count=16k conv=fdatasync
+        16384+0 records in
+        16384+0 records out
+        1073741824 bytes (1.1 GB) copied, 12.6352 s, 85.0 MB/s
+
+    <hr />
+
+        :::java
+        smerity@Ubuntu-1110-oneiric-64-minimal:~/redis-2.4.10/src$ sudo hdparm -tT /dev/sda
+        /dev/sda:
+         Timing cached reads:   17996 MB in  2.00 seconds = 9007.04 MB/sec
+         Timing buffered disk reads: 514 MB in  3.02 seconds = 170.12 MB/sec
+
+    ## Overall
+    I'm happy with the VPS as it currently stands.
+    The price is low enough to be an "impulse buy" and as long as you can live with a slightly hindered CPU it will do everything you need of it.
+    Hetzner is especially tempting if you can use RAM to achieve reasonable performance (Linode's 512MB VPS is around the same price as [Hetzner's 2GB VPS](http://www.hetzner.de/en/hosting/produkte_vserver/vq19)) but it really depends on your machine's workload.

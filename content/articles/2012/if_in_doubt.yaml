@@ -1,0 +1,33 @@
+title: "If in doubt, don't"
+date: 2012-03-15
+hidden: true
+content: |
+    __
+    I've been working the past few weeks on launching Freelancer.com's first Scavenger Hunt.
+    Whilst I'm intelligent (that Smerity has an inflated ego, doesn't he?) there are still numerous gaps in my skillset.
+    What I've found however is that launching head first into the darkness isn't as dangerous as you'd have thought, especially if you have your wits about you.
+    __
+
+    ## Correcting mistakes is more important than preventing them
+
+    If you're intelligent, you can get away with not knowing things.
+    You won't make obvious mistakes and you can fix the mistakes you make quickly enough to avert potential disasters.
+    Life shouldn't be too planned.
+    Imagine it was your first time putting on a set of skis -- _you don't sit in the corner for the first thirty minutes with a pen and paper trying to work out what would happen if you were advancing down an ice ridden slope being chased by polar bears_.
+
+    Yes, the example is extreme, but I'll stand by it as programmers do this all the time.
+    Premature optimisation is the traditional "polar bear" attack.
+    Programmers ask if their web server will scale to more than 10k connections per second.
+    Even if it does, what if the database backend flakes on this table?
+    Features are the "icy slope".
+    Programmers decide before asking anyone that this is how a feature should be implemented and this is the set of features a user would be interested in.
+
+    Let's just take a step back for a second.
+    If you're consistently serving 10k connections per second on your web server then you'd hit __864 million connections over the course of a day__.
+    I'm sorry to say, you're unlikely to get that popular that quickly.
+    Even if you do, see point one: _smart people can cheat their way through not knowing things_.
+    What about the icy slope of features?
+    Well, we'll assume you're smart, but smart doesn't give you everything.
+    It can't give you a perfect insight into the minds of your users, don't assume it can.
+    The desires and needs of your users will shift and change and they'll tell you if they're not happy.
+    Your most important goal is to get out the absolute minimal features and then proceed to improve -- correct the mistakes you make instead of entering analysis paralysis trying to prevent them.
