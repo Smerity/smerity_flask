@@ -2,8 +2,57 @@
   font-family: 'Vollkorn';
   font-style: normal;
   font-weight: normal;
-  src: local('Vollkorn Regular'), local('Vollkorn-Regular'), url('/media/css/Vollkorn-Regular.ttf') format('woff');
+  src: local('Vollkorn Regular'), local('Vollkorn-Regular'), url('fonts/Vollkorn-Regular.ttf') format('woff');
 }
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Vollkorn Italic'), local('Vollkorn-Italic'), url('fonts/Vollkorn-Italic.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Vollkorn Bold'), local('Vollkorn-Bold'), url('fonts/Vollkorn-Bold.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: italic;
+  font-weight: bold;
+  src: local('Vollkorn Bold Italic'), local('Vollkorn-BoldItalic'), url('fonts/Vollkorn-BoldItalic.ttf') format('woff');
+}
+/* Fix for Bootstrap as labels end up quite spaced out using Vollkorn Bold */
+.label {
+  font-family: sans-serif;
+}
+
+/*
+@font-face {
+  font-family: 'Crimson Text';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Crimson Text Italic'), local('CrimsonText-Italic'), url('fonts/CrimsonText-Italic.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Crimson Text';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Crimson Text Semibold Italic'), local('CrimsonText-SemiboldItalic'), url('fonts/CrimsonText-SemiboldItalic.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Crimson Text';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Crimson Text'), local('CrimsonText-Roman'), url('fonts/CrimsonText-Roman.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Crimson Text';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Crimson Text Semibold'), local('CrimsonText-Semibold'), url('fonts/CrimsonText-Semibold.ttf') format('woff');
+}
+*/
 
 /*
 @font-face {
@@ -28,8 +77,8 @@
 }
 */
 
-h1, h2, h3, h4, h5, h6, .funky_font {
-  font-family: 'Vollkorn', sans-serif;
+h1, h2, h3, h4, h5, h6, .funky_font, header.navbar {
+  font-family: "Vollkorn", sans-serif;
   font-weight: normal;
   color: #443;
   color: #358;
