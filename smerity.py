@@ -74,6 +74,10 @@ def noogler():
 def interviews():
   return render_template("redirect.html", redirect_url="/articles/2009/interviews.html")
 
+@app.route("/py2java.html")
+def py2java():
+  return render_template("redirect.html", redirect_url="/articles/2008/py2java.html")
+
 ### General pages
 
 @app.route("/abme.html")
