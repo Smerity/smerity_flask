@@ -90,7 +90,7 @@ p {
 
 body {
   font-family: "Vollkorn", "Helvetica Neue", Helvetica, Arial, serif;
-  background: white url(bg.png) repeat;
+  background: #eee url(bg.png) repeat;
 }
 
 blockquote {
