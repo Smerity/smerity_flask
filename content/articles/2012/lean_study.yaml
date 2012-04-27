@@ -1,0 +1,45 @@
+title: Lean Study & the Bored of Studies
+date: 2012-04-27
+content: |
+
+    ## The Issue -- Bored of Studies
+    Simply put, the Bored of Studies website has barely changed since I was in high school.
+    And I'm not exactly young anymore...
+
+    + Ancient tech stack that crashes every year around exam time leaving students without support
+    + Insecure tech stack that has previously been hacked into, leaking sensitive information
+    + Exploits the students (low quality "premium memberships") whilst also taking money from advertisers
+    + No care or thought is put into the website -- the value is derived from the active and helpful forum members
+    + Their most recent update was adding an arcade section... Full of games... Games... Games?!?!?
+
+    <p class="alert alert-error">
+    Simply put, students deserve a far better resource to help them through such a stressful time
+    </p>
+
+    ## The Plan
+
+    + Don't charge the students -- ever
+    + Forum that won't go down when needed most (more servers during exam time via Amazon EC2 [Singapore])
+    + File Locker for storing exams, study notes, ... (Bored of Studdies rarely update theirs)
+    + Facebook integration (with a username/password fallback in case the school has blocked Facebook)
+    + Provide moderation power to trusted users (either due to their contributions to the site or as I know them personally)
+
+    <p class="alert alert-info">
+    Students shouldn't be charged for "premium membership", especially one that's almost useless (see Bored of Studies)
+    </p>
+
+    ## The Revenue
+
+    To keep the website up and going it needs some way to sustain itself.
+    Instead of aiming to get the students to pay, have advertisers pay.
+    This is already the model in place by Bored of Studies except they try to get money from both ends.
+
+    + Low annoyance advertisements (universities, tutoring colleges, ...)
+    + Revenue &rarr; servers, first year university students (mentors / moderators / note creators), my time
+
+    ## My Conclusion
+
+    <p class="alert alert-info">
+    Even if all I do is make Bored of Studies retaliate by providing new features (i.e. from this decade) then the students win =]
+    </p>
+

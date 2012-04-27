@@ -1,0 +1,53 @@
+title: The Dining Cryptographer's Problem
+date: 2012-04-27
+content: |
+    Although a basic and cool problem, the dining cryptographer's problem isn't well explained anywhere online.
+    This should help with the matter.
+
+    Imagine three cryptographers have just had dinner.
+    The waiter suddenly comes up to them and says "Your bill has been paid by a single person who'd prefer to remain anonymous".
+    Some of the people on the table are concerned the NSA footed the bill and don't want to be in their debt.
+    It is possible one of the cryptographers is just anonymously paying for the meal however.
+
+    Is there some way to check the NSA haven't paid whilst keeping the benevolent cryptographer anonymous?
+
+        :::
+        A---------B
+        \        /
+         \      /
+          \    /
+           \  /
+            C
+
+    Each cryptographer flips a coin (0 or 1), with the value of Alice's coin being <code>a</code>, Bob's being <code>b</code> and so on.
+    Each cryptographer then checks if their coin's value is the same as the person's next to them (xor) and stores these computed values (<code>A</code> for Alice, <code>B</code> for Bob, ...).
+
+    A = (a ^ c)  
+    B = (b ^ a)  
+    C = (c ^ b)  
+
+    Finally, we xor all the computed values together.
+    If everyone is telling the truth about their computed values, then the result should be zero as all the values cancel out.
+
+    A ^ B ^ C  
+    = (a ^ c) ^ (b ^ a) ^ (c ^ b)  
+    = <span style="color:#e22">a</span> ^ <span style="color:#2e2">c</span> ^ <span style="color:#22e">b</span> ^ <span style="color:#e22">a</span> ^ <span style="color:#2e2">c</span> ^ <span style="color:#22e">b</span>  
+    = c ^ b ^ c ^ b  
+    = c ^ c  
+    = 0  
+    [each pair of equivalent variables cancel out as it's xor]
+
+    If one of the cryptographers wishes to anonymously admit to paying for the meal however, they can flip the value of their computed result.
+    If this was done, the result would be 1 but no-one would know who "lied" about their computed result.
+
+    <div class="alert alert-info">
+    Thus, as long as the benevolent cryptographer flips their computed value (assuming they exist):
+
+    <ul>
+        <li>If the result is 0 then the NSA have paid for the meal</li>
+        <li>If the result is 1 then a benevolent cryptographer has shouted his friends anonymously</li>
+    </ul>
+    </div>
+
+    Note however that this only works if a single cryptographer pays for the meal and all the cryptographers act truthfully.
+    If two cryptographers split the cost of the meal between them and both flipped their computed values then the values would cancel out and it would appear the NSA paid for the meal.

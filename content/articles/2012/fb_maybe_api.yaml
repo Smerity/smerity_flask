@@ -1,0 +1,75 @@
+title: The Facebook (Maybe) API
+date: 2012-04-23
+content: |
+    The Facebook API is a demon I've had to deal with on a regular basis recently.
+    Here I'll rant and rave the demonic possession out of me.
+
+    ## Backstory
+
+    <p class="alert alert-info">
+    The sorry state of Facebook's API is not exactly a secret.
+    </p>
+
+    At [Freelancer.com](http://www.freelancer.com/) I had to deal with the Facebook API for the [Scavenger Hunt](http://scavenger.freelancer.com/) and other random tidbits.
+    It wasn't really liked by anyone on the team.
+    In fact, I've yet to meet anyone who _really_ likes the Facebook API at all.
+    Now that I'm working for myself I can't say I'm any happier with the API, even when starting from a clean slate.
+
+    I've been trying to surmise the issues I've commonly hit and it boils down to:
+
+    + No clear set of "best practices" to follow
+    + Too many choices with deprecation lurking around every corner (login => Oauth [_client side_, _server side_, _client side passing on to server side_, _FBML_, _codes_, _access tokens_])
+    + The documentation doesn't conform to the implementation
+    + The API has been monkey patched too many times to count
+    + Hidden but used undocumented functions that people are tempted to use as they don't know if there are any other options [see best practices] (_autologoutlink_)
+
+    Why can they get away with it? They're essentially a monopoly in the social space, like Microsoft was with desktops...
+
+    <p class="alert alert-error">
+    Developers bend over backwards to secure more users &rarr; more revenue
+    </p>
+
+    ## The Facebook Query Language (FQL)
+    According to Facebook, [FQL](http://developers.facebook.com/docs/reference/fql/) _enables you to use a SQL-style interface to query the data exposed by the Graph API_.
+    Excellent, that sort of power sounds nice -- I don't even need to bring batteries.
+    So, Facebook, I'm a stock standard Facebook application or website using your tech stack -- what do my common queries look like?
+
+    Oh... No answer..? Oh, and limited documentation? What about some standard queries to get me started?
+
+    + Do I have any __friends already in my application__? [interaction]
+    <!--+ Are any of my friends in the application online currently?-->
+    + Get all my statuses that __contain__ "hapax legomenon" [searching]
+    + Get ten recent photos that are __publically viewable__ [privacy]
+    + ...
+
+    If nothing else, the first one seems like a reasonable example considering damn near every Facebook application would use it or a variation of it!
+    Sadly, there's not a mention of it anywhere. Good luck with that. The latter questions don't get any easier.
+    In case you were wondering...
+
+    <p class="alert alert-info">
+    SELECT uid FROM user WHERE is_app_user=1 and uid IN (SELECT uid2 FROM friend WHERE uid1 = me())
+    </p>
+
+    Oh, you had _has_added_app_ instead of _is_app_user_?
+    Sorry, that's deprecated -- you shouldn't rely on old StackOverflow answers quite so much!
+
+    ## Frustration... and some rawr-i-ness
+
+    Facebook have the power.  
+    Developers _need_ to bend their apps to conform to the Facebook platform.  
+    Yet Facebook doesn't work in the interest of the developer or the user.
+
+    Even if the Facebook API required you to lick shards of broken glass off the floor, developers would persevere to work out how best to pick glass shards out of their teeth.
+
+    As it now stands, the [Facebook login process](http://developers.facebook.com/docs/authentication/) for my app is not seamless, but it works...
+    It's the wrong tactic for allowing [direct logins from Facebook Canvas redirects](http://developers.facebook.com/docs/authentication/canvas/) but I don't care.
+    Whether any of this matters to the users I'll have to wait and see.
+    Will they notice the [full page Oauth login dialog](http://developers.facebook.com/docs/reference/dialogs/oauth/) and yearn for a popup Oauth login dialog?
+    No clue.
+
+    "Smerity, if it pains you so much, why don't you just not support Facebook?
+    You know you're part of the problem right?"
+
+    _Ah... Uhm... Argh..._ No comment.
+
+    __&lt;EOF&gt;__

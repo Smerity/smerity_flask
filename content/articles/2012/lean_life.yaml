@@ -1,0 +1,50 @@
+title: A Lean Life
+date: 2012-04-20
+content: |
+    <!--
+    <a href="/abme.html">
+    <img src="/media/images/postage-smerity.png" style="
+    width: 100px;
+    -webkit-transform: rotate(4deg);
+    float: right;
+    ">
+    </a>
+    -->
+
+    Over the past few weeks I've been spending more and more time considering the lean startup methodology.
+    The methodology is really a codification of the best practices for rapid testing.
+    <p class="alert alert-info">
+    _More importantly it makes you consider what happens if a test fails_
+    </p>
+
+    Maintaining control of failure is an important point when working in the tech industry -- the entire field can change rapidly and failure is part of the norm.
+    At Google's scale they must assume that, for a computing task involving hundreds of machines, one of them will die in the midst of the work.
+    <p class="alert alert-info">
+    _Failure is built into their methodology_  
+    </p>
+    Recovery after that failure is what's important -- disaster recovery without the disaster.
+    _Why can't these general principles be applied to far more than just startups?_
+
+    ## The Build-Measure-Learn Feedback Loop
+
+    The build-measure-learn feedback loop sits as a core principle of the lean startup methodology.
+    To be honest, it's fairly obvious -- but that's not necessarily a bad thing.
+
+    + __Idea__ &rarr; _Build_
+    + __Product__ &rarr; _Measure_
+    + __Data__ &rarr; _Learn_
+
+    If you replace _Product_ with _Experiment_ then you essentially end up with the scientific method.
+
+    ## Take and apply everywhere
+
+    + _New business idea?_
+        + What's the minimum amount of time to get the first iteration off the ground?
+        + Is it a fit for the market?
+        + Persevere and refine or burn it to the ground and start again?
+    + _Want to play a new musical instrument?_
+        + What's the cheapest way to get the instrument? Beg, borrow, hire, buy?
+        + The minimum song you can learn so you can know if you like it
+        + Return the instrument with minimum cost or continue learning
+
+    Repeat ad nauseum.

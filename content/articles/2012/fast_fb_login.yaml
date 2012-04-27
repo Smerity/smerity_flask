@@ -1,0 +1,68 @@
+title: Fast Facebook OAuth Login
+date: 2012-04-24
+content: |
+    The [Facebook OAuth login](http://developers.facebook.com/docs/authentication/server-side/) is used everywhere on the web but is slow.
+    In order to complete the server-side authentication, many round trips are required before you can confirm the person's identity.
+
+    ## The Issue
+
+    The diagram below describes the round trips involved in performing an OAuth login via Facebook.
+    Notice there's a lot of them...
+    The user needs to endure at minimum three round trips, bouncing between your site and Facebook itself.
+    Your server also needs to do two round trips to Facebook on top of that before confirming the user's identity.
+
+    <div align="center">
+        <a href="http://developers.facebook.com/docs/authentication/server-side/" target="_blank">
+            <img class="smooth" width="519px" height="362px" src="/media/images/articles/2012/fb_login_process.png">
+        </a>
+    </div>
+
+    These round trips take a good chunk of time.
+    There's also the risk that the call to the Facebook API will never return or experience lag (maybe even tripping a timeout) -- not uncommon in my experience.
+    Sadly, there's not too much of this process that can be optimised away other than the call to <code>/me</code>.
+    It'd be optimal if at least we could skip the <code>/me</code> call.
+
+    In a perfect world, Facebook would send back <code>{<b>user_id</b>, access_token, expires}</code> -- but this isn't a perfect world, we only get the latter two =[
+
+    <!--
+    In the olden days the access token could actually be parsed for the user's Facebook ID (in an undocumented fashion of course).
+    That's no longer true.
+    -->
+
+    ## Optimal Theoretical Solution: Caching
+
+    <p class="alert alert-info">
+    Use just the <code>{access token, expires}</code> tuple to identify the user (without access to their Facebook ID or <code>/me</code>)
+    </p>
+
+    + Facebook's reply to OAuth is only the access token and the expire time
+    + _Assume_ the access token is still valid and linked to the user (<span class="alert-error">do not like</span>)
+
+    The word _assume_ in that sentence scares the hell out of me as I hope it does for you.
+    I don't like to _assume_ identities when the user is logging in to my application.
+    Whilst valid access tokens for an application need to be unique (as otherwise Facebook couldn't perform look-ups using them), nowhere does Facebook explicitly say that they won't re-use old invalid tokens for different users.
+
+    <p class="alert alert-error">
+    If an old invalid token T from user A is later re-used for user B, your application could log user A in as user B
+    </p>
+
+    What about using the expires time that comes along with the access token (see [Access Token Debugger](https://developers.facebook.com/tools/debug/access_token) for more details).
+    One could use both values, <code>{access token, expires}</code>, to uniquely identify the given access token.
+    If a new access token has been issued to a different user of your application, they should have different exires.
+    Thought it sounds reasonable I wouldn't necessarily trust that method without feedback from Facebook developers -- a mistake is far too costly in a step as important as the authentication process.
+
+    ## Sub-optimal Practical Solution: Smooth the Flow
+
+    <p class="alert alert-info">
+    If you can't get speed, go for interactivity -- one long unresponsive load becomes two responsive ones
+    </p>
+
+    To make the login process flow better, one could break the <code>/oauth/authorize</code> and <code>/me</code> Facebook API requests into two pages:
+
+    + Page 1: <code>/oauth/authorize</code> &rarr; __Loading user details...__
+    + Redirect to _Page 2_ either (a) after a predefined timeout limit or (b) when the server informs the user that the <code>/me</code> request is complete
+    + Page 2: Normal application
+
+    The optimal way of completing the redirect is via real-time Javascript push notifications (such as [Socket.io](http://socket.io/)).
+    This way the user can be alerted immediately when the Facebook API request has returned.
+    The less optimal method is a stock standard redirect after a predefined amount of time, looping until your application has completed the API request.
