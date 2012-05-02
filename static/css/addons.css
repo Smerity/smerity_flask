@@ -93,6 +93,7 @@ body {
   background: #eee url(bg.png) repeat;
 }
 
+/*
 blockquote {
   margin: 15px 32px;
 
@@ -103,9 +104,9 @@ blockquote {
   -webkit-box-shadow:inset 2px 2px 3px #cca;
   box-shadow:inset 2px 2px 3px #cca;
 }
+*/
 
 blockquote p {
-  padding: 10px;
   font-style: italic;
 }
 

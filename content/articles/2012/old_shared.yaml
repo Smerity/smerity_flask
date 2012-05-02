@@ -7,7 +7,8 @@ content: |
     During our extended cafe / lunch / afternoon chat session, we touched upon a number of things I think it's important to note for posterity.
     __
 
-    + virtualenv
-    + easy_install
-    + pip
+    + easy_install &rarr; virtualenv + pip
     + pip -> rest
+    + flask-bcrypt equals sad face -- no easy way to compile C with correct Python libraries on the shared server
+    + Apache &rarr; app.fcgi
+    + Apache rewrite rules to push all URLs to app.fci/...

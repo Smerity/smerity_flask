@@ -1,16 +1,28 @@
 title: The Dining Cryptographer's Problem
 date: 2012-04-27
 content: |
-    Although a basic and cool problem, the dining cryptographer's problem isn't well explained anywhere online.
-    This should help with the matter.
+    From talking to students in Computer & Network Security at the University of Sydney, the [dining cryptographer's problem](http://en.wikipedia.org/wiki/Dining_cryptographers_problem) can still cause question marks.
+    It's understandable -- the protocol can look pretty confusing at first.
+    Hopefully this helps short circuit the confusion =]
 
+    ## Problem Definition
+
+    David Chaum introduced the problem in his paper [The Dining Cryptographers Problem: Unconditional Sender and Recipient Untraceability](http://www.cs.cornell.edu/people/egs/herbivore/dcnets.html):
+
+    <p class="alert alert-info">
+    Three cryptographers are sitting down to dinner at their favorite three-star restaurant. Their waiter informs them that arrangements have been made with the maitre d'hotel for the bill to be paid anonymously. One of the cryptographers might be paying for the dinner, or it might have been NSA (U.S. National Security Agency). The three cryptographers respect each other's right to make an anonymous payment, but they wonder if NSA is paying. <!--They resolve their uncertainty fairly by carrying out the following protocol...-->
+    </p>
+
+    <!--
     Imagine three cryptographers have just had dinner.
     The waiter suddenly comes up to them and says "Your bill has been paid by a single person who'd prefer to remain anonymous".
     Some of the people on the table are concerned the NSA footed the bill and don't want to be in their debt.
     It is possible one of the cryptographers is just anonymously paying for the meal however.
+    -->
 
     Is there some way to check the NSA haven't paid whilst keeping the benevolent cryptographer anonymous?
 
+    <!--
         :::
         A---------B
         \        /
@@ -18,13 +30,22 @@ content: |
           \    /
            \  /
             C
+    -->
+
+    ## The Protocol
 
     Each cryptographer flips a coin (0 or 1), with the value of Alice's coin being <code>a</code>, Bob's being <code>b</code> and so on.
     Each cryptographer then checks if their coin's value is the same as the person's next to them (xor) and stores these computed values (<code>A</code> for Alice, <code>B</code> for Bob, ...).
 
+    <div align="center">
+        <img src="/media/images/articles/2012/dining_crypto.png" />
+    </div>
+
+    <!--
     A = (a ^ c)  
     B = (b ^ a)  
     C = (c ^ b)  
+    -->
 
     Finally, we xor all the computed values together.
     If everyone is telling the truth about their computed values, then the result should be zero as all the values cancel out.
@@ -39,6 +60,13 @@ content: |
 
     If one of the cryptographers wishes to anonymously admit to paying for the meal however, they can flip the value of their computed result.
     If this was done, the result would be 1 but no-one would know who "lied" about their computed result.
+    For example, if B had actually paid for the meal...
+
+    A ^ B ^ C  
+    = (a ^ c) ^ ¬(b ^ a) ^ (c ^ b)  
+    = (b ^ a) ^ ¬(b ^ a)  
+    = X ^ ¬X  
+    = 1
 
     <div class="alert alert-info">
     Thus, as long as the benevolent cryptographer flips their computed value (assuming they exist):
@@ -49,5 +77,6 @@ content: |
     </ul>
     </div>
 
-    Note however that this only works if a single cryptographer pays for the meal and all the cryptographers act truthfully.
+    Note however that this only works if a single cryptographer has paid for the meal and all the cryptographers act truthfully.
     If two cryptographers split the cost of the meal between them and both flipped their computed values then the values would cancel out and it would appear the NSA paid for the meal.
+    These concerns are addressed by the [anonymous veto network](http://en.wikipedia.org/wiki/Anonymous_veto_network) -- but that's a story for another day =]

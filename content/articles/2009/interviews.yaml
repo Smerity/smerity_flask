@@ -173,7 +173,7 @@ content: |
 
     <blockquote>
       <p>
-        Given a long string and a given word find out how many times you can write that word using subsets of the string. (i.e., you can create "dog" with "doom dogged" 6 8 times - thanks FalconNL for pointing out the error)
+        Given a long string and a given word find out how many times you can write that word using subsets of the string. (i.e., you can create "dog" with "doom dogged" 8 times)
       </p>
       <small>HINT: This can be broken down into sub problems that can then be solved. Dynamic programming can help solve those sub problems efficiently.</small>
     </blockquote>
