@@ -10,7 +10,7 @@ content: |
     David Chaum introduced the problem in his paper [The Dining Cryptographers Problem: Unconditional Sender and Recipient Untraceability](http://www.cs.cornell.edu/people/egs/herbivore/dcnets.html):
 
     <p class="alert alert-info">
-    Three cryptographers are sitting down to dinner at their favorite three-star restaurant. Their waiter informs them that arrangements have been made with the maitre d'hotel for the bill to be paid anonymously. One of the cryptographers might be paying for the dinner, or it might have been NSA (U.S. National Security Agency). The three cryptographers respect each other's right to make an anonymous payment, but they wonder if NSA is paying. <!--They resolve their uncertainty fairly by carrying out the following protocol...-->
+    Three cryptographers are sitting down to dinner at their favorite three-star restaurant. Their waiter informs them that arrangements have been made with the maitre d'hotel for the bill to be paid anonymously. One of the cryptographers might be paying for the dinner, or it might have been the NSA (U.S. National Security Agency). The three cryptographers respect each other's right to make an anonymous payment, but they wonder if the NSA is paying.
     </p>
 
     <!--
@@ -47,7 +47,7 @@ content: |
     C = (c ^ b)  
     -->
 
-    Finally, we xor all the computed values together.
+    Finally, we xor all these computed values together.
     If everyone is telling the truth about their computed values, then the result should be zero as all the values cancel out.
 
     A ^ B ^ C  
@@ -69,7 +69,7 @@ content: |
     = 1
 
     <div class="alert alert-info">
-    Thus, as long as the benevolent cryptographer flips their computed value (assuming they exist):
+    Thus, as long as the benevolent cryptographer flips their computed value:
 
     <ul>
         <li>If the result is 0 then the NSA have paid for the meal</li>
