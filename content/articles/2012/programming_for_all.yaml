@@ -1,0 +1,65 @@
+title: "No magic: why everyone should program"
+date: 2012-05-15
+content: |
+    In recent years I've been part of two programs that aims to teach <em>any</em> interested student to program. This was well before the "everybody should learn programming" meme. In fact, NCSS had already begun (under a different name) before I was born.
+    So will I [listen to Jeff Atwood's plea to stop telling people to learn programming](http://www.codinghorror.com/blog/2012/05/please-dont-learn-to-code.html)? No.
+
+    ## Why learn to program if not to program?
+
+    Jeff Atwood seems to indicate the only reason one should learn to code is to enter into it as a profession. I don't think that.
+
+    Most of the students I help teach won't become professional programmers.
+    This is not a failure however as all of them end up with a far greater understanding of computers and programming.
+
+    <blockquote>
+    <p>
+    They know when a task should be automated.<br />
+    They know when a task can't be accomplished by a computer.<br />
+    <b>The computer is no longer magic to them.</b>
+    </p>
+    </blockquote>
+
+    Think of all the problems you've had as a programmer.  
+    Now think of how many of those could have been lessened if people had a better understanding of what's happening rather than trying to remember the incantation you just recited.
+
+    <blockquote>
+    <p>
+    Advances in many fields have come by harnessing the power that computing provides.
+    This is why teaching everyone to program, and thus to understand where programming can be used, is important.
+    </p>
+    </blockquote>
+
+    ## What are these programmes and why do they work?
+
+    The two programmes I've been involved with are [National Computer Science School](http://en.wikipedia.org/wiki/National_Computer_Science_School) (NCSS) and [INFO1903](http://rp-www.cs.usyd.edu.au/~info1903/), both at the University of Sydney.
+    Whilst both these initiatives focus on teaching high school or university students to program, there's no reason this can't be applied to more established domain experts as well.
+    NCSS accepts IT teachers who refresh their knowledge on programming.
+    INFO1903 has introduced to older non-comp-sci professors and interested students from industry.
+
+    <p class="alert alert-error">
+    <span class="label label-important">Note:</span>&nbsp; Over the years I've helped both NCSS and INFO1903 as a tutor however I don't speak in an official capacity.
+    </p>
+    [NCSS](http://www.ncss.edu.au/) aims to give high school students a first taste of programming -- if they don't know how to program, they learn to build a simple [search engine](http://en.wikipedia.org/wiki/Search_engine), [CMS](http://en.wikipedia.org/wiki/Content_Management_System) or [social network](http://en.wikipedia.org/wiki/Social_network) in less than 10 days. If they do know how to program, it'll be the first time they're introduced to more diverse topics such as asymptotic complexity, parsing and compiling.
+
+    Would I suggest you deploy the code they end up producing live to the Internet? No (though some have with extra help from the tutors). We do teach them about SQL exploits, XSS attacks and so on -- <em>but the point is not to end up with a working product</em>.
+
+    <blockquote>
+    <p>
+    The point is to introduce them to programming. To give them the ability to communicate about computer software in a knowledgeable manner.
+    </p>
+    </blockquote>
+
+    [INFO1903](http://rp-www.cs.usyd.edu.au/~info1903/) aims to introduce first year Sydney University students to programming, covering a wide range of topics: the Unix command line, data mangling, Python programming and SQL databases.
+
+    <blockquote>
+    <p>
+    Everything a scientist needs to know in order to compute their results using machines instead calculators.
+    </p>
+    </blockquote>
+
+    Do you really want to see a future where people still think computers are magic?
+
+    <!--
+    INFO1903 means that scientists, not just computer scientists, know when what they're doing is stupid and repetitive and ask their more proficient computer science friends (which they met at NCSS or during INFO1903) for clarification.
+    NCSS provides the same except to which field the student now moves to.
+    -->
