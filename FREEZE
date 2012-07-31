@@ -1,0 +1,3 @@
+#!/bin/bash
+python freeze.py
+cp -rf build/* smerity.github.com

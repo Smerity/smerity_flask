@@ -1,6 +1,7 @@
 Flask
 Jinja2
 Werkzeug
-Markdown
+Markdown==2.1.0
 Frozen-Flask
 PyYaml
+pygments
