@@ -53,16 +53,16 @@ def get_page(year, slug, get_dict=False):
 
 @app.route("/articles/articles.html")
 def articles():
-  articles = get_articles()
   return render_template("listing.html", page={"title": "Articles"}, articles=get_articles())
 
 @app.route("/")
 def index():
-  return render_template("page.html",
+  recent_articles = reduce(lambda x,y: x+y, [pages for year,pages in get_articles()])[:3]
+  return render_template("home.html",
       page = {
-        "title":Markup("&uarr; Look! Up there! &uarr;"),
-        "content":Markup("<div align='center'><img class='smooth' src='media/images/mouse.jpg' /></div>")
-      }
+        "title":Markup("Most recent articles"),
+      },
+      articles=recent_articles
     )
 
 ### Redirects

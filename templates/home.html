@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="metadata">
+  <h1>Most recent articles...</h1>
+</div>
+  <a href="/abme.html">
+  <img src="/media/images/postage-smerity.png" style="
+  width: 100px;
+  -webkit-transform: rotate(2deg);
+  float: right;
+  ">
+  </a>
+  <ul class="no_disc">
+    {% for page in articles %}
+    <li class="article_heading">
+        <span class="date">{{ page.date.strftime("%d-%m-%Y") }}</span>
+        <h3>
+          <a href="{{ url_for('get_page', year=page['year'], slug=page['slug']) }}">{{ page.title }}</a>
+        </h3>
+    </li>
+    {% endfor%}
+  </ul>
+  <p class="alert alert-info alert-concise">
+    <b>Want more?</b> Check out the <a href="/articles/articles.html">Articles</a> section.
+  </p>
+
+{% endblock %}
