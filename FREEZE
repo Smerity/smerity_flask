@@ -1,3 +1,6 @@
 #!/bin/bash
+echo "Snapshotting the website..."
 python freeze.py
+echo "Moving over the Smerity.Github.com repository..."
 cp -rf build/* smerity.github.com
+echo "Anything else I can do for you today, Mr. E Man?"
