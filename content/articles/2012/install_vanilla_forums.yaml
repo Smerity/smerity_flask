@@ -1,0 +1,77 @@
+title: Installing Vanilla Forums with performance in mind
+date: 2012-08-08
+content: |
+    As one of my recent side projects, I needed a forum and whilst there are many options out there, I decided on [Vanilla Forums](http://www.vanillaforums.org).
+    Unfortunately, the documentation for installing Vanilla Forums on your own server is lacking, especially if you're concerned about performance.
+    To help, I'll explain in this guide how to install and achieve the best possible performance on your own Vanilla Forums install.
+
+    ## Pre-requisites
+
+    For this, I'm assuming you're going to be installing Vanilla Forums on your own VPS or dedicated server.
+    Bits and pieces of these instructions may be helpful for intalling on shared hosting but are certainly not tailored for that.
+    I also presume you have basic Unix/Linux knowledge.
+
+    ## A performant Vanilla Forums install
+
+    These instructions will work on a standard [Ubuntu server](http://www.ubuntu.com/download/server) installation and should be easily modified to fit other Linux distributions.
+
+    ### PHP
+
+    As Vanilla Forums is written in PHP, and PHP is not the fastest language around, it's not a bad idea to start there. If you're happy with package managers handling the versioning, it's quite straight forward in Ubuntu:
+
+    `sudo apt-get install php5 php5-gd php5-curl php5-memcache php5-mysql php5-cli php5-cgi php5-fpm spawn-fcgi php-apc`
+
+    This installs...
+
+    + php5 -- the base runtime for the language
+    + php5-gd -- an image library for PHP required for avatar creation or modification
+    + php5-curl -- a HTTP library required for a number of core plugins (such as Facebook connect)
+    + php5-mysql -- a module that allows PHP to talk to a MySQL compatible database
+    + php-apc -- an opcode cacher for PHP that will trivially improve performance substantially
+
+    <p class="alert alert-info">
+    <b>Performance Point:</b> The Alternative PHP Cache (APC) is one of the most commonly overlooked tools in your speed arsenal.
+    Just by turning it on you can improve page load and requests per second by caching PHP opcodes from previous requests.
+    <br />
+    On my install of Vanilla Forums on modest hardware, enabling PHP-APC increases the requests per second from 26 to 57.
+    </p>
+
+    ### Nginx
+
+    Unless you have a particular reason to go with Apache, Nginx will provide a speedier and somewhat less painful experience than Apache. Running `sudo apt-get install nginx` is all you really need.
+
+    For setting up PHP on Nginx, following [the guides at Linode](http://library.linode.com/web-servers/nginx/php-fastcgi) will work fine whilst [the Nginx configuration to run Vanilla Forums](http://blog.bigdinosaur.org/vanilla-forum-on-nginx/) can be gleaned as well.
+
+    ### MySQL / MySQL compatible database
+
+    Vanilla Forums is backed by MySQL or a compatible replacement such as [Percona Server](http://www.percona.com/software/percona-server/).
+    Looking at the state of the database abstraction layer, I don't see it supporting any other database backends in the near future.
+
+    Percona has been shown to improve many types of queries and is a drop-in replacement.
+    This means that if you find your database having trouble in the future, you can trivially move from MySQL to Percona Server just by restarting your server.
+
+    ### How to use memcached with Vanilla Forums
+
+    Memcache is an enormous performance booster, especially for pages with common database queries, and is a fundamental tool in any large scale website.
+    Assuming you only want to use a local memcache instance, adding it is trivial. Running `sudo apt-get install memcached` will get you a service on Ubuntu that runs with sane defaults and launches memcached as a service.
+    Then you can add to `conf/config.php` two simple lines:
+
+        :::
+        $Configuration['Cache']['Enabled'] = TRUE;
+        $Configuration['Cache']['Method'] = 'memcache';
+
+    <p class="alert alert-info">
+    <b>Performance Point:</b> Adding memcached results in a significant performance increase, from 44 requests per second up to 57 for the main page.
+    Depending on the pages visited and the underlying use of cache by the given controller and view, this may be higher or lower on other pages.
+    </p>
+
+    To ensure that it's working as expected, you can check Memcache's stats by issuing the command `echo stats | nc 127.0.0.1 11211`.
+    If `get_hits` increases as you reload your page (I'd suggest testing with something similar to Apache's bechmark tool `ab`), then your memcache install is working.
+
+    ### Testing with Apache Benchmark
+
+    There are numerous tools to load test your website with, but the simplest is Apache Benchmark, or `ab`, that comes with `apache2-utils`.
+
+    Hopefully you'll see performance increases in line with mine.
+    If not, keep calm, tweak, benchmark, and then smile as the numbers make you feel better.
+    Good luck! =]
