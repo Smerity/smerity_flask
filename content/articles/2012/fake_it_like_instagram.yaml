@@ -1,0 +1,83 @@
+title: Facebook, for the sake of of speed, fake it like Instagram!
+date: 2012-08-09
+content: |
+    Instagram is the magician's mobile app.
+    A magician, in all reality, is doing boring thing. These boring things aren't necessarily done quickly or efficiently.
+    If the magician's smooth enough for you to miss out on what's actually happening, though, you end up with magic.
+
+    In [Mike Krieger's presentation](https://speakerdeck.com/u/mikeyk/p/secrets-to-lightning-fast-mobile-design) ([HN discussion](http://news.ycombinator.com/item?id=3913919)), he suggests three rules for such magic mobile development:
+
+    + Perform actions optimistically
+    + Adaptively pre-load content
+    + Move bits when no-one's watching
+
+    All of these focus on the core tenet of mobile app usage...
+
+    <blockquote>
+        <p>"Mobile experiences fill gaps while we wait. <span class="highlight">No-one wants to wait while they wait.</span>"</p>
+        <small><a href="">Mike Krieger, co-founder of Instagram</a></small>
+    </blockquote>
+
+    ## Where Facebook gets mobile wrong...
+
+    Facebook have <a href="http://www.businessinsider.com/facebook-details-its-fear-that-mobile-ads-may-damage-revenues-2012-8">a mighty fear of the mobile revolution</a>.
+    They even amended their S-1 filing simply to say that [they haven't worked out how to monetize mobile yet](http://techcrunch.com/2012/05/09/facebook-amends-ipo-s-1-to-admit-advertising-biz-hurt-by-increasing-shift-to-mobile/).
+    <!--They should be set -- rapidly changing content stream, tight integration to daily activities and events, first port of call for important news (status updates) -- but seem to have missed the fundamental tenet.-->
+
+    <p class="alert alert-info">
+    <b>Page 14 of Facebook's S-1 filing:</b> "If users increasingly access Facebook mobile products as a substitute for access through personal computers ... our financial performance and ability to grow revenue would be negatively affected."
+    <br />
+    Maybe it's a <em>good</em> thing that Facebook's mobile app isn't all that useful?
+    </p>
+
+    Assuming they work out the "small" issue of monetizing mobile, Facebook still needs to have a strong mobile app to increase engagement -- and that's not something they've excelled at so far.
+    [If it takes a user longer to load a Facebook post than a Youtube video](http://news.ycombinator.com/item?id=3974213), Facebook's going to lose mobile engagement to someone better prepared.
+
+    There's no lack of time wasting apps available for your iPhone, Android or even WindowsBerry -- those apps even have the advantage of being able to tailor an experience to the exact length of the break you have.
+    Angry Brids will not get angry if you only finish one level and not two.
+    You're helping crush the pig oppressors!
+    This is not something you can fix by buying the competition in the mobile space.
+    Buying Instagram may quell the tide, but the tide is going to come in anyway -- there's no stopping it.
+    By not having a engaging mobile application, Facebook are already at a disadvantage, even with their constantly updating content stream and close integration to people's daily activities and events.
+
+    ### Why not pre-load notifications?
+
+    One of the strongest engagement tools in the Facebook arsenal is informing you that a post has been created or updated.
+    Someone has interacted with your online identity and is likely looking for you to respond.
+
+    <blockquote>
+    <p>
+    Alas, if you listen to Facebook's siren call, you end up on a loading screen.
+    <span class="highlight">For a really, really long time.</span>
+    </p>
+    </blockquote>
+
+    This makes no sense though.
+    Facebook pushes out a notification to your phone -- why not push out the content at the same time?
+    Most notifications are going to be read soon after the user is notified, so stale data isn't that much of an issue.
+    Even if stale data does become an issue, why not show a read-only screen that I can peruse whilst loading the up to date content?
+    Give me *something*!
+
+    In all honesty, if the app were a person, you'd think them rude.
+
+    <blockquote>
+    <p>
+    It's the equivalent of someone saying "I know you've only got a short lunch break, but want to have a coffee with me? Yeah? Great, I'll just go grab my wallet!" and then that person spending five minutes sitting at their desk performing some mundane task before getting back to you.
+    </p>
+    </blockquote>
+
+    I don't mind saying that as you can be annoyed at apps without feeling guilty.
+    Even Data from Star Trek doesn't give a damn if you're annoyed at him and he's significantly more advanced than the Facebook mobile app to boot.
+
+    I can tell you now, though, I'd think twice before offering to spend my lunch hour with Facebook again.
+    I think I'd rather go hang out with the cool kids hyped up on sugar -- they might not go anywhere exciting, but at least they do it quickly.
+
+    <style>
+    .padbox {
+        padding: 0.7em;
+        display: inline;
+    }
+    </style>
+    <img height="360px" width="216px" class="smooth" src="/media/images/articles/2012/fake_it_like_instagram/shot1.png" />
+    <img height="360px" width="216px" class="smooth" src="/media/images/articles/2012/fake_it_like_instagram/shot2.png" />
+    <img height="360px" width="216px" class="smooth" src="/media/images/articles/2012/fake_it_like_instagram/shot3.png" />
