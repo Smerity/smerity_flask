@@ -88,6 +88,10 @@ def about():
 def define():
   return render_template("page.html", page=load_page("content/define.yaml"))
 
+@app.route("/consulting.html")
+def consulting():
+  return render_template("page.html", page=load_page("content/consulting.yaml"))
+
 @app.route("/404.html")
 def get_404():
   # Weird Zen like programming realisation:
