@@ -1,0 +1,733 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Machine Learning for your Robotic Army</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+  <style>
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(fonts/PRmiXeptR36kaC0GEAetxn5HxGBcBvicCpTp6spHfNo.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(fonts/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(fonts/xjAJXh38I15wypJXxuGMBobN6UDyHWBl620a-IRfuBk.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(fonts/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata'), url(fonts/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff) format('woff');
+}
+  </style>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue">
+    <aside class="gdbar"><img src="smer_images/small_gir.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><a href="http://www.smerity.com/">@Smerity</a></h2>
+    </hgroup>
+    <article>
+      <h3>Recent Past</h3>
+      <ul>
+        <li>Natural Language Processing (field of Machine Learning) @ Sydney University
+        <ul>
+          <li>First Class Honours with University Medal
+        </ul>
+        </li>
+
+        <li>Analytics &amp; Data Mining @ Freelancer.com</li>
+      </ul>
+
+      <h3>Present</h3>
+      <ul>
+        <li>Consulting on machine learning &amp; data mining for companies &amp; start-ups</li>
+        <!--
+        <li>Tutoring at Sydney University:
+        <ul>
+          <li>Tech Venture Creation</li>
+          <li>Computer &amp; Network Security / Wargames</li>
+        </ul>
+        </li>
+        -->
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Why build a robotic army?</h2>
+    </hgroup>
+    <article>
+      <p>
+      Each and every one of us have tried taking over the world.<br />
+      </p>
+      <p>
+      <b>Admit it.</b>
+      </p>
+      <p>
+      What's the fundamental problem?
+      </p>
+      <p>
+      <b>Low quality henchmen &amp; henchwomen.</b>
+      </p>
+      <p>
+      Why not replace your henchpeople with cheap, expendable and scary looking robots?
+      </p>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(smer_images/gir___duty_mode_by_thekeyofe-d489cep.png)">
+    <hgroup>
+      <h2 class="white">Machine Learning is <u>scary</u></h2>
+    </hgroup>
+    <footer class="source white">http://thekeyofe.deviantart.com/art/Gir-Duty-Mode-255737617</footer>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Machine Learning is scary</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Logistic Regression</li>
+        <li>Support Vector Machines</li>
+        <li>Maximum Entropy classifiers</li>
+        <li>Stochastic Gradient Descent</li>
+        <li>Random Forest classifiers</li>
+        <li>Latent Dirichlet Allocation</li>
+        <li>Neural Networks</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Machine Learning is <span class="red2">not</span> scary</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>
+        <s>
+        Logistic Regression
+        </s>
+        </li>
+        <li>
+        <s>
+        Support Vector Machines
+        </s>
+        </li>
+        <li>
+        <s>
+        Maximum Entropy classifiers
+        </s>
+        </li>
+        <li>
+        <s>
+        Stochastic Gradient Descent
+        </s>
+        </li>
+        <li>
+        <s>
+        Random Forest classifiers
+        </s>
+        </li>
+        <li>
+        <s>
+        Latent Dirichlet Allocation
+        </s>
+        </li>
+        <li>
+        <s>
+        Neural Networks
+        </s>
+        </li>
+
+        <br />
+        <li>For the most part, Machine Learning is conceptually simple
+        </li>
+        <!--
+        <br />
+        (almost depressingly conceptually simple)
+        </li>
+        -->
+        <li>For the genuinely scary parts, the concepts are already implemented by Smart People&trade;</li>
+        <li><b>Crash course in Machine Learning using prior knowledge of TicTacToe</b></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What is machine learning (ML)?</h2>
+    </hgroup>
+    <article>
+    <ul>
+        <li>Allow a computer to learn, with experience, how to accurately predict a value for something previously unseen
+            <ul>
+                <li>Is that a moon or a space station?</li>
+                <li>Should we take off and nuke the entire site from orbit?</li>
+                <li>What's the probability the princess is in another castle?</li>
+            </ul>
+        </li>
+        <br />
+        <li>
+        Given training data with features <b>X</b> and a target value or label <b>Y</b>,<br />accurately predict <b>Y'</b> when only given the (likely unseen) features <b>X'</b>
+        <!--
+            <ul>
+                <li>Defn. of "accurately" changes depending on the ML method &amp; the task</li>
+            </ul>
+        </li>
+        -->
+    </ul>
+    <!--
+    <div class="centered">
+        <img src="smer_images/salting_passwords.png">
+    </div>
+    -->
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What is machine learning (ML)?</h2>
+    </hgroup>
+    <article>
+    <p>
+    <h3>Regression</h3>
+    Given our features <b>X</b>, we want to predict a numeric value <b>Y</b>
+    </p>
+    <p style="margin-top:-0.6em">
+    400 people walk into my store, 70% are male, 20% have iPhones, ...:<br />
+    how many sales am I likely to make?
+    </p>
+
+    <p>
+    <h3>Classification</h3>
+    Given our features <b>X</b>, we want to set <b>Y</b> to the class it belongs to<br />
+    (i.e. is it [Mac, Linux, Windows] | [C3P0, R2D2] | [dead, alive, Schrödinger's cat])
+    </p>
+    <p style="margin-top:-0.6em">
+    Error is usually calculated by...
+    <ul>
+        <li>Precision: I predicted 10 of you in here are Terminators, what percentage of you are actually Terminators?</li>
+        <li>Recall: There were 20 Terminators in here, what percentage did I find?</li>
+    </ul>
+    </p>
+    </article>
+  </slide>
+
+  <style>
+  sub {
+  vertical-align: sub;
+  font-size: smaller;
+  }
+  sup {
+  vertical-align: super;
+  font-size: smaller;
+  }
+  .shiny {
+    border-radius: 14px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.4);
+  }
+  </style>
+
+  <slide>
+    <hgroup>
+      <h2>Lines: Linear Regression (regression)</h2>
+    </hgroup>
+    <article>
+    <ul>
+        <li>Target: a numeric value</li>
+        <li>Aiming to: reduce the error (or distance to the line)</li>
+        <li>Each feature x<sub>k</sub> in <b>X</b> has a weight &#955;<sub>k</sub> that's learned</li>
+        <li>If many people walk into the store, that contributes positively to the number of sales</li>
+        <li>The target_value is computed by &#955;<sub>0</sub> + x<sub>1</sub>&#955;<sub>1</sub> + x<sub>2</sub>&#955;<sub>2</sub> + ...
+        </li>
+    <div class="centered">
+        <img src="sketches/lreg.png" class="shiny">
+    </div>
+    </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Lines: Linear Regression (regression)</h2>
+    </hgroup>
+    <article>
+    <ul>
+        <li>Target: a numeric value</li>
+        <li>Aiming to: reduce the error (or distance to the line)</li>
+        <li>Each feature x<sub>k</sub> in <b>X</b> has a weight &#955;<sub>k</sub> that's learned</li>
+        <li>If many people walk into the store, that contributes positively to the number of sales</li>
+        <li>The target_value is computed by &#955;<sub>0</sub> + x<sub>1</sub>&#955;<sub>1</sub> + x<sub>2</sub>&#955;<sub>2</sub> + ...
+        </li>
+    <div class="centered">
+        <img src="sketches/lregx.png" class="shiny">
+    </div>
+    </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Lines: Linear Regression (regression)</h2>
+    </hgroup>
+    <article>
+    <ul>
+        <li>Target: a numeric value</li>
+        <li>Aiming to: reduce the error (or distance to the line)</li>
+        <li>Each feature x<sub>k</sub> in <b>X</b> has a weight &#955;<sub>k</sub> that's learned</li>
+        <li>If many people walk into the store, that contributes positively to the number of sales</li>
+        <li>The target_value is computed by &#955;<sub>0</sub> + x<sub>1</sub>&#955;<sub>1</sub> + x<sub>2</sub>&#955;<sub>2</sub> + ...
+        </li>
+    <div class="centered">
+        <img src="sketches/lregx2.png" class="shiny">
+    </div>
+    </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Lines: Linear Regression (regression)</h2>
+    </hgroup>
+    <article>
+    <ul>
+        <li>Target: a numeric value</li>
+        <li>Aiming to: reduce the error (or distance to the line)</li>
+        <li>Each feature x<sub>k</sub> in <b>X</b> has a weight &#955;<sub>k</sub> that's learned</li>
+        <li>If many people walk into the store, that contributes positively to the number of sales</li>
+        <li>The target_value is computed by &#955;<sub>0</sub> + x<sub>1</sub>&#955;<sub>1</sub> + x<sub>2</sub>&#955;<sub>2</sub> + ...
+        </li>
+    <div class="centered">
+        <img src="sketches/lregx3.png" class="shiny">
+    </div>
+    </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Example: Stealing Jet Fighters for Fun &amp; Profit</h2>
+    </hgroup>
+    <article>
+      <div>
+      <p>
+      For our DastardlyPlan&trade;, we need jet fighters... Lots of jet fighters.<br />
+      It turns out the airforce doesn't like publishing where they keep their fighters?
+      <p>
+      Many Bothan spies died bringing us this training data...<br />
+      We need to be able to predict the # of jet fighters with easily obtained features!
+      </p>
+      <p>
+      <b>Target</b> = predict field #11, the total number of jet fighters at an airbase
+      </p>
+      <p>
+      <b>Features</b> = [ #2=area of airbase, #3=area of the runways, #7=age of base, etc. ]
+      </p>
+      </div>
+      <pre class="prettyprint">
+# 1      2      3      4    5  6   7  8  9  10 11
+1.0   3.4720  0.998   1.0   7  4  42  3  1  0  fighters=25
+1.0   3.5310  1.500   2.0   7  4  62  1  1  0  fighters=29
+1.0   9.5200  1.501   0.0   6  3  32  1  1  0  fighters=28
+<b>2.5   9.8000  3.420   2.0  10  5  42  2  1  1  fighters=84</b>
+<b>2.5  12.8000  3.000   2.0   9  5  14  4  1  1  fighters=82</b>
+...
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Linear Regression with Scikit-Learn</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint">
+pip install scikit-learn
+</pre>
+
+<pre class="prettyprint" data-lang="python">
+from sklearn.linear_model import LinearRegression
+from sklearn.cross_validation import train_test_split
+
+# Get your dataset and split it into training and testing
+target_values, features = get_data()
+# target_values is just an array with the number of anti-robotics specialists
+# features is just an array with the feature values
+train_feats, test_feats, train_values, test_values = train_test_split(feats, target_values, test_size=0.20)
+
+<b>regr = LinearRegression()
+# This is the training step where the algorithm learns the weights to associate with each feature
+regr.fit(train_feats, train_values)
+predicted_values = regr.predict(test_feats)</b>
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Avoiding Overfitting</h2>
+      <h4>"I studied really hard and memorised all the answers to the multiple choice!"</h4>
+    </hgroup>
+    <article>
+    <p>
+    If you let them, most ML algorithms will "memorise" their training data.
+    </p>
+    <p>
+    This is sort of like memorising the answers to the practice multiple choice for use in the exam's multiple choice.
+    Generally not a good idea!
+    </p>
+    <p>
+    <h3>ℓ<sub>2</sub> Regularisation</h3>
+    Penalise any large weights strongly (i.e. don't rely on one feature too much)
+    </p>
+    <p>
+    <h3>ℓ<sub>1</sub> Regularisation</h3>
+    Penalises large weights and encourages weights to zero (i.e. use few features)
+    </p>
+    <p>
+    Both of these take a value <b>&#945;</b> to decide how much regularisation should occur.
+    </p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Avoiding Overfitting</h2>
+      <h4>"I studied really hard and memorised all the answers to the multiple choice!"</h4>
+    </hgroup>
+    <article>
+    <p>
+    Other than selecting <b>alpha</b>, Scikit-Learn makes regularisation simple too!
+    </p>
+      <pre class="prettyprint" data-lang="python">
+from sklearn import linear_model
+regr = linear_model.LinearRegression()
+
+<b>alpha = &#945; = ... # How strong should the regularization be?</b>
+
+# Ridge regression is linear regression with L2 regularization (i.e. encourage weights to not be large)
+regr = linear_model.Ridge(alpha=alpha)
+
+# Lasso regression is linear regression with L1 regularization (encourage features to be small and zero)
+regr = linear_model.Lasso(alpha=alpha)
+      </pre>
+<!--
+# Elastic Net regression uses a mixture of both L1 and L2 regularization
+# (use as few features as possible and don't rely on any single feature too much)
+regr = linear_model.ElasticNet(alpha=alpha)
+-->
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Cross Validation</h2>
+      <h4>Hack, slash, and permute your way to victory!</h4>
+    </hgroup>
+    <article>
+    <p>
+    Training and testing on the same data leads to overfitting.
+    </p>
+    <p>
+    <b>Better idea:</b> Train &amp; test on different subsets of the data!
+    </p>
+    <p>
+    <b>K-fold:</b> Split data into N parts, use N-1 for training and 1 for testing.<br />
+    Average out the N results.
+    </p>
+    <p>Excellent way to select parameters (such as <b>alpha</b>) without overfitting</p>
+      <pre class="prettyprint" data-lang="python">
+from sklearn import cross_validation
+# Ten fold cross validation has been shown to avoid overfitting in most cases
+kf = cross_validation.KFold(len(data), k=10)
+
+for train_index, test_index in kf:
+    train_feats, test_feats = data[train_index], data[test_index]
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Cross Validation for the Rushed and/or Lazy</h2>
+    </hgroup>
+    <article>
+    <p>
+    Scikit-Learn likes you so much it even lets you cheat.
+    </p>
+    <p>
+    <b>Ridge</b>, <b>Lasso</b> and many others have algorithms with cross validation built-in:<br />
+    see <b>RidgeCV</b> &amp; <b>LassoCV</b> for example
+    </p>
+    <p>
+    The algorithm already knows what parameters it needs tuned and handles it itself!
+    </p>
+      <pre class="prettyprint" data-lang="python">
+# No more alpha to worry about, just...
+regr = linear_model.RidgeCV()
+# or
+regr = linear_model.LassoCV()
+      </pre>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>What does regularisation look like?</h2>
+    </hgroup>
+    <article>
+    <p>
+    Testing the different regressors over a really small dataset, we can see the impact that regularisation has.<br />
+    (if you're following along at home, press <b>H</b> to highlight)
+    </p>
+      <pre class="prettyprint" data-lang="python">
+Testing the <b>LinearRegression</b> regressor
+Weights = &#955; = +0.5515 | <b>+14.2133</b> | -4.1972 | -0.5180 | <b>+1.4905</b>
+Average distance predicted value is from real value: 8.29
+=-=-=-=-=-=-=-=-
+Testing the <b>RidgeCV</b> regressor (L2 =&gt; avoid relying on any one feature too much)
+Weights = &#955; = +0.9393 | <b>+09.1384</b> | -0.1471 | -0.5038 | <b>+2.7891</b>
+Average distance predicted value is from real value: 7.44
+=-=-=-=-=-=-=-=-
+Testing the <b>LassoCV</b> regressor (L1 =&gt; encourage using few features)
+Weights = &#955; = <b>+0.0000</b> | +09.1478 | <b>+0.0000</b> | -0.4835 | +0.8389
+Average distance predicted value is from real value: 7.64
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Classification</h2>
+    </hgroup>
+    <article>
+    <div class="centered">
+        <img src="sketches/line_classifiers_900_675.png">
+    </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Lines: Support Vector Machines (classification)</h2>
+    </hgroup>
+    <article>
+    <ul>
+        <li>Target: binary classification</li>
+        <li>Aiming to: find the widest margin between the 'good' &amp; 'bad' sides of town</li>
+        <li>Directly aims to maximise accuracy by not focusing on probabilties</li>
+        <div class="centered">
+            <img src="sketches/svm_no_prob_small.png" class="shiny">
+        </div>
+    </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Lines: Logistic Regression (classification)</h2>
+    </hgroup>
+    <article>
+    <ul>
+        <li>Target: the probability Y is true given we've seen the features X or P(Y=1|X)</li>
+        <li>Threshold Target: binary classification (Y=1 if P(Y=1|X) &gt;= 0.5, else Y=0)</li>
+        <br />
+        <li>Aiming to: work out the odds ratio of each feature x<sub>k</sub>
+            <ul>
+                <li>Given a 19 year old female passenger on the Titanic, how much more (or less) likely is she to survive if she's ten years older?</li>
+                <li>How does the probability of Y being true change as we increase the feature x<sub>k</sub>?</li>
+            </ul>
+        </li>
+        <div class="centered">
+            <img src="sketches/logistic_small.png" class="shiny">
+        </div>
+    </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Decision Trees</h2>
+      <h3>The Biggest Spaghetti Code Nested If Block You've EVER Seen!</h3>
+    </hgroup>
+    <article>
+      <div style="margin-top: -1em">
+      <pre class="prettyprint">
+If person is made of metal, Android
+Else
+    If glowing red eyes, Android
+    Else, Human
+</pre>
+      <div class="centered">
+        <img src="sketches/decision_tree.png" style="margin-top:-0.8em">
+      </div>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Random Forests</h2>
+      <h3>Lots of a dumb thing must be good... Right?</h3>
+    </hgroup>
+    <article>
+    <ul>
+        <li>Creates <b>N</b> decision trees from different feature &amp; training data subsets</li>
+        <li>Decision is the average of all the <b>N</b> decision trees</li>
+        <br />
+        <li>Avoid overfitting easily vs raw decision trees</li>
+        <li>Commonly achieve competitive results "out of the box"</li>
+    </ul>
+    <div class="centered">
+        <img src="sketches/rf.png" class="shiny">
+    </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What do the classifiers look like?</h2>
+    </hgroup>
+    <article>
+    <div class="centered">
+        <img src="smer_images/clear_classifiers.png" width="900px" class="shiny">
+    </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What about non-linear problems?</h2>
+    </hgroup>
+    <article>
+    <ul>
+        <li>Logistic regression and linear regression don't like them, at all..!</li>
+        <li>SVM can do a magic trick and handle it easily
+        <ul>
+            <li>SVM "lays the points on a hill" using kernel functions</li>
+        </ul>
+        </li>
+        <li>Decision trees / random forests handle it trivially</li>
+    </ul>
+    <br />
+    <div class="centered">
+        <img src="sketches/nl_plot.png">
+    </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>So, if I'm not taking over the world...</h2>
+      <h3>Where else would this be useful?</h3>
+    </hgroup>
+    <article>
+    <div style="margin-top: -2em">
+      <h3>Regression</h3>
+      <ul>
+        <li>Predict &amp; optimise for revenue</li>
+        <li>Predict traffic to website based on holidays, weekly trends, ...</li>
+        <li>Predict how many stars a review would get on a website</li>
+      </ul>
+
+      <h3>Classification</h3>
+      <ul>
+        <li>Classify an entry/comment/product review as fake or spam</li>
+        <li>Predict which programming language is a user's favourite</li>
+        <li>Automatically tag blog posts/articles/websites based upon content</li>
+      </ul>
+
+      <h3>Fun!</h3>
+      <ul>
+        <li>Explore ML on Kaggle.com -- current introductory competition teaches you to avoid overfitting using a 'who survived the the Titanic' dataset</li>
+      </ul>
+    </div>
+    </article>
+  </slide>
+
+  <slide class="dark segue nobackground">
+    <aside class="gdbar right"><img src="smer_images/small_gir.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2 class="white">Questions?</h2>
+      <h3 class="white">I look forward to your kind &amp; benevolent dictatorship!</h3>
+      <div style="padding-top:3em" class="gray">
+      <p>Website: <a href="http://www.smerity.com/">www.smerity.com</a></p>
+      <p style="padding-top:0.5em">Twitter: @Smerity</p>
+      <p style="padding-top:0.5em">Email: smerity@smerity.com</p>
+      </div>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

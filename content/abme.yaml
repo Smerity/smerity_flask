@@ -20,10 +20,15 @@ content: |
     &nbsp;&nbsp;
     [![Smerity @ Twitter](/media/images/twitter.png)](https://github.com/Smerity/)
 
+    <!--
     ## University & Work
-    I've recently completed the [Bachelor of Information Technology](http://sydney.edu.au/courses/Bachelor-of-Information-Technology) at the University of Sydney, receiving First Class Honours and [University Medal](http://en.wikipedia.org/w/index.php?title=University_Medal&oldid=410146835#Australia).
-    I'm now working full time at [Freelancer.com](http://www.freelancer.com) where I originally began as an intern working on data mining and interaction mechanics.
-    In the past, I've worked at [Google](http://www.google.com) as an intern on Google AppEngine and collaborated with Dr James Curran and the Schwa Lab at the University of Sydney on NLP research.
+    I've recently completed the [Bachelor of Information Technology](http://sydney.edu.au/courses/Bachelor-of-Information-Technology) at the University of Sydney, receiving First Class Honours and [University Medal](http://en.wikipedia.org/w/index.php?title=University_Medal&oldid=410146835#Australia). The majority of my work was with Dr James Curran and Schwa Lab at the University of Sydney on NLP research.
+    In the past, I've worked at [Freelancer.com](http://www.freelancer.com) on data mining + interaction mechanics &amp; [Google](http://www.google.com) as an intern on Google AppEngine.
+    -->
+
+    ## Talks
+    [Machine Learning for your Robotic Army: A Crash Course using Python's Scikit-Learn](/media/talks/ml_for_your_robotic_army/template.html)  
+    SyPy (October 2012)
 
     ## Publications
     <span id="pubs"></span>

@@ -14,21 +14,21 @@ content: |
     In the recent past I've:
 
     + prototyped and launched the minimum viable product (MVP) for [a newly formed start-up](http://zeromail.com/)
-    + applied advanced data mining methods, statistical testing and machine learning techniques to [a flourishing start-up with 30 million page views per month](http://freelancer.com/)
+    + applied advanced data mining methods, statistical testing and machine learning techniques to [a flourishing start-up with millions of page views per day](http://freelancer.com/)
     + worked on the cutting edge of [academic research](/abme.html#pubs) in natural language processing / machine learning
     + helped teach Python programming, both beginner and advanced, to [dozens of high school students](http://ncss.edu.au/)
+    + run wargames for a university course on computer &amp; network security
 
     If any of this sounds interesting to you, contact me at <a href="mailto:smerity@smerity.com">smerity@smerity.com</a>.
     You can read my full history in [my resume](/media/files/resume.pdf) or at [LinkedIn](http://www.linkedin.com/in/smerity).
-    Whilst I don't always have time available for new clients, I'm always happy to give advice.
+    <!--Whilst I can have a fairly full schedule, I'm always happy to give advice.-->
 
     ## Areas of Expertise
 
     ### Web Application Programming
 
     + Rapid prototyping of [minimum viable products](http://en.wikipedia.org/wiki/Minimum_viable_product) for early stage start-ups
-    + Addition of new features to existing internal or open source code base
-    + Preferred backend language is Python but willing to use any language that's necessary or best suited to the job
+    + Addition of new features to existing internal or open source code bases
 
     ### Natural Language Processing / Machine Learning
 
@@ -45,5 +45,5 @@ content: |
 
     ### Analytics
 
-    + A/B testing on high traffic websites
+    + A/B testing &amp; site wide analytics to improve important funnels such as user sign-ups and product sales
     + Detailed customer profile creation through database and web traffic analysis
