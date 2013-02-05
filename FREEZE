@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "Snapshotting the website..."
 python freeze.py
+lessc -x --yui-compress static/less/bootstrap.less > static/compiled_less/bootstrap.css
 echo "Moving over the Smerity.Github.com repository..."
 cp -rf build/* smerity.github.com
 echo "Anything else I can do for you today, Mr. E Man?"
