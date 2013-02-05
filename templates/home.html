@@ -1,28 +1,79 @@
 {% extends "_base.html" %}
 
-{% block content %}
-<div class="metadata">
-  <h1>Most recent articles...</h1>
+{% block body %}
+<div class="hero-box">
+  <!--
+  <h1 class="slogan">A nerd who enjoys nerdy things,</h1>
+  <h2>mad ideas, improbable code &amp; binary jokes</h2>
+  -->
+
+  <div style="max-width: 600px; margin: 0 auto;">
+    <h1 class="slogan">Smerity (n):</h1>
+    <h2>
+      {#
+      A nerd who enjoys nerdy things,
+      insane ideas, improbable code &amp; binary jokes
+      #}
+      Saving the world one byte at a time.
+     </h2>
+  </div>
+
 </div>
-  <a href="/abme.html">
-  <img src="/media/images/postage-smerity.png" style="
-  width: 100px;
-  -webkit-transform: rotate(2deg);
-  float: right;
-  ">
-  </a>
-  <ul class="no_disc">
-    {% for page in articles %}
-    <li class="article_heading">
-        <span class="date">{{ page.date.strftime("%d-%m-%Y") }}</span>
-        <h3>
-          <a href="{{ url_for('get_page', year=page['year'], slug=page['slug']) }}">{{ page.title }}</a>
-        </h3>
-    </li>
-    {% endfor%}
-  </ul>
-  <p class="alert alert-info alert-concise">
-    <b>Want more?</b> Check out the <a href="/articles/articles.html">Articles</a> section.
-  </p>
+
+<div class="center-box">
+  <div class="container">
+
+    <div class="row">
+      <h1>More specifically...</h1>
+    </div>
+
+    <div class="row">
+
+      <div class="offset2 span8">
+        <p>
+        I'm a graduate from Sydney University (BIT with First Class Honours &amp; the University Medal).
+        I currently live in Sydney, Australia and do consulting on machine learning &amp; natural language processing for various clients.
+        I'm also the teaching assistant for two courses at Sydney University: Computer &amp; Network Security (ELEC5616) and Tech Venture Creation (ELEC5701).
+        </p>
+        <h2>And where do I do stuff..?</h2>
+        <p>
+<a href="https://facebook.com/smerity">Facebook</a> -
+<a href="https://github.com/Smerity/">Github</a> -
+<a href="http://au.linkedin.com/in/smerity">LinkedIn</a> -
+<a href="https://www.twitter.com/Smerity/">Twitter</a> -
+<a href="mailto:smerity@smerity.com">smerity@smerity.com</a>
+        </p>
+      </div>
+
+      {#
+        <p>
+        Many a moon ago, Smerity attended the University of Sydney.
+        Due to the havoc he caused, they attempted to lock him out of the establishment by throwing a shiny metal disc.
+        Only later did they discover this was a <a href="https://www.facebook.com/photo.php?fbid=10150889671364712&l=94317b5c14">University Medal</a>.
+        </p>
+        <p>
+        Smerity can be instructed in multiple programming languages and a small selection of natural ones.
+        He comes with various attachments, including arms, legs, and a powerful processing unit.
+        </p>
+        <p style="border: 1px solid #DDD; border-bottom: 2px solid #DDD; border-right: 2px solid #DDD; padding: 4px 16px;">
+          <b>Note:</b> Processor unit may be missing or damaged. Do not shake.
+        </p>
+
+        <p style="border: 1px solid #DDD; border-bottom: 2px solid #DDD; border-right: 2px solid #DDD; padding: 4px 16px;">
+          Limit of one Smerity per person.
+        </p>
+
+        <p style="border: 1px solid #DDD; border-bottom: 2px solid #DDD; border-right: 2px solid #DDD; padding: 4px 16px;">
+          Before importing a Smerity, ensure you have acquired a Class D license for Wild Coder Transport for your destination.
+        </p>
+
+        <p style="border: 1px solid #DDD; border-bottom: 2px solid #DDD; border-right: 2px solid #DDD; padding: 4px 16px;">
+          Do not operate production hardware whilst under the influence of Smerity
+        </p>
+      #}
+
+    </div>
+  </div>
+</div>
 
 {% endblock %}

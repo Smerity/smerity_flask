@@ -57,13 +57,9 @@ def articles():
 
 @app.route("/")
 def index():
-  recent_articles = reduce(lambda x,y: x+y, [pages for year,pages in get_articles()])[:3]
-  return render_template("home.html",
-      page = {
-        "title":Markup("Most recent articles"),
-      },
-      articles=recent_articles
-    )
+  recent_articles = []
+  #recent_articles = reduce(lambda x,y: x+y, [pages for year,pages in get_articles()])[:3]
+  return render_template("home.html", page={}, articles=recent_articles)
 
 ### Redirects
 @app.route("/noogler2010.html")

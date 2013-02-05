@@ -13,8 +13,51 @@
   {% block header %}
   {% endblock %}
   {% block body %}
-  <div class="white-well stretch-well container-fluid">
-    {% block content %}{% endblock %}
+  <div class="container">
+    {% block container %}
+      <div class="row">
+      <div class="span8 content-box">
+      {% block content %}{% endblock %}
+      </div>
+      {% block sidebar %}
+        <div class="span3 content-box" style="padding: 0">
+          <div class="hero-box">
+            <h1 class="slogan">Hi, I'm Smerity!</h1>
+          </div>
+          <div style="padding: 20px">
+            <div align="center">
+              {#<img src="http://placehold.it/150x150" />#}
+              <img class="pronounced" src="/media/images/smerity_barcode.jpg" />
+            </div>
+            <p>
+              Hi, I'm <b>Stephen Merity</b>, better known as <b>Smerity</b>.
+            </p>
+            <p>
+              I spend my time doing what I enjoy, which is primarily some mix of coding, teaching and writing.
+              I've not yet had to live through a job I didn't enjoy.
+            </p>
+
+            <h4>Interested in saying hi?</h4>
+            <p>
+                <a href="mailto:smerity@smerity.com">smerity@smerity.com</a>
+            </p>
+            <p>
+                {#I also have &lt;insert social media&gt;.#}
+                <a href="https://www.twitter.com/Smerity/">Twitter</a>, <a href="https://www.facebook.com/smerity">Facebook</a>, etc.
+            </p>
+
+            {#
+            <h4>Want to hear more?</h4>
+            <form class="form-search">
+              <input type="text" class="input-medium search-query">
+              <button type="submit" class="btn">Subscribe</button>
+            </form>
+            #}
+          </div>
+        </div>
+      {% endblock %}
+      </div>
+    {% endblock %}
     {% block footer %}
     {% endblock %}
   </div>

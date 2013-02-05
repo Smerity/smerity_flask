@@ -19,7 +19,8 @@ content: |
 
     As Vanilla Forums is written in PHP, and PHP is not the fastest language around, it's not a bad idea to start there. If you're happy with package managers handling the versioning, it's quite straight forward in Ubuntu:
 
-    `sudo apt-get install php5 php5-gd php5-curl php5-memcache php5-mysql php5-cli php5-cgi php5-fpm spawn-fcgi php-apc`
+        :::bash
+        sudo apt-get install php5 php5-gd php5-curl php5-memcache php5-mysql php5-cli php5-cgi php5-fpm spawn-fcgi php-apc
 
     This installs...
 
