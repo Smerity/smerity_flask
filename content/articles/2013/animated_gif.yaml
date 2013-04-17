@@ -1,0 +1,82 @@
+title: The Mystery of the Spotty Animated GIF
+date: 2013-03-21
+content: |
+    A short post about an interesting optimisation "hack" I stumbled upon.
+
+    Have you ever posted an animated GIF to an application or website that didn't like the idea of motion?  
+    You likely ended up with a horrible, strange looking freeze frame.
+
+    <img class="center" src="/media/images/articles/2013/the_spotty_gif_small.gif" class="smooth" />
+
+    I know.
+    You've pondered this question for the longest time.
+    It has haunted your dreams.
+    Why such a strange screenshot?
+    What madness is happening?
+    Is my computer cursed?
+    Did I accidentally poke holes in my RAM again?
+
+    [GIF](http://en.wikipedia.org/wiki/Graphics_Interchange_Format), if you didn't know, is a most marvelously strange image format.
+    It was introduced in 1987 and only supports 256 colours in an image.
+    It has been plagued by lawsuits, poor algorithms, poor defaults, and lolcats.
+    Actually, to be fair, I shouldn't be dissing the lolcats.
+    The lolcats are probably what made it so resilient to change.
+    Other formats have come and gone, but nothing has replaced the vehicle of the lolcats, our beloved GIF.
+
+    ### So why the spots, Doc?
+
+    GIF didn't have fancy techniques like spatial image compression or temporal motion compensation like these fancy new video formats.
+    GIF's old.
+    It predates the CD.
+    It predates me!
+    Instead, GIF uses an interesting little hack called [Transparency Optimisation](http://www.imagemagick.org/Usage/anim_opt/#opt_trans) to optimise animations.
+
+    Uncompresesd GIF animations store the full frame for each and every image.
+    As you might guess, that gets pretty large pretty quickly.
+    Wouldn't it be nice if you could just paint over the top of the previous frame?
+    That's exactly what GIF does.
+
+    One of the colours you can select is transparent.
+    GIF doesn't support semi-transparency (like that fancy young PNG), but it does support binary transparency.
+    Binary transparency is simple: either you see the colour or you don't.
+
+    ### How does that make it smaller?
+
+    One of the other advantages of GIF is that the images are compressed using the lossless [Lempel-Ziv-Welch (LZW) technique](http://en.wikipedia.org/wiki/Lempel-Ziv-Welch).
+    LZW compresses by creating a dictionary of commonly occuring sequences and replacing them with a shorter symbol.
+    These symbols are placed whereever you meet repetitive data.
+
+    If we didn't include LZW, the transparency optimisation trick alluded to above wouldn't work.
+    Each of those transparent pixels has to be recorded in the GIF.
+    With LZW, however, those transparent pixels become hugely advantageous over just storing the full frame.
+
+    GIFs store their pixel data in rows.
+    If the majority of the frame is transparent, the majority of these rows will just be the transparent pixel repeated over and over again.
+    This compresses tremendously well.
+
+    LZW compression is very happy to turn that into a succint representation.
+    Bam.
+    A smaller, thinner, sexier GIF.
+
+    ### And it's that transparency that results in your spotty GIF preview
+
+    Long story, I know, but now you understand why this a random frame out of a GIF looks so spotty!
+    Your friends will be amazed, your colleagues stunned, and it's now inevitable you'll become tremendously rich.
+
+    Or, at the very least, you've discovered something interesting and new.
+    I'm happy to settle for that.
+
+    <img class="center" src="/media/images/articles/2013/the_spotty_gif_small.gif" class="smooth" />
+
+    ### Random Thought
+
+    GIF isn't suitable for photographs or other high detailed images as you're limited to only 256 different colours in an image.
+    There's one slight point of interest however - with each frame you can use a new block of 256 colours.
+    Therefore, an animated GIF could reproduce a high detailed photograph flawlessly, even though the file format technically doesn't allow it.
+
+    1. Given the <code>C</code> different colours used in the picture P, break <code>C</code> up into groups of 256 colours (i.e. <code>C => C1, C2, C3, ..., Cn</code>)
+    2. For each frame of the animation, dot the image with the new selection of 256 colours.
+    3. Stand back and marvel at your full 24 bit colour masterpiece that has the bitweight of a large elephant.
+
+    Bonus points if you progressively enhance the appearance of the image as more and more "colour layers" are loaded!
+    If you do it properly, with a delay here of there, it should be painting in the same style as [A Sunday Afternoon on the Island of La Grande Jatte](http://en.wikipedia.org/wiki/A_Sunday_Afternoon_on_the_Island_of_La_Grande_Jatte).
