@@ -1,0 +1,54 @@
+title: Starting The Matasano Crypto Challenges
+date: 2013-04-20
+content: |
+    For some time I've been aware of Matasano Security.
+    One of their founders is an [active participant](https://news.ycombinator.com/user?id=tptacek) on Hacker News and Matasano itself performs penetration testing and security audits on [GitHub](https://help.github.com/articles/github-security#maintaining-security).
+
+    I've also been aware of their [Crypto Challenges](http://www.matasano.com/articles/crypto-challenges/).
+    Similar to Wargames, which I run for Sydney University's Computer &amp; Network Security course, Matasano's Crypto Challenges introduce you to the issues and vulnerabilities behind real world cryptography.
+
+    The issue with this is commitment.
+    To start the challenges, there's no sign up button -- you actually need to contact them by email.
+    If this was a start-up trying to acquire customers, we'd have revoked their right to funding by now.
+    I'm sure the <abbr title="i.e. friends, family and fools">fools</abbr> would even pull their funding.
+
+    They're not a start-up though.
+    They're likely limiting it for two reasons.
+    First, they end up with a smaller but more attentive group.
+    Second, they don't want the questions leaking out so it becomes a competition of "Google for the answer".
+    Both I can understand, but it still certainly made registration a long process for me.
+    I was finally nudged along by a reminder that [they exist and they're awesome](http://blog.pinboard.in/2013/04/the_matasano_crypto_challenges/).
+
+
+    When I finally sent an email requesting to start the challenges, I may have gone slightly overboard on the commitment...
+
+    <div class="well">
+    <p>I want in to The Matasano Crypto Challenges.
+    <p>I'd commit Bitcoins, but I have far too little computing power to successfully mine them and haven't broken SHA256 to make mining easier (chosen prefix or otherwise).
+    <p>Whilst I'm from Australia, I'll be heading to Harvard for a Masters of Computer Science In late August. For the bit commitment, I propose a coin toss.
+    <p>If you win, I buy up to three (3) units of beverage for you and/or friends should we meet in the future.
+    If you lose, I obtain one (1) unit of beverage should we meet in the future.
+    <p>Naive bit commitment algorithm (Python):
+    </div>
+
+        :::python
+        >>> import hashlib
+        >>> import hmac
+        >>> import random
+        >>> secret = 32 character string
+        >>> toss = random.choice(["heads", "tails"])
+        >>> hmac.new(secret, toss, hashlib.sha256).hexdigest()
+        '79525aa50d45f77988ca1cc265a36ee48381f2c46f50459a8a1576ac6dc01475'
+        >>> hashlib.sha256(secret).hexdigest()
+        '1ee8e55ce174f9ce13a1857ceca1b42082cbe23fd86245f89e8405d676e21ad6'
+
+    <div class="well">
+    <p>Make your selection (heads or tails) and I shall reveal the toss and the secret.
+    <p>If you have an issue with this scheme[1], you may posit a new algorithm and we can reflip the coin.
+    <p>P.S. I've enjoyed many a tptacek post on Hacker News -- thanks for the content!
+    <p>[1]: Theoretically I could have found secretA and secretB such that (hmac(secretA, heads), sha256(secretA)) == (hmac(secretB, tails), sha256(secretB)) == (hmac_hex, sha256_hex) ... but if I could do that magic I'm sure I could find far more profitable activities!
+    </div>
+
+    Whilst I can't fill you in on the specifics of the challenges I meet from this, I can fill you in on the toin coss and the secret.
+    Or maybe just the coin toss...
+    I'll give one (1) unit of beverage to whoever can work out the 32 character secret key ;)
