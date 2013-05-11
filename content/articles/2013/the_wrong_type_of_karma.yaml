@@ -1,0 +1,60 @@
+title: The Wrong Type of Karma
+date: 2013-05-12
+content: |
+    Karma's a wonderful way to modify behaviour.
+    If the <abbr title="Strangely enough, it reminds me of Bitcoin. If 50% of the computing power in Bitcoin is owned by an aggressor, you can't trust the transactions. If 50% of the karma distribution within a digital community is owned by naive users or trolls, you can't trust karma distribution to enforce the community's guidelines.">majority of the community</abbr> enforce the same set of guidelines, karma can lead to a self stabilising community.
+
+    <blockquote>Good actions are rewarded, bad actions are punished.</blockquote>
+
+    Karma can have a bad side though.
+    Like any motivation system, if the distribution of rewards is not correctly aligned with the aims of the program, it can encourage the wrong type of behaviour.
+
+    Before we get started, yes, I am one of those people who thinks about karma too much.
+    It's the tool of choice when trying to maintain civility across the Internet.
+    Whilst karma might not have a monetary value, it is coveted.
+    It's a signal that you're a positive part of a community.
+    Strangely enough, that little integer is a humanising factor telling you that you've positively contributed to the community you love and support.
+
+    Traditionally this becomes an issue when users decide to positively recognise behaviour that is considered outside the initial community's guidelines.
+    Examples of this would be rewarding funny but low content comments on a website that values high level discussion over humour.
+    This again is primarily an issue when there is no majority consensus in a community or they're met with an endless influx of new users with no respect or understanding of the status quo ([Eternal September](http://en.wikipedia.org/wiki/Eternal_September)).
+
+    Let's assume there's a strong community consensus however and that September is infinitely far away.
+    If the community is stable and a user has high karma, that means the user has been a positive contributor to the community.
+
+    What else might they measure themselves on, however?
+    I'd wager my money on "any other integer within sight".
+
+    <img class="smooth center" src="/media/images/articles/2013/smerity_karma-fs8.png" />
+
+    Exhibit A: karma from a <abbr title="Sarcasm due users on the aforesaid website likely chiding me if I link to them in case I invoke the dreaded Eternal September. Of course, my web traffic isn't exactly formidable, so they have little to fear.">completely anonymous</abbr> discussion website.
+    What do you notice initially?
+    When my account was created, what my total karma is and the average karma each of my posts attract.
+
+    These numbers implicitly give two other interpretations of karma.
+    <code>Days / Karma < 1</code> and <code>Karma / Posts = 6.23</code>.
+    One indicates your contribution per day to the community whilst the other indicates how recognised each contribution is.
+
+    I'd argue that average karma per post inspires the wrong behaviour on the website.
+    Why?
+    Karma per post relies on more than just the quality of your post.
+    The amount of karma you receive per post is more tightly aligned with the number of people who view it than the quality.
+
+    This discourages you from responding to or involving yourself in unpopular discussions.
+
+    Why does this bother me so much?
+    Computer game companies make billions per year by convincing users that larger integers means more satisfaction.
+    Similarly, my brain is hard wired to attempt to increase both the total karma and average karma.
+    This means to [win the game](https://news.ycombinator.com/leaders) I need to avoid playing it whenever the post could gain less than 6.23 karma.
+
+    Well, starting today I'm turning cold that hot wiring.
+    Comment quickly, comment often.
+    Obviously not to spam content, but simply if I have something positive to contribute, I should contribute it.
+    Average karma be damned.
+    If it helps one person or ignites a small but intellectual discussion, then that's reward enough.
+    Let my average karma go to rot.
+    They're just bits and they'd wrap around when I hit <code>4294967296</code> anyway.
+
+    <a href="http://www.reddit.com/r/upvotegifs">
+      <img class="center" src="/media/images/articles/2013/reddit_karma.gif" width="450" />
+    </a>
