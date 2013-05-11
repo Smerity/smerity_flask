@@ -29,7 +29,7 @@ content: |
     It predates me!
     Instead, GIF uses an interesting little hack called [Transparency Optimisation](http://www.imagemagick.org/Usage/anim_opt/#opt_trans) to optimise animations.
 
-    Uncompresesd GIF animations store the full frame for each and every image.
+    Uncompressed GIF animations store the full frame for each and every image.
     As you might guess, that gets pretty large pretty quickly.
     Wouldn't it be nice if you could just paint the difference between this frame and the last?
     That's exactly what GIF does.
@@ -45,7 +45,7 @@ content: |
     ### How does that make it smaller?
 
     One of the other advantages of GIF is that the images are compressed using the lossless [Lempel-Ziv-Welch (LZW) technique](http://en.wikipedia.org/wiki/Lempel-Ziv-Welch).
-    LZW compresses by creating a dictionary of commonly occuring sequences and replacing them with a shorter symbol.
+    LZW compresses by creating a dictionary of commonly occurring sequences and replacing them with a shorter symbol.
     These symbols are placed whereever you meet repetitive data.
     Annoyingly enough, LZW compression was also one of the major issues with GIF in the olden days: the [patent](http://en.wikipedia.org/wiki/Lempel-Ziv-Welch#Patents) for it expired in 2003.
 
