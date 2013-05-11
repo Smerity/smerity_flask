@@ -34,7 +34,9 @@ content: |
     Wouldn't it be nice if you could just paint the difference between this frame and the last?
     That's exactly what GIF does.
 
-    <img class="center" src="/media/images/articles/2013/the_spotty_gif_bunny_bgnd_opttrans_frames.gif" class="smooth" />
+    <a href="http://www.imagemagick.org/Usage/anim_opt/#opt_trans">
+      <img class="center" src="/media/images/articles/2013/the_spotty_gif_bunny_bgnd_opttrans_frames.gif" class="smooth" />
+    </a>
 
     One of the colours you can select is transparent.
     GIF doesn't support semi-transparency (like that fancy young PNG), but it does support binary transparency.
