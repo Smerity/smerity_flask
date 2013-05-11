@@ -1,9 +1,7 @@
 title: The Mystery of the Spotty Animated GIF
 date: 2013-03-21
 content: |
-    A short post about an interesting optimisation "hack" I stumbled upon.
-
-    Have you ever posted an animated GIF to an application or website that didn't like the idea of motion?  
+    Have you ever posted an animated GIF to an application or website that didn't like the idea of motion?
     You likely ended up with a horrible, strange looking freeze frame.
 
     <img class="center" src="/media/images/articles/2013/the_spotty_gif_small.gif" class="smooth" />
@@ -33,8 +31,10 @@ content: |
 
     Uncompresesd GIF animations store the full frame for each and every image.
     As you might guess, that gets pretty large pretty quickly.
-    Wouldn't it be nice if you could just paint over the top of the previous frame?
+    Wouldn't it be nice if you could just paint the difference between this frame and the last?
     That's exactly what GIF does.
+
+    <img class="center" src="/media/images/articles/2013/the_spotty_gif_bunny_bgnd_opttrans_frames.gif" class="smooth" />
 
     One of the colours you can select is transparent.
     GIF doesn't support semi-transparency (like that fancy young PNG), but it does support binary transparency.
@@ -45,8 +45,9 @@ content: |
     One of the other advantages of GIF is that the images are compressed using the lossless [Lempel-Ziv-Welch (LZW) technique](http://en.wikipedia.org/wiki/Lempel-Ziv-Welch).
     LZW compresses by creating a dictionary of commonly occuring sequences and replacing them with a shorter symbol.
     These symbols are placed whereever you meet repetitive data.
+    Annoyingly enough, LZW compression was also one of the major issues with GIF in the olden days: the [patent](http://en.wikipedia.org/wiki/Lempel-Ziv-Welch#Patents) for it expired in 2003.
 
-    If we didn't include LZW, the transparency optimisation trick alluded to above wouldn't work.
+    If we didn't include LZW, the transparency optimisation trick alluded to above wouldn't make anything smaller.
     Each of those transparent pixels has to be recorded in the GIF.
     With LZW, however, those transparent pixels become hugely advantageous over just storing the full frame.
 
@@ -72,11 +73,11 @@ content: |
 
     GIF isn't suitable for photographs or other high detailed images as you're limited to only 256 different colours in an image.
     There's one slight point of interest however - with each frame you can use a new block of 256 colours.
-    Therefore, an animated GIF could reproduce a high detailed photograph flawlessly, even though the file format technically doesn't allow it.
+    Therefore, an animated GIF could reproduce a high detailed photograph outside of the normal restricted colour range even though the file format technically doesn't allow it.
 
     1. Given the <code>C</code> different colours used in the picture P, break <code>C</code> up into groups of 256 colours (i.e. <code>C => C1, C2, C3, ..., Cn</code>)
     2. For each frame of the animation, dot the image with the new selection of 256 colours.
-    3. Stand back and marvel at your full 24 bit colour masterpiece that has the bitweight of a large elephant.
+    3. Stand back and marvel at your full 24 bit colour masterpiece that has the bit weight of a large elephant.
 
     Bonus points if you progressively enhance the appearance of the image as more and more "colour layers" are loaded!
-    If you do it properly, with a delay here of there, it should be painting in the same style as [A Sunday Afternoon on the Island of La Grande Jatte](http://en.wikipedia.org/wiki/A_Sunday_Afternoon_on_the_Island_of_La_Grande_Jatte).
+    If you do it properly, with a delay here and there, it should be a painting in the same style as [A Sunday Afternoon on the Island of La Grande Jatte](http://en.wikipedia.org/wiki/A_Sunday_Afternoon_on_the_Island_of_La_Grande_Jatte).
