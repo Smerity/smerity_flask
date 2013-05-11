@@ -63,7 +63,11 @@ content: |
 
     ### And it's that transparency that results in your spotty GIF preview
 
-    Long story, I know, but now you understand why this a random frame out of a GIF looks so spotty!
+    When the GIF software decides to take a snapshot of the animation instead of playing it, it grabs an individual frame from somewhere past the start (i.e. movie trailers always start with a "boring" black frame).
+
+    This would generally be fine except that, as we've seen, GIFs use partial frames to aid in compression. What we end up with is a partial frame that appears "spotty" as it only contains the difference between the past frame and the current one.
+
+    Long story, I know, but now you understand why when you see an animated GIF preview it can end up looking spotty.
     Your friends will be amazed, your colleagues stunned, and it's now inevitable you'll become tremendously rich.
 
     Or, at the very least, you've discovered something interesting and new.
