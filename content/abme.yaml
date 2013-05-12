@@ -1,13 +1,21 @@
 title: "About Me"
 content: |
-    My name is Stephen Merity, though I'm more commonly referred to as Smerity.
+    My name is Stephen Merity, though I'm most commonly referred to as Smerity.
+    I'm a developer interested in web development, start-ups, natural language processing / machine learning, large-scale data analytics and an enormous amount of other topics.
+
+    I've been lucky enough to work with many fascinating people and groups over the years including Google Sydney, Freelancer.com, and the Schwa Lab at the University of Sydney.
     For more details you can view my <a href="/media/files/resume.pdf">resume</a> or contact me in person at <a href="mailto:smerity@smerity.com">smerity@smerity.com</a>.
 
-    Searching for _Smerity_ will find most places I've inhabited online.
+    I'm currently living in Sydney, Australia and working on various consulting projects.
+    In August 2013, I'll be packing my bags and going over to complete a Master of Science (SM) in Computational Science and Engineering (CSE) at Harvard University.
+
+    ### Where's Smerity?
+
+    If you want to contact me, searching for _Smerity_ will find most places I've inhabited online.
     If you're interested, almost all my Facebook communications are public as it allows people to discover a small amount of who I am and reminds me that even private things on Facebook aren't private.
 
     <a href="http://www.facebook.com/people/Stephen_Merity/606479711" title="Stephen Merity's Facebook profile" target=_TOP>
-    <img src="http://badge.facebook.com/badge/606479711.159.1065599225.png" border=0 alt="Stephen Merity's Facebook profile">
+      <img src="http://badge.facebook.com/badge/606479711.159.1065599225.png" border=0 alt="Stephen Merity's Facebook profile">
     </a>
 
     <!--
@@ -58,12 +66,17 @@ content: |
     Stephen Merity, Tara Murphy and James R. Curran  
     _Proceedings of the 2009 Workshop on Text and Citation Analysis for Scholarly Digital Libraries, ACL-IJCNLP 2009, pages 19-26_
 
-
+    <!--
     ## Programming
     In specific areas of programming, I have a soft spot for Natural Language Processing - a special thanks to [Dr James R. Curran](http://www.it.usyd.edu.au/~james) for introducing it to me.
     I've also spent a deal of time play with a wide range of other topics, including such things as data analytics, scalable architecture, computer graphics, machine learning and optimization techniques (i.e. linear/non-linear programming).
+    -->
 
     ## NCSS
-    A true "about me" would have to mention NCSS.
-    NCSS is the [National Computer Science School](http://www.ncss.edu.au), a summer school run at the University of Sydney involving talented high school students from all over Australia. Having had the privilege of going there six times (first in 2007 as a student, then in 2008 as a returning student and finally as a tutor in 2009, 2010, 2011 and 2012) I can honestly say it was one of the most delightful experiences of my entire life.
+    A true _about me_ would have to mention the [National Computer Science School](http://www.ncss.edu.au) (NCSS), a summer school run at the University of Sydney involving talented high school students from all over Australia.
+    Having had the privilege of going there seven times (first in 2007 as a student, then in 2008 as a returning student and finally as a tutor in 2009, 2010, 2011, 2012 and 2013), it has been one of the most delightful experiences of my entire life.
+
+    Over the course of a little over a week, students are introduced to a programming language, taken step by step through a set of educational challenges, and then work together to launch a fully fledged working product.
+    This product has been a search engine, a social network, a group of maze navigating robots and every variation inbetween!
+
     If you're a student or know someone that general age, sign up to [NCSS](http://www.ncss.edu.au) or into [NCSS Challenge](http://challenge.ncss.edu.au)!
