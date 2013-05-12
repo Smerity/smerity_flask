@@ -13,10 +13,10 @@ content: |
     If you're browsing this on an 8 or 16 bit architecture, I commend you and would love to know!
 
     The integers used for cryptography start at 128 bits and go up.
-    RSA is even more resource intensive, requiring working with integers a minimum of 1024, 2048 or 4096 bits long.
+    RSA is even more resource intensive, requiring working with integers a <abbr title="Shorter is possible -- see elliptic curve cryptography">minimum</abbr> of 1024, 2048 or 4096 bits long.
     As such, the performance of big integer operations is quite important for number theoretic cryptography.
 
-    This is where I came across a surprising snag -- the low performance of Google's Go big integer library.
+    This is where I came across a surprising snag -- the low performance of Google Go's _big integer_ library.
     The performance was poor compared to not just Java, known for being reasonably performant, but even PyPy and CPython.
     This was a shock as many suggest turning to Google Go for high performance.
     Whilst Google Go can certainly be highly performant in certain areas, I discovered it's not safe to assume it will be for a specific task.
@@ -24,7 +24,8 @@ content: |
     ### Naive Factorisation
 
     To get students going, I mentioned that the current value could be solved in only a few seconds using a naive Python program.
-    Python isn't even the fastest language in the box, though it helps that with this task most of the work takes place in compiled CPython code, rather than Python itself.
+    Python isn't the fastest language but it is readable and has minimal boilerplate.
+    For this task, CPython should also do reasonable well speed wise too: most of the work takes place in compiled CPython code, rather than Python itself.
 
     The simplest way to find a factor for a given integer <code>n</code> is [trial division](http://en.wikipedia.org/wiki/Trial_division):
 
@@ -40,16 +41,15 @@ content: |
     There are [far more](http://en.wikipedia.org/wiki/Quadratic_sieve) [efficient methods](http://en.wikipedia.org/wiki/General_number_field_sieve), even for trial division, but this is the simplest in terms of lines of code and understanding.
     As such, I used it to demonstrate to students how to get started for this challenge, leaving them to discover the more complex methods.
 
-    During this, I discovered something quite interesting...
+    This forms the basis of the benchmark.
 
     ### Big Integer Performance Across CPython, PyPy, Java and Go
 
     To test the performance of Big Integers across CPython, PyPy, Java and Go, I created a set of small benchmarks.
 
-
     The challenge was to factorise <code>n = 273966616513101251352941655302036077733021013991</code> (around 157 bits).
     As CPython and PyPy can "cheat" on small tests (they use 32 or 64 bit integers until Big Integers are required), we couldn't start on a small <code>i</code> and move up incrementally.
-    As such, we tried find a factor starting from <code>i = 496968652506233112158689</code> (around 78 bits) and going up.
+    As such, we tried to find the factor starting from <code>i = 496968652506233112158689</code> (around 78 bits) and going up.
     The starting point <code>i</code> is only 10e6 away from one of the primes <code>p</code> so is equivalent to running the loop 5e6 times.
 
     You can check out the code [here](https://gist.github.com/Smerity/5377142).
@@ -63,23 +63,23 @@ content: |
       </thead>
       <tbody>
         <tr>
-          <td>gccgo
+          <td>gccgo (4.7.2)
           <td>8.421
         </tr>
         <tr>
-          <td>go run
+          <td>go run (1.1rc3)
           <td>3.516
         </tr>
         <tr>
-          <td>python
+          <td>CPython (2.7.3)
           <td>1.880
         </tr>
         <tr>
-          <td>java
+          <td>Java (1.7)
           <td>1.656
         </tr>
         <tr>
-          <td>pypy
+          <td>PyPy (2.0 beta 2)
           <td>1.148
         </tr>
       </tbody>
@@ -87,13 +87,15 @@ content: |
 
     What's most impressive here is that CPython performs so well.
     In this task, the majority of the computational work takes place deep in the depths of CPython, using compiled and optimised C code.
+    Java performs admirably as you'd expect from the battle tested JVM.
+    PyPy does quite well considering that the big integer code is written in RPython and don't have add any special cases.
 
     ### Conclusion
 
     Google Go is a promising language and I expect great things from the future.
     For certain tasks, specifically anything that can utilise goroutines, it can make your code faster and simpler than ever before.
-    Assuming that it is highly performant, however, may well be a mistake.
-    Benchmark, benchmark and benchmark before dedicating substantial time pushing a CPU intensive task into Go or any other language.
+    Assuming that it is generally high performance, however, is a mistake.
+    Benchmark, benchmark and benchmark before dedicating any time pushing a CPU intensive task into Go or any other language.
 
     Over time, this situation will improve.
     Whilst I need to look into the situation in more detail, it appears [Go's 6g compiler had an implementation of the big package with assembler implementations that hadn't been ported to gccgo](https://groups.google.com/forum/?fromgroups=#!searchin/golang-nuts/Is$20Go$20%22big%22$20package$20slow?$20is$20Go$20slow?/golang-nuts/ChpHRdGU8ks/gyhBjheZmSEJ).
