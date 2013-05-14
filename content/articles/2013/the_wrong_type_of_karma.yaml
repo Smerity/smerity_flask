@@ -2,7 +2,7 @@ title: The Wrong Type of Karma
 date: 2013-05-12
 content: |
     Karma's a wonderful way to modify behaviour.
-    If the <abbr title="Strangely enough, it reminds me of Bitcoin. If 50% of the computing power in Bitcoin is owned by an aggressor, you can't trust the transactions. If 50% of the karma distribution within a digital community is owned by naive users or trolls, you can't trust karma distribution to enforce the community's guidelines.">majority of the community</abbr> enforce the same set of guidelines, karma can lead to a self stabilising community.
+    If the <abbr title="Strangely enough, it reminds me of Bitcoin. If 50% of the computing power in Bitcoin is owned by an aggressor, you can't trust the transactions. If 50% of the karma distribution within a digital community is owned by naive users or trolls, you can't trust karma distribution to enforce the community's guidelines.">majority of the users</abbr> enforce the same set of guidelines, karma can lead to a self stabilising community.
 
     <blockquote>
       <p>
@@ -10,18 +10,20 @@ content: |
       </p>
     </blockquote>
 
-    Karma can have a bad side though.
-    Like any motivation system, if the distribution of rewards is not correctly aligned with the aims of the program, it can encourage the wrong type of behaviour.
+    Karma can have unexpected effects though.
+    Like any motivation system, if the distribution of rewards is not aligned with the aims of the program, it can encourage the wrong type of behaviour.
 
     Before we get started, yes, I am one of those people who thinks about karma too much.
     It's the tool of choice when trying to maintain civility across the Internet.
     Whilst karma might not have a monetary value, it is coveted.
     It's a signal that you're a positive part of a community.
-    Strangely enough, that little integer is a humanising factor telling you that you've positively contributed to the community you love and support.
+    Strangely enough, that little integer is a humanising factor.
+    It indicates when you've positively contributed to the community you love and support.
 
-    Traditionally this becomes an issue when users decide to positively recognise behaviour that is considered outside the initial community's guidelines.
-    Examples of this would be rewarding <abbr title="'A small bug can bring down a big system...' =&gt; 'Ah, so you subscribe to the Hobbit and/or X-Wing theory of security'">funny but low content comment</abbr> on a website that values high level discussion over humour.
+    Traditionally karma can become a problem when users decide to positively recognise behaviour that is considered outside the initial community's guidelines.
+    Examples of this would be rewarding a <abbr title="'A small bug can bring down a big system...' =&gt; 'Ah, so you subscribe to the Hobbit and/or X-Wing theory of security'">funny but low content comment</abbr> on a website that values high level discussion over humour.
     This again is primarily an issue when there is no majority consensus in a community or they're met with an endless influx of new users with no respect or understanding of the status quo ([Eternal September](http://en.wikipedia.org/wiki/Eternal_September)).
+    In these situations, karma can hasten the degradation of the community.
 
     Let's assume there's a strong community consensus however and that September is infinitely far away.
     If the community is stable and a user has high karma, that means the user has been a positive contributor to the community.
@@ -31,7 +33,7 @@ content: |
 
     <img class="smooth center" title="'Why did he screenshot text? It looks so blurry... ಠ_ಠ' screamed the person on the Apple retina display." src="/media/images/articles/2013/smerity_karma-fs8.png" />
 
-    Exhibit A: karma from a <abbr title="Sarcasm due users on the aforesaid website likely chiding me if I link to them in case I invoke the dreaded Eternal September. Of course, my web traffic isn't exactly formidable, so they have little to fear.">completely anonymous</abbr> discussion website.
+    Exhibit A: karma from a <abbr title="Sarcasm due to users on the aforesaid website likely chiding direct links in case I invoke the dreaded Eternal September. Luckily, my web traffic isn't exactly formidable, so they have little to fear.">completely anonymous</abbr> discussion website.
     What do you notice initially?
     When my account was created, what my total karma is and the average karma each of my posts attract.
 
@@ -41,8 +43,8 @@ content: |
 
     I'd argue that average karma per post inspires the wrong behaviour on the website.
     Why?
-    Karma per post relies on more than just the quality of your post.
-    Regardless of the quality of your post, the amount of karma you receive per post is more tightly aligned with the number of people who view it.
+    Karma per post relies on more than just the quality of the post.
+    In fact, karma per post is more directly related to the number of users who saw it.
 
     <blockquote>
       <p>
@@ -53,15 +55,15 @@ content: |
     Why does this bother me so much?
     Computer game companies make billions per year by convincing users that larger integers means more satisfaction.
     Similarly, my brain is hard wired to attempt to increase both the total karma and average karma.
-    This means to [win the game](https://news.ycombinator.com/leaders) I need to avoid playing it whenever the post could gain less than 6.23 karma.
-    Even if that post would be informative and helpful, albeit assisting a small number of people.
+    This means to [win the game](https://news.ycombinator.com/leaders) I need to <abbr title="A strange game. The only winning move is not to play. How about a nice game of chess?">avoid playing</abbr> it whenever the post could gain less than 6.23 karma.
+    Your brain thinks "_Even if that post would be informative and helpful, it'd only assist a small number of people_".
 
-    Well, starting today I'm turning that hot wiring cold.
+    Well, starting today, I'm turning that hot wiring cold.
     Comment quickly, comment often.
     Obviously you should avoid spamming content, but simply recognise that if you have something positive to contribute, you should contribute it.
     If it helps one person or ignites a small but intellectual discussion, then that's reward enough.
     <!--Let my average karma go to rot.-->
-    <abbr title="They're just bits. The darn int32 would wrap around when you hit 4294967296 anyway. Until karma is stored in bigints I'm not going to risk playing the game.">Average karma be damned</abbr>.
+    <abbr title="They're just bits. The darn int32 would wrap around when you hit 4,294,967,296 anyway, and that's assuming it's unsigned! Until karma is stored in bigints I'm not going to risk playing.">Average karma be damned</abbr>.
 
     <a href="http://www.reddit.com/r/upvotegifs">
       <img class="center" title="People are obsessed with giving and receiving upvotes. Really really." src="/media/images/articles/2013/reddit_karma.gif" width="450" />
