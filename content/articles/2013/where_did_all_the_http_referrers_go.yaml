@@ -1,0 +1,145 @@
+title: Where did all the HTTP referrers go?
+date: 2013-05-26
+content: |
+    Good (and bad news): the general consensus in the web developer community is that any and every website should be HTTPS by default.
+    Why?
+    HTTP by itself isn't encrypted, leaving it open to eavesdropping, message tampering, and man-in-the-middle attacks.
+    HTTPS, if you use it <a href="http://www.thoughtcrime.org/software/sslstrip/" title="Help avoid this by learning about HTTP Strict Transport Security (HSTS)">consistently</a>, prevents these issues.
+
+    So how can that possibly be bad news?
+    The Internet is built on data and <abbr title="PageRank uses metadata, how websites link to each other, to rank importance of pages, amongst many other metadata uses.">metadata</abbr>.
+    HTTPS is killing one of the core metadata tools of the Internet: HTTP Referrers.
+
+    ## define(HTTP Referrers)
+
+    Imagine you're on [Reddit](http://www.reddit.com/r/netsec/search?q=homakov) and click on a link to [homakov.blogspot.ru](http://homakov.blogspot.ru/2013/05/csrf-tool.html).
+    The server at __homakov.blogspot.ru__ knows that you came from __reddit.com__.
+    It even knows what specific webpage you came from -- in this case, a Reddit search page on /r/netsec searching for _homakov_.
+
+    So what does this look like?
+    When your browser wants a page, it sends a GET request with a number of HTTP headers.
+    One of these headers is the HTTP Referrer and informs server B that you came from a link at server A.
+
+        :::bash
+        GET http://homakov.blogspot.ru/2013/05/csrf-tool.html HTTP/1.1
+        Referer: http://www.reddit.com/r/netsec/search?q=homakov
+        Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3
+        User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.63 Safari/537.31
+        Connection: keep-alive
+        Cookie: session="x1yc3OWM2ZTdhNNzk1YWY5NDk0MTczNTEKc=="; csrftoken="6QjAl18WY3NyZgpNsHpEKotZNfEtzSLocHRm";
+        Host: homakov.blogspot.ru
+        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+        Accept-Language: en-US,en;q=0.8
+        Accept-Encoding: gzip,deflate,sdch
+
+    The second line, `Referer: http://www.reddit.com/r/netsec/search?q=homakov`, is the HTTP Referrer.
+    It's these HTTP Referrer fields that are tracked by analytics tools such as Google Analytics and ChartBeat.
+
+    ## HTTPS kills HTTP Referrers
+
+    HTTPS turns off HTTP Referrers.
+    Why?
+    According to <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">RFC 2616 (HTTP 1.1)</a>, this is due to the possibility of sensitive information being encoded in a referring URL:
+
+    <blockquote>
+      Clients <i>SHOULD NOT</i> include a Referer header field in a (non-secure) HTTP request if the referring page was transferred with a secure protocol.
+    </blockquote>
+
+    This is quite reasonable considering HTTPS was intended for secure applications where sensitive data may be stored or gleaned from the URL.
+    Unfortunately, this hard set rule doesn't transition well into a future where almost every website uses HTTPS.
+
+    ## Fixing Referrers in HTTPS: The Meta Referrer
+
+    So what's the situation with our HTTP Referrer?
+    What do we want to be possible?
+    We'll label these different situations with names.
+
+    + __Never:__ Our URLs are sensitive and we don't want to tell the world about them. We want the HTTP Referrer dropped (i.e. default behaviour for HTTPS).
+    + __Origin:__ I run a search engine and want people to know the traffic came from me, but not which search queries were used to reach your site.
+    + __Default:__ I run Facebook and want to pass the HTTP referrer for all requests unless it goes from HTTPS to HTTP (i.e. the situation where previously hidden information might be disclosed).
+    + __Always:__ A blog hosted over HTTPS might wish to link to a blog hosted over HTTP and receive trackback links.
+
+    These cases are covered under a new HTML5 called the [meta referrer](http://wiki.whatwg.org/wiki/Meta_referrer).
+    Now a sinple tag can be used, such as `<meta name="referrer" content="always">`, to specify the exact behaviour of the HTTP Referrer regardless of whether we're using HTTP or HTTPS.
+
+    With that said, not all web browsers support this new fangled HTML5 meta referrer.
+    If a web browser doesn't support this flag, it'll just fall back to the standard for HTTP or HTTPS.
+    Which browsers support these?
+
+    <table class="table">
+      <thead>
+        <th>Web Browser</th>
+        <th>Meta Referrer Support</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Google Chrome
+          <td><span class="text-success">Yes</span>
+        </tr>
+        <tr>
+          <td>Safari
+          <td><span class="text-success">Yes</span>
+        </tr>
+        <tr>
+          <td>Firefox
+          <td><span class="text-error">No</span> (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=704320">In Progress</a>)
+        </tr>
+        <tr>
+          <td>Internet Explorer
+          <td><span class="text-error">No</span>
+        </tr>
+      </tbody>
+    </table>
+
+    Well, okay, that's fine, the world improves.
+    Let's say in a year they'll get it <abbr title="I _might_ be a little optimistic here...">all sorted</abbr>.
+    Then we need all the popular websites to add these meta referrer tags in their HTML.
+    And all the not so popular websites that still give you traffic.
+
+    <table class="table">
+      <thead>
+        <th>Website</th>
+        <th>Meta Referrer</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>https://www.facebook.com</td>
+          <td>Yes: Default</td>
+        </tr>
+        <tr>
+          <td>https://www.google.com</td>
+          <td>Yes: Origin</td>
+        </tr>
+        <tr>
+          <td><s>Reddit</s>
+          <td>Yes: HTTP and no meta referrer
+        </tr>
+        <tr>
+          <td>Hacker News
+          <td>No: <abbr title="&lt;sarcasm&gt;Likely a defense against the dreaded Eternal September&lt;/sarcasm&gt;">HTTPS with no meta referrer</abbr>
+        </tr>
+      </tbody>
+    </table>
+
+    ## Add the metatag, save the world
+
+    So, here's my little request.
+
+    <blockquote>
+      If you run a website over HTTPS and there are positive benefits from others seeing your HTTPS Referrers, add in an appropriate meta referrer.
+    </blockquote>
+
+    #### Tangent: Referrer vs Referer
+
+    The correct spelling is refe<b>rr</b>er (two arrs) but you'll see it everywhere as refe<b>r</b>er (minimal arrs).
+    Why?
+    A small accident of history.
+    Every reference to refe<b>rr</b>er is spelt refe<b>r</b>er in [RFC 1945 (HTTP 1.0)](http://lists.w3.org/Archives/Public/ietf-http-wg-old/1995JanApr/0105.html).
+    By the time it was [picked up](http://lists.w3.org/Archives/Public/ietf-http-wg-old/1995JanApr/0105.html), it was a little too late.
+
+    #### Useful Links
+
+    + [Referer (sic)](http://www.schemehostport.com/2011/11/referer-sic.html)
+    + [Referrer Blocking is Hard](http://lincolnloop.com/blog/2012/jun/27/referrer-blocking-hard/)
+    + [WhatWG description of "noreferrer" on links](http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#link-type-noreferrer)
+    + [Bug@Mozilla: Implement meta referrer](https://bugzilla.mozilla.org/show_bug.cgi?id=704320)
