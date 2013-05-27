@@ -65,6 +65,11 @@
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-470775-5']);
   _gaq.push(['_trackPageview']);
+  setTimeout("_gaq.push(['_trackEvent', '15_seconds', 'read'])",15000);
+  setTimeout("_gaq.push(['_trackEvent', '30_seconds', 'read'])",30000);
+  setTimeout("_gaq.push(['_trackEvent', '60_seconds', 'read'])",60000);
+  setTimeout("_gaq.push(['_trackEvent', '120_seconds', 'read'])",120000);
+  setTimeout("_gaq.push(['_trackEvent', '240_seconds', 'read'])",240000);
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
