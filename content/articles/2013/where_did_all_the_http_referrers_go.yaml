@@ -9,6 +9,8 @@ content: |
     So how can that possibly be bad news?
     The Internet is built on data and <abbr title="PageRank uses metadata, how websites link to each other, to rank importance of pages, amongst many other metadata uses.">metadata</abbr>.
     HTTPS is killing one of the core metadata tools of the Internet: HTTP Referrers.
+    Don't worry though: there's hope.
+    Or at lest meta hope.
 
     ## define(HTTP Referrers)
 
@@ -45,12 +47,13 @@ content: |
       Clients <i>SHOULD NOT</i> include a Referer header field in a (non-secure) HTTP request if the referring page was transferred with a secure protocol.
     </blockquote>
 
-    This is quite reasonable considering HTTPS was intended for secure applications where sensitive data may be stored or gleaned from the URL.
+    This seems quite reasonable considering HTTPS was intended for secure applications where sensitive data may be stored or gleaned from the URL.
     Unfortunately, this hard set rule doesn't transition well into a future where almost every website uses HTTPS.
 
     ## Fixing Referrers in HTTPS: The Meta Referrer
 
-    So what's the situation with our HTTP Referrer?
+    So what are the possible situations with our HTTP Referrers?
+    If we could somehow tell the HTTP Referrer to act in a particular way, what different behaviours would you like?
     What do we want to be possible?
     We'll label these different situations with names.
 
@@ -60,7 +63,7 @@ content: |
     + __Always:__ A blog hosted over HTTPS might wish to link to a blog hosted over HTTP and receive trackback links.
 
     These cases are covered under a new HTML5 called the [meta referrer](http://wiki.whatwg.org/wiki/Meta_referrer).
-    Now a sinple tag can be used, such as `<meta name="referrer" content="always">`, to specify the exact behaviour of the HTTP Referrer regardless of whether we're using HTTP or HTTPS.
+    Now a simple tag can be used, such as `<meta name="referrer" content="always">`, to specify the exact behaviour of the HTTP Referrer regardless of whether we're using HTTP or HTTPS.
 
     With that said, not all web browsers support this new fangled HTML5 meta referrer.
     If a web browser doesn't support this flag, it'll just fall back to the standard for HTTP or HTTPS.
@@ -92,9 +95,8 @@ content: |
     </table>
 
     Well, okay, that's fine, the world improves.
-    Let's say in a year they'll get it <abbr title="I _might_ be a little optimistic here...">all sorted</abbr>.
-    Then we need all the popular websites to add these meta referrer tags in their HTML.
-    And all the not so popular websites that still give you traffic.
+    Let's say in a year they'll get it <abbr title="I might be a little optimistic here..? ;)">all sorted</abbr>.
+    Then we need all the popular websites (and not so popular websites that still give you traffic) to add these meta referrer tags in their HTML.
 
     <table class="table">
       <thead>
@@ -128,6 +130,19 @@ content: |
     <blockquote>
       If you run a website over HTTPS and there are positive benefits from others seeing your HTTPS Referrers, add in an appropriate meta referrer.
     </blockquote>
+
+    <br />
+
+    ### Appendix
+
+    #### Tangent: Google Knows
+
+    Considering Google Analytics is used for [57.23% of the top million websites on the Internet](http://trends.builtwith.com/analytics) (572,300 in case your math failed you), they're actually in an excellent position to track and understand the flow of the Internet even without these referrers in place.
+    Assuming that a user is only browsing amongst the top million websites, not only do they know how a user interacts on a website with Google Analytics but they're likely able to track when a user goes from site A to site B as site B likely has Google Analytics.
+    Even if it didn't, they know the user _didn't_ go to one of the other Google Analytics backed websites, so the user either ended up closing the tab or going to one of the links on the page that isn't backed by Google Analytics.
+    This is all valuable information they could use as it's a form of limited PageRank -- in PageRank you assume the user is a random link clicking bot, whilst in this situation you've removed a great deal of the ambiguity.
+
+    Combine this with Google's strangehold on how people reach web pages (Google Search) and their <attr title="When Google Search moved to HTTPS, they also ceased to send the search queries to websites. The only way you can get any of the search queries used to reach your site is using Google Webmaster Tools, and even then it's a limited subset.">access to the valuable search queries</attr>, they really are in an enviable position.
 
     #### Tangent: Referrer vs Referer
 
