@@ -7,10 +7,10 @@ content: |
     HTTPS, if you use it <a href="http://www.thoughtcrime.org/software/sslstrip/" title="Help avoid this by learning about HTTP Strict Transport Security (HSTS)">consistently</a>, prevents these issues.
 
     So how can that possibly be bad news?
-    The Internet is built on data and <abbr title="PageRank uses metadata, how websites link to each other, to rank importance of pages, amongst many other metadata uses.">metadata</abbr>.
+    <!--The Internet is built on data and <abbr title="PageRank uses metadata, how websites link to each other, to rank importance of pages, amongst many other metadata uses.">metadata</abbr>.-->
     HTTPS is confusing one of the core metadata tools of the Internet: HTTP Referrers.
-    HTTP Referrers disappear when going from HTTPS to HTTP.
-    And, more worryingly, sensitive HTTPS Referrers still get carried when going from HTTPS to HTTPS.
+    HTTP Referrers disappear when going from HTTPS to HTTP, but, more worryingly, sensitive HTTPS Referrers still get carried when going from HTTPS to HTTPS.
+    Most secure applications aren't aware of where their HTTP Referrers do or don't go.
     Don't worry though: there's hope.
     Or at lest meta hope.
 
@@ -49,17 +49,21 @@ content: |
       Clients <i>SHOULD NOT</i> include a Referer header field in a (non-secure) HTTP request if the referring page was transferred with a secure protocol.
     </blockquote>
 
-    Note: those headers will actually be sent to _any_ other webpage that uses HTTPS.
-
-    This seems quite reasonable considering HTTPS was intended for secure applications where sensitive data may be stored or gleaned from the URL.
+    This seems quite reasonable at first glance.
     Unfortunately, this hard set rule doesn't transition well into a future where almost every website uses HTTPS.
+
+    Why?
+    The HTTPS Referrer, which may contain sensitive data, will be sent from any HTTPS website to any other HTTPS website by default.
+    It's only when a connection goes from HTTPS to HTTP that the referrer is dropped.
 
     This leaves two problematic situations:
 
-    + HTTP websites don't receive referrers from HTTPS websites
+    + HTTP websites don't receive referrers from HTTPS websites -- all traffic appears as direct traffic
     + HTTPS websites will send referrers to _any other HTTPS website_ even if it contains sensitive information
 
-    The first situation means we lose any understanding of where traffic is coming from, the second situation leads potentially to security vulnerabilities.
+    The first situation means we lose any understanding of where traffic is coming from, the second situation leads potentially to security vulnerabilities or information leaks.
+    Essentially, if a HTTP website links to another HTTP website, the author of the secure page is lending extra trust just as it's HTTPS.
+    In most cases, this is not what was intended.
 
     ## Fixing Referrers in HTTPS: The Meta Referrer
 
@@ -107,7 +111,7 @@ content: |
 
     Well, okay, that's fine, the world improves.
     Let's say in a year they'll get it <abbr title="I might be a little optimistic here..? ;)">all sorted</abbr>.
-    Then we need all the popular websites (and not so popular websites that still give you traffic) to add these meta referrer tags in their HTML.
+    What popular websites are using meta referrer?
 
     <table class="table">
       <thead>
@@ -124,12 +128,12 @@ content: |
           <td>Yes: Origin</td>
         </tr>
         <tr>
-          <td><s>Reddit</s>
-          <td>Yes: HTTP and no meta referrer
+          <td>Reddit
+          <td>No: HTTP and no meta referrer
         </tr>
         <tr>
           <td>Hacker News
-          <td>No: <abbr title="&lt;sarcasm&gt;Likely a defense against the dreaded Eternal September&lt;/sarcasm&gt;">HTTPS with no meta referrer</abbr>
+          <td>No: HTTPS with no meta referrer
         </tr>
       </tbody>
     </table>
@@ -140,7 +144,7 @@ content: |
 
     <blockquote>
       If you run a website over HTTPS, add in an appropriate meta referrer.
-      If it's a secure application, nix the referrers.
+      If it's a secure application, nix the referrers by setting it to _Never_.
       If the Internet would benefit from knowing you sent them traffic, allow those referrers for everyone.
     </blockquote>
 
