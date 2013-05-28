@@ -8,7 +8,9 @@ content: |
 
     So how can that possibly be bad news?
     The Internet is built on data and <abbr title="PageRank uses metadata, how websites link to each other, to rank importance of pages, amongst many other metadata uses.">metadata</abbr>.
-    HTTPS is killing one of the core metadata tools of the Internet: HTTP Referrers.
+    HTTPS is confusing one of the core metadata tools of the Internet: HTTP Referrers.
+    HTTP Referrers disappear when going from HTTPS to HTTP.
+    And, more worryingly, sensitive HTTPS Referrers still get carried when going from HTTPS to HTTPS.
     Don't worry though: there's hope.
     Or at lest meta hope.
 
@@ -39,7 +41,7 @@ content: |
 
     ## HTTPS kills HTTP Referrers
 
-    HTTPS turns off HTTP Referrers.
+    HTTPS turns off HTTP Referrers to HTTP websites.
     Why?
     According to <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">RFC 2616 (HTTP 1.1)</a>, this is due to the possibility of sensitive information being encoded in a referring URL:
 
@@ -47,8 +49,17 @@ content: |
       Clients <i>SHOULD NOT</i> include a Referer header field in a (non-secure) HTTP request if the referring page was transferred with a secure protocol.
     </blockquote>
 
+    Note: those headers will actually be sent to _any_ other webpage that uses HTTPS.
+
     This seems quite reasonable considering HTTPS was intended for secure applications where sensitive data may be stored or gleaned from the URL.
     Unfortunately, this hard set rule doesn't transition well into a future where almost every website uses HTTPS.
+
+    This leaves two problematic situations:
+
+    + HTTP websites don't receive referrers from HTTPS websites
+    + HTTPS websites will send referrers to _any other HTTPS website_ even if it contains sensitive information
+
+    The first situation means we lose any understanding of where traffic is coming from, the second situation leads potentially to security vulnerabilities.
 
     ## Fixing Referrers in HTTPS: The Meta Referrer
 
@@ -128,7 +139,9 @@ content: |
     So, here's my little request.
 
     <blockquote>
-      If you run a website over HTTPS and there are positive benefits from others seeing your HTTPS Referrers, add in an appropriate meta referrer.
+      If you run a website over HTTPS, add in an appropriate meta referrer.
+      If it's a secure application, nix the referrers.
+      If the Internet would benefit from knowing you sent them traffic, allow those referrers for everyone.
     </blockquote>
 
     <br />
