@@ -159,7 +159,7 @@ content: |
     Even if it didn't, they know the user _didn't_ go to one of the other Google Analytics backed websites, so the user either ended up closing the tab or going to one of the links on the page that isn't backed by Google Analytics.
     This is all valuable information they could use as it's a form of limited PageRank -- in PageRank you assume the user is a random link clicking bot, whilst in this situation you've removed a great deal of the ambiguity.
 
-    Combine this with Google's strangehold on how people reach web pages (Google Search) and their <attr title="When Google Search moved to HTTPS, they also ceased to send the search queries to websites. The only way you can get any of the search queries used to reach your site is using Google Webmaster Tools, and even then it's a limited subset.">access to the valuable search queries</attr>, they really are in an enviable position.
+    Combine this with Google's stranglehold on how people reach web pages (Google Search) and their <attr title="When Google Search moved to HTTPS, they also ceased to send the search queries to websites. The only way you can get any of the search queries used to reach your site is using Google Webmaster Tools, and even then it's a limited subset.">access to the valuable search queries</attr>, they really are in an enviable position.
 
     #### Tangent: Referrer vs Referer
 
