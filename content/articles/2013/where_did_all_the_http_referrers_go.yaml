@@ -12,7 +12,7 @@ content: |
     HTTP Referrers disappear when going from HTTPS to HTTP, but, more worryingly, sensitive HTTPS Referrers still get carried when going from HTTPS to HTTPS.
     Most secure applications aren't aware of where their HTTP Referrers do or don't go.
     Don't worry though: there's hope.
-    Or at lest meta hope.
+    Or at least meta hope.
 
     ## define(HTTP Referrers)
 
