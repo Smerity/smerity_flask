@@ -175,3 +175,4 @@ content: |
     + [Referrer Blocking is Hard](http://lincolnloop.com/blog/2012/jun/27/referrer-blocking-hard/)
     + [WhatWG description of "noreferrer" on links](http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#link-type-noreferrer)
     + [Bug@Mozilla: Implement meta referrer](https://bugzilla.mozilla.org/show_bug.cgi?id=704320)
+    + [Hacking HTTPS -> HTTP referrers](http://www.markpercival.us/post/51560498133/hacking-https-http-referrers)
