@@ -6,12 +6,19 @@
 <link rel="shortcut icon" href="/media/images/favicon.ico">
 {% endblock %}
 
+{% block bottom_css %}
+<link rel="stylesheet" type="text/css" href="/media/css/fontawesome/fontawesome.css" />
+<!--[if lt IE 9]>
+  <link rel="stylesheet" type="text/css" href="/media/css/fontawesome/fontawesome-ie7.css" />
+<![endif]-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,700' rel='stylesheet' type='text/css'>
+{% endblock %}
+
 {% block css %}
 <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
   <script src="/media/js/html5.js"></script>
 <![endif]-->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,700' rel='stylesheet' type='text/css'>
 
 {#
 <link rel="stylesheet/less" type="text/css" href="/media/less/bootstrap.less">
@@ -27,7 +34,25 @@
 <script src="/media/bootstrap/js/bootstrap.js"></script>
 {% endblock %}
 
+{% block body_top %}
+<div class="hero-box">
+  <div class="hero-inner min-padded">
+    <a href="/">
+      <h3 class="highlight pull-left">&laquo; Smerity.com</h3>
+    </a>
+    <h3 class="contact-me pull-right">
+      <a href="https://www.twitter.com/Smerity/" alt="Twitter"><i class="icon-twitter"></i></a>
+      <a href="https://facebook.com/smerity" alt="Facebook"><i class="icon-facebook-sign"></i></a>
+      <a href="https://github.com/Smerity/" alt="GitHub"><i class="icon-github"></i></a>
+      <a href="http://au.linkedin.com/in/smerity" alt="LinkedIn"><i class="icon-linkedin"></i></a>
+      <a href="mailto:smerity@smerity.com" alt="Email"><i class="icon-envelope-alt"></i></a>
+    </h3>
+  </div>
+</div>
+{% endblock %}
+
 {% block header %}
+{#
 <header class="navbar">
   <nav class="navbar-inner-clean">
     <div class="container-fluid">
@@ -48,6 +73,7 @@
     </div>
   </nav>
 </header>
+#}
 {% endblock %}
 
 {% block footer %}

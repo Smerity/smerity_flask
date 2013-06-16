@@ -14,6 +14,8 @@
   {% block header %}
   {% endblock %}
   {% block body %}
+  {% block body_top %}
+  {% endblock %}
   <div class="container">
     {% block container %}
       <div class="row">
@@ -22,21 +24,23 @@
       </div>
       {% block sidebar %}
         <div class="span3 side-box">
-          <div class="hero-box">
-            <h1 class="slogan">Hi, I'm Smerity</h1>
-          </div>
-          <div style="padding: 8px">
+          <div style="padding: 8px;">
+            <h1 style="margin-bottom: 0; text-align: center;">Popular Articles</h1>
+            <style>
+            ul.unstyled li { padding-bottom: 6px; }
+            </style>
+            <ul class="crossed">
+              <li><a href="/articles/2013/where_did_all_the_http_referrers_go.html">Where did all the HTTP referrers go? (2013)</a></li>
+              <li><a href="/articles/2013/animated_gif.html">The Mystery of the Spotty Animated GIF (2013)</a></li>
+              <li><a href="/articles/2010/noogler2010.html">Google Internship Reflection (2010)</a></li>
+            </ul>
+            <h1 style="margin-bottom: 0; text-align: center;">Hi, I'm Smerity</h1>
             <div align="center">
-              {#<img src="http://placehold.it/150x150" />#}
               <img class="shadowed pronounced" src="/media/images/smerity_bw.jpg" />
             </div>
             <!-- TODO: Place Twitter here -->
             <p>
               I'm <b>Stephen Merity</b>, better known in most places as <b>Smerity</b>.
-            </p>
-            <p>
-              I spend my time doing what I enjoy, which is primarily some mix of coding and teaching.
-              I've not yet had to live through a job I didn't enjoy.
             </p>
             <p>
               <b>Sydney University:</b><br />
@@ -46,14 +50,18 @@
               <b>Harvard University:</b><br />
               <a href="http://iacs.seas.harvard.edu/master-of-science-in-cse">MS in CSE</a> (starting August 2013)
             </p>
-
-            <h4>Interested in saying hi?</h4>
             <p>
-                <a href="mailto:smerity@smerity.com">smerity@smerity.com</a>
+              <b><a href="/abme.html">Read more about me</a></b>
             </p>
             <p>
-                {#I also have &lt;insert social media&gt;.#}
-                <a href="https://www.twitter.com/Smerity/">Twitter</a>, <a href="https://www.facebook.com/smerity">Facebook</a>, etc.
+              <b>Interested in saying hi?</b><br />
+              <div class="contact-me">
+              <a href="https://www.twitter.com/Smerity/" alt="Twitter"><i class="icon-twitter"></i></a>
+              <a href="https://facebook.com/smerity" alt="Facebook"><i class="icon-facebook-sign"></i></a>
+              <a href="https://github.com/Smerity/" alt="GitHub"><i class="icon-github"></i></a>
+              <a href="http://au.linkedin.com/in/smerity" alt="LinkedIn"><i class="icon-linkedin"></i></a>
+              <a href="mailto:smerity@smerity.com" alt="Email"><i class="icon-envelope-alt"></i></a>
+              </div>
             </p>
 
             {#
@@ -72,5 +80,7 @@
     {% endblock %}
   </div>
   {% endblock %}
+  {% block bottom_css %}{% endblock %}
+  {% block bottom_js %}{% endblock %}
   </body>
 </html>

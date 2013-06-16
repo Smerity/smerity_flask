@@ -1,27 +1,45 @@
 {% extends "_base.html" %}
 
 {% block body %}
+
 <div class="hero-box">
-  <!--
-  <h1 class="slogan">A nerd who enjoys nerdy things,</h1>
-  <h2>mad ideas, improbable code &amp; binary jokes</h2>
-  -->
-
-  <div style="max-width: 600px; margin: 0 auto;">
-    <h1 class="slogan">Smerity (n):</h1>
+  <div class="hero-inner">
+    <h1 class="highlight slogan">Smerity (n):</h1>
     <h2>
-      {#
-      A nerd who enjoys nerdy things,
-      insane ideas, improbable code &amp; binary jokes
-      #}
-      Saving the world <span style="border-radius: 5px;margin: 0px 3px;background-color: #611016;padding: 1px 3px;color: #ccc;">one byte</span> at a time.
-     </h2>
+    Saving the world one byte at a time.
+    </h2>
+    <h3 class="contact-me">
+      <a href="https://www.twitter.com/Smerity/" alt="Twitter"><i class="icon-twitter"></i></a>
+      <a href="https://facebook.com/smerity" alt="Facebook"><i class="icon-facebook-sign"></i></a>
+      <a href="https://github.com/Smerity/" alt="GitHub"><i class="icon-github"></i></a>
+      <a href="http://au.linkedin.com/in/smerity" alt="LinkedIn"><i class="icon-linkedin"></i></a>
+      <a href="mailto:smerity@smerity.com" alt="Email"><i class="icon-envelope-alt"></i></a>
+    </h3>
   </div>
-
 </div>
 
 <div class="center-box">
   <div class="container">
+
+<header class="navbar">
+  <nav class="navbar-inner-clean">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><a href="/articles/articles.html">Articles</a></li>
+          {#<li><a href="/consulting.html">Consulting</a></li>#}
+          <li><a href="/abme.html">About Me</a></li>
+          {#<li><a href="/define.html">Define Me</a></li>#}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
 
     <div class="row">
       <h1>More specifically...</h1>
@@ -36,26 +54,9 @@
         I'm an external co-lecturer for Sydney University's Computer &amp; Network Security (ELEC5616) and a teaching assistant for Tech Venture Creation (ELEC5701).
         In August 2013, I'll be going to Harvard University to complete a Master of Science (SM) in Computational Science and Engineering (CSE).
         </p>
-        <h2>And where do I do stuff..?</h2>
-        <p>
-<a href="https://facebook.com/smerity">Facebook</a> -
-<a href="https://github.com/Smerity/">Github</a> -
-<a href="http://au.linkedin.com/in/smerity">LinkedIn</a> -
-<a href="https://www.twitter.com/Smerity/">Twitter</a> -
-<a href="mailto:smerity@smerity.com">smerity@smerity.com</a>
-        </p>
       </div>
 
       {#
-        <p>
-        Many a moon ago, Smerity attended the University of Sydney.
-        Due to the havoc he caused, they attempted to lock him out of the establishment by throwing a shiny metal disc.
-        Only later did they discover this was a <a href="https://www.facebook.com/photo.php?fbid=10150889671364712&l=94317b5c14">University Medal</a>.
-        </p>
-        <p>
-        Smerity can be instructed in multiple programming languages and a small selection of natural ones.
-        He comes with various attachments, including arms, legs, and a powerful processing unit.
-        </p>
         <p style="border: 1px solid #DDD; border-bottom: 2px solid #DDD; border-right: 2px solid #DDD; padding: 4px 16px;">
           <b>Note:</b> Processor unit may be missing or damaged. Do not shake.
         </p>
@@ -72,8 +73,8 @@
           Do not operate production hardware whilst under the influence of Smerity
         </p>
       #}
-
     </div>
+
   </div>
 </div>
 

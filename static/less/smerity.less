@@ -18,7 +18,7 @@ img.shadowed {
 
 img.smooth {
     .border-radius(8px);
-    .box-shadow(1px 1px 4px #CCC);
+    //.box-shadow(1px 1px 4px #CCC);
     border: 1px solid #BBB;
 }
 
@@ -40,6 +40,19 @@ img.pronounced {
     padding-right: 20px;
     margin-bottom: 8px;
 }
+
+.navbar {
+  margin: 0 auto;
+}
+
+.navbar .nav {
+  float: none;
+  & > li {
+    float: none;
+    display: inline-block;
+  }
+}
+
 .navbar .nav > li > a {
     border-bottom: 3px solid #CCC;
     margin: 0 6px;
@@ -51,14 +64,26 @@ img.pronounced {
 }
 
 .hero-box {
-    width: 100%;
-    text-align: center;
-    padding: 28px 0px;
+  .clearfix();
+  text-align: center;
 
-    background-color: #C1272D;
-    #gradient > .vertical(#C1272D, #A1171D);
+  background-color: #C1272D;
+  #gradient > .vertical(#C1272D, #A1171D);
 
-    h1.slogan {
+  .hero-inner {
+    padding: 28px 8px;
+  }
+  .hero-inner.min-padded {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .hero-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    min-height: 50px;
+
+    .slogan {
         color: #611016;
         font-size: 48px;
         margin-top: 0px;
@@ -70,7 +95,35 @@ img.pronounced {
         font-size: 28px;
         font-weight: 400;
     }
+    h3 {
+      color: #611016;
+      font-size: 22px;
+      line-height: 24px;
+    }
+
+    h1.slogan, .hero-box h2, .hero-box h3 {
+      margin: 0 4px;
+    }
+
+    .highlight {
+      color: #edd;
+    }
+  }
 }
+
+.contact-me a {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  font-size: 22px;
+  border-bottom: 0;
+}
+.hero-box .contact-me a {
+  color: #edd;
+  &:hover {
+    color: #fff;
+  }
+}
+
 .center-box {
     text-align: center;
 
@@ -113,14 +166,25 @@ a:hover {
     }
 }
 
+ul.crossed li, .content-box ul li {
+    list-style-type: none;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+ul.crossed li:before, .content-box ul li {
+    content: "✖ ";
+    color: #666;
+}
+
+
 .content-box {
     margin-top: 24px;
     //max-width: 600px;
     margin: 0 auto;
     //float: left;
-    background-color: #FFF;
+    //background-color: #FFF;
     padding: 20px;
-    border: 1px solid #CCC;
+    //border: 1px solid #CCC;
 
     .post-date {
         text-align: right;
@@ -130,16 +194,6 @@ a:hover {
 
     p {
         text-indent: 20px;
-    }
-
-    ul li {
-        list-style-type: none;
-        margin-top: 3px;
-        margin-bottom: 3px;
-    }
-    ul li:before {
-        content: "✖ ";
-        color: #666;
     }
 
     > h1 {
@@ -162,7 +216,7 @@ a:hover {
         border-left: 1px solid #DDD;
 
         li {
-            padding: 16px;
+            padding: 4px 16px;
             border: 1px solid #DDD;
             border-right: 2px solid #DDD;
             border-bottom: 2px solid #DDD;
