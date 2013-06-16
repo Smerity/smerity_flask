@@ -38,4 +38,4 @@ content: |
     The code used to generate it performs the exact same steps each time, so should always produce the same result.
     This is seen in other browsers such as Firefox.
 
-    <img class="center" src="/media/images/articles/2011/heisenbug/wtf_sierpinski_chrome_small.png" />
+    <img class="center smooth" src="/media/images/articles/2011/heisenbug/wtf_sierpinski_chrome_small.png" />

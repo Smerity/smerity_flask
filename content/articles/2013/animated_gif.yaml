@@ -4,7 +4,7 @@ content: |
     Have you ever posted an animated GIF to an application or website that didn't like the idea of motion?
     You likely ended up with a horrible, strange looking freeze frame.
 
-    <img class="center" src="/media/images/articles/2013/the_spotty_gif_small.gif" class="smooth" />
+    <img class="center smooth" src="/media/images/articles/2013/the_spotty_gif_small.gif" class="smooth" />
 
     I know.
     You've pondered this question for the longest time.
@@ -35,7 +35,7 @@ content: |
     That's exactly what GIF does.
 
     <a href="http://www.imagemagick.org/Usage/anim_opt/#opt_trans">
-      <img class="center" src="/media/images/articles/2013/the_spotty_gif_bunny_bgnd_opttrans_frames.gif" class="smooth" />
+      <img class="center smooth" src="/media/images/articles/2013/the_spotty_gif_bunny_bgnd_opttrans_frames.gif" class="smooth" />
     </a>
 
     One of the colours you can select is transparent.
@@ -73,7 +73,7 @@ content: |
     Or, at the very least, you've discovered something interesting and new.
     I'm happy to settle for that.
 
-    <img class="center" src="/media/images/articles/2013/the_spotty_gif_small.gif" class="smooth" />
+    <img class="center smooth" src="/media/images/articles/2013/the_spotty_gif_small.gif" class="smooth" />
 
     ### Random Thought
 

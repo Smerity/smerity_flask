@@ -27,7 +27,7 @@ content: |
         stack.append("E") # Shift
         # stack = ["A", "B", "C", "D", "E"]
 
-    <img class="center" src="/media/images/articles/2011/gss/exponential.png" />
+    <img class="center smooth" src="/media/images/articles/2011/gss/exponential.png" />
 
     ### Deterministic Recogniser SR Parser
 
@@ -73,16 +73,16 @@ content: |
     The graph-structured stack makes the _reduce_ operation non-destructive by creating a new head for each possible derivation.
     Below we can see there are now four heads to the graph structured stack.
 
-    <img class="center" src="/media/images/articles/2011/gss/splitting.png" />
+    <img class="center smooth" src="/media/images/articles/2011/gss/splitting.png" />
 
     ### Combining
     When a new node is _shifted_, it is combined with each of the heads of the graph-structured stack.
     This means that only a single shift operation is needed instead of __n__ shift operations where __n__ is the number of possible derivations in the previous step.
 
-    <img class="center" src="/media/images/articles/2011/gss/combining.png" />
+    <img class="center smooth" src="/media/images/articles/2011/gss/combining.png" />
 
     ### Local Ambiguity Packing
     Finally, if two reduction rules produce the same node (for whatever we define "same" as), the two nodes are merged into a single node.
     In the case below, two rules produce an equivalent node __J__ (their stacks are equivalent as can be seen by the back pointer), so they are merged into a single __J__ node.
 
-    <img class="center" src="/media/images/articles/2011/gss/lap.png" />
+    <img class="center smooth" src="/media/images/articles/2011/gss/lap.png" />

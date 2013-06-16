@@ -84,7 +84,7 @@ content: |
     If a web browser doesn't support this flag, it'll just fall back to the standard for HTTP or HTTPS.
     Which browsers support these?
 
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <th>Web Browser</th>
         <th>Meta Referrer Support</th>
@@ -113,7 +113,7 @@ content: |
     Let's say in a year they'll get it <abbr title="I might be a little optimistic here..? ;)">all sorted</abbr>.
     What popular websites are using meta referrer?
 
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <th>Website</th>
         <th>Meta Referrer</th>

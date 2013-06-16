@@ -52,7 +52,9 @@ content: |
     As such, we tried to find the factor starting from <code>i = 496968652506233112158689</code> (around 78 bits) and going up.
     The starting point <code>i</code> is only 10e6 away from one of the primes <code>p</code> so is equivalent to running the loop 5e6 times.
 
-    You can check out the code [here](https://gist.github.com/Smerity/5377142).
+    <p class="alert alert-info">
+      You can check out the code <a href="https://gist.github.com/Smerity/5377142">here</a>.
+    </p>
 
     <table class="table table-striped">
       <thead>

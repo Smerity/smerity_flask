@@ -66,5 +66,5 @@ content: |
     <abbr title="They're just bits. The darn int32 would wrap around when you hit 4,294,967,296 anyway, and that's assuming it's unsigned! Until karma is stored in bigints I'm not going to risk playing.">Average karma be damned</abbr>.
 
     <a href="http://www.reddit.com/r/upvotegifs">
-      <img class="center" title="People are obsessed with giving and receiving upvotes. Really really." src="/media/images/articles/2013/reddit_karma.gif" width="450" />
+      <img class="center smooth" title="People are obsessed with giving and receiving upvotes. Really really." src="/media/images/articles/2013/reddit_karma.gif" width="450" />
     </a>

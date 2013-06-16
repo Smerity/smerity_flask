@@ -37,9 +37,7 @@ content: |
     Each cryptographer flips a coin (0 or 1), with the value of Alice's coin being <code>a</code>, Bob's being <code>b</code> and so on.
     Each cryptographer then checks if their coin's value is the same as the person's next to them (xor) and stores these computed values (<code>A</code> for Alice, <code>B</code> for Bob, ...).
 
-    <div align="center">
-        <img src="/media/images/articles/2012/dining_crypto.png" />
-    </div>
+    <img class="center" src="/media/images/articles/2012/dining_crypto.png" />
 
     <!--
     A = (a ^ c)  
