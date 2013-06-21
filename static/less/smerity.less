@@ -13,7 +13,7 @@ footer {
 }
 
 img.shadowed {
-  box-shadow: 0px 0px 8px rgba(18,7,6,0.4);
+  .box-shadow(0px 0px 8px rgba(18,7,6,0.4));
 }
 
 img.smooth {
@@ -70,6 +70,7 @@ img.pronounced {
 
   background-color: #C1272D;
   #gradient > .vertical(#C1272D, #A1171D);
+  .box-shadow(2px 0px 8px rgba(0,0,0,0.8));
 
   .hero-inner {
     padding: 28px 8px;
@@ -118,10 +119,16 @@ img.pronounced {
   font-size: 22px;
   border-bottom: 0;
 }
-.hero-box .contact-me a {
+.hero-box .white.contact-me a {
   color: #edd;
   &:hover {
     color: #fff;
+  }
+}
+.hero-box .maroon.contact-me a {
+  color: #611016;
+  &:hover {
+    color: #3c0308;
   }
 }
 
