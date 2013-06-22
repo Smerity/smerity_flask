@@ -1,0 +1,45 @@
+title: "Remembering The Forgotten: Dithering"
+date: 2013-06-22
+content: |
+    When most programmers and designers think about dithering, they think of images and animations from an ancient era -
+    from the days when games advertised True Colour as a feature and your computer had a turbo button on it.
+
+    Given that, you might think there's no good reason to think about dithering.
+    As with anything, though, even anicent skills can still sometimes be useful.
+    At the very least, it's pretty fascinating how such a simple tool can work so well.
+    Let me add another tool to your arsenal -- even if you don't ever intend to use it.
+
+    ## Brief Reminder: Colours in the Browser (or #FFF)
+
+    In the browser, you'll usually see colours represented in two different ways:
+
+    <ul class="crossed">
+      <li>Hexadecimal notation (#RGB or #RRGGBB) where the values can go from 0x00 (0) to 0xFF (255)</li>
+      <li>rgb/rgba notation where each of the colour components (and the alpha component for rgba) can be a decimal from 0 to 255</li>
+    </ul>
+
+    They're both just ways of telling the browser how much red, green and blue go into making a given colour.
+    Each of the colour channels (R, G, B) get 8 bits each -- or 256 different possible values (0 to 255).
+    Alpha, or the transparency, can also get 256 different values.
+
+    In total, it takes 24 bits (sum of 8 bits per each of the three colour channels) to convey the colour.
+    This means you can view a total of over 16 million colours with the standard 24 bit colour display.
+    Sounds pretty reasonable, right?
+
+    <img class="center" src="/media/images/articles/2013/rgba.svg" width="400px" />
+
+    ## Limited Colours &amp; Dithering
+
+    Imagine you fell in a trans-space-time-pan-dimensional-worm-hole-thingy which may or may not be run by an unlicensed doctor out of a big blue box.
+    Giving you no choice, he's thrown you back in time, back to the days when computers were slow and bits were expensive.
+    How can you improve the perceived image quality if you're limited to only displaying a palette 256 different colours on the screen at once?
+
+    #### Interesting Links
+
+    + Wikipedia: [Dither](http://en.wikipedia.org/wiki/Dither), [Error Diffusion](http://en.wikipedia.org/wiki/Error_diffusion) &amp; [Floyd-Steinberg dithering](http://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering)
+    + [Mezzotint](http://en.wikipedia.org/wiki/Mezzotint)
+    + [Bugzilla - Add dithering to gradient color transitions to address banding in 24-bit "truecolor"](https://bugzilla.mozilla.org/show_bug.cgi?id=627771)
+    + [WebKit gradients show banding on Chrome](https://code.google.com/p/chromium/issues/detail?id=41756) &amp; [css webkit-linear-gradient causes flicker on MacBook Pro (1680x1050)](https://code.google.com/p/chromium/issues/detail?id=226753)
+    + [24-bit Colour Sucks](http://tiamat.tsotech.com/24-bit-color-sucks)
+    + [Video Game Dithering](http://retro-sanctuary.com/comparisons%20-%20differing.html)
+    + [Video captures comparing RGB and NTSC composite](http://www.chrismcovell.com/gotRGB/rgb_compare.html)
