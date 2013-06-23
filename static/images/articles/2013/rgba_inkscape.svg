@@ -9,32 +9,37 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="900"
+   version="1.1"
+   width="610"
    height="255"
    id="svg2"
-   version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="rgba_raw.svg">
-  <defs
-     id="defs4" />
+   sodipodi:docname="rgba_inkscape.svg"
+   inkscape:export-filename="/home/smerity/Coding/smerity_flask/static/images/articles/2013/rgba_inkscape.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <sodipodi:namedview
-     id="base"
      pagecolor="#ffffff"
      bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.58"
-     inkscape:cx="209.72906"
-     inkscape:cy="379.85222"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="744"
+     id="namedview19"
+     showgrid="false"
+     inkscape:zoom="1.1360799"
+     inkscape:cx="450"
+     inkscape:cy="127.5"
      inkscape:window-x="0"
      inkscape:window-y="24"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs4" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -48,91 +53,71 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-797.36218)">
+     transform="translate(0,-797.36218)"
+     id="layer1">
     <rect
-       style="fill:#ff0000;fill-opacity:0.15525118;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       width="63.793102"
+       height="63.793102"
+       x="115.1207"
+       y="885.03448"
        id="rect2985-8-5-9-0"
+       style="fill:#ff0000;fill-opacity:0.15525118;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
        width="63.793102"
        height="63.793102"
-       x="193.1207"
-       y="885.03448" />
-    <rect
-       style="fill:#ff0000;fill-opacity:0.15525118;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       x="197.08005"
+       y="885.03448"
        id="rect2985-8-5-9-0-6"
+       style="fill:#ff0000;fill-opacity:0.15525118;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
        width="63.793102"
        height="63.793102"
-       x="275.08005"
-       y="885.03448" />
-    <rect
-       style="fill:#00ff00;fill-opacity:0.15686275;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       x="279.0394"
+       y="885.03448"
        id="rect2985-8-5-9-0-0"
+       style="fill:#00ff00;fill-opacity:0.15686275;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
        width="63.793102"
        height="63.793102"
-       x="357.0394"
-       y="885.03448" />
-    <rect
-       style="fill:#00ff00;fill-opacity:0.15686275;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       x="360.99875"
+       y="885.03448"
        id="rect2985-8-5-9-0-4"
+       style="fill:#00ff00;fill-opacity:0.15686275;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
        width="63.793102"
        height="63.793102"
-       x="438.99875"
-       y="885.03448" />
-    <rect
-       style="fill:#0000ff;fill-opacity:0.15686275;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       x="442.95813"
+       y="885.03448"
        id="rect2985-8-5-9-0-68"
+       style="fill:#0000ff;fill-opacity:0.15686275;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
        width="63.793102"
        height="63.793102"
-       x="520.95813"
-       y="885.03448" />
-    <rect
-       style="fill:#0000ff;fill-opacity:0.15686275;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       x="524.91742"
+       y="885.03448"
        id="rect2985-8-5-9-0-6-9"
-       width="63.793102"
-       height="63.793102"
-       x="602.91742"
-       y="885.03448" />
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect2985-8-5-9-0-0-0"
-       width="63.793102"
-       height="63.793102"
-       x="684.87683"
-       y="885.03448" />
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect2985-8-5-9-0-4-7"
-       width="63.793102"
-       height="63.793102"
-       x="766.83618"
-       y="885.03448" />
+       style="fill:#0000ff;fill-opacity:0.15686275;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
     <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:18.68000031px;word-spacing:0px;fill:#00000b;fill-opacity:1;stroke:none;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
-       x="124.55172"
+       x="46.55172"
        y="869.25873"
        id="text3928"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3930"
-         x="124.55172"
-         y="869.25873"
-         style="font-size:80px;letter-spacing:19.45999908px;fill:#00000b;fill-opacity:1"># R R G G B B <tspan
-   style="letter-spacing:15.99000072px;fill:#00000b;fill-opacity:0.15686275"
-   id="tspan3934">A A</tspan></tspan></text>
-    <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:18.68000031px;word-spacing:0px;fill:#00000b;fill-opacity:1;stroke:none;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
-       x="78.55172"
+       sodipodi:linespacing="125%"><tspan
+         x="46.55172"
+         y="869.25873"
+         id="tspan3930"
+         style="font-size:80px;letter-spacing:19.45999908px;fill:#00000b;fill-opacity:1"># R R G G B B</tspan></text>
+    <text
+       x="6.5517197"
        y="1027.2588"
        id="text3928-5"
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:18.68000031px;word-spacing:0px;fill:#00000b;fill-opacity:1;stroke:none;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
        sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3930-4"
-         x="78.55172"
+         x="6.5517197"
          y="1027.2588"
-         style="font-size:80px;letter-spacing:4px;fill:#00000b;fill-opacity:1">rgba( rrr , ggg , bbb , aaa )</tspan></text>
+         id="tspan3930-4"
+         style="font-size:80px;letter-spacing:4px;fill:#00000b;fill-opacity:1">rgb( rrr ,  ggg ,  bbb )</tspan></text>
   </g>
 </svg>
