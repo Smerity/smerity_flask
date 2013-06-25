@@ -1,38 +1,77 @@
-title: "Remembering The Forgotten: Dithering"
+title: "Colours, dithering and why red isn't quite red"
 date: 2013-06-22
 content: |
-    When most programmers and designers think about dithering, they think of images and animations from an ancient era -
-    from the days when games advertised True Colour as a feature and your computer had a turbo button on it.
+    When most programmers and designers think about dithering, they think of images and animations from an
+    <abbr title="i.e. when your computer had a turbo button on it">ancient era</abbr> or [an annoying animated GIF](/articles/2013/animated_gif.html).
+    Surprisingly though dithering is still alive and well in many, *many* places.
+    Some of those places would give web designers nightmares.
 
-    Given that, you might think there's no good reason to think about dithering.
-    As with anything, though, even anicent skills can still sometimes be useful.
-    At the very least, it's pretty fascinating how such a simple tool can work so well.
-    Let me add another tool to your arsenal -- even if you don't ever intend to use it.
+    ## Brief Reminder: Colours in the Browser (Roses are #F00...)
 
-    ## Brief Reminder: Colours in the Browser (or #FFF)
-
-    In the browser, you'll usually see colours represented in two different ways:
+    In the browser, as defined by the [W3 spec for CSS3 colours](http://www.w3.org/TR/css3-color/#rgb-color), you'll usually see colours represented in a few different ways:
 
     <ul class="crossed">
-      <li>Hexadecimal notation (#RGB or #RRGGBB) where the values can go from 0x00 (0) to 0xFF (255)</li>
-      <li>rgb/rgba notation where each of the colour components (and the alpha component for rgba) can be a decimal from 0 to 255</li>
+      <li><code>color: #rgb</code> - three-digit RGB notation</li>
+      <li><code>color: #rrggbb</code> - six-digit RGB notation</li>
+      <li><code>rgb(rrr, ggg, bbb)</code> - integer valued (0-255) RGB notation</li>
+      <li><code>rgb(r%, g%, b%)</code> - percentage valued RGB notation</li>
+      <li><code>rgba(rrr, ggg, bbb, aaa)</code> - integer valued (0-255) RGB notation with an alpha channel</li>
+      <li><code>rgba(r%, g%, b%, a%)</code> - percentage valued RGB notation with an alpha channel</li>
     </ul>
 
-    They're both just ways of telling the browser how much red, green and blue go into making a given colour.
-    Each of the colour channels (R, G, B) get 8 bits each -- or 256 different possible values (0 to 255).
-    Alpha, or the transparency, can also get 256 different values.
+    *Tangent:* the three-digit RGB notation is expanded to the six-bit by repeating the hex digit (`#rgb` becomes `#rrggbb` instead of `#r0g0b0`).
+    This, amongst other things, ensures that black (`#000`) and white (`#FFF`) expand to absolute black and white (`#000000` and `#FFFFFF` respectively).  
+    *Double Tangent:* the [W3 spec for CSS3 colours](http://www.w3.org/TR/css3-color/#rgba-color) states that a browser that doesn't understand or support `rgba` can't just "cheat" and drop the alpha channel.
 
-    In total, it takes 24 bits (sum of 8 bits per each of the three colour channels) to convey the colour.
+    <img class="center" src="/media/images/articles/2013/rgba.png" width="300px" />
+
+    They're all just ways of telling the browser how much red, green and blue go into making a given colour.
+    In total, a colour is conveyed using 24 bits (sum of 8 bits per each of the three colour channels).
+    Each of the colour channels (R, G, B) get 8 bits each -- or 256 different possible values (0 to 255).
+    The only exception is three-digit RGB notation which specifies 4 bits per channel.
     This means you can view a total of over 16 million colours with the standard 24 bit colour display.
     Sounds pretty reasonable, right?
 
-    <img class="center" src="/media/images/articles/2013/rgba.svg" width="400px" />
-
     ## Limited Colours &amp; Dithering
 
-    Imagine you fell in a trans-space-time-pan-dimensional-worm-hole-thingy which may or may not be run by an unlicensed doctor out of a big blue box.
-    Giving you no choice, he's thrown you back in time, back to the days when computers were slow and bits were expensive.
-    How can you improve the perceived image quality if you're limited to only displaying a palette 256 different colours on the screen at once?
+    Imagine you've been thrown
+    <abbr title="Likely via a trans-space-time-pan-dimensional-worm-hole-thingy which may or may not have been run by an unlicensed doctor out of a big blue box...">back in time</abbr>,
+    to the days when computers were slow and bits were expensive.
+    How can you improve the perceived image quality if you're limited to only displaying a palette of N different colours on the screen at once?
+    *You cheat*.
+    Dithering takes advantage of the human eye's tendency to "mix" two colors in close proximity to one another.
+
+    ### Spatial Dithering
+
+    If you intermix two different colours evenly and discretely enough, the human eye sees an average of the two colours.
+    In this case, when red and blue are mixed in a checkerboard pattern, the result appears a convincing purple.
+    This is the traditonal case of dithering and is most commonly seen in old school games and animated GIFs
+    due to their lack of a full colour palette.
+
+    <img class="center" src="/media/images/articles/2013/dithering_red_blue.png" />
+
+    ### Temporal Dithering
+
+    You can also alternate quickly between two colours to end up with what appears to be the average of the two.
+    This is referred to as temporal dithering.
+    You'll most commonly find temporal dithering in hardware, specifically to improve the appearance of an image on a sub-par television or monitor display.
+
+    I've made an example of dithering using frame rate control but I preface it with the warning that it may be unsafe for those with epilepsy.
+    If you're still happy that it won't impact you medically and you don't mind your CPU bursting into flames, [click here](http://codepen.io/Smerity/pen/Abwcu).
+    Why not use an animated GIF, you might ask?
+    It turns out that browsers don't like rapidly changing GIFs all that much.
+    The [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame) is the best way to deal with rapidly changing elements in a browser.
+
+    ## But everyone has good monitors now, right? There's no dithering!
+
+    ### Minor issue: colour banding in gradients
+
+    If you were creating a soft linear gradient on a website, you might hit an issue.
+    Imagine a soft shifting gradient from dark grey (#333) to lighter grey (#666) on a website.
+
+    ### Major issue: low quality 18-bit monitors
+
+    ## That red might not be the red you expected...
 
     #### Interesting Links
 
