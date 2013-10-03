@@ -19,8 +19,12 @@
   <div class="container">
     {% block container %}
       <div class="row">
-      <div class="span8 content-box">
-      {% block content %}{% endblock %}
+      <div class="span8 content-wrapper">
+        {% block content_header %}
+        {% endblock %}
+        <div class="content-box">
+        {% block content %}{% endblock %}
+        </div>
       </div>
       {% block sidebar %}
         <div class="span3 side-box">
