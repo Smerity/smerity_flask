@@ -1,6 +1,10 @@
-title: "Colours, dithering and why red isn't quite red"
+title: "Dithering: how it works and why it matters"
 date: 2013-06-22
+og:
+  description: Dithering might seem old school, but it's still alive in many, many places. Find out where and why.
+  image: 
 content: |
+
     When most programmers and designers think about dithering, they think of images and animations from an
     <abbr title="i.e. when your computer had a turbo button on it">ancient era</abbr> or [an annoying animated GIF](/articles/2013/animated_gif.html).
     Surprisingly though dithering is still alive and well in many, *many* places.
@@ -11,8 +15,8 @@ content: |
     In the browser, as defined by the [W3 spec for CSS3 colours](http://www.w3.org/TR/css3-color/#rgb-color), you'll usually see colours represented in a few different ways:
 
     <ul class="crossed">
-      <li><code>color: #rgb</code> - three-digit RGB notation</li>
-      <li><code>color: #rrggbb</code> - six-digit RGB notation</li>
+      <li><code>#rgb</code> - three-digit RGB notation</li>
+      <li><code>#rrggbb</code> - six-digit RGB notation</li>
       <li><code>rgb(rrr, ggg, bbb)</code> - integer valued (0-255) RGB notation</li>
       <li><code>rgb(r%, g%, b%)</code> - percentage valued RGB notation</li>
       <li><code>rgba(rrr, ggg, bbb, aaa)</code> - integer valued (0-255) RGB notation with an alpha channel</li>
@@ -21,14 +25,16 @@ content: |
 
     *Tangent:* the three-digit RGB notation is expanded to the six-bit by repeating the hex digit (`#rgb` becomes `#rrggbb` instead of `#r0g0b0`).
     This, amongst other things, ensures that black (`#000`) and white (`#FFF`) expand to absolute black and white (`#000000` and `#FFFFFF` respectively).  
-    *Double Tangent:* the [W3 spec for CSS3 colours](http://www.w3.org/TR/css3-color/#rgba-color) states that a browser that doesn't understand or support `rgba` can't just "cheat" and drop the alpha channel.
+    <!--*Double Tangent:* the [W3 spec for CSS3 colours](http://www.w3.org/TR/css3-color/#rgba-color) states that a browser that doesn't understand or support `rgba` can't just "cheat" and drop the alpha channel.-->
 
     <img class="center" src="/media/images/articles/2013/rgba.png" width="300px" />
 
-    They're all just ways of telling the browser how much red, green and blue go into making a given colour.
-    In total, a colour is conveyed using 24 bits (sum of 8 bits per each of the three colour channels).
+    All the above are just ways of telling the browser how much red, green and blue go into making a given colour.
+    For a standard browser, this is conveyed using 24 bits (8 bits per each of the three colour channels).
+    <!--
     Each of the colour channels (R, G, B) get 8 bits each -- or 256 different possible values (0 to 255).
     The only exception is three-digit RGB notation which specifies 4 bits per channel.
+    -->
     This means you can view a total of over 16 million colours with the standard 24 bit colour display.
     Sounds pretty reasonable, right?
 
@@ -48,7 +54,9 @@ content: |
     This is the traditonal case of dithering and is most commonly seen in old school games and animated GIFs
     due to their lack of a full colour palette.
 
-    <img class="center" src="/media/images/articles/2013/dithering_red_blue.png" />
+    <a href="http://en.wikipedia.org/wiki/File:Dithering_example_red_blue.png">
+      <img class="center" src="/media/images/articles/2013/dithering_red_blue.png" />
+    </a>
 
     ### Temporal Dithering
 
@@ -61,8 +69,9 @@ content: |
     Why not use an animated GIF, you might ask?
     It turns out that browsers don't like rapidly changing GIFs all that much.
     The [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame) is the best way to deal with rapidly changing elements in a browser.
+    Better yet would be to actually implement it in something natively, but you wouldn't download arbitrary code off a website and run it, right..? ;)
 
-    ## But everyone has good monitors now, right? There's no dithering!
+    ## But everyone has good monitors now, right? No need for dithering!
 
     ### Minor issue: colour banding in gradients
 
