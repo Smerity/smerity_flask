@@ -1,0 +1,214 @@
+title: "How Google can prevent the NSA's abuse of Google Analytics"
+title: "Google, prevent the NSA's abuse of Google Analytics"
+title: "Google, make Google Analytics HTTPS by default"
+description: "In December 2013, it was discovered that the NSA uses Google cookies to pinpoint targets for hacking. This is only made possible due to Google Analytics not using HTTPS. More worryingly, the heavy usage of Google Analytics means that most of your web browsing habits can be easily intercepted."
+image: "http://smerity.com/media/images/articles/2013/google_analytics.png"
+date: 2013-12-26
+content: |
+    <!--
+    <blockquote>
+      <p>
+        Thanks to the pervasive nature of Google Analytics, the NSA has an easy eavesdropping opportunity that is still open to this day.
+      </p>
+      <p>
+        How can this be fixed?
+        Sadly not by the end developer and the majority of end users are either not competent enough to understand or not fully aware of what is happening.
+        Google could counter this potential privacy invasion similar to how they have countered previous threats, however.
+      </p>
+    </blockquote>
+    -->
+
+    <!--
+    Start with authority (Harvard research), reference to past work (HTTP referrers), and social validation (highest voted comment).
+    -->
+
+    <!--
+    It likely doesn't surprise you to know that most of our dealings on the Internet are tracked.
+    In this age, information is valuable, stored and catalogued for a myriad of purposes, seldom discarded.
+    Even if you're not surprised yet, I tend to think you'll be surprised when you realise just how heavily tracked you already are.
+    -->
+
+    Over the past few years, Google have moved closer and closer towards implementing SSL on all their products.
+    In January 2010, [Gmail became HTTPS by default](http://gmailblog.blogspot.com/2010/01/default-https-access-for-gmail.html).
+    In October 2011, [Google Search became HTTPS by default](http://googleblog.blogspot.com/2011/10/making-search-more-secure.html).
+    In September 2013, [Google AdSense added support for serving through HTTPS](http://googledevelopers.blogspot.com.au/2013/09/https-compatible-ad-code-for-adsense.html).
+
+    In December 2013, it was discovered that [the NSA uses Google cookies to pinpoint targets for hacking](http://www.washingtonpost.com/blogs/the-switch/wp/2013/12/10/nsa-uses-google-cookies-to-pinpoint-targets-for-hacking/).
+    This is only made possible due to Google Analytics not using HTTPS.
+    More worryingly, the heavy usage of Google Analytics means that most of your web browsing habits can be easily intercepted.
+
+    **Google, make early 2014 when Google Analytics becomes HTTPS by default.**
+
+    With a flick of a switch, Google can add security against unwanted surveillance for billions of users and webpages across the Internet.
+
+    <p class="alert alert-error">
+      Before I begin, let me be clear about a few things.
+      This is not a statement against <abbr title="I might change my tone if Google acquires Amazon, or the other way around, and an unholy drone army born from Google's driverless car technology and the Bezos drone armada begins hunting down all users who haven't yet given Google their real name for use on YouTube comments.">Google</abbr>, Google Analytics, referrer tracking, or analytics in general.
+      Additionally, while I use results from work I did while a student at Harvard University, these opinions are my own.
+    </p>
+
+    <!--
+    Google Analytics (GA) is one of the most pervasive web analytics tools available on the Internet.
+    It is used on more than 60% of the top 100,000 domains in the world.
+    While the percentage of websites using Google Analytics gives a loose indication of how pervasive it is, this is not a true measure of how widely the impact is felt.
+    If you land on a web page with Google Analytics, a multitude of details are recorded, including the HTTP referrer, or web page that lead you to the current website.
+    Thus, if every second link you click lands you on a web page that uses Google Analytics, Google might have enough information to reconstruct your entire path.
+    -->
+
+    <!--
+    The primary aim of this post is to justify how desperately HTTPS by default for Google Analytics is needed:
+    to understand how pervasive the monitoring of the Internet is using Google Analytics, how this benefits the NSA, and then to urge Google to modify Google Analytics to counter this potential privacy intrusion.
+    -->
+
+    ## How much of your browsing history does Google Analytics see?
+
+    Half a year ago, I wrote an article about [HTTP referrers](http://smerity.com/articles/2013/where_did_all_the_http_referrers_go.html).
+    As a minor tangent to the article, I posed the question *"how much of the traffic around the Internet is Google in a place to observe?"*, primarily as Google Analytics (GA) is one of the biggest users of HTTP referrers.
+    Recently I had the opportunity to investigate this question further by [research conducted for a final project at Harvard University](http://smerity.com/cs205_ga/).
+
+    Just how pervasive is Google Analytics?
+    [65.7% of the top 10k sites, 64.2% of the top 100k, and 50.8% of the top million use Google Analytics](http://trends.builtwith.com/analytics/Google-Analytics).
+    In practical terms, this means that you're either on a domain that is using Google Analytics or <abbr title="Indeed, if you clicked on the BuiltWith link above, that page uses Google Analytics. Oh, and this one does too. Sorry.">your next click will likely land you on one that does</abbr>.
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>N domains</th>
+          <th>Source</th>
+          <th>Percentage using Google Analytics</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Top 10k</td>
+          <td>BuiltWith</td>
+          <td>65.7%</td>
+        </tr>
+        <tr>
+          <td>Top 100k</td>
+          <td>BuiltWith</td>
+          <td>64.2%</td>
+        </tr>
+        <tr>
+          <td>Top million</td>
+          <td>BuiltWith</td>
+          <td>50.8%</td>
+        </tr>
+        <tr>
+          <td>Random 48.5 million</td>
+          <td><a href="http://smerity.com/cs205_ga/">C. Hornbaker, S. Merity (2013)</a></td>
+          <td>26.96%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    While the percentage of websites using Google Analytics has been calculated for a specific set of domains, this is not a true measure of how widely the impact is felt.
+    Some domains have far more webpages than others, and certain domains are also more heavily trafficked.
+    Most importantly, if you land on a web page with Google Analytics, a multitude of details are recorded, including the HTTP referrer, or web page that lead you to the current website.
+    *Thus, if you happen to land on a web page using Google Analytics on every second link click, Google has enough information to reconstruct your entire path.*
+
+    This line of discussion motivates a simple question.
+
+    <ul class="crossed">
+      <!--<li>What percentage of web pages on the Internet use GA for tracking their web traffic?-->
+      <li>If a web surfer were to click a random link on the Internet, what is the probability that one of those pages has an end-point in Google Analytics?
+    </ul>
+
+    As part of [our final project](http://smerity.com/cs205_ga/) for [CS205](http://iacs-courses.seas.harvard.edu/courses/cs205/) at Harvard, Chad Hornbaker and I came up with a approximate answer to this question by analyzing 535 million web pages from the [Common Crawl corpus](http://commoncrawl.org/).
+
+    <!--
+        **Domains:** 13,080,522 / 48,514,036
+        **Webpages:** 212,611,840 / 535,673,948
+        **Links:** 20,651,207,894 / 42,181,558,679
+    -->
+
+    <img class="center" src="/media/images/articles/2013/google_analytics.png" width="280" height="380">
+
+    While only 29.96% of the 48.5 million domains surveyed used Google Analytics, 39.69% of the 535 million pages across those domains had Google Analytics, and of the 42 billion links on those pages, 48.96% of them end in a page using Google Analytics, thus reporting a user's browsing history for both that page and the page before it.
+
+    <p class="alert alert-info">
+      Our work was an approximation as it only used domains instead of the pages themselves, simplifying the computational requirements substantially.
+      The full details are on the <a href="http://smerity.com/cs205_ga/">project website</a>.
+      The important take-away is that thanks to referrers, Google Analytics gets information from pages that don't have Google Analytics on them, and the "worst case" is that the entire browsing history of a user could be reconstructed, even if not all the pages use Google Analytics.
+    </p>
+
+    ## How does that help the NSA?
+
+    Imagine if the NSA wanted to know the browsing history for the majority of users on the Internet.
+    To perform this, the NSA would need to perform a man-in-the-middle attack for each of the connections it's interested in.
+    This either means observing all connections as they leave a user or observing all connections as they reach a server of interest.
+    This doesn't scale well considering the number of users and servers on the Internet.
+
+    With Google Analytics, the NSA can sidestep this, as it only has to eavesdrop on all connections to and from the Google Analytics servers.
+    Not that [that would ever happen](http://en.wikipedia.org/wiki/Room_641A).
+
+    We are already aware that [the NSA uses Google cookies to pinpoint targets for hacking](http://www.washingtonpost.com/blogs/the-switch/wp/2013/12/10/nsa-uses-google-cookies-to-pinpoint-targets-for-hacking/).
+    Even though Google Analytics doesn't have full coverage of the Internet, they have substantial coverage when you add in referrers.
+    Given the exact same information they've already collected, they can reconstruct partial browsing histories for millions of users.
+
+    Hence, the NSA has an economical way to tap a large portion of web traffic, especially considering they already have the required data on hand.
+
+    ### More than just the NSA
+
+    While this might be exciting for the NSA, it could be even more exciting for other smaller spy agencies.
+    The tracking information sent to the Google Analytics servers are routed to the nearest server for <abbr title="Curious? Run traceroute google-analytics.com from your server and another in a different geographic region. If you're lucky, it'll tell you the name of the nearest large city on Google's 1e100.net domain. 1e100 is a Googol, in case you'd never come across that fact before.">latency reasons</abbr>.
+    This means that if I were <abbr title="I'd be a kind and generous dictator, giving free ice-cream on Sundays, destroying only a small number of the country's important cultural and artistic creations, and placing Ryan Gosling's face on the obverse of all national currency.">in control of a small country</abbr> and was interested in tracking my own populace, I would only need to eavesdrop all connections to the nearest Google Analytics server.
+    This is quite a simple task, especially if you have influence over the local infrastructure providers.
+    <!--If you have influence over the local infrastructure providers, this likely isn't a very difficult task.-->
+
+    <!--
+    For example, the traceroute to `google-analytics.com` from Sydney Australia leads to `syd01s19-in-f17.1e100.net`, while the traceroute from Harvard University leads to `iad23s17-in-f18.1e100.net`.
+    -->
+
+    ## Slightly hindering the NSA: HTTP vs HTTPS
+
+    An important note is that, if the website uses HTTPS, Google Analytics will use HTTPS for communicating the tracking information too.
+    This prevents trivial eavesdropping as the tracking information is no longer sent in the clear.
+
+    For any website that uses HTTP, eavesdropping is entirely trivial however, as the tracking information is sent in cleartext.
+
+    ## Can Google help counter these potential invasions? Forcing HTTPS
+
+    Google have previously reacted to potential invasions of their own and their customer's privacy.
+    The most recent example was when they [encrypted inter-datacenter communications](http://www.washingtonpost.com/business/technology/google-encrypts-data-amid-backlash-against-nsa-spying/2013/09/06/9acc3c20-1722-11e3-a2ec-b47e45e6f8ef_story.html) when it was discovered that [the NSA had tapped their private fiber networks](http://www.washingtonpost.com/world/national-security/nsa-infiltrates-links-to-yahoo-google-data-centers-worldwide-snowden-documents-say/2013/10/30/e51d661e-4166-11e3-8b74-d89d714ca4dd_story.html).
+
+    In this situation, they could again act to protect their customers and lessen the impact that Google Analytics has on an end-user's privacy.
+
+    ### Defending as an individual or company
+
+    By default, if you use Google Analytics on a website run over HTTP, there is nothing you can do to make it resilient to eavesdropping.
+    As previously stated, if your website is HTTPS, then the information is sent encrypted only to the Google servers.
+
+    You might ask, why not just load the HTTPS version of the Google Analytics script?
+    Good question, but Google Analytics decides how to reply by looking at whether the current page is HTTP or HTTPS.
+    This means that, even if you load the Google Analytics script over HTTPS instead of HTTP, the reply to the Google servers will be sent in the clear if the page you load is HTTP.
+
+    Therefore, if your website is served over HTTP, there is *nothing* you can do to prevent eavesdropping when using Google Analytics.
+
+    ### Defending on Google's side
+
+    Google could counter this potential privacy invasion for those exposed to Google Analytics on HTTP websites by forcing the reply to be sent over HTTPS.
+    There are two options for this: opt in or opt out.
+
+    An opt in is the least obstructive method and would enable concerned website owners to tell Google Analytics to send tracking information back over HTTPS even if the website is served over HTTP.
+    This would likely have a negligible impact on helping to secure the billions of websites and end users across the Internet, however, as the majority of website owners would be unlikely to adopt this simply due to laziness or lack of understanding.
+
+    Opt out, or HTTPS by default, is the simplest and most effective way to prevent potential privacy invasions.
+    <!--
+    If HTTPS were enabled by default, there would be an increase in the computational work required for every single Google Analytics communication for both the client and Google.
+    -->
+    Google are well aware of how to provide SSL/TLS at scale however and have been [working on the topic for some time](https://www.imperialviolet.org/2010/06/25/overclocking-ssl.html).
+    The largest potential impact might be worse battery life for clients on mobile devices.
+    In most situations, the overhead for the end user would be negligible.
+
+    ## Conclusion
+
+    Google, protect your users, enable HTTPS on Google Analytics by default.
+
+    ### Thanks to...
+
+    <ul class="crossed">
+      <li>Harvard University's CS205 and Amazon Web Services for providing the AWS credits for the research.</li>
+      <li><a href="http://www.it.usyd.edu.au/~dong7223">Dominick Ng</a> for his insights and thorough proof reading.</li>
+      <li>Artists from <a href="http://thenounproject.com/">The Noun Project</a> for the icons used in diagram, specifically <a href="http://thenounproject.com/term/globe/16523/">Pickin Studio</a>, <a href="http://thenounproject.com/term/document/5713/">Maximilian Becker</a> and <a href="http://thenounproject.com/term/network/27392/">Jessica Coccimiglio</a>.</li>
+    </ul>
