@@ -1,0 +1,8 @@
+title: "Navigating the WARC file format"
+date: 2014-03-20
+content: |
+
+    See [Navigating the WARC file format](http://commoncrawl.org/navigating-the-warc-file-format/) at [Common Crawl](http://commoncrawl.org/).
+    <script>
+    window.location = "http://commoncrawl.org/navigating-the-warc-file-format/";
+    </script>

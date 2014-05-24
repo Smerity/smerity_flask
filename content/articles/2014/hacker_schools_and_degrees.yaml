@@ -1,0 +1,72 @@
+title: "Of hacker schools and degrees"
+date: 2014-05-23
+content: |
+    tl;dr:
+    Hacker schools focus on *practice*.
+    Degrees focus on *theory*.
+    I don't care which you prefer, as long as you understand they're complementary.
+    Those from one side of the fence can well learn from the other.
+
+    Recently I saw a tweet from [Mike Bayer](https://twitter.com/zzzeek), the author of SQLAlchemy.
+    He brought up an interesting thought comparing hacker schools, degrees, and woodwork.
+    I respect him and his work a great deal but do feel the analogy doesn't ring true.
+
+    <center>
+    <blockquote class="twitter-tweet" lang="en"><p>hacker schools vs. 4 year degrees: it’s like woodworking. did you ever meet someone with a bachelor’s degree in woodworking?</p>&mdash; mike bayer (@zzzeek) <a href="https://twitter.com/zzzeek/statuses/469596983293140993">May 22, 2014</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </center>
+
+    Whilst I'm not well enough versed in woodworking to make a direct comparison, I know a deal about the field of computing.
+    The field of computing is an intricate and complex web.
+    <!--It'd be reasonable to extend Leslie Lamport's quote, "A distributed system is one in which the failure of a computer you didn't even know existed can render your own computer unusable".-->
+    To gain a strong understanding of the many facets of computing is a difficult endeavour.
+    A good degree program aims to introduce you to these many facets.
+    It's still the way I'd suggest to go, even if it could use work.
+
+    The advice I have for those asking, and advice I have given to friends and [students](http://ncss.edu.au/), is to get a degree.
+    During the degree you should do internships at places that will extend you and give you the practical knowledge you need.
+    You should also be doing your own projects, though hopefully you're the kind of person to whom that comes naturally.
+
+    Depending on where you are in the world, a degree can be expensive.
+    A degree is a necessary tick in many boxes: employment, immigration, and so on.
+    That's not the point I'm arguing though.
+    If the expense is bearable, and the degree program's quality is good, it's worth it.
+
+    Given that, many of the coders I trust are self-taught, either since early days or due to moving over late from an unrelated field.
+    It's not impossible to get a well rounded education through self-education, just more difficult.
+
+    Hacker schools are aiming to provide a shorter path to becoming a developer who is productive enough that they can be employed.
+
+    # Dot point comparison for thinking
+
+    ## Issues with hacker schools
+
+    + Aim to find the practical and minimal solution to a problem
+    + The more questionable ones focus on "becoming a coder" in a matter of weeks not months or years
+    + Feeder schools directly into industry, commonly with the companies themselves sponsoring the places (which can be a positive or negative depending on what the students learn at the companies that employ them)
+    + Lack of emphasis on a computer science or a broader scientific background (no easy way to mix computing with other fields such as bioinformatics and so on)
+    + Lack expansive background to tackle certain problems the correct way (harder to avoid re-inventing the wheel poorly as you might not know that this has already been solved and been solved well)
+
+    ## Issues with degrees
+
+    + Expands on forefront of knowledge and technology not yet ready for industry
+    + Potential to mix an interest in technology with other fields (physics, biology, economics, genetics, ...)
+    + Focus on theory at the lack of practical concerns (see: proper version control, release practices, testing, code review, code style, ...) which is genuinely an issue and something universities need to fix
+    + The act of publishing papers is rarely focused on real world systems as what is useful is what is publishable
+    + The lack of a practical background to understand the gap between theory and practice leads to many poor practices
+
+    ## Augmenting hacker schools
+
+    + Hacker schools give you a strong initial foundation but must be rounded out with further education, either by yourself, your future employer, or something akin to a degree program
+    + Hacker schools prepare you to enter a workplace where you can find educational opportunities: if the workplace doesn't treat you well, you may find yourself stuck
+    + The education at hacker schools is commonly free or low cost as it's directly sponsored by industry
+
+    ## Augmenting degrees
+
+    + Round out your practical skills via practical internships with companies (practical as there are many internships which won't give you any sane or useful skills and/or the company avoids best practices like version control, testing, and so on)
+    + Hacker schools or one of the higher academic level variants such as data science / data engineering schools
+
+    Off-topic: my pet hatred of degree programs is the lack of practical skills.
+    No program should skip teaching version control, testing, or code review practices.
+    These skills are just as vital to have reproducible research as they are vital to have sound code in industry.
+    That's a separate discussion to have however.
