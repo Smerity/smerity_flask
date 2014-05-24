@@ -3,6 +3,7 @@
 {% block title %}Smerity.com{% if page.title %}: {{page.title}}{% endif %}{% endblock %}
 
 {% block meta %}
+  {% if page %}
   {% if page.title %}<meta property="og:title" content="{{page.title}}">{% endif %}
   {% if page.description %}
   <meta name="description" content="{{ page.description }}" />
@@ -13,11 +14,13 @@
   {% if page.image %}
   <meta property="og:image" content="{{ page.image }}" />
   <meta name="twitter:image:src" content="{{ page.image}}" />
+  <meta name="twitter:card" content="summary_large_image">
   {% endif %}
   <meta property="og:site_name" content="Smerity.com" />
   <meta property="og:type" content="article" />
   <meta name="twitter:site" content="@Smerity" />
   <meta name="twitter:creator" content="Smerity" />
+  {% endif %}
 {% endblock %}
 
 {% block head %}
