@@ -1,21 +1,15 @@
 title: "About Me"
 content: |
     My name is Stephen Merity, though I'm most commonly referred to as Smerity.
-    I'm a developer interested in start-ups, online education, web development, natural language processing / machine learning, large-scale data analytics and many other topics.
+    I'm a data scientist in San Francisco with [Common Crawl](http://commoncrawl.org/), where we save billions of web pages for anyone to use, completely free.
 
     I've been lucky enough to work with fascinating people and groups over the years including Google Sydney, Freelancer.com, the Schwa Lab at the University of Sydney, the team at Grok Learning, and IACS @ Harvard.
-    For more details you can contact me in person at <a href="mailto:smerity@smerity.com">smerity@smerity.com</a>.
-
-    I'm originally from Sydney, Australia.
-    In August 2013, I packed my bags and headed over to the US to complete a Master of Science (SM) in Computational Science and Engineering (CSE) at Harvard University.
-
-    <!--
-    ## University & Work
-    I've recently completed the [Bachelor of Information Technology](http://sydney.edu.au/courses/Bachelor-of-Information-Technology) at the University of Sydney, receiving First Class Honours and [University Medal](http://en.wikipedia.org/w/index.php?title=University_Medal&oldid=410146835#Australia). The majority of my work was with Dr James Curran and Schwa Lab at the University of Sydney on NLP research.
-    In the past, I've worked at [Freelancer.com](http://www.freelancer.com) on data mining + interaction mechanics &amp; [Google](http://www.google.com) as an intern on Google AppEngine.
-    -->
+    For more details you can contact me in person at <a href="mailto:smerity@smerity.com">smerity@smerity.com</a> or stalk me on my various social networks.
 
     ## Talks
+
+    [Measuring the impact: Google Analytics](slides.com/smerity/measuring-the-impact-google-analytics) (July 2014)  
+    [Open Data Bay Area](http://www.meetup.com/Open-Data-Bay-Area/events/192665352/)
 
     [Machine Learning Made Scary (All New Content from Cyberdyne Systems & Aperture Labs)](http://www.meetup.com/Sydney-Datapreneurs/events/104220852/) (March 2013)  
     Sydney DataPreneurs
@@ -43,12 +37,6 @@ content: |
     __Accurate Argumentative Zoning with Maximum Entropy models__ (2009) [[pdf](http://aye.comp.nus.edu.sg/nlpir4dl/NLPIR4DL03.pdf)][[bib](/media/bib/smerity_arg_zone.bib)]  
     Stephen Merity, Tara Murphy and James R. Curran  
     _Proceedings of the 2009 Workshop on Text and Citation Analysis for Scholarly Digital Libraries, ACL-IJCNLP 2009, pages 19-26_
-
-    <!--
-    ## Programming
-    In specific areas of programming, I have a soft spot for Natural Language Processing - a special thanks to [Dr James R. Curran](http://www.it.usyd.edu.au/~james) for introducing it to me.
-    I've also spent a deal of time play with a wide range of other topics, including such things as data analytics, scalable architecture, computer graphics, machine learning and optimization techniques (i.e. linear/non-linear programming).
-    -->
 
     ## NCSS
     A true _about me_ would have to mention the [National Computer Science School](http://www.ncss.edu.au) (NCSS), a summer school run at the University of Sydney involving talented high school students from all over Australia.
