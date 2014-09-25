@@ -1,0 +1,128 @@
+title: "The Saga Of: Shuffling without using memory"
+date: 2014-09-24
+content: |
+    tl;dr:
+    You have an enormous compressed file, `urls.gz`, that you want to shuffle into `urls_shuffled.gz`.
+    First attempt is to run `zcat urls.gz | shuf | gzip > urls_shuffled.gz`.
+    Infuriatingly, `shuf` only works in memory.
+    `sort` is beautiful in that it works just as well for enormous files as it does for small.
+
+    *Note: I'm solving this problem in real time, so it's not 100% accurate but shows the thought process.
+    Feel free to tease me when I get it wrong... ;)*
+
+    Ideally I'd like to take advantage of `sort`'s ability to handle large files relatively easily.
+    One could preface each line with a random number, generated using any appropriate program such as `awk`, but that seems inefficient.
+    Luckily, on checking `man sort`, there is a `--random-sort` option that "sort[s] by random hash of keys".
+    Brilliant.
+
+    Unfortunately, `sort` still needs the file to be on disk, so it needs to be decompressed.
+    Luckily `sort` will handle the heavy lifting there, and is really intelligent with large files, but it could potentially be an issue if the decompressed output is really quite large.
+    The closest solution about the place for this is a question on [sorting lots of large compressed files](http://stackoverflow.com/questions/18125079/sort-lots-of-large-compressed-files) and even that mainly focuses on parallelizing the `sort` process.
+    It does however make a nifty use of the `--merge` flag that only merges by assuming the input is sorted.
+    Even then, I'd be curious to know whether `sort`'s own `--parallel=N` flag results in higher efficiency than the solution suggested.
+
+    The file I want to shuffle (`com.txt.xz`, a list of 61 million .com domains from [DNS Census 2013](dnscensus2013.neocities.org)) is only 187 megabytes compressed, so it shouldn't be too problematic to use a less than perfect method.
+
+    Boom, let's do this thing.
+
+        xzcat com.txt.xz | pv | sort --random-sort | gzip > /media/ephemeral0/torrent/com_random.gz
+
+    `xzcat` decompresses the file, `pv` allows me to see how much data is flowing through the pipe, `sort` handles randomly shuffling, and `gzip` compresses the final output.
+    If you're curious and you want to monitor what's happening, `pv` is a start, but we can also check `htop` (shinier than `top`) for memory and CPU usage and `iotop` for disk usage.
+
+    On reviewing using `htop`, my eight core box is only using one core -- almost all `sort` and a tiny bit `xzcat`.
+    In the words of **The Social Network**, "it's definitely necessary to break out Emacs and modify that Perl script".
+    Except in this case the command line and sort flags.
+
+    Nope, the `--parallel=8` flag does nothing.
+    Huzzah.
+    Also tested without `--random-sort` and it still doesn't work.
+    Whilst in the manpage again I came across `--compress-program=...` -- you can compress the temporary output of `sort`.
+    Useful to know for later but it will likely end up slowing down the process here.
+
+    Turns out that `--random-sort` is really quite slow.
+    Like, stunningly slow, with full CPU utilization for one core, processing maybe a megabyte per second.
+    Blargh.
+    This is especially annoying for me as I don't want perfectly random, I just want pseudo-random, and would be happy with large imperfections.
+    I'm curious whether this performance issue is due to the hashing algorithm used by `sort` or possibly due to sorting entirely random keys being a complete pain.
+    Could be either.
+    It certainly doesn't help that each new key is sorted according to a hash, and the hash aims to evenly distribute values across the entire range.
+
+    Losing patience and sanity, especially as I don't want a truly random sort.
+    I pondered randomly sorting sequential partitions (i.e. split the file in 10, randomly sort those 10 files), and then merge them using `sort`, but then the issue with that is it could end up very skewed on a theoretical basis.
+    Imagine if the first segment end up with the first guy getting the largest number.
+    That segment would not be merged until the end, in which case the entire segment would be lumped on.
+    The only "random" part would be within the segment -- a very limited amount of random.
+    Ewww.
+
+    Now I'm curious how large the file actually is.
+    Maybe I should give up on being smart and just expand it to disk.
+    Disk is cheap and I happen to have a good chunk of it.
+    `time xzcat com.txt.xz | pv | wc -c` will give me the size in bytes, plus `pv` to make sure I don't get bored.
+    `pv` reports it's reading at around 30MB/s and half a minute later, `wc` reports the final file is around 1.1 GB (1112068488 bytes).
+
+    Damn.
+    I thought it was bigger.
+    In my defence, my day job is spent dealing with things that don't sanely fit on hard disks.
+    Let's expand the file and then try `sort --random-sort` on that.
+    Bam, now `sort` is using all cores and, surprise surprise, the file is actually entirely cached in memory, so no disk activity.
+    I should also mention, `sort` will use up to eight cores by default without you specifying the `--parallel` flag, so no work needed.
+
+    It has now been running for some time, and `iotop` reports that `sort` is actually using disk.
+    Spurts of a few megabytes per second at a time.
+    In `/tmp/` there are a few random `sort...` files such as `sortO17hPL` are all around 200MB in size.
+    Upon checking out the contents with `head`, one can see a pretty interesting pattern emerging.
+
+        [ec2-user@ip-10-91-165-143 tmp]$ head sortxfJiYp
+        btempletes.com
+        bigaccfans.com
+        biljartdepot.com
+        asdoonline.com
+        alldiesels.com
+        7rocks.com
+        brekhman.com
+        artspectrum.com
+        215graphics.com
+        1sttickets.com
+        [ec2-user@ip-10-91-165-143 tmp]$ head sortO17hPL
+        mypetfection.com
+        preventionfirst.com
+        planetfriend.com
+        queerchachki.com
+        quietdiver.com
+        merecinema.com
+        nissanmckinney.com
+        mesubin.com
+        onlinecasinosandslots.com
+        ottobredesign.com
+
+    Each file has a random chunk, yes, but only within a restricted domain of the alphabet.
+    The original file, `com.txt.xz`, was sorted alphabetically.
+    This is exactly what you'd expect from merge sort -- sort chunk by chunk and then merge those chunks.
+    The only weirdness here of course is that we're sorting by random.
+
+    I want to try and find you a later temporary sort file, one which actually involves combining two or more of these together.
+    For that we can use `ls -ltr`.
+    Honestly, I don't even remember what the flags stand for, it's instinctive when I want it sorted by creation with some details.
+    Turns out `-l` is for long listing format, `-r` is for reverse, and `-t` is for sorting by modification time (newest to oldest).
+    Makes sense.
+    Thanks past me for figuring that out.
+
+        [ec2-user@ip-10-91-165-143 2nd-level-domains]$ ls -ltr /tmp/sort*
+        -rw------- 1 ec2-user ec2-user 204665627 Sep 24 10:17 /tmp/sortxfJiYp
+        -rw------- 1 ec2-user ec2-user 206620408 Sep 24 10:18 /tmp/sortEjDAAv
+        -rw------- 1 ec2-user ec2-user 203040320 Sep 24 10:20 /tmp/sortRNqiUZ
+        -rw------- 1 ec2-user ec2-user 206915992 Sep 24 10:22 /tmp/sortO17hPL
+        -rw------- 1 ec2-user ec2-user 206570511 Sep 24 10:24 /tmp/sortn9PDp5
+        -rw------- 1 ec2-user ec2-user  84255630 Sep 24 10:24 /tmp/sortkvB5ZI
+
+    Unfortunately for those viewing at home, CPU usage has dropped but one process has spiked -- `gzip`.
+    It's now receiving data to compress from `sort`.
+    This means `sort` is no longer using temporary files, it's merging for the six files for the final result.
+    I do believe I could explicitly make `sort` do more loops, but honestly, I leave that as an experiment for the reader at home, as I'm (a) lazy + (b) 3:30am + (c) I actually want to use this for an interesting task.
+    Now that I think about it, I probably shouldn't have gzipped it, but oh well, live and learn, too late to bother restarting the command now and `gzip` is certainly not going to be a bottleneck at either end.
+
+    And I'm done!
+    16 minutes in real time, 60 minutes in user time.
+    User time is the time the CPU spent spinning in user mode on our task.
+    If it was breaking the laws of physics, I'd be very angry, but it's allowed to go faster than reality as it's counting the time spent on each of the eight cores.
