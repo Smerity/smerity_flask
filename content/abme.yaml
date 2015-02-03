@@ -1,7 +1,7 @@
 title: "About Me"
 content: |
     My name is Stephen Merity, though I'm most commonly referred to as Smerity.
-    I'm a data scientist in San Francisco with [Common Crawl](http://commoncrawl.org/), where we save billions of web pages every month for anyone to use, completely free.
+    I'm a data scientist in San Francisco with [Common Crawl](http://commoncrawl.org/), where we save billions of web pages every month for anyone to use as a dataset, completely free.
 
     I've been lucky enough to work with fascinating people and groups over the years including Google Sydney, Freelancer.com, the Schwa Lab at the University of Sydney, the team at Grok Learning, and IACS @ Harvard.
     You can read my full history in <a href="/media/files/resume.pdf">my resume</a> or at <a href="http://www.linkedin.com/in/smerity">LinkedIn</a>.
@@ -9,23 +9,29 @@ content: |
 
     ## Talks
 
+    [Common Crawl for NLP](http://slides.com/smerity/common-crawl-for-nlp#/) (November 2014)  
+    [Web-Scale Natural Language Processing in Northern Europe, Oslo](http://www.mn.uio.no/ifi/om/aktuelt/arrangementer/andre/nlpg.html)
+
+    [Experiments in web scale data](http://slides.com/smerity/experiments-in-web-scale-data#/) (November 2014)  
+    [Big Data Beers, Berlin](http://www.meetup.com/Big-Data-Beers/events/217301572/)
+
     [AWS at Common Crawl](http://slides.com/smerity/aws-at-common-crawl#/) (October 2014)  
     [Advanced Amazon Web Services, San Francisco](http://www.meetup.com/AdvancedAWS/events/208695982/)
 
     [Measuring the impact: Google Analytics](http://slides.com/smerity/measuring-the-impact-google-analytics) (July 2014)  
-    [Open Data Bay Area](http://www.meetup.com/Open-Data-Bay-Area/events/192665352/)
+    [Open Data Bay Area, San Francisco](http://www.meetup.com/Open-Data-Bay-Area/events/192665352/)
 
     [Machine Learning Made Scary (All New Content from Cyberdyne Systems & Aperture Labs)](http://www.meetup.com/Sydney-Datapreneurs/events/104220852/) (March 2013)  
-    Sydney DataPreneurs
+    Sydney DataPreneurs, Sydney
 
     [Data Science for Managers](https://generalassemb.ly/instructors/stephen-merity/1173) (February 2013)  
-    General Assembly
+    General Assembly, Sydney
 
     [Start-up Metrics (Smetrics?): Inspiration from Dave McClure & David Jones](/media/talks/Smetrics.pdf) (December 2012)  
-    Incubate.org.au
+    Incubate.org.au, Sydney
 
     [Machine Learning for your Robotic Army: A Crash Course using Python's Scikit-Learn](/media/talks/ml_for_your_robotic_army/template.html) (October 2012)  
-    Sydney Python (SyPy)
+    Sydney Python (SyPy), Sydney
 
     ## Publications
     <span id="pubs"></span>
