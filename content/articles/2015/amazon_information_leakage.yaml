@@ -1,0 +1,52 @@
+title: "The lack of HTTPS at Amazon: identifying items purchased using information leakage"
+date: 2015-04-03
+content: |
+    If you were to browse Amazon right now and someone was eavesdropping on your connection, they could tell exactly what you were looking at.
+    Even if you're logged in, all item browsing takes place over HTTP.
+    This is tremendously odd given that it's 2015 and [encryption is fast enough for the masses](https://istlsfastyet.com/)...
+
+    <img class="smooth center" src="/media/images/articles/2015/amazon_http_browsing.png" />
+    <p class="alert alert-info">
+    This is a small extract from my browser history, filtered to only contain HTTP URLs.
+    You can see both what I'm searching for (Yongnuo camera lenses) and the individual items themselves (the [Ready Player One](http://readyplayerone.com/) novel).
+    </p>
+
+    Whilst that's troubling by itself, that's just the tip of the iceberg.
+    Using trivial HTTP metadata, you can tell which items have been purchased by a user.
+    If you capture the content and perform simple analysis, you can discover additional details such as when it was purchased and what product options were selected.
+
+    I reported this to Amazon previously via [their security email](http://smile.amazon.com/gp/help/customer/display.html/ref=hp_left_sib?ie=UTF8&nodeId=201182150&sa-no-redirect=1) but received a boilerplate response.
+    Considering anyone interested in utilising this information leak would already be doing so, I feel it's worth raising awareness about the situation.
+    At the very least, it adds to some of my previous articles on [the lack of default HTTPS on Google Analytics](http://smerity.com/articles/2013/google_analytics_and_nsa.html) and [when HTTP referrers appear and disappear](http://smerity.com/articles/2013/where_did_all_the_http_referrers_go.html).
+
+    ## Discovering which products a user has purchased
+
+    When you navigate to your [Order History](https://www.amazon.com/gp/css/order-history) on Amazon, you're redirected to use HTTPS and are required to log in.
+    This prevents anyone from eavesdropping on your connection from trivially seeing what you have purchased.
+
+    <img class="smooth center" src="/media/images/articles/2015/amazon_lock_order_history.png" />
+    <p class="alert alert-info">
+    A sample item from my Order History found at [https://smile.amazon.com/gp/css/order-history](https://smile.amazon.com/gp/css/order-history), securely served over HTTPS.
+    </p>
+
+    Unfortunately, if you click on any of your purchased items on this page, you are sent to the item page over HTTP, with a referrer added to the [the URL](http://smile.amazon.com/gp/product/B0002YP1VC/ref=oh_aui_detailpage_o04_s00?ie=UTF8&psc=1), `ref=oh_...`.
+    The `oh` stands for Order History and indicates that this item was clicked from your Order History page.
+
+    The Order History page does contain cancelled items however, so it's only highly probable that you purchased it.
+    Luckily, Amazon include a little purchase information box that tells me I purchased this lock box on the 28th of January -- specifically the shackle mounted model.
+    This is all over HTTP, for anyone to listen in on.
+
+    <img class="smooth center" src="/media/images/articles/2015/amazon_lock_http.png" />
+    <p class="alert alert-info">
+    If I browse to this page, the `ref=oh_...` indicates this item was from the Order History page.
+    If I browse to this page from anywhere, the purchase information box is provided, and is sent over insecure HTTP.
+    </p>
+
+    Amazon could fix some of this by removing the referrer (`ref`) but that would still leave the product box which appears if the user views the item's page.
+    The easiest solution would be to sidestep the entire situation and go to HTTPS by default.
+    The question of [whether TLS is fast enough](https://istlsfastyet.com/) has been answered long ago.
+
+    It's 2015 and Amazon is used all over the world.
+    The list of countries they ship to is staggering.
+    Their customers may face threats from something as trivial as an insecure wireless point at a cafe to an oppressive government with no regards to privacy.
+    Why not make the world a little more resilient to eavesdropping at the flip of a switch?
