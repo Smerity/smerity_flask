@@ -1,4 +1,7 @@
 title: "The lack of HTTPS at Amazon: identifying items purchased using information leakage"
+description: "If you were to browse Amazon right now and someone was eavesdropping on your connection, they could tell exactly what you were looking at. They could even tell what you've bought."
+image: "http://smerity.com/media/images/articles/2015/amazon_lock_order_history.png"
+
 date: 2015-04-03
 content: |
     If you were to browse Amazon right now and someone was eavesdropping on your connection, they could tell exactly what you were looking at.
