@@ -114,7 +114,7 @@ content: |
     In our toy case this is expensive as our buckets hold very few elements each.
     A 64 bit pointer for four elements results in 16 bits of overhead per element.
     If we're lucky and on a 32 bit system, that's only 8 bits of overhead per element.
-    In the case of sparsetables, each bucket holds `32 * x + 16` elements, resulting in far more reasonable overheads for empty slots.
+    In the case of sparsetables, each bucket holds `32 * x + 16` elements ([why that formula?](https://code.google.com/p/sparsehash/source/browse/trunk/src/sparsehash/sparsetable#275)), resulting in far more reasonable overheads for empty slots.
 
     (here's a secret: Sparsehash only uses 2 bits of overhead for empty slots on 32 bit machines - on 64 bit machines the pointer overhead means it's 2.67)
 
