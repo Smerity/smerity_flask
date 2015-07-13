@@ -1,6 +1,6 @@
 title: "How Google Sparsehash achieves two bits of overhead per entry using sparsetable"
 description: "Google Sparsehash is one of the most space efficient hash tables, but how does it achieve two bits of overhead per entry?"
-image: "http://smerity.com/media/images/articles/2015/amazon_lock_order_history.png"
+image: "http://smerity.com/media/images/articles/2015/sparsehash.png"
 hidden: False
 
 date: 2015-05-25
