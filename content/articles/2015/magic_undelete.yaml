@@ -1,0 +1,167 @@
+title: "The limitations of the magic undelete in Linux"
+description: "If you've deleted a file with rm, there's still a chance you won't have to cry yourself to sleep at night!"
+image: "http://smerity.com/media/images/articles/2015/magic_undelete.jpg"
+date: 2015-09-08
+
+content: |
+    Imagine you were running the command below ...
+
+        ::bash
+        sed 's/Linux/GNU Linux/g' linux-history.txt > linux-history.txt
+
+    If you're experienced on the GNU Linux command line, you're likely trying to punch me through your monitor right now.
+    That's unfortunate for you as you've a <abbr title="Even with millions of dollars of VC funding, one still cannot physically injure an idiot through the screen of a digital device. If this were possible, trolling on the Internet would be forever changed.">broken screen</abbr>.
+
+    For the rest of you, piping a file into itself (take the results of A and put it back into A) deletes the file.
+
+    <p class="alert alert-info">
+      If you would prefer to avoid destroying files by piping into themselves, setting <a href="https://en.wikipedia.org/wiki/Clobbering">noclobber</a> in bashrc is a great idea!
+      Sadly this won't save you if you accidentally delete a file...
+    </p>
+
+    Even if you know this to be a terrible idea, you've likely still done it by accident at least once, whether it's due to trusting tab completion too much, the subconscious inability to deal with the one hundredth mangled CSV file that day, or general self loathing.
+
+    This is the situation I found myself in - one stray command deleting hours and hours of work.
+    The data clobbered was 300 whales faces ([I'm not crazy, I promise](https://www.kaggle.com/c/noaa-right-whale-recognition/)), deleted just as I was putting them into [version control](https://github.com/Smerity/right_whale_hunt/).
+
+    <img src="http://i.imgur.com/o5cf6pd.jpg" width="600px" class="smooth center">
+
+    ## WHERE'S THE UNDO!?!?!?!
+
+    The tragedy: once you've deleted a file on the Unix command line it's almost certainly lost.
+    *Almost* certainly.
+
+    In all of those hacker TV shows, you'll likely see them destroying the hard drive with microwaves, thermite, sledgehammers, or puppy incinerators.
+    There's a good reason for that - it's actually possible to recover a lot from improperly deleted files.
+    This gives us hope.
+    Vague hope - the kind of hope you might have that a TV character, introduced that very episode (and only two days from retirement) will not die horribly within in the next five minutes (see: [retirony](http://tvtropes.org/pmwiki/pmwiki.php/Main/Retirony)).
+
+    ## The N stages of recovery
+
+    ### When you delete a file, it's rarely gone
+
+    To understand why we can get a file back, it's important to understand how it's stored in the first place.
+    Imagine we had hundreds of little boxes, each with a stack of papers in them.
+    In file system terms, we refer to these as blocks.
+    If you'r
+    That brilliant novel you're writing, that one about a modern day Frankenstein created by Siri to force people to use Apple Maps, is in boxes ordered #8, #4, #12 and #2.
+    You store this on a piece of paper you put in your pocket.
+    In file system terms, we refer to this as an inode.
+    If you're really interested, you can [list both the inode and all the blocks that compose a file](http://serverfault.com/questions/29886/how-do-i-list-a-files-data-blocks-on-linux).
+
+    Imagine your novel had a dozen rejections.
+    At this point, in a drunken stupor, you decide (like Frankenstein himself) to destroy your creation.
+    You rip up the piece of paper in your pocket angrily, then curse yourself as you've forgotten which boxes hold the pages to your novel.
+
+    This is what happens when you delete a file on disk - the inode is deleted but the contents of the blocks are left in place.
+    If this wasn't the case, you'd find that deleting files was far slower - as slow as writing out the file in the first place.
+
+    This, ladies and gentlemen, is what gives us hope.
+    If we know enough choice phrases from the pages of your novel (i.e. you decided Frank Stein was a great name for the protagonist and used it way too much), we can search through all the boxes and recover your pages.
+    Unfortunately, we won't know what order to put them in without reading, but it's at least a start.
+
+    ### Pulling out the data
+
+    On a Unix filesystem, [everything is a file](https://en.wikipedia.org/wiki/Everything_is_a_file).
+    This makes our lives easier and enables us to even [pipe our hard drive directly to our sound card](https://github.com/Smerity/Snippets/tree/master/sound/vsc/).
+    Data has never sounded so beautiful, right?
+
+    <p class="alert alert-danger">
+    Note: you should really have unmounted the drive you've experienced the data loss with, and should especially not be writing to it, as your new file might overwrite your old.
+    Like me, however, you might be slightly insane and decide unmounting your hard drive seems like a pain.
+    </p>
+
+    To begin our recovery, we can search the entirety of our hard drive for the specific phrase, pulling out a portion of surrounding context as we go, putting it into a new file.
+
+        ::bash
+        smerity@pegasus:~$ # Let's find where our hard drive is
+        smerity@pegasus:~$ df -h .
+        Filesystem      Size  Used Avail Use% Mounted on
+        /dev/sda2       130G  122G  2.0G  99% /
+        smerity@pegasus:~$ sudo grep --binary-files=text --context=32 'Frank Stein' /dev/sda2 | pv > /tmp/novel
+
+    This will take a while.
+    If you have `iotop`, you can estimate how long it will take.
+    If your grep is reading at 200MB/s and you have a 120GB hard drive, you're in for a 10 minute wait.
+    I added `pv` which monitors the progress of data through a pipe so you can see when it finds new hidden treasure.
+
+    <!--
+    At this point, let's be risky. How about I delete this blog and see if I can find it again..?
+
+    Back.
+    So it turns out I had many copies of the file on this machine, from [Vim backup files](http://stackoverflow.com/questions/607435/why-does-vim-save-files-with-a-extension) to the browser cache to the original file itself.
+    To make it a fairer comparison, I moved the file onto a different laptop, deleted it there, and then recovered it there.
+    -->
+
+    ### Reassembling the file
+
+    Once you have the portions, you're still in for trouble - you need to work out the orderings!
+    If it's a binary file, I'm sorry to say, you're likely screwed.
+    There may be a way to retrieve only the contents from the matching blocks, then try all permutations, and only accept files that validate, but I didn't dig that deep.
+    If it's a text file, you're likely able to piece it together yourself.
+
+    My situation was lucky - the file I was looking for was JSON, with self contained objects every few lines, all following a specific pattern.
+
+        ::json
+        {
+            "annotations": [
+                {
+                    "class": "Head",
+                    "height": 337.35773710482545,
+                    "type": "rect",
+                    "width": 429.3643926788686,
+                    "x": 991.6272878535774,
+                    "y": 797.3910149750416
+                },
+                {
+                    "class": "Body",
+                    "height": 640.6389351081532,
+                    "type": "rect",
+                    "width": 1720.8652246256238,
+                    "x": 981.4043261231282,
+                    "y": 507.7404326123128
+                }
+            ],
+            "class": "image",
+            "filename": "imgs/whale_24458/w_7709.jpg"
+        },
+
+    Searching for the string `"class": "Head"` recovered all the annotations. With a small portion of Python glue, we can then find all the valid JSON objects in our extracted text, sort them according to filename (personal preference), and then spit them back out again!
+
+        ::python
+        template = '''(    {
+                "annotations": \[(?:[^\]]+?)\],
+                "class": "image",
+                "filename": "imgs_sub/(?:[^"]+?)"
+            },\n)'''
+
+        get_filename = '''"filename": "imgs_sub/(?:[^"]+?)"'''
+
+        import re
+
+        data = open('string_heads').read()
+        heads = sorted(set(re.findall(template, data)), key=lambda x: re.findall(get_filename, x)[0])
+        print 'Saved {} whales'.format(len(heads))
+
+        with open('sloth.json', 'w') as out:
+          out.write('[\n')
+          for head in heads:
+            out.write(head)
+          out.write(']')
+
+    This allowed me to save 285 of the 289 then annotated whales.
+    The remaining lost four are likely split between blocks, resulting in the regular expression not capturing them.
+    If we really wanted to, we could likely recover those, but for me it was easier to simply re-annotate those four images.
+
+    ## Conclusion
+
+    Given that you're far smarter than me, I assume you are here simply as you enjoyed observing the plight of a naive computer tinkerer.
+    If you are unlucky enough to have a data hating cat jump onto your keyboard, however, I hope this will help you recover your bits and your sanity.
+
+    The future is likely to be dangerous for our data however.
+    Recovering data from SSDs becomes far more troublesome but [there's still hope](http://articles.forensicfocus.com/2014/09/23/recovering-evidence-from-ssd-drives-in-2014-understanding-trim-garbage-collection-and-exclusions/) - or at least hope if you're willing to hire a digital forensics team.
+
+    Let's just hope that one day soon, hard drives will be so plentiful that delete means nothing and save just means create a new commit.
+    We might be waiting a while.
+
+    **Special thanks:** [Ervins Strauhmanis](https://www.flickr.com/photos/ervins_strauhmanis/) for the [Delete key image](https://www.flickr.com/photos/ervins_strauhmanis/10135243453/) (CC licensed).
