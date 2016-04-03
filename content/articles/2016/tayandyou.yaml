@@ -1,0 +1,158 @@
+title: "TayAndYou - toxic before human contact"
+description: "TayAndYou was toxic before it ever made contact with the Internet. The media prefer the story that the Internet turned TayAndYou toxic."
+date: 2016-03-25
+
+content: |
+    Humans have the tendency to imbue machine learning models with more intelligence than they deserve, especially if it involves the magic phrases of artificial intelligence, deep learning, or neural networks.
+    TayAndYou is a perfect example of this.
+    
+    <!--
+    Between the comedy of errors that produced TayAndYou's results and media do even less fact checking than usual upon seeing ML/AI/NN, this is problematic.
+    
+    For me and many of my friends who work in the field of machine learning, we generally don't appreciate the hype.
+    -->
+    Hype throws expectations far out from reality and the media have really helped the hype flow.
+    This will not help us understand how people become radicalized.
+    This was not a grand experiment about the human condition.
+    This was a marketing experiment that was particularly poorly executed.
+    
+    TayAndYou was toxic before it ever made contact with the Internet.
+    The media prefer the story that the Internet turned TayAndYou toxic.
+    
+    Summary:
+    
+    + Conversational models are not new and there are no details on novel tech used in TayAndYou
+    + The training data that the TayAndYou bot used was already poisonous and many of TayAndYou's worst tweets were historical, not learned after activation (i.e. was at best overfitting to training data)
+    + It's entirely possible that TayAndYou didn't perform any online learning
+    + Hype hype hype hype
+    
+    <!--
+    + How the media did not realize that it repeated historical tweets I've no clue
+    + Sanity checks were not added to prevent trivial exploits
+    + Don't pump out 96,000 tweets in under 24 hours unless you're confident in the quality of output
+    -->
+    
+    ## Conversational models have history
+    
+    ### Ancient history
+    
+    Language models for producing conversational agents aren't a particularly new concept.
+    
+    [Mark V. Shaney](https://en.wikipedia.org/wiki/Mark_V._Shaney) was an elegant play on this concept all the way back in 1984.
+    This model was based upon word level Markov chains, sampling the next word based upon how frequently it was seen following the previous N.
+    
+    Given the phrase `once upon a <blank>` it would sample `time` with high probability, given that `once upon a` usually preceeded `time`.
+    
+    The bot's playground was Usenet, described by Mark Harrison as "endless dumb questions, endless idiots posing as savants, and (of course) endless victims for practical jokes".
+    You could call it 1980s Twitter.
+    
+    As this bot first played with humans in 1984, it had the advantage that no-one expected replies on Usenet to be automated.
+    Indeed, many thought this was just a strange man spouting the occasional beautiful annecdote of accidental wisdom.
+    
+    > I hope that there are sour apples in every bushel.
+    
+    > I spent an interesting evening recently with a grain of salt.
+    
+    > Why do we count things in groups of five.
+    > When people learned how to count many things, they matched them against their fingers.
+    
+    If you're interested in more about Mark V. Shaney's exploits, I heartily recommend this [Scientific American article from 1989](https://www.clear.rice.edu/comp200/09fall/textriff/sci_am_paper.htm).
+    
+    There is a great deal of history inbetween, CleverBot and others, but I'm going to do a far longer jump to...
+    
+    ### Modern history
+    
+    In more recent years, language models have moved on to new tech.
+    The one most likely at the heart of TayAndYou are recurrent neural networks (RNNs).
+    For a detailed discussion, I'd recommend Karpathy's [Unreasonable Effectiveness of Recurrent Neural Networks
+    ](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) and Olah's more technical [Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/).
+    
+    RNNs, most frequently long short term memory (LSTM) units, perform well at a variety of tasks, including machine translation and language modeling.
+    
+    Given that TayAndYou has no specific details on the model, we're left to speculate.
+    It is likely that Microsoft's bot was similar to Google's [Neural Conversational Model](http://arxiv.org/pdf/1506.05869.pdf) (Vinyals and Le).
+    An RNN is fed with the relevant context, in TayAndYou's case the previous tweet/s, and then produces words until it hits and end of sequence character.
+    
+    Google trained their model on a variety of text domains with varying success.
+    After being supplied an IT help desk corpus for example it acts like a distracted pro-Windows troubleshooter.
+    
+    > **Machine:** could you please let me know what is
+    the operating system you are using ?  
+    > **Human:** linux  
+    > ...  
+    > **Machine:** is it a windows machine ?  
+    > **Machine:** we have linux on your machine .  
+    > **Machine:** is it windows xp or windows 7 ?  
+    > **Human:** i am using linux  
+    
+    Nerd note: Admittedly, whilst focused on Windows, it does tell the human to run `sudo apt-get update` then `sudo apt-get upgrade` later so we'll forgive the poor bot for the bias.
+    
+    Whilst Google's work was a far more constrained experiment - they didn't throw Twitter or trolls at it - the Google conversational model still caused a stir.
+    Why?
+    They fed it [movie and television show subtitles](http://www.opensubtitles.org/) and asked it fairly provocative questions.
+    
+    > **Human:** what is the purpose of existence ?  
+    > **Machine:** to find out what happens when we get to the planet earth .
+    
+    > **Human:** what is immoral ?  
+    > **Machine:** the fact that you have a child .
+    
+    The media had a field day, all the time neglecting to mention the unfortunate truth that it was randomly generating what is in essence movie quotes rather than actually conjecturing on our death and damnation at a deeper level.
+    I guess one drives more page views?
+    
+    <!--
+    _Special note:_ no, it didn't magically produce consciousness.
+    I never thought I'd need to say this but it's not an infrequent question, even amongst ML/AI meetups in SF/SV.
+    This is an entirely different arena of hype - one I'm not going into here - but the short summary is two layers of 4096 dimensionality LSTM units does not intelligence make.
+    -->
+    
+    ## The major flaw of TayAndYou: the training data
+    
+    Even if TayAndYou never tried to learn from the conversations it had, it was still broken.
+    Why?
+    The training data it had was already poisoned.
+    TayAndYou was toxic before it made first contact with the Internet.
+    
+    At first this response appears witty:
+    
+    <center>
+    ![](https://i.imgur.com/PPnCHnf.jpg)
+    </center>    
+
+    until you realize that it's literally duplicating a response from a month ago...
+    
+    <center>
+    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/child0besity">@child0besity</a> <a href="https://twitter.com/clmazin">@clmazin</a> Disagree. Ted Cruz would never have been satisfied with destroying the lives of only 5 innocent people.</p>&mdash; Merylnet (@merylnet) <a href="https://twitter.com/merylnet/status/703079627288260608">February 26, 2016</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </center>    
+
+    Analyzing many of the responses that got the most attention, either for being intelligent or offensive, you'll likely find that most of them are [almost exact repeats from the past](https://twitter.com/Queeeten/status/703049861214547968).
+    
+    ## Sanity flaws
+    
+    The entire situation was made worse by a few factors:
+    
+    + TayAndYou would repeat phrases uttered to it, a trivial attack vector
+    + The facial recognition on images included a small number of utterances, another trivial attack vector that could be gamed for negative results
+    + TayAndYou produced over 96,000 tweets in a single day, meaning little to no quality oversight would be in place - if there were any potentially insulting responses they were near guaranteed to be found
+    
+    Was implementing a filter for swearing out of scope..?
+    To be fair, the bot would still find something insulting to say but I'm certain the majority of worst cases would be flagged.
+    
+    Even if filtering on the generation end was considered too much, the training data shouldn't have been toxic.
+    Maybe at least filter the training data for anything discussing Hitler.
+    If a PR department wouldn't want their humans tweeting about Hitler, I've no clue why you'd want a bot to.
+    
+    ## Hype
+    
+    Humans have the tendency to imbue machine learning models with more intelligence than they deserve.
+    Humans also feel sorry for a basketball that's slowly deflating - or a Furby that is unfortunate enough to find oneself in the microwave.
+    We're not necessarily logical.
+    We're only human.
+    This is a situation where you should fight that instinct however.
+    
+    The entire field of machine learning is flowing with hype.
+    Fight against it.
+    
+    Unless you want VC funding.
+    Then you should definitely work on that hype.
