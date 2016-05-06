@@ -1,0 +1,138 @@
+title: "Why small files are a curse for big datasets"
+description: "Whenever you have a large number of small files, you're in for a bad time. We'll benchmark retrieving a dataset from a fairly optimal backend, S3, to see how bad it gets."
+image: "http://smerity.com/media/images/articles/2015/small_postage.jpg"
+date: 2015-10-30
+
+content: |
+    Imagine you had a large dataset - millions of images or webpages - and aimed to pull it all down to your machine from a distant server.
+    This is a frequent task if you want to spin up machines to train machine learning models or if you were using MapReduce to process a large dataset.
+
+    For our example, let's imagine a single machine needs to handle:  
+    **1.5 terabytes over 15 million files = 100KB per file**
+
+    For downloading the dataset, the typical back of the envelope might be `(dataset size) / (transfer speed)`.
+    This would give us:
+    
+    + 1.5 TB / 100Mbps = 1.38 days
+    + 1.5TB / 1Gbps = 3.33 hours
+
+    This is likely far from correct however, possibly by many orders of magnitude, due to the connection overhead of these small files.
+    We'll look at how large an impact this has on a near optimal situation, retrieving files from Amazon S3, and consider how bad it can get in less optimal situations.
+
+    ## By the numbers...
+
+    For back of the envelope calculations, there's a [small set of numbers you should know](http://static.googleusercontent.com/media/research.google.com/en//people/jeff/stanford-295-talk.pdf).
+    Whilst the numbers [do change over time](http://www.eecs.berkeley.edu/~rcs/research/interactive_latency.html), they don't change enough to strongly impact your equation.
+
+    When moving small files, our problems are most likely to come from:
+
+    + 0.5 ms for a round trip within the same datacenter
+    + 10 ms for a traditional disk seek
+    + 150 ms for a round trip from California to <s>the Netherlands</s> Sydney, Australia
+
+    Why Sydney, Australia?
+    First, the numbers are near equivalent, and second, let's just chalk it up to home sickness ^_^
+
+    # Death by <s>a thousand</s> 15e6 cuts
+
+    ## Latency 
+
+    In the optimal case, we only have to deal with 0.5 ms for a round trip in the same datacenter.
+    Why is this important?
+    A HTTP GET requires between one to three round trips to get rolling (DNS, TCP handshake, TLS tunnel).
+    There are ways of saving time, such as using [HTTP KeepAlive](https://en.wikipedia.org/wiki/HTTP_persistent_connection) to not discard connections when they may be reused, but there's no way of getting around the minimum of one round trip request per file.
+
+    For more details on why HTTP is such a bad idea for short lived connections ([TCP Slow Start](https://en.wikipedia.org/wiki/Slow-start), TCP being built for long lived flows, the verbosity of HTTP headers, etc), check out [What to Expect from HTTP/2](https://www.mnot.net/talks/http2-expectations/).
+
+    Let's imagine we're in an idealistic world where, once you've made a connection to the storage server, downloads are instantaneous and free.
+    We're also super lucky in that we only need a single connection for each HTTP GET.
+    Even in this dreamland, sequentially retrieving 15 million small records from a server in the same datacenter would take (0.5 ms * 15e6 =) 2.08 hours.
+
+    **2.08 hours in connection overhead to get 15e6 million files sequentially at 0.5 ms per roundtrip**
+
+    Now imagine that you're unlucky enough to have servers in California but live in Sydney, Australia...
+
+    **625 hours in connection overhead to get 15e6 million files sequentially at 150 ms per roundtrip**
+
+    Even in the optimal case, San Francisco is around 12,000 kilometres from Sydney, Australia.
+    Even for light itself, it would take 40 ms to travel that distance.
+
+    Sure, you might be able to save a few miliseconds if we burrowed a hole through the middle of the earth, but...
+
+    ## Concurrency
+
+    You're super intelligent though, so you'll be parallelizing those downloads.
+
+    The connection overhead can be partially overcome by downloading many files in parallel.
+    This technique is frequently used in web crawling for example, retrieving these small HTML files from dozens or hundreds of different servers at the same time.
+
+    Still, it takes time for a new connection to work out the maximum speed at which it can reliably send data - the TCP Slow Start problem mentioned earlier.
+    It's also hard to perfectly parallelize an implementation, increasing complexity and load on both ends of the connection.
+
+    Luckily Amazon S3 is well optimized for the small file use case with your files partitioned over many servers for free.
+    For best results, there's a set of best practices you can follow such as prefacing keys with a hash for assisting with load balancing.
+    
+    As the real world is dark and full of terrors, you might be unlucky enough to have a spinning disk at the other end however.
+    This decimates any of the advantages of your concurrent approach.
+
+    Given a spinning disk takes 10 ms to perform a random seek, that would limit you to retrieving approximately 100 files per second per disk.
+    We can hope that there are either many hard drives or many servers but your luck is not recognised as currency in this establishment...
+
+    **41.6 hours spent on random seeks on a spinning disk for 15e6 million files**
+
+    # Fixing the problem
+
+    ## Larger files
+
+    The easy and obvious solution is to get rid of small files by archiving / compressing them into a single larger file.
+
+    If you're transferring the files from one server to another, you can even do this in place, by running `tar c some/dir | gzip - |  ssh host2 tar xz`.
+
+    Creating larger files sounds like a perfect solution except that it destroys your ability to perform random access - a deal breaker in many situations.
+
+    If you instead concatenate files together by keep an index of where a given file starts and ends, you can have your cake and eat it too.
+    This tactic has been pursued in a number of different ways, including:
+
+    + [Web ARChive](https://en.wikipedia.org/wiki/Web_ARChive) (WARC) file that take advantage of peculiarities in the `gzip` file format to have both compression as well as random lookup
+    + [Finding a needle in Haystack: Facebook’s photo storage](https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf)
+
+    Whilst I leave the majority of the investigations up to the reader, I will state a few interesting advantages...
+
+    WARC files have the advantage of record level compression whilst still allowing for random lookups.
+    This is possible as the gzip spec actually states that two or more gzip files stuck together should be interpreted as a single gzip file.
+    As such, a WARC file is simply thousands of individually gzipped web pages all stuck together.
+
+    The Facebook file format is similar but doesn't use compression due to images already being compressed.
+    Facebook have the additional challenge of files being created and deleted - something which a web archive doesn't need to worry about - so performs garbage collection by compacting haystacks where many of the files may no longer be required.
+
+    Anything from running tar on your directory all the way to a complex orchestration such as Facebook's haystack will help you however!
+
+    # Experimentation
+
+    ## Benchmarking small files on Amazon S3
+
+    To see how this can impact you, I performed an experiment on Amazon S3 over 2,038 files.
+    The total file size for this collection is 276MB - quite small given the connection speed available on the machine and the bandwidth provided by Amazon S3.
+
+    Experiments were performed both with `aws s3 cp` and [TransferManager](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/transfer/TransferManager.html) from the AWS Java SDK.
+
+    Interestingly whilst `TransferManager` runs in parallel itself, even adding the 2,038 files sequentially to the `TransferManager` was a bottleneck that required a quick call to Java 8's `parallelStream` to solve.
+
+    For transferring the 2,038 files naively:  
+    **2,038 files in 15.9 seconds = 138.87Mbps**
+
+    Compared to transferring a single 276MB blob:  
+    **A single 276MB blob in 2.46 seconds = 897.56MBps**
+
+    Extrapolated to our full 1.5 terabyte dataset with 15 million files, the transfer times for our dataset are:
+
+    + 23.97 hours when we have our small file problem
+    + 3.71 hours when composed into larger files
+
+    This is far closer to our initial back of the envelope of `(dataset size) / (transfer speed)`!
+
+    ## So...
+
+    Please think about the small file problem, especially if you don't hate Australians who might be cursed with 150+ ms pings ^_^
+
+    Special thanks to Katey Nicosia for [the postage stamp image](https://www.flickr.com/photos/onegoodbumblebee/152657671/) =]
