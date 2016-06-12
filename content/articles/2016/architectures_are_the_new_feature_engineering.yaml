@@ -1,0 +1,142 @@
+title: "In deep learning, architecture engineering is the new feature engineering"
+description: "Whilst deep learning has simplified feature engineering, it certainly hasn't removed it. Feature engineering is now hidden in architecture engineering."
+date: 2016-06-11
+
+content: |
+    Two of the most important aspects of machine learning models are [feature extraction](https://en.wikipedia.org/wiki/Feature_extraction) and [feature engineering](https://en.wikipedia.org/wiki/Feature_engineering).
+    Those features are what supply relevant information to the machine learning models.
+
+    ---
+
+    Representing the word **overfitting** using various feature representations:
+    
+    + Morphological = [(prefix, **over-**), (root, **fit**), (suffix=imperfect tense, **-ing**)]  
+    + Unigrams = ['o', 'v', 'e', 'r', 'f', 'i', 't', 't', 'i', 'n', 'g']
+    + Bigrams = ['ov', 've', 'er', 'rf', 'fi', 'it', 'tt', 'ti', 'in', 'ng']
+    + Trigrams = ['ove', 'ver', 'erf', 'rfi', 'fit', 'itt', 'tti', 'tin', 'ing']
+    + One-hot = [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  
+    + [Word vector](https://en.wikipedia.org/wiki/Word_embedding) = [-0.26, 0.34, 0.48, -0.06, 0.16, 0.11, 0.13, -0.15, 0.47, -0.49, 0.07, -0.39, -0.13, -0.15, 0.06, 0.09]
+    + ...
+
+    ---
+
+    If the features are few or irrelevant, your model may have a hard time making any useful predictions.
+    If there are too many features, your model will be slow and likely overfit.
+    <!--
+    In general, better features produce better models.
+    Producing features by hand is a difficult (frequently requiring human experts with domain knowledge) and expensive (in terms of human effort) endeavour.
+    It also assumes that a human being knows what a machine learning model requires to make the best decisions.
+    -->
+
+    <!--In an optimal world, the machine learning model would learn what features it needs as part of the learning process.-->
+
+    Humans don't necessarily know what feature representation are best for a given task.
+    Even if they do, relying on feature engineering means that a human is always in the loop.
+    This is a far cry from the future we might want, where you can throw any dataset at a machine learning system and have it produce insights.
+
+    ## The promise of deep learning
+
+    The romanticized description of deep learning usually promises that the days of hand crafted feature engineering are gone - that the models are advanced enough to work this out themselves.
+    Like most advertising, is simultaneously true and misleading.
+ 
+    Whilst deep learning has simplified feature engineering, it certainly hasn't removed it.
+    As feature engineering has decreased, the architectures of our machine learning models have become increasingly more complex.
+    Most of the time, these model architectures are as specific to a given task as feature engineering used to be.
+
+    <!--
+    > Feature engineering is now hidden in the architecture.
+    -->
+
+    To clarify, this is still an important step.
+    Architecture engineering is more general than feature engineering and provides many new opportunties.
+    Having said that, however, we shouldn't be oblivious to the fact that where we are is still far from where we intended to be.
+   
+    <!-- 
+    > Any time a human being forces a specific architectural decision on a machine learning model, we're restricting the flexibility of the model.
+
+    > If there doesn't exist a model that could learn those architectural decisions, we're essentially hand coding a feature.
+    -->
+
+    > Any time a human being forces an architectural decision that couldn't be learned, we're essentially *hard coding* a feature.
+
+    ## The Convolutional Neural Network (CNN)
+
+    A major reason for the resurgence in popularity of neural networks were their impressive results from the ImageNet contest in 2012.
+    The model produced and [documented](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf) by Alex Krizhevsky, Ilya Sutskever, and Geoff Hinton achieved a winning top-5 test error rate of 15.3%, compared to 26.2% achieved by the second-best entry.
+
+    CNNs are a prime example of the promise of deep learning - removing complicated and problematic hand crafted feature engineering.
+    Edge detection is no longer handled by an explicitly coded human program but is instead learned by the first convolutional layer.
+    Indeed, the filters learned by the first layer of CNNs when given images are highly reminiscent of [Gabor filters](https://en.wikipedia.org/wiki/Gabor_filter), traditionally used for edge and texture detection.
+
+    ---
+
+    <img class="center" src="/media/images/articles/2016/imagenet_conv_kernels.png" />
+
+    An example of the convolutional kernels learned in the first layer of the model from [ImageNet Classification with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf).
+
+    ---
+
+    ### How are CNNs hard coded?
+
+    > CNNs are feature engineering that enforce 2D locality and weight reusability.
+    > *None of that is learned.*
+
+    Humans are the ones injecting this knowledge into the machine learning model.
+    There is no way for the model to learn these itself.
+
+    Whilst it would be possible to learn 2D locality by beginning with a fully dense layer, this would be far slower and require larger amounts of training data to get comparable results.
+    Initially, each neuron would be connected to all other neurons in the previous layer.
+    Given enough training data, the model may learn to zero out the majority of the connections, especially if those neurons are spatially distant.
+    You may want to help "nudge" the model in this direction by using L1 regularization to enforce sparsity though it'd be worth remembering that you just injected external knowledge again.
+
+    There is no standard way for allowing a machine learning model to take advantage of weight re-use though.
+    This is a major problem given that weight re-use is a major component of why CNNs work so well.
+    Each filter is shared across all the visual field, allowing a feature to be detected regardless of the position in the field.
+    On top of decreasing the number of parameters that need to be learned, the weight re-use allows the model to achieve better generalization.
+
+    ## Why this is an issue?
+
+    All of these hand code architectural modifications are enforced, not learned.
+    This directly limits the generality of the models.
+
+    In the case of images, you may argue that this is fine - we're only injecting a minor amount of knowledge.
+    Fair enough for images maybe - but what about tasks where humans can't see such "obvious" relations however?
+    If a machine learning model can't divine the "obvious" relations within a 2D image, do you trust it to reason over more complex input where a human dare not tread?
+
+    In an optimal world, a meta machine learning algorithm would explore and decide upon the model features and model architecture best suited to the task at hand.
+    This would happen with little to no human intervention.
+
+    This is not an optimal world however.
+    We generally settle for either human made or badly brute forced.
+
+    There are people trying to improve our ability to "search" over the theoretical model architecture space - but even then progress is limited.
+
+    ### Searching for recurrent neural network architectures
+
+    Long ago, in 1994, Angeline et al. produced [An evolutionary algorithm that constructs recurrent neural networks](https://www.semanticscholar.org/paper/An-evolutionary-algorithm-that-constructs-Angeline-Saunders/ba45ce377a073f0e954a517f56b96ef66af0a5d7?citingPapersSort=is-influential&citedPapersSort=is-influential).
+    They tried to move away from genetic algorithms towards evolutionary algorithms for searching architectures.
+
+    More recently, in [An Empirical Exploration of Recurrent Network Architectures](https://www.semanticscholar.org/paper/An-Empirical-Exploration-of-Recurrent-Network-J%C3%B3zefowicz-Zaremba/324fc9c732116fa81624faad07524039f193cede), Jozefowicz et al. perform a thorough architecture search where they evaluated over ten thousand different RNN architectures.
+    They were motivated to explore whether the human hand crafted LSTM, one of the most frequently used of RNN architectures, was actually optimal.
+    Whilst they produced interesting insights, the approach is not likely scalable to more general architectural modifications.
+
+    ### Searching for convolutional neural network architectures
+
+    Very recently, indeed just after I'd ranted that CNNs were enforced on Twitter, Fernando et al. from Google DeepMind released [Convolution by Evolution](http://mlanctot.info/files/papers/gecco16-dppn.pdf).
+    They evolve / train a neural network to rediscover an (approximate) convolutional neural network structure with a fully connected (read: dense) layer.
+    This means it not only learns about 2D locality but it also learns how to share / compress weights.
+    Whilst exciting, their technique has only been done over relatively toy datasets so far however.
+
+    ## Far from utopia
+
+    We're still far away from a world where machine learning models can live without their human tutors.
+    If you investigate the state of the art model architectures, you'll inevitably find instances of task specific architectural engineering in almost every one of them.
+    Those changes will generally be human specified and integral to achieving state of the art performance...
+
+    > If we tailor a model to each and every task, do we really have anything generic?
+
+    Surely there's a better way?
+
+    <!--
+    Indeed, ResNet - one of the most exciting recent techniques - is explicitly working around the inability of deep neural network to just perform the identity function (i.e. nothing) when it's of their best interest!
+    -->
