@@ -1,5 +1,6 @@
 title: "In deep learning, architecture engineering is the new feature engineering"
 description: "Whilst deep learning has simplified feature engineering, it certainly hasn't removed it. Feature engineering is now hidden in architecture engineering."
+image: "http://smerity.com/media/images/articles/2016/imagenet_conv_kernels.png"
 date: 2016-06-11
 
 content: |
