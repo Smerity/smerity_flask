@@ -28,20 +28,23 @@ content: |
     Producing features by hand is a difficult (frequently requiring human experts with domain knowledge) and expensive (in terms of human effort) endeavour.
     It also assumes that a human being knows what a machine learning model requires to make the best decisions.
     -->
+    <!--
+    Even if we know how to produce a useful feature, we might skip it as it may require large amounts of human effort or large amounts of computation time.
+    -->
 
     <!--In an optimal world, the machine learning model would learn what features it needs as part of the learning process.-->
 
     Humans don't necessarily know what feature representation are best for a given task.
     Even if they do, relying on feature engineering means that a human is always in the loop.
-    This is a far cry from the future we might want, where you can throw any dataset at a machine learning system and have it produce insights.
+    This is a far cry from the future we might want, where you can throw any dataset at a machine learning system and have it produce insights without human help.
 
     ## The promise of deep learning
 
     The romanticized description of deep learning usually promises that the days of hand crafted feature engineering are gone - that the models are advanced enough to work this out themselves.
-    Like most advertising, is simultaneously true and misleading.
+    Like most advertising, this is simultaneously true and misleading.
  
-    Whilst deep learning has simplified feature engineering, it certainly hasn't removed it.
-    As feature engineering has decreased, the architectures of our machine learning models have become increasingly more complex.
+    Whilst deep learning has simplified feature engineering in many cases, it certainly hasn't removed it.
+    As feature engineering has decreased, the architectures of the machine learning models themselves have become increasingly more complex.
     Most of the time, these model architectures are as specific to a given task as feature engineering used to be.
 
     <!--
@@ -64,6 +67,7 @@ content: |
 
     A major reason for the resurgence in popularity of neural networks were their impressive results from the ImageNet contest in 2012.
     The model produced and [documented](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf) by Alex Krizhevsky, Ilya Sutskever, and Geoff Hinton achieved a winning top-5 test error rate of 15.3%, compared to 26.2% achieved by the second-best entry.
+    That's a staggeringly large improvement - and the model did allow the removal of many hand crafted features too!
 
     CNNs are a prime example of the promise of deep learning - removing complicated and problematic hand crafted feature engineering.
     Edge detection is no longer handled by an explicitly coded human program but is instead learned by the first convolutional layer.
@@ -77,23 +81,46 @@ content: |
 
     ---
 
+    As we get towards higher and higher layers, the filters start recognizing specific patterns and objects.
+    All of these are learned feature extractions, with the features become further refined as we go up the model's hierarchy.
+    That's the *good* part.
+
     ### How are CNNs hard coded?
 
     > CNNs are feature engineering that enforce 2D locality and weight reusability.
     > *None of that is learned.*
 
-    Humans are the ones injecting this knowledge into the machine learning model.
-    There is no way for the model to learn these itself.
+    Humans are the ones injecting the relationship between pixels (and later CNN neurons) into the machine learning model.
+    **There is no way for the model to learn these itself.**
+
+    At no point can the neural network itself say "I think I need the convolution to be larger" or "Sharing my weights with everyone else doesn't make any sense in this area of the image - this area is always text whilst the other areas are always real world images".
+    
+    > You might not consider this an issue for 2D images - but what if a human doesn't know the relationship between certain parameters in a complex input space?
+
+    ---
+
+    <a target="_blank" href="/media/images/articles/2016/dota2_cm_orig.jpg">
+    <img class="center" src="/media/images/articles/2016/dota2_cm.jpg" />
+    </a>
+
+    As a simple example, imagine we wanted to extract information from a game.
+    In DotA 2, as with most games, you're provided additional context via an in-game [heads-up display](http://dota2.gamepedia.com/Head-up_display) on the top and bottom with the middle containing a "viewport" into the game's world.
+    Re-using weights between all these elements would at best be wasteful and at worst result in a poor representation.
+    The mini-map in the bottom left would likely benefit from a very small convolutional window size compared to the viewport.
+    Teaching all potential convolutional windows to be able to read the numbers for XP / HP / gold / level / move speed / etc would likely be a massive waste.  
+    And this is a **game**. In the grand scheme of things, it's "not complex".
+
+    ---
 
     Whilst it would be possible to learn 2D locality by beginning with a fully dense layer, this would be far slower and require larger amounts of training data to get comparable results.
     Initially, each neuron would be connected to all other neurons in the previous layer.
     Given enough training data, the model may learn to zero out the majority of the connections, especially if those neurons are spatially distant.
-    You may want to help "nudge" the model in this direction by using L1 regularization to enforce sparsity though it'd be worth remembering that you just injected external knowledge again.
+    You may want to help "nudge" the model in this direction by using L1 regularization to enforce sparsity - though it'd be worth remembering that you just injected external knowledge again.
 
     There is no standard way for allowing a machine learning model to take advantage of weight re-use though.
     This is a major problem given that weight re-use is a major component of why CNNs work so well.
-    Each filter is shared across all the visual field, allowing a feature to be detected regardless of the position in the field.
-    On top of decreasing the number of parameters that need to be learned, the weight re-use allows the model to achieve better generalization.
+    Each filter is shared across all the visual field, allowing a feature to be detected regardless of the position in the field, even if it has never been seen at that location before.
+    On top of decreasing the number of parameters that need to be learned, this weight re-use allows the model to achieve better generalization.
 
     ## Why this is an issue?
 
@@ -108,9 +135,10 @@ content: |
     This would happen with little to no human intervention.
 
     This is not an optimal world however.
-    We generally settle for either human made or badly brute forced.
-
+    We generally have to settle for either human made or badly brute forced.
     There are people trying to improve our ability to "search" over the theoretical model architecture space - but even then progress is limited.
+
+    (Note: I'm not providing a full literature review in the follow two sections, only providing some interesting jumping points for interested explorers - I omit many notable publications such as the NeuroEvolution of Augmented Topologies (NEAT) algorithm and others)
 
     ### Searching for recurrent neural network architectures
 
@@ -123,7 +151,7 @@ content: |
 
     ### Searching for convolutional neural network architectures
 
-    Very recently, indeed just after I'd ranted that CNNs were enforced on Twitter, Fernando et al. from Google DeepMind released [Convolution by Evolution](http://mlanctot.info/files/papers/gecco16-dppn.pdf).
+    Very recently, indeed just after I'd ranted that CNNs provided enforced constraints on the model, Fernando et al. from Google DeepMind released [Convolution by Evolution](http://mlanctot.info/files/papers/gecco16-dppn.pdf).
     They evolve / train a neural network to rediscover an (approximate) convolutional neural network structure with a fully connected (read: dense) layer.
     This means it not only learns about 2D locality but it also learns how to share / compress weights.
     Whilst exciting, their technique has only been done over relatively toy datasets so far however.
@@ -131,13 +159,14 @@ content: |
     ## Far from utopia
 
     We're still far away from a world where machine learning models can live without their human tutors.
-    If you investigate the state of the art model architectures, you'll inevitably find instances of task specific architectural engineering in almost every one of them.
+    If you investigate the state of the art model architectures for given tasks, you'll inevitably find instances of specific architectural engineering in almost every one of them.
     Those changes will generally be human specified and integral to achieving state of the art performance...
 
     > If we tailor a model to each and every task, do we really have anything generic?
 
     Surely there's a better way?
 
-    <!--
-    Indeed, ResNet - one of the most exciting recent techniques - is explicitly working around the inability of deep neural network to just perform the identity function (i.e. nothing) when it's of their best interest!
-    -->
+    ### Addendum:
+    
+    + [ResNets](https://www.semanticscholar.org/paper/Deep-Residual-Learning-for-Image-Recognition-He-Zhang/2c03df8b48bf3fa39054345bafabfeff15bfd11d) - one of the most exciting recent techniques - is explicitly working around the inability of deep neural networks to just perform the identity function (i.e. nothing) when it's of their best interest!
+    + Attention models are allowing a form of iterative analysis over the data and provide fascinating insights (such as [discovering word alignment for machine translation with no help from humans](https://www.semanticscholar.org/paper/Neural-Machine-Translation-by-Jointly-Learning-to-Bahdanau-Cho/071b16f25117fb6133480c6259227d54fc2a5ea0)) but could not be constructed (at least so far) by any of our architectural search procedures
