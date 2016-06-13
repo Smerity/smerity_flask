@@ -52,7 +52,7 @@ content: |
     -->
 
     To clarify, this is still an important step.
-    Architecture engineering is more general than feature engineering and provides many new opportunties.
+    Architecture engineering is more general than feature engineering and provides many new opportunities.
     Having said that, however, we shouldn't be oblivious to the fact that where we are is still far from where we intended to be.
    
     <!-- 
@@ -87,7 +87,7 @@ content: |
 
     ### How are CNNs hard coded?
 
-    > CNNs are feature engineering that enforce 2D locality and weight reusability.
+    > CNNs are feature engineering that enforce 2D locality and weight re-usability.
     > *None of that is learned.*
 
     Humans are the ones injecting the relationship between pixels (and later CNN neurons) into the machine learning model.
