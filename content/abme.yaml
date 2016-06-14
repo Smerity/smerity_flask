@@ -1,13 +1,35 @@
 title: "About Me"
 content: |
     My name is Stephen Merity, though I'm most commonly referred to as Smerity.
-    I'm a software engineer in San Francisco with [MetaMind](https://www.metamind.io/).
+    I'm a senior research scientist in San Francisco with [MetaMind](https://www.metamind.io/), acquired by [Salesforce](https://www.salesforce.com/).
 
     I've been lucky enough to work with fascinating people and groups over the years including Google Sydney, Freelancer.com, the Schwa Lab at the University of Sydney, the team at Grok Learning, the non-profit Common Crawl, and IACS @ Harvard.
     You can read my full history in <a href="/media/files/resume.pdf">my resume</a> or at <a href="http://www.linkedin.com/in/smerity">LinkedIn</a>.
     Finally, contact me in person at <a href="mailto:smerity@smerity.com">smerity@smerity.com</a> or stalk me on my various social networks!
 
+    ## Publications
+    <span id="pubs"></span>
+
+    __Dynamic Memory Networks for Visual and Textual Question Answering__ (2016) [[pdf](http://arxiv.org/abs/1603.01417)]  
+    Caiming Xiong\*, Stephen Merity\*, Richard Socher (\* equal contribution)  
+    _[ICML 2016](http://icml.cc/2016/?page_id=1649)_
+
+    __Integrated Tagging and Pruning via Shift-Reduce CCG Parsing__ (2011) [[pdf](/media/files/academic/smerity_thesis.pdf)][[bib](/media/bib/smerity_thesis.bib)]  
+    Stephen Merity (supervisor: Dr James R. Curran)  
+    _Honours Thesis (First Class + University Medal), The University of Sydney, Sydney, Australia_
+
+    Best Student Presentation: __Frontier Pruning for Shift-Reduce CCG Parsing__ (2011) [[pdf](http://alta.asn.au/events/alta2011/proceedings/pdf/U11-1010.pdf)][[bib](/media/bib/smerity_frontier.bib)][[presentation](/media/files/academic/alta2011_presentation.pdf)]  
+    Stephen Merity and James R. Curran  
+    _Proceedings of the 2011 Australasian Language Technology Association Workshop, ALTA 2011_
+
+    __Accurate Argumentative Zoning with Maximum Entropy models__ (2009) [[pdf](http://aye.comp.nus.edu.sg/nlpir4dl/NLPIR4DL03.pdf)][[bib](/media/bib/smerity_arg_zone.bib)]  
+    Stephen Merity, Tara Murphy and James R. Curran  
+    _Proceedings of the 2009 Workshop on Text and Citation Analysis for Scholarly Digital Libraries, ACL-IJCNLP 2009, pages 19-26_
+
     ## Talks
+
+    [Dynamic memory networks for visual and textual question answering](http://slides.com/smerity/dmn-for-tqa-and-vqa-nvidia-gtc) (April 2016)  
+    [NVIDIA GPU Technology Conference 2016, San Jose](http://www.gputechconf.com/)
 
     [Dynamic memory networks for visual and textual question answering](http://slides.com/smerity/dmn-for-tqa-and-vqa-strata-hadoop-world/) (March 2016)  
     [Strata + Hadoop World 2016, San Jose](http://conferences.oreilly.com/strata/hadoop-big-data-ca/public/schedule/detail/50830)
@@ -45,26 +67,6 @@ content: |
 
     [Machine Learning for your Robotic Army: A Crash Course using Python's Scikit-Learn](/media/talks/ml_for_your_robotic_army/template.html) (October 2012)  
     Sydney Python (SyPy), Sydney
-
-    ## Publications
-    <span id="pubs"></span>
-
-    __Dynamic Memory Networks for Visual and Textual Question Answering__ (2016) [[pdf](http://arxiv.org/abs/1603.01417)]  
-    Caiming Xiong\*, Stephen Merity\*, Richard Socher (\* equal contribution)  
-    _arXiv preprint 2016_
-
-    __Integrated Tagging and Pruning via Shift-Reduce CCG Parsing__ (2011) [[pdf](/media/files/academic/smerity_thesis.pdf)][[bib](/media/bib/smerity_thesis.bib)]  
-    Stephen Merity (supervisor: Dr James R. Curran)  
-    _Honours Thesis, The University of Sydney, Sydney, Australia_
-
-
-    Best Student Presentation: __Frontier Pruning for Shift-Reduce CCG Parsing__ (2011) [[pdf](http://alta.asn.au/events/alta2011/proceedings/pdf/U11-1010.pdf)][[bib](/media/bib/smerity_frontier.bib)][[presentation](/media/files/academic/alta2011_presentation.pdf)]  
-    Stephen Merity and James R. Curran  
-    _Proceedings of the 2011 Australasian Language Technology Association Workshop, ALTA 2011_
-
-    __Accurate Argumentative Zoning with Maximum Entropy models__ (2009) [[pdf](http://aye.comp.nus.edu.sg/nlpir4dl/NLPIR4DL03.pdf)][[bib](/media/bib/smerity_arg_zone.bib)]  
-    Stephen Merity, Tara Murphy and James R. Curran  
-    _Proceedings of the 2009 Workshop on Text and Citation Analysis for Scholarly Digital Libraries, ACL-IJCNLP 2009, pages 19-26_
 
     ## NCSS
     A true _about me_ would have to mention the [National Computer Science School](http://www.ncss.edu.au) (NCSS), a summer school run at the University of Sydney involving talented high school students from all over Australia.
