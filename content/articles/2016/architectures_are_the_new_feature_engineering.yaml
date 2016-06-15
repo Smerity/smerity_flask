@@ -122,9 +122,9 @@ content: |
     Each filter is shared across all the visual field, allowing a feature to be detected regardless of the position in the field, even if it has never been seen at that location before.
     On top of decreasing the number of parameters that need to be learned, this weight re-use allows the model to achieve better generalization.
 
-    ## Why this is an issue?
+    ## Why is this an issue?
 
-    All of these hand code architectural modifications are enforced, not learned.
+    All of these hand coded architectural modifications are enforced, not learned.
     This directly limits the generality of the models.
 
     In the case of images, you may argue that this is fine - we're only injecting a minor amount of knowledge.
