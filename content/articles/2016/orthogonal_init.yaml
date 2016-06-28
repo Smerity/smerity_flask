@@ -1,0 +1,212 @@
+title: "Explaining and illustrating orthogonal initialization for recurrent neural networks"
+description: "One of the largest issues with recurrent neural networks (RNNs) has been vanishing and exploding gradients. Whilst there are many methods to combat this, such as gradient clipping for exploding gradients and more complicated architectures including the LSTM and GRU for vanishing gradients, orthogonal initialization is an interesting yet simple approach."
+image: "http://smerity.com/media/images/articles/2016/orthogonal.png"
+date: 2016-06-27
+
+content: |
+    <!--
+    The flow of gradients is one of the most important aspects when it comes to training neural networks.
+    The gradient ... specified by the error gives information to the rest of the network.
+    Unfortunately, they're also one of the most finicky aspects of neural networks as well.
+    Many parameters, such as weight initialization, choice of activation function, and network depth, all have an impact.
+    In this blog post, we'll explore the impact of some of those decisions.
+
+    To help solidify our understanding of vanishing and exploding gradients, we'll explore a small number of examples.
+    While this will serve as an introduction to these issues, these issues are best understood by your own experimentation.
+    Even toy tasks can provide an opportunity to visualize and better understand the implications for larger tasks.
+    -->
+
+    <!--
+    Upon receiving each element of an input stream \\(x_1, x_2, \dots, x_t, \dots\\), having started from an initial state \\(h_0\\), an RNN updates its internal state \\(h_t = f(x_t, h_{t-1})\\) and producing an output \\(y_t = g(h_t)\\).
+    -->
+
+    One of the largest issues with recurrent neural networks (RNNs) has been vanishing and exploding gradients.
+    Whilst there are many methods to combat this, such as gradient clipping for exploding gradients and more complicated architectures including the LSTM and GRU for vanishing gradients, orthogonal initialization is an interesting yet simple approach.
+
+    To help solidify our understanding of why orthogonal initialization works, we'll explore it in terms of basic linear algebra and stability theory.
+
+    <center><video controls autoplay loop>
+      <source src="/media/images/articles/2016/eigenvalue_orthogonal.m4v" type="video/mp4">
+      Your browser does not support the video tag.
+    </video></center>
+
+    ## Eigenvalues, stability theory, and repeated matrix multiplication
+
+    A fundamental action performed in deep learning is repeated matrix multiplications.
+    Repeated matrix multiplications can result in serious numerical stability issues however.
+    Due to the exponential nature of the repetition, the results can explode or disappear quickly.
+    One of the worst culprits in terms of this are RNNs, which repeatedly update an internal state using a single weight matrix, sometimes hundreds or thousands of times.
+
+    Stability theory asks what the dynamics of a system are after a long period of time and can be used to gain insights here.
+    While stability theory covers many methods, we're particularly interested in how eigenvalues can be used to quickly compute repeated matrix multiplication.
+
+    Let's take a step away from RNNs for a second to establish some fundamentals.
+
+    ### Repeated matrix multiplication and Fibonacci
+
+    Imagine you wanted to compute the Fibonacci sequence using matrices.
+    It turns out there exists a matrix \\(F\\) with which, when you perform repeated matrix multiplication on it, you can iteratively compute the Fibonacci sequence.
+
+    <script type="math/tex; mode=display">
+    F^n = \begin{pmatrix}
+    0 & 1 \\
+    1 & 1 \\
+    \end{pmatrix} ^ n
+    = \begin{pmatrix}
+    F^{n-1} & F^{n} \\
+    F^{n} & F^{n+1} \\
+    \end{pmatrix}
+    </script>
+
+    Special note, a matrix to the power of 0 gives you the identity matrix, placing zeros in the \\(F^{n}\\) entries of the matrix, giving the correct solution of \\(F^0 = 0\\).
+
+    Let's compute the 4th entry in the Fibonacci sequence using this method, starting at identity and then performing a matrix multiplication with \\(F\\) at each step.
+    Notice that the intermediate values we've computed are all part of the sequence - 0, 1, 1, 2, 3.
+
+    <script type="math/tex; mode=display">
+    \begin{align*}
+    \begin{pmatrix}
+    0 & 1 \\1 & 1\end{pmatrix} ^ 4 & = \begin{pmatrix}1 & 0 \\0 & 1\end{pmatrix} \begin{pmatrix}0 & 1 \\1 & 1\end{pmatrix} ^ 4 \\
+    & = \begin{pmatrix}0 & 1 \\1 & 1\end{pmatrix} \begin{pmatrix}0 & 1 \\1 & 1\end{pmatrix} ^ 3 \\
+    & = \begin{pmatrix}1 & 1 \\1 & 2\end{pmatrix} \begin{pmatrix}1 & 1 \\1 & 0\end{pmatrix} ^ 2 \\
+    & = \begin{pmatrix}1 & 2 \\2 & 3\end{pmatrix} \begin{pmatrix}1 & 1 \\1 & 0\end{pmatrix} ^ 1 \\
+    & = \begin{pmatrix}2 & 3 \\3 & 5\end{pmatrix}
+    \end{align*}
+    </script>
+
+    Expanded out like this, it's also clear we could calculate \\(F^4\\) by computing \\((F^2)^2\\) instead of \\(F^4\\).
+    This allows us to compute the nth entry in the Fibonacci sequence in \\(O(\log n)\\) time.
+
+    We can go one step better however, computing the nth entry in the Fibonacci sequence in \\(O(1)\\) time (assuming constant time pow() function) whilst also gaining some intuition as to what happens as it grows.
+
+    ### Eigenvalues
+
+    Time to dust off some elementary linear algebra.
+    An eigendecomposition of a matrix represents the matrix in terms of its eigenvalues and eigenvectors.
+    The matrix \\(F\\) above can be factorized as \\(F = Q \Lambda Q^{-1}\\), where \\(\Lambda\\) is a diagonal matrix with the eigenvalues placed on the diagonals and \\(Q\\) is a matrix composed of the corresponding eigenvectors of \\(F\\).
+
+    <script type="math/tex; mode=display">
+    Q = \begin{pmatrix}-0.8506 & -0.5257 \\0.5257 & -0.8506\end{pmatrix} \\
+    \Lambda = \begin{pmatrix}-0.6180 & 0 \\0 & 1.6180\end{pmatrix} \\
+    Q^{-1} = \begin{pmatrix}-0.8506 & 0.5257 \\-0.5257 & -0.8506\end{pmatrix}
+    </script>
+
+    An immediate and sane question to ask is why bother representing the matrix this way?
+    Let's use this new matrix to compute the next Fibonacci value.
+
+    <script type="math/tex; mode=display">
+    \begin{align*}
+    F^2 & = (Q \Lambda Q^{-1}) (Q \Lambda Q^{-1}) \\
+    & = Q \Lambda (Q^{-1} Q) \Lambda Q^{-1} \\
+    & = Q \Lambda ^ 2 Q^{-1} \\
+    \end{align*}
+    </script>
+
+    Other than the two constant matrix multiplications, the only extra work you need to do is raising the \\(\Lambda\\) matrix to the nth power!
+    This holds true for any power you might want to apply, such that \\(F^n = Q \Lambda ^ n Q^{-1}\\).
+
+    What this simply means is that the eigenvalues are what dictate the growth or death of the result as we perform repeated matrix multiplication.
+    
+    Using the Fibonacci matrix above, notice that one eigenvalue explodes whilst the other eigenvalue vanishes as we get to larger and larger \\(n\\) for \\(\Lambda^n\\).
+    Even at \\(n = 10\\), we find that one of the eigenvalues is almost irrelevant.
+
+    <script type="math/tex; mode=display">
+    \Lambda^{10} = \begin{pmatrix}0.0081 & 0 \\0 & 122.9919\end{pmatrix} \\
+    </script>
+
+    Indeed, if you just multiply a reasonably large Fibonnaci number by the largest eigenvalue, you get essentially the next Fibonacci value.
+    It's no surprise that the largest eigenvalue happens to be the Golden ratio, \\(\varphi\\), or the converged ratio of consecutive Fibonacci numbers.
+
+        :::python
+        >>> [np.round(13 * 1.618 ** i) for i in range(5)]
+        [13, 21, 34, 55, 89]
+
+    The summary is that, as \\(n\\) gets asymptotically large:
+
+    + The matrix \\(F^n\\) vanishes if all eigenvalues are smaller than 1
+    + The matrix \\(F^n\\) remains and doesn't grow if all eigenvalues are 1
+    + The matrix \\(F^n\\) explodes if any eigenvalue is larger than 1
+
+    ## Orthogonal Initialization
+
+    ### Orthogonal matrices review
+
+    Orthogonal matrices have many interesting properties but the most important for us is that all the eigenvalues of an orthogonal matrix have absolute value 1.
+    This means that, no matter how many times we perform repeated matrix multiplication, the resulting matrix doesn't explode or vanish.
+    
+    A special note is that the eigenvalues can be complex, with the complex part of the eigenvalue contributing an oscillatory component.
+
+    <!--
+    There has also been explorations into using the unitary matrix for RNN initialization as well, though there are additional complications given the unitary matrix is a complex analogue of the orthogonal matrix.
+    -->
+
+    ## Orthogonal init for RNNs
+
+    For this illustration, we're only looking at a simplified RNN model.
+    For simplicity we assume no inputs, no bias, an identity activation function \\(f\\), and the initial hidden state of the RNN \\(h_0\\) is an identity matrix.
+
+    <script type="math/tex; mode=display">
+    h_t = f(W h_{t-1} + V x_t) = f(W h_{t-1}) = W h_{t-1} \\
+    h_3 = W ( W (W h_0) ) = W^3 h_0 = W^3 I = W^3
+    </script>
+
+    When we perform repeated matrix multiplication within an RNN and the result explodes or vanishes, we also land in the realm of vanishing or exploding gradients.
+    If the gradients vanish, training is at a near standstill as no information is backpropagated.
+    If the gradients explode, training may never converge as the gradient update wildly fluctuates.
+    Both these are hugely problematic and can occur in a very small number of timesteps.
+
+    When initializing the weight matrix in RNNs, it's not uncommon to use random uniform or random normal initialization.
+    This method gives no guarantee as to the eigenvalues of the weight matrix and are likely to result in exploding or vanishing results.
+
+    If we instead use an orthogonal matrix to initialize the weights, the resulting matrix neither explodes nor vanishes.
+    This allows for gradients to backpropagate more effectively.
+
+    To construct an orthogonal matrix, we can use singular value decomposition, as seen in the [Lasagne init.py](https://github.com/Lasagne/Lasagne/blob/a3d44a7fbb84b1206a3959881c52b2203f48fc44/lasagne/init.py#L363).    
+
+    ## Visualizing different inits
+
+    Let's see what happens to the resulting matrix when performing repeated matrix multiplication over 64 timesteps.
+    Remember that it's also not uncommon for RNNs to run for hundreds or even thousands of timesteps.
+
+    ### Vanishing matrix due to small eigenvalues
+
+    <center><video controls autoplay loop>
+      <source src="/media/images/articles/2016/eigenvalue_vanish.m4v" type="video/mp4">
+      Your browser does not support the video tag.
+    </video></center>
+
+    ### Exploding matrix due to an eigenvalue > 1
+
+    <center><video controls autoplay loop>
+      <source src="/media/images/articles/2016/eigenvalue_explode.m4v" type="video/mp4">
+      Your browser does not support the video tag.
+    </video></center>
+
+    ### Orthogonal matrix
+
+    <center><video controls autoplay loop>
+      <source src="/media/images/articles/2016/eigenvalue_orthogonal.m4v" type="video/mp4">
+      Your browser does not support the video tag.
+    </video></center>
+
+    ## Conclusion
+
+    Orthogonal initialization is a simple yet relatively effective way of combatting exploding and vanishing gradients, especially when paired with other methods such as gradient clipping and more advanced architectures.
+    While we haven't gone into detail with mathematical derivation of the gradients, it is clear when visualizing orthogonal initialization why it can be so effective.
+    The story becomes far more complicated when we add in real activation functions and input however.
+
+    If you're interested in more detail, I highly recommend the papers below which all explore various aspects of this.
+
+    ## What to look at next
+
+    + [Exact solutions to the nonlinear dynamics of learning in deep linear neural networks](https://arxiv.org/abs/1312.6120) - "... Despite the linearity of their input-output map, such networks have nonlinear gradient descent dynamics on weights that change with the addition of each new hidden layer. ... We further exhibit a new class of random orthogonal initial conditions on weights that, like unsupervised pre-training, enjoys depth independent learning times. We further show that these initial conditions also lead to faithful propagation of gradients even in deep nonlinear networks, as long as they operate in a special regime known as the edge of chaos."
+    + [On the difficulty of training Recurrent Neural Networks](http://arxiv.org/abs/1211.5063) - "There are two widely known issues with properly training Recurrent Neural Networks, the vanishing and the exploding gradient problems detailed in Bengio et al. (1994). ... Our analysis is used to justify a simple yet effective solution. We propose a gradient norm clipping strategy to deal with exploding gradients and a soft constraint for the vanishing gradients problem."
+    + [Regularizing RNNs by Stabilizing Activations](http://arxiv.org/abs/1511.08400) - "In the absence of inputs and nonlinearities, a constant norm would imply orthogonality of the hidden-to-hidden
+    transition matrix for simple RNNs (SRNNs). However, in the case of an orthogonal transition
+    matrix, inputs and nonlinearities can still change the norm of the hidden state, resulting in
+    instability. This makes targeting the hidden activations directly a more attractive option for achieving
+    norm stability. Stability becomes especially important when we seek to generalize to longer
+    sequences at test time than those seen during training (the 'training horizon')."
+    + [Unitary Evolution Recurrent Neural Networks](http://arxiv.org/abs/1511.06464) - "When the eigenvalues of the hidden to hidden weight matrix deviate from absolute value 1, optimization becomes difficult due to the well studied issue of vanishing and exploding gradients, especially when trying to learn long-term dependencies. To circumvent this problem, we propose a new architecture that learns a unitary weight matrix, with eigenvalues of absolute value exactly 1."
+    + [Recurrent Orthogonal Networks and Long-Memory Tasks](http://arxiv.org/abs/1602.06662) - "In this work we analyze these “long-memory” tasks, and construct explicit RNN solutions for them. The solutions illuminate both the tasks, and provide a theoretical justification for the success of recent approaches using orthogonal initializations of, or unitary constraints on, the transition matrix of the RNN. ... We verify experimentally that initializing correctly (i.e. random orthogonal or identity) is critical for success on these tasks."
+    + [Strongly-Typed Recurrent Neural Networks](http://arxiv.org/abs/1602.02218)
