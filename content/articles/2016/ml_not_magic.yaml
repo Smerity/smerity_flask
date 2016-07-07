@@ -1,0 +1,142 @@
+title: "It's ML, not magic: the rise of AI-prefix investing"
+description: ""
+date: 2016-07-03
+
+content: |
+    During the peak of the [dot-com bubble](https://en.wikipedia.org/wiki/Dot-com_bubble), you'd be forgiven for thinking [prefix investing](https://www.techdirt.com/articles/20031204/0824235.shtml) was a legitimate tactic.
+    A company could receive a nice jump in valuation by adding an "e-" prefix or ".com" suffix.
+    Just being awake to the potential of the World Wide Web was enough to indicate to investors that a company might take advantage of it.
+    What many of those suffixes and prefixes missed however was a detailed plan of attack.
+
+    The internet was young and full of promises that were either technically or logistically impossible to fulfill.
+    Some of the promises made were irrationally optimistic.
+    Others were downright fraudulent.
+    Even if what was promised could become a reality, few companies had the talent or foresight to execute a well thought out internet strategy.
+
+    In the years since, after the rise and fall of the dot-com bubble, we have seen the promise of the internet play out in full, transforming the way we live and communicate.
+    Many of the possibilities that became a reality years later were invisible to even the most keen of observers at that early stage.
+    The bubble didn't doom the eventual rise of internet technology - but it did make life far more complex.
+
+    ## Enter, stage left: Artificial Intelligence
+
+    If there's any promise I can make about the field of AI, it's that the hype will always overtake the research.
+    In this article, I won't quibble over definitions, simply taking the broadest term as used in the media: artificial intelligence is whenever a system appears more intelligent than we expect it to be.
+    This is in recognition of both [the AI effect](https://en.wikipedia.org/wiki/AI_effect) (where well defined applications of AI/ML are no longer considered intelligence) and that even if a system is simply an application of basic statistics, it is likely to be reported as AI if it appears intelligent.
+    <!--This is apt given that many of the AI-prefix companies (known simply as AI-prefixes from here on) are utilising that broad definition to their advantage.-->
+
+    <!--
+    (My more scientifically minded friends are likely converting their bunsen burners to flame throwers right now but one issue at a time...)
+    -->
+
+    Like the internet before and after the dot-com bubble, AI is a young technology.
+    It isn't that AI lacks potential, it's simply that the irrational optimism is overpowering.
+    Bold (and perhaps impossible to fulfill) promises are a natural result when prefix investing is again profitable.
+    The only difference is that the prefix is now "AI-".
+    As with the dot-com bubble, few entities have the talent or foresight to properly execute on the complex AI strategies that they might have promised themselves into.
+
+    AI captures our imagination in a way that routers and ethernet cables can't.
+    AI slots cleanly into our existing fiction, building on a fear that humans have long held.
+    Frankenstein engrossed us with tales of unorthodox scientific experiments granting sentience to a corpse.
+    Even back are golems, anthropomorphic beings magically created entirely from inanimate matter.
+    <!--These all inspire modern day retellings, except with the flesh of Frankenstein's monster or the clay of the golem being replaced by the steel of SkyNet.-->
+    These all inspire modern day retellings, except with the flesh and clay replaced by the steel of SkyNet.
+
+    The narrative of AI also promises many solutions to the pitfalls warned by academics.
+    Exponential growth of hardware capability, self-improving systems, the seemingly endless improvements...
+    For whatever reason, it seems we have decided that commentators need little in the way of evidence to back up their bold statements.
+    Non-expert commentators have equally valued opinions, even when experts are stating the opposite.
+    While we can certainly go too far one direction - experts are by no means infallible - it's likely still a good idea to listen to input from those actually implementing the technology being promised.
+    <!--This could be compared to the traditional manager - programmer relationship, where one side promises and the other delivers.-->
+
+    The fundamental and inconvenient truth is that science fiction is more interesting than science fact.
+    Just as stories and companies reporting advances on medicine or physics should be taken with a grain of salt, we should combat this fictionalization of reality within AI.
+    <!--We need to be aware of this as we try our best to combat it.-->
+    This can be a painful realization for practitioners in the fields of AI/ML/NLP/CV.
+    For them, there is no need to hype the research.
+    Reality is exciting enough.
+
+    <!--
+    It's no surprise that the AI practitioners themselves are frequently those telling you to discount the hype.
+    The field of AI has already been through this before: the AI winter.
+    Overpromises have already cost us before.
+    -->
+
+    This post aims to outlay a few simple rules that, without restricting one's ability to "dream big", should be able to cull the most ludicrous examples of AI-prefixing.
+
+    <!--
+    I have a great deal to say on these but this isn't the post for that - this post is focused on the present and near future, where none of these apply.
+    (n.b. I'd usually refer to it as ML/AI but let's stick with the term that results in the majority of the hype)
+
+    The TechDirt article above that 
+    Directly quoting [the TechDirt article](https://www.techdirt.com/articles/20031204/0824235.shtml) above, originally in relation to the dot-com prefix investing, then used on nanotechnology companies:
+
+    > This is a sign that there are a lot of greedy, but unsophisticated investors dumping lots and lots of dough into the market.
+    -->
+
+    ## That awkward situation: journalists, investors, and entrepreneurs
+
+    Why are we in this situation in the first place?
+    Investors and journalists want to be wowed.
+    The premise of AI-prefix investing can be extended to journalists by seeing the rise of AI-prefix coverage.
+
+    Most disturbing to me was this quote from a conversation I had, taken with permission.
+    I asked them why the article featured a hard push on AI when (a) their product didn't feature any AI and (b) there was no plan for how to implement AI in their product yet.
+
+    > Sadly it is what [the] media want to hear about and write about. And it is the only way to pitch in a way that they don't go "boring". I didn't start off saying AI but that is the only way we got a break. And I don't think we are going to change their minds in a hurry.
+
+    This may be an extreme example - being able to get press coverage for an AI related product without any AI - but stretching the truth can still occur even if there is AI under the hood.
+
+    The bar for actual scientific advances is well established from an academic perspective (and there are even those within the field that think it doesn't push hard enough) - journalists and investors should use that bar or be exceedingly wary when accepting anything below it.
+
+    + Entrepreneurs want press coverage on their idea and are willing to stretch the truth
+    + Journalists can push for the most exciting story possible, being misled (knowingly or not) by those they interview
+    + This is a well known problem for science as it becomes more popular - the initial study becomes exaggerated (assuming there is an initial study)
+    + Viewing it in person doesn't guarantee it works - anecdata and baselines - image caption generation overfitting to training data, image analysis being able to rely simply on semantic knowledge
+
+    ## The questioning nature that journalists need
+
+    <center>
+    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Got a press release for a co that had &quot;unique science&quot; which made it a &quot;leading technology innovator&quot;. No referenced research papers.</p>&mdash; Jack Clark (@jackclarkSF) <a href="https://twitter.com/jackclarkSF/status/623626817577091072">July 21, 2015</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </center>
+
+    ### Ask what cases the system will fail on
+
+    > "Revealing the failure cases of your models is a way of avoiding over-hype"  
+    > [Kevin Murphy](https://www.cs.ubc.ca/~murphyk/MLbook/) at ICML 2015
+
+    No AI system yet developed will magically fit every use case.
+    Even if it is arbitrarily flexible, there are still fundamental limits placed on us by information theory.
+    Asking for an upper bound on what is possible doesn't seem an unreasonable question.
+
+    ### Any claim of advanced research without publication is suspect at best
+
+    > "If you do research in isolation, the quality goes down. Which is why military research sucks."
+    > Yann LeCun at ICML 2015
+
+    The rate of change in research is such that if anyone is on the sidelines, they're at best only going to be keeping up.
+ 
+    The bar for actual scientific advances is well established from an academic perspective (and there are even those within the field that think it doesn't push hard enough) - journalists and investors should use that bar or be exceedingly wary when accepting anything below it.
+
+    ### AI doesn't change the base use case or business fundamentals
+
+    AI won't save a broken business plan.
+    An easy upper bound is asking if the business plan would work with free human labor performing the work.
+    If the business plan doesn't work, AI won't save it.
+    <!--Achieving human level performance on a task is a difficult endeavour when moving away from a few simple and well defined tasks.-->
+
+    We can also ask if the application of AI is a value add or fundamentally transformative.
+    Many of the AI-prefixes only feature AI as a value add, using that as a hook for media or investment.
+    AI can still be a useful addition but it emphasises that the underlying business must be viable.
+
+    ### The game of telephone applied to research
+
+    The [telephone game](https://en.wikipedia.org/wiki/Chinese_whispers) (also known across the word as Chinese whispers / Russian scandal / ...) might sound childish but seems to be a well known phenomenon issue in the adult world too.
+
+    > [O]ne person whispers a message to another, which is passed through a line of people until the last player announces the message to the entire group. Errors typically accumulate in the retellings, so the statement announced by the last player differs significantly, and often amusingly, from the one uttered by the first.
+
+    Let's go through a theoretical replaying, shall we?
+
+    + Our new machine learning system is able to tell 
+    + The 
+    + Better artificial intelligence than Google or Microsoft
