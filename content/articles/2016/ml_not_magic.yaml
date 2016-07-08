@@ -1,6 +1,6 @@
 title: "It's ML, not magic: the rise of AI-prefix investing"
 description: "AI is a young field full of amazing potential. This mystery and lack of understanding allows for hype to grow unchecked."
-image: "http://smerity.com/media/images/articles/2016/ml_not_magic_kyle_billings.jpg"
+image: "http://smerity.com/media/images/articles/2016/ml_not_magic.jpg"
 date: 2016-07-03
 
 content: |
@@ -242,7 +242,8 @@ content: |
 
     **Thanks to:**
 
-    + [Kyle Billings](http://kylebillings.com/) for the image of him being held ransom by an evil mini robot ^_^
+    + [Kyle Billings](http://kylebillings.com/) for the initial article image - unfortunately that was removed after [an event the morning of publication](http://motherboard.vice.com/read/dallas-pd-using-a-bomb-robot-to-kill-a-suspect-is-an-unprecedented-shift-in-policing)
+    + [Tim Sheerman-Chase](https://www.flickr.com/photos/tim_uk/7942941272/) for his Creative Commons licensed image that replaced the image above
     + [Will Radford](https://twitter.com/wejradford) for pointing towards model stability over time as an important consideration
 
-    <img class="smooth center" src="/media/images/articles/2016/ml_not_magic_kyle_billings.jpg" />
+    <img class="smooth center" src="/media/images/articles/2016/ml_not_magic.jpg" />
