@@ -41,15 +41,18 @@ content: |
     <!--These all inspire modern day retellings, except with the flesh of Frankenstein's monster or the clay of the golem being replaced by the steel of SkyNet.-->
     These all inspire modern day retellings, except with the flesh and clay replaced by the steel of SkyNet.
 
-    The narrative of AI also promises many solutions to the pitfalls warned by academics.
-    Exponential growth of hardware capability, self-improving systems, the seemingly endless improvements...
-    For whatever reason, it seems we have decided that commentators need little in the way of evidence to back up their bold statements.
-    Non-expert commentators have equally valued opinions, even when experts are stating the opposite.
-    While we can certainly go too far one direction - experts are by no means infallible - it's likely still a good idea to listen to input from those actually implementing the technology being promised.
+    The narrative of AI also allows commentators with no experience in the field to make strong statements about the future.
+    These non-expert commentators are given equal weighting compared to experts who may state the opposite.
+    This is not an [appeal to authority](https://yourlogicalfallacyis.com/appeal-to-authority)
+    While experts are by no means infallible they should provide evidence to back up their claims.
+    Certain arguments, such as the exponential growth of hardware capability or the concept of self-improving systems, have a tendency to remove any evidence requirements from a conversation.
+
+    <!--For whatever reason, it seems we have decided that commentators need little in the way of evidence to back up their bold statements.-->
+    <!--While we can certainly go too far one direction - experts are by no means infallible - it's likely still a good idea to listen to input from those actually implementing the technology being promised.-->
     <!--This could be compared to the traditional manager - programmer relationship, where one side promises and the other delivers.-->
 
     The fundamental and inconvenient truth is that science fiction is more interesting than science fact.
-    Just as stories and companies reporting advances on medicine or physics should be taken with a grain of salt, we should combat this fictionalization of reality within AI.
+    Just as stories and companies reporting advances on medicine or physics should be taken with a grain of salt, we should combat this fictionalization of the reality of AI.
     <!--We need to be aware of this as we try our best to combat it.-->
     This can be a painful realization for practitioners in the fields of AI/ML/NLP/CV.
     For them, there is no need to hype the research.
@@ -76,29 +79,46 @@ content: |
     ## That awkward situation: journalists, investors, and entrepreneurs
 
     Why are we in this situation in the first place?
-    Investors and journalists want to be wowed.
+    At a basic level, humans want a story.
+    This feeds in to our Frankensteinian roots from earlier.
+    The more interesting the hook is, the more likely we are to pay attention, the more likely we are to want to be a part of it.
+
+    This base situation becomes more extreme when we investigate the interplay between entrepreneurs, journalists, and investors.
+    A non unreasonable tactic to impress both investors and journalists is to wow them.
+    Journalists even have a secondary desire to wow their readers.
     The premise of AI-prefix investing can be extended to journalists by seeing the rise of AI-prefix coverage.
 
-    Most disturbing to me was this quote from a conversation I had, taken with permission.
-    I asked them why the article featured a hard push on AI when (a) their product didn't feature any AI and (b) there was no plan for how to implement AI in their product yet.
+    Most disturbing to me was this quote, taken with permission, from a conversation I recently had.
+    An article featuring a young start-up pushed hard on the AI angle.
+    The issue was that (a) their product didn't feature any AI and (b) there was no plan for how to implement AI in their product yet.
+    They told me:
 
     > Sadly it is what [the] media want to hear about and write about. And it is the only way to pitch in a way that they don't go "boring". I didn't start off saying AI but that is the only way we got a break. And I don't think we are going to change their minds in a hurry.
 
     This may be an extreme example - being able to get press coverage for an AI related product without any AI - but stretching the truth can still occur even if there is AI under the hood.
+    Journalists can push for the most exciting story possible, being misled (knowingly or not) by those they interview.
+    The same holds true for investors.
 
     The bar for actual scientific advances is well established from an academic perspective (and there are even those within the field that think it doesn't push hard enough) - journalists and investors should use that bar or be exceedingly wary when accepting anything below it.
 
-    + Entrepreneurs want press coverage on their idea and are willing to stretch the truth
+    <!--+ Entrepreneurs want press coverage on their idea and are willing to stretch the truth
     + Journalists can push for the most exciting story possible, being misled (knowingly or not) by those they interview
     + This is a well known problem for science as it becomes more popular - the initial study becomes exaggerated (assuming there is an initial study)
     + Viewing it in person doesn't guarantee it works - anecdata and baselines - image caption generation overfitting to training data, image analysis being able to rely simply on semantic knowledge
+    -->
 
-    ## The questioning nature that journalists need
+    ## The questioning nature that we need
+
+    [Jack Clark](https://twitter.com/jackclarkSF) is "the world's only neural net reporter", holding a post at Bloomerg.
+    While this tweet is over almost a year old, it's a succinct explanation of why I really enjoy his coverage.
 
     <center>
     <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Got a press release for a co that had &quot;unique science&quot; which made it a &quot;leading technology innovator&quot;. No referenced research papers.</p>&mdash; Jack Clark (@jackclarkSF) <a href="https://twitter.com/jackclarkSF/status/623626817577091072">July 21, 2015</a></blockquote>
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     </center>
+
+    Beyond requiring evidence to filter for AI-prefixes, he also reads research papers for fun and has even put together some neural networks himself.
+    Obviously we can't expect every journalist, investor, or lay-person to have this level of insight, but are there some broad rules we can fall back on?
 
     ### Ask what cases the system will fail on
 
@@ -106,29 +126,82 @@ content: |
     > [Kevin Murphy](https://www.cs.ubc.ca/~murphyk/MLbook/) at ICML 2015
 
     No AI system yet developed will magically fit every use case.
-    Even if it is arbitrarily flexible, there are still fundamental limits placed on us by information theory.
+    If a researcher tells you that a model got state of the art results out of the box, they're either exceedingly lucky or giving you a fairy tale version of reality.
+    Even if their model is arbitrarily flexible, there are still fundamental limits placed on us by information theory.
+    
+    + "How much training data is required?"
+    + "Can this work unsupervised (= without labelling the examples)?"
+    + "Can the system predict out of vocabulary names?" (i.e. Imagine if I said "My friend Rudinyard was mean to me" - many AI systems would never be able to answer "Who was mean to me?" as Rudinyard is out of its vocabulary)
+    + "How much does the accuracy fall as the input story gets longer?"
+    
     Asking for an upper bound on what is possible doesn't seem an unreasonable question.
+    It is also something that anyone working with or creating the AI system should have already run into.
+
+    ### The real world rarely looks like a dataset
+
+    Few datasets are entirely representative of what the task looks like in the real world.
+    These limitations exist for a variety of reasons.
+    The datasets we create usually reflect a minor extension on the capacity of existing AI systems.
+    Just as the tests we give students are rarely reflective of the real world, neither are the tests we give these AI systems.
+    
+    <!--Just as we wouldn't test a music student on their knowledge of building chords if they were still learning the keys.-->
+    <!--Just as it would be a bad idea to test a student on riding a motorbike if they didn't know how to ride a bike, our AI datasets are usually one step beyond what is currently possible.-->
+    <!--
+    A test is given to evaluate how well a system performs on a given task.
+    If we already know it will fail, then the test isn't necessary.
+    -->
+
+    Good performance on a dataset also doesn't necessarily imply good performance in the real world.
+    I'd wager that even trivial self-driving car models, given reasonable data, would be able to score in the high 90s if we decided on a reasonable notion of accuracy.
+    The real stickler is the last few percent.
+    When we make a mistake at high speed on a road, potentially under questionable conditions, the results can be disastrous.
+    If the cost of a mistake is high, accuracy really doesn't mean anything - the question becomes the expected number of failure cases in standard use.
+
+    Many datasets are also restricted to a particular domain.
+    As an example, a standard dataset in natural language processing is the Penn Treebank, composed primarily of articles from the Wall Street Journal in 1989.
+    Let me repeat that: **1989**.
+    That was the year I was born, the year the Berlin Wall fell, and the year the original Game Boy was released.
+
+    Not only but the Wall Street Journal is primarily composed of financial articles.
+    For many tasks, we have achieved incredibly high accuracy over the Penn Treebank.
+    When we go to use those trained models elsewhere however, such as "out of domain" datasets such as scientific articles, the performance can plummet.
+    This is especially true when applied to Twitter.
+    Tweets might as well be a different language.
+
+    Another interesting question is what's the performance of the best baseline?
+    For some tasks, depressingly simple tactics gets you the majority of accuracy.
+    For this reason, newer datasets for visual question answering (i.e. given an image "What color is the girl's flowers?") include human baselines where *the humans never see the image*.
+    This is important as it represents the best a purely textual model of the world can do.
+    It turns out that a well tuned purely textual machine learning model, which has never seen any of the images it is being asked about, can sometimes beat more complex models that try to actually, y'know, do visual question answering.
 
     ### Any claim of advanced research without publication is suspect at best
 
     > "If you do research in isolation, the quality goes down. Which is why military research sucks."
     > Yann LeCun at ICML 2015
 
-    The rate of change in research is such that if anyone is on the sidelines, they're at best only going to be keeping up.
- 
-    The bar for actual scientific advances is well established from an academic perspective (and there are even those within the field that think it doesn't push hard enough) - journalists and investors should use that bar or be exceedingly wary when accepting anything below it.
+    The rate of change in the field of AI is such that anyone on the sidelines is at best keeping up.
+    It is certainly not impossible for an entity to come out of nowhere with an amazing system - but that does mean they haven't been put through the standard evaluations that academia would have placed on them.
+    In some cases this is reasonable - there are many AI systems that are useful for real world applications that will likely never receive a paper - but it is a missing element that you should be aware of.
+    
+    From earlier:
+
+    > The bar for actual scientific advances is well established from an academic perspective (and there are even those within the field that think it doesn't push hard enough) - journalists and investors should use that bar or be exceedingly wary when accepting anything below it.
+
+    If you can see a system working in front of you, congrats, but without proper evaluation we don't know how well it works (see: baselines) or what edge cases may cause extreme issues.
 
     ### AI doesn't change the base use case or business fundamentals
 
     AI won't save a broken business plan.
-    An easy upper bound is asking if the business plan would work with free human labor performing the work.
-    If the business plan doesn't work, AI won't save it.
-    <!--Achieving human level performance on a task is a difficult endeavour when moving away from a few simple and well defined tasks.-->
+    An easy upper bound is asking if the business plan would work with free human labor replacing the automated component.
+    Achieving human level performance on any real world task is an exceedingly difficult endeavour when moving away from a few simple and well defined tasks.
 
     We can also ask if the application of AI is a value add or fundamentally transformative.
     Many of the AI-prefixes only feature AI as a value add, using that as a hook for media or investment.
     AI can still be a useful addition but it emphasises that the underlying business must be viable.
 
+    All of this is to say that if the business plan doesn't work with free humans, AI won't save it.
+
+    <!--
     ### The game of telephone applied to research
 
     The [telephone game](https://en.wikipedia.org/wiki/Chinese_whispers) (also known across the word as Chinese whispers / Russian scandal / ...) might sound childish but seems to be a well known phenomenon issue in the adult world too.
@@ -137,6 +210,16 @@ content: |
 
     Let's go through a theoretical replaying, shall we?
 
-    + Our new machine learning system is able to tell 
-    + The 
-    + Better artificial intelligence than Google or Microsoft
+    + Paper: "In our new paper, we achieve state of the art Cloze test results on the Facebook Children's Book Test using our new model ... Improving on previous performance from the XYZ model from Facebook" 
+    + *Note: Cloze tests are "fill in the blank" challenges, frequently allowing you to select between multiple-choices - i.e. "The dog barked angrily. The X then bit the postman"*
+    + University: "ML dept teaches computers to better model language using children's books from Facebook"
+    -->
+
+    ## Conclusion
+
+    AI is a young field full of amazing potential.
+    Much of the mystery that surrouds it is unnecessary.
+    This mystery and lack of understanding also allows for hype to grow unchecked.
+
+    As Francois Chollet, author of the Keras deep learning library, notes in [democratizing Artificial Intelligence](http://blog.keras.io/on-the-importance-of-democratizing-artificial-intelligence.html): "making deep learning more accessible should be one of our priorities".
+    Accessibility extends to audiences far beyond academics and engineers - it goes to journalists, investors, and the broader public as well.
