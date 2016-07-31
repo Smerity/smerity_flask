@@ -21,7 +21,7 @@
   <div class="container">
     {% block container %}
       <div class="row">
-      <div class="span8 content-wrapper">
+      <div class="span8 content-wrapper {% if page and page.header %}top-smooth{% endif %}">
         {% block content_header %}
         {% endblock %}
         <div class="content-box">
