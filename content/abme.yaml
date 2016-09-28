@@ -10,6 +10,10 @@ content: |
     ## Publications
     <span id="pubs"></span>
 
+    __Pointer Sentinel Mixture Models__ (2016) [[pdf](http://arxiv.org/abs/1609.07843)]  
+    Stephen Merity, Caiming Xiong, James Bradbury, Richard Socher  
+    _arXiv_
+
     __Dynamic Memory Networks for Visual and Textual Question Answering__ (2016) [[pdf](http://arxiv.org/abs/1603.01417)]  
     Caiming Xiong\*, Stephen Merity\*, Richard Socher (\* equal contribution)  
     _[ICML 2016](http://icml.cc/2016/?page_id=1649)_
@@ -27,6 +31,9 @@ content: |
     _Proceedings of the 2009 Workshop on Text and Citation Analysis for Scholarly Digital Libraries, ACL-IJCNLP 2009, pages 19-26_
 
     ## Talks
+
+    [The Frontiers of Memory and Attention in Deep Learning](http://slides.com/smerity/quora-frontiers-of-memory-and-attention#/) (September 2016)  
+    Quora, Mountain View
 
     [Dynamic memory networks for visual and textual question answering](http://slides.com/smerity/dmn-for-tqa-and-vqa-nvidia-gtc) (April 2016)  
     [NVIDIA GPU Technology Conference 2016, San Jose](http://www.gputechconf.com/)
