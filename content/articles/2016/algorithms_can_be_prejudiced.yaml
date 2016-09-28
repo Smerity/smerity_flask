@@ -1,7 +1,7 @@
 title: "It's ML, not magic: machine learning can be prejudiced"
 description: "Of the many misconceptions about machine learning, the idea that they can't be prejudiced is likely the most harmful. As Moritz Hardt noted, machine learning is not, by default, fair or just in any meaningful way."
 header: "/media/images/articles/2016/prejudice_cards_header.jpg"
-image: ""
+image: "http://smerity.com/media/images/articles/2016/prejudice_cards.jpg"
 date: 2016-07-30
 
 content: |
@@ -15,7 +15,7 @@ content: |
     **Prejudice in machine learning is like security in programming**.
     No-one will notice the underlying issues until it's obvious something is *horribly* wrong.
     By the time we hit this realization, the flaws might have negatively impacted hundreds of thousands in a way that can't be undone.
-    Even worse, competence is no guarantee you will be able to prevent these issues from occuring.
+    Even worse, competence is no guarantee you will be able to prevent these issues from occurring.
 
     Ask yourself whether you think the machine learning teams at Google are competent (hint: they are).
     Then consider that [black people were tagged as gorillas](http://blogs.wsj.com/digits/2015/07/01/google-mistakenly-tags-black-people-as-gorillas-showing-limits-of-algorithms/) and that [Google's speech recognition works better for men than for women](https://makingnoiseandhearingthings.com/2016/07/12/googles-speech-recognition-has-a-gender-bias/).
@@ -82,7 +82,7 @@ content: |
     If you're interested in further discussion, the implications are touched on [European Union regulations on algorithmic decision-making and a "right to explanation"](http://arxiv.org/abs/1606.08813).
 
     There may be a need for the equivalent of the [Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page) except for machine learning.
-    Ensuring necessary but not sufficient steps are taken, such as balanced datasets, removal of explicitly sensitive features (and removal or processing of features that are highly correlated to those), proper dataset hygience (training, validation, test, cross validation where necessary, ...), and so on.
+    Ensuring necessary but not sufficient steps are taken, such as balanced datasets, removal of explicitly sensitive features (and removal or processing of features that are highly correlated to those), proper dataset hygiene (training, validation, test, cross validation where necessary, ...), and so on.
     Even then, OWASP provides many of the best practices in computer and network security, yet the average application is horrendously insecure due likely to the most obvious and common of faults.
     The same is likely true of machine learning systems - knowing about and attempting to implement best practices is likely not enough.
 
@@ -137,7 +137,7 @@ content: |
     As stated by the paragraph above, human based hiring procedures are indeed biased.
     What do we train our machine learning systems on however?
     Training data obtained from humans.
-    That means that, on top of all of the issues above, the machine learning model will learn to capture the existing biases, such as [favouring Anglo-Saxon names when considering identical resumes](https://en.wikipedia.org/wiki/Employment_discrimination#From_experiments).
+    That means that, on top of all of the issues above, the machine learning model will learn to capture the existing biases, such as [favoring Anglo-Saxon names when considering identical resumes](https://en.wikipedia.org/wiki/Employment_discrimination#From_experiments).
 
     ### Minorities treated differently than the majority
 
@@ -172,6 +172,7 @@ content: |
     ## Thanks to:
 
     + Nick Nguyen for his [lovely card shot](https://www.flickr.com/photos/nicktakespics/3590880897/) shared under Creative Commons BY-SA
+    + [Anton Troynikov](https://twitter.com/atroyn) for pre-reading the article and sharing refinements
 
     <img src="/media/images/articles/2016/prejudice_cards.jpg" class="smooth center">
 
