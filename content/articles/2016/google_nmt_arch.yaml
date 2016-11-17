@@ -31,7 +31,7 @@ content: |
 
     For a word level encoder-decoder machine translation system, such as the depiction below:
 
-    + Take an RNN - usually an LSTM - and encode a sentence written in language A (English).
+    + Take an recurrent neural network (RNN) - usually an LSTM - and encode a sentence written in language A (English).
     + The RNN spits out a hidden state, which we refer to as **S**.
     + This hidden state hopefully represents all the content of the sentence.
     + This hidden state **S** is then supplied to the decoder, which generates the sentence in language B (German) word by word.
