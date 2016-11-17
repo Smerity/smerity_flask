@@ -43,35 +43,50 @@ content: |
     The encoder decoder showcased the potential that neural based machine translation may provide.
     Even with modern complex neural machine translation architectures, the majority of them can still be decomposed in terms of the encoder-decoder architecture.
 
-    The primary drawback of this architecture is that, like humans, it has limited memory.
-    <!--As the sequence gets longer, the translation by necessity becomes more and more lossy.-->
+    There are two primary drawbacks to this architecture, both related to length.
+    First, as with humans, this architecture has very limited memory.
     That final hidden state of the LSTM, which we call **S**, is where you're trying to cram the entirety of the sentence you have to translate.
     **S** is usually only a few hundred units (read: floating point numbers) long - the more you try to force into this fixed dimensionality vector, the more lossy the neural network is forced to be.
-    Thinking of neural networks in terms of "lossy compression" they're required to perform is sometimes quite useful.
+    Thinking of neural networks in terms of the "lossy compression" they're required to perform is sometimes quite useful.
+
+    Second, as a general rule of thumb, the deeper a neural network is, the harder it is to train.
+    For recurrent neural networks, the longer the sequence is, the deeper the neural network is along the time dimension.
+    This results in vanishing gradients, where the gradient signal from the objective that the recurrent neural network learns from disappears as it travels backwards.
+    Even with RNNs specifically made to help prevent vanishing gradients, such as the LSTM, this is still a fundamental problem.
    
     <img class="smooth center" src="/media/images/articles/2016/bahdanau_no_attn.png" width="50%">
 
     **Caption:** Image from Bahdanau et al.'s ["Neural Machine Translation by Jointly Learning to Align and Translate" (2014)](https://arxiv.org/abs/1409.0473) showing the impact on translation scores (in the form of BLEU scores) as sentences get longer.
 
     While it may work for our relatively short example above, it's likely to begin failing as the sentence gets longer.
-    The obvious solution would be increasing the hidden size of the LSTM.
+    One obvious solution for the memory problem would be increasing the hidden size of the LSTM.
     Unfortunately, training rapidly becomes impractical if we do this.
     As you increase the hidden size **h** of the LSTM, the number of parameters increases quadratically!
     You'll either start running out of memory on your GPU or have training take an eternity.
+    This also doesn't solve the vanishing gradient problem...
 
     ### V2: Attention based encoder-decoder
 
-    How do we solve this problem of not having a large enough hidden state to represent a sentence?
-    We could turn to a technique humans naturally perform - iterative attention to relevant parts of the source sentence.
+    How do we solve these problems?
+    We might try turning to a technique humans naturally perform - iterative attention to relevant parts of the source sentence.
     If you were translating a long sentence, you'd likely glance back at the source sentence to ensure you're capturing all the details.
     We can allow neural networks to do exactly the same.
     By storing and referring to the previous outputs of the LSTM we can increase the storage of our neural network without changing the operation of the LSTM.
+    Additionally, if we know we're interested in a particular part of the sentence, the attention mechanism acts as a "shortcut" so we can provide a supervision signal that doesn't have to traverse the large number of timesteps that would result in a vanishing gradient.
+    This is akin to how a human might answer a question after having just finished reading all of Lord of the Rings.
+    If I was to ask a specific question about the start of the story, at Bag End, a human would know where to flick open the first book and retrieve the answer from.
+    The length of the book series doesn't impair your ability to perform that lookup.
 
     <img class="center" src="/media/images/articles/2016/gnmt_arch_attn.svg">
 
     Briefly (as attention mechanisms are already well covered elsewhere) the idea is, once you have the LSTM outputs from the encoder stored, you query each output asking how relevant they are to the current computation on the decoder side.
     Each output from the encoder then gets a score of relevance which we can turn into a probability distribution that sums up to one via the softmax activation.
     We can then extract a context vector that's a weighted summation of the encoder outputs depending on how relevant we think they are.
+
+    A drawback to the attention mechanism is that we now have to perform a calculation over all of the encoded source sentence for each and every output of the decoder.
+    While this is likely fine for translating between sentences, it can become problematic for long inputs.
+    In computing terminology, if your source sentence is of length \\(N\\) and your target sentence of length \\(M\\), we've just take the decoder from \\(O(M)\\) in the encoder-decoder architecture to \\(O(MN)\\) in the attention architecture.
+    While not optimal the advantages of the attention mechanism far outweigh the disadvantages, at least for this task.
 
     **Note:**
     You may notice that the direction connection between the encoder and decoder (**S** in our previous architecture) has disappeared.
@@ -186,7 +201,7 @@ content: |
     ### V6: Residuals are the new hotness
 
     Eight layers is pretty darn deep - at least for recurrent neural networks.
-    As a general rule of thumb - barring some exceptions or specific constructions - the deeper a network is, the harder it is to train.
+    Returning to our general rule of thumb - barring some exceptions or specific constructions - the deeper a network is, the harder it is to train.
     While this is for a variety of reasons, the most intuitive is that the further a gradient has to travel, the more it risks vanishing or exploding.
     Luckily there are many potential ways to tackle this problem.
 
@@ -251,4 +266,4 @@ content: |
     **My sincere thanks to:**
 
     + [James Bradbury](https://twitter.com/jekbradbury), who implemented the world's second best neural machine translation system for English to German while only an intern at Metamind, and who happily induldges me when I harass him for details :)
-    + [Denny Britz](https://twitter.com/dennybritz), who was happy to clarify some questions I had regarding my reading of the GNMT architecture paper - check out his articles at [WildML](http://www.wildml.com/)!
+    + [Denny Britz](https://twitter.com/dennybritz), who was happy to clarify some questions I had regarding my reading of the GNMT architecture paper and gave early feedback on the article itself - check out his articles at [WildML](http://www.wildml.com/)!
