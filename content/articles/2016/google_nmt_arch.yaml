@@ -1,6 +1,6 @@
 title: "Peeking into the neural network architecture used for Google's Neural Machine Translation"
-description: "Google's Neural Machine Translation looks horrifically complex but actually makes a lot of sense if you build it up piece by piece."
-#image: "http://smerity.com/media/images/articles/2016/ml_not_magic.jpg"
+description: "Google's Neural Machine Translation looks complex from a distance - but not if you build it up piece by piece."
+image: "http://smerity.com/media/images/articles/2016/gnmt_final_architecture.png"
 date: 2016-11-17
 
 content: |
@@ -49,7 +49,9 @@ content: |
     **S** is usually only a few hundred units (read: floating point numbers) long - the more you try to force into this fixed dimensionality vector, the more lossy the neural network is forced to be.
     Thinking of neural networks in terms of "lossy compression" they're required to perform is sometimes quite useful.
    
-    TODO: Bahdanau
+    <img class="smooth center" src="/media/images/articles/2016/bahdanau_no_attn.png" width="50%">
+
+    **Caption:** Image from Bahdanau et al.'s ["Neural Machine Translation by Jointly Learning to Align and Translate" (2014)](https://arxiv.org/abs/1409.0473) showing the impact on translation scores (in the form of BLEU scores) as sentences get longer.
 
     While it may work for our relatively short example above, it's likely to begin failing as the sentence gets longer.
     The obvious solution would be increasing the hidden size of the LSTM.
@@ -76,7 +78,9 @@ content: |
     While many standard encoder-decoder architectures maintain this direct connection, the GNMT architecture decides to remove it.
     The GNMT architectures decides to make the attention mechanism the only way that information can be shifted from the encoder side to the decoder side.
 
-    TODO: Add visualization of attention mechanism from Bahdanau or distil pub
+    <img class="smooth center" src="/media/images/articles/2016/bahdanau_attn.png" width="70%">
+
+    **Caption:** Image from Bahdanau et al.'s ["Neural Machine Translation by Jointly Learning to Align and Translate" (2014)](https://arxiv.org/abs/1409.0473) showing the impact on translation scores (in the form of BLEU scores) when using attention. RNNsearch is the architecture with attention and the number afterwards indicates how long the training examples were.
 
     ### V3: Bi-directional encoder layer
 
@@ -206,9 +210,12 @@ content: |
     Now, if the next layer is lazy and ouputs nothing but zeroes, that's fine, as you'll still have the original vector.
 
     $$
-    h_1 = f_1(x) \\\\
-    h_2 = f_2(h_1) + x \\\\
-    h_3 = f_3(h_2) + h_2 = f_3(h_2) + f_2(h_1) + x \\\\
+    \text{Starting by processing } x \\\\
+    h_1 = f_1(x) + x \\\\
+    h_2 = f_2(h_1) + h_1 = f_2(h_1) + f_1(x) + x \\\\
+    h_3 = f_3(h_2) + h_2 = f_3(h_2) + f_2(h_1) + h_1 = f_3(h_2) + f_2(h_1) + f_1(x) + x \\\\
+    h_3 = x + \delta_1 + \delta_2 + \delta_3 \\\\
+    \text{(if all values for }\delta\text{ are zero, we still end up with } x \text{)}
     $$
 
     ## The GNMT monster in its full glory (more or less)
