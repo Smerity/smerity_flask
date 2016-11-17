@@ -1,0 +1,247 @@
+title: "Peeking into the neural network architecture used for Google's Neural Machine Translation"
+description: "Google's Neural Machine Translation looks horrifically complex but actually makes a lot of sense if you build it up piece by piece."
+#image: "http://smerity.com/media/images/articles/2016/ml_not_magic.jpg"
+date: 2016-11-17
+
+content: |
+
+    The [Google Neural Machine Translation paper](https://arxiv.org/abs/1609.08144) (GNMT) describes an interesting approach towards deep learning in production.
+    The paper and architecture are non-standard, in many cases deviating far from what you might expect from an architecture you'd find in an academic paper.
+    Emphasis is placed on ensuring the system remains practical rather than chasing the state of the art through typical but computationally intensive tweaks.
+
+    <!--**Note:** This article is likely one in a series for GNMT.
+    There are many potential future article directions and I'd be interested in your feedback.
+    As an example, we could next discuss what the data (word, wordpiece, character level) actually looks like.
+    We could delve into the training of the model.
+    We could discuss BLEU scores and how they try to capture quality in translation.
+    We could discuss the tweaks 
+    We could 
+    -->
+
+    ## The architecture
+    
+    To understand the model used in GNMT we'll start with a traditional encoder decoder machine translation model and keep evolving it until it matches GNMT.
+    The GNMT evolution seems primarily motivated by improving accuracy while maintaining practical production speeds for both training and prediction.
+    
+    ### V1: Encoder-decoder
+
+    The encoder decoder architecture started the recent neural machine translation trend.
+    I'd refer to it as old school if it were more than a few years old.
+    Shockingly, as the name implies, there are two components - an encoder and a decoder.
+
+    For a word level encoder-decoder machine translation system, such as the depiction below:
+
+    + Take an RNN - usually an LSTM - and encode a sentence written in language A (English).
+    + The RNN spits out a hidden state, which we refer to as **S**.
+    + This hidden state hopefully represents all the content of the sentence.
+    + This hidden state **S** is then supplied to the decoder, which generates the sentence in language B (German) word by word.
+
+    <img class="center" src="/media/images/articles/2016/gnmt_arch_1_enc_dec.svg">
+
+    <!--While a relatively simple model-->
+    
+    The encoder decoder showcased the potential that neural based machine translation may provide.
+    Even with modern complex neural machine translation architectures, the majority of them can still be decomposed in terms of the encoder-decoder architecture.
+
+    The primary drawback of this architecture is that, like humans, it has limited memory.
+    <!--As the sequence gets longer, the translation by necessity becomes more and more lossy.-->
+    That final hidden state of the LSTM, which we call **S**, is where you're trying to cram the entirety of the sentence you have to translate.
+    **S** is usually only a few hundred units (read: floating point numbers) long - the more you try to force into this fixed dimensionality vector, the more lossy the neural network is forced to be.
+    Thinking of neural networks in terms of "lossy compression" they're required to perform is sometimes quite useful.
+   
+    TODO: Bahdanau
+
+    While it may work for our relatively short example above, it's likely to begin failing as the sentence gets longer.
+    The obvious solution would be increasing the hidden size of the LSTM.
+    Unfortunately, training rapidly becomes impractical if we do this.
+    As you increase the hidden size **h** of the LSTM, the number of parameters increases quadratically!
+    You'll either start running out of memory on your GPU or have training take an eternity.
+
+    ### V2: Attention based encoder-decoder
+
+    How do we solve this problem of not having a large enough hidden state to represent a sentence?
+    We could turn to a technique humans naturally perform - iterative attention to relevant parts of the source sentence.
+    If you were translating a long sentence, you'd likely glance back at the source sentence to ensure you're capturing all the details.
+    We can allow neural networks to do exactly the same.
+    By storing and referring to the previous outputs of the LSTM we can increase the storage of our neural network without changing the operation of the LSTM.
+
+    <img class="center" src="/media/images/articles/2016/gnmt_arch_attn.svg">
+
+    Briefly (as attention mechanisms are already well covered elsewhere) the idea is, once you have the LSTM outputs from the encoder stored, you query each output asking how relevant they are to the current computation on the decoder side.
+    Each output from the encoder then gets a score of relevance which we can turn into a probability distribution that sums up to one via the softmax activation.
+    We can then extract a context vector that's a weighted summation of the encoder outputs depending on how relevant we think they are.
+
+    **Note:**
+    You may notice that the direction connection between the encoder and decoder (**S** in our previous architecture) has disappeared.
+    While many standard encoder-decoder architectures maintain this direct connection, the GNMT architecture decides to remove it.
+    The GNMT architectures decides to make the attention mechanism the only way that information can be shifted from the encoder side to the decoder side.
+
+    TODO: Add visualization of attention mechanism from Bahdanau or distil pub
+
+    ### V3: Bi-directional encoder layer
+
+    While the attention mechanism allows for retrieving different parts of the sentence depending on the decoding context, there's still an issue.
+    The attention mechanism is essentially asking the stored outputs of the encoder "are you relevant to this?" and using that to determine what information to extract.
+    If the encoder outputs don't have sufficient context themselves, they're unlikely able to provide a good answer.
+
+    <!--Why force computers, who already have a substantial handicap, to do something the hardest way possible?-->
+
+    Adding information about future words, such that the encoder output is determined by words on both the left and the right, is clearly beneficial.
+    If a full sentence is available, humans would almost certainly use the full context to determine the meaning and context of a word.
+    Why would we force computers, who are already at a substantial handicap, to not use all available information?
+
+    <img class="center" src="/media/images/articles/2016/gnmt_arch_1_birnn.svg">
+
+    The easiest way to add this bi-directionality is to run two RNNs - one that goes forward over the sentence and another that goes backwards.
+    Then, for each word, we can either concatenate or add the resulting vector outputs, producing a vector with context from both sides.
+    A bi-directional encoder becomes even more important if you're translating to or from a language that has a different ordering (i.e. right-to-left).
+    The GNMT architecture concatenates them - potentially advantageous as that results in the both the forward and backward RNN being only half the size.
+    Given the bi-directional layer ends up being a bottleneck in GNMT, and the number of parameters in an RNN scale quadratically, this is not an insignificant saving.
+
+    ### V4: "The deep is for deep learning"
+
+    For many architectures in neural machine translation, increased depth is a key component in accurate models.
+    The GNMT architecture trends this direction too by adding a large number of layers.
+    A pretty darn crazy large number of layers - 8 on the encoder and 8 on the decoder for 16 total.
+    Many state of the art machine translation systems use far less than this.
+
+    For the encoder, their model has one bi-directional RNN layer followed by **seven** uni-directional RNN layers.
+    The decoder has **eight** uni-directional RNN layers.
+
+    In most papers I'd have instead expected all of the layers to be bi-directional for improved accuracy.
+    A model with all bi-directional layers would be expected to get the same or higher results.
+    The next section explains why the GNMT model variant strayed away from this.
+
+    <img class="center" src="/media/images/articles/2016/gnmt_arch_deep.svg">
+
+    Recurrent neural networks of this depth are highly problematic to train.
+    Indeed, standard neural networks of this depth are not trivial to train either, and those are relatively simple compared to what happens over the many timesteps.
+    We'll look to solve this problem in a later variant.
+
+    ### V5: Parallelization
+
+    A primary motivator for the GNMT architecture was practicality.
+    This forces some limitations and odd choices when compared to standard encoder-decoder architectures.
+    For launching a system like GNMT into production, being parallelizable is a requirement.
+    It makes not only training faster, allowing more experiments, but also makes production deployments faster too.
+
+    The graph we've been looking at represents not only the architecture of the machine translation model but also a dependency graph.
+    To begin computation at one of the nodes, all of the nodes pointing toward you must already have been computed.
+    Even if you had an infinite amount of computation, you still need to follow the flow of the dependency graph.
+    As such, you want to minimize any dependencies that may take far more computation than others at a similar level.
+
+    <img class="center" src="/media/images/articles/2016/gnmt_arch_deep_partial.svg">
+
+    **Note:** Unshaded nodes have not yet been completed and nodes shaded white have finished their computation.
+    Layers shaded blue are in the process of being computed or have finished being computed.
+
+    This is the reason that only a single bi-directional RNN layer is used.
+    A bi-directional layer has to run two RNNs - one from left to right and the other from right to left.
+    This means to compute the first output you have to wait for `N` computations from the far right hand side to reach you (where `N` is the length of sequence).
+    
+    If all layers were bi-directional, the entirety of that layer would have to finish before any later dependencies could start computing.
+    If we use uni-directional layers however, our computations can be more flexible and more parallel.
+    In the example above, focusing just on the encoding side, the first four layers are all computing nodes at the same time.
+    This is only possible as the layer above doesn't rely on all of the nodes in the layer below, only those directly below it.
+    This would not be possible if these were bi-directional layers.
+
+    <img class="center" src="/media/images/articles/2016/gnmt_arch_deep.svg">
+
+    **Parallelization (decoder side):**
+    Due to the attention mechanism using all the outputs of the encoder side, the decoder side must wait until all of the encoder has finished running.
+    When the encoder has finished however, the decoder can perform its operations in the same parallel way as the encoder side.
+    Usually the attention mechanism would use the top most output of the decoder to query the attention mechanism but the GNMT architecture uses the lowest decoder layer for querying the attention mechanism to minimize the dependency graph and allow for maximal parallelization.
+    In the example above, if we used the topmost decoder layer for attention, we would not have been able to start computing the second output of the decoder yet, as the first output of the decoder is still in progress.
+
+    **Side note (teacher forcing and training vs production):** During training, we already known what the English sentence should translate to.
+    This allows us to have higher levels of parallelism than at prediction time.
+    As we already have all of the correct words (the "known" translation at the bottom right), we can use it in teacher forcing.
+    Teacher forcing is where you give the neural network the correct answer for the next word even if it would have actually guessed the wrong word.
+    This makes sense as training will keep forcing the network towards outputting the correct word, so eventually our assumption should hopefully be correct.
+    This allows you to "cheat" and be computing the second output word while still in the process of computing the first output word.
+    In the real word, we need to wait to produce each word one by one, as there's no "known" translation.
+
+    <!--
+    **Attention for multiple layers:** I mentioned previously that there's a tweak to the attention mechanism.
+    The output of the attention mechanism is fed into all of the RNNs on the decoder side.
+    This means that every layer in the decoder has a dependency on the output of the attention mechanism.
+    If the attention mechanism used the final output of the encoder, as is standard in basically every other NMT architecture on earth, we'd have to finish computing *all eight* of the encoder layers before we could start computing even the first layer of the decoder.
+    To remove this dependency and allow for parallelization simultaneously on the encoder and decoder sides, the attention mechanism uses only the output of the bi-directional layer, which is already a bottleneck for all the other computations.
+    -->
+
+    **Side note (multiple GPUs):**
+    This parallelization really only strongly makes sense with multiple GPUs.
+    In the GNMT paper, their diagrams actually label each of the layers according to the GPU they use.
+    For the encoder and decoder, they use eight GPUs - essentially one for each layer.
+    Why doesn't this make as much sense for a single GPU?
+    Generally a GPU should be hitting high utilization when computing a given layer, assuming you're able to set reasonable batch sizes, network sizes, and sequence lengths.
+    This work is primarily about re-ordering dependencies such that more computation can be done at once, allowing for better utilization of more devices.
+    You're hopefully already fully utilizing your single GPU well, so being able to compute more at the same time won't help you if you don't have that computation spare.
+    If the production deployment was on CPUs, this re-ordering may still be quite beneficial.
+
+    ### V6: Residuals are the new hotness
+
+    Eight layers is pretty darn deep - at least for recurrent neural networks.
+    As a general rule of thumb - barring some exceptions or specific constructions - the deeper a network is, the harder it is to train.
+    While this is for a variety of reasons, the most intuitive is that the further a gradient has to travel, the more it risks vanishing or exploding.
+    Luckily there are many potential ways to tackle this problem.
+
+    One solution for vanishing gradients is residual networks, which has been applied most famously to CNNs such that training neural networks hundreds of layers deep remains feasible.
+    The idea is relatively simple.
+    By default, we like the idea of a layer computing an identity function.
+    This makes sense.
+    If you do well with one layer, you don't expect a two or three to do worse.
+    At worst, the second and third layer should just learn to "copy" the output of the first layer - no modifications.
+    Hence, they just need to learn an identity function.
+    
+    Unfortunately, learning the identity function seems non-trivial for most networks.
+    <!--Rather than learning the identity, they usually learn another poor function.-->
+    Even worse, later layers confuse training of earlier layers as the supervision signal - the direction it's meant to go - keeps shifting.
+    As such, the first layer may fail to train well at all if there are more layers below it.
+    To solve this, we bias the architecture of each of these layers towards performing the identity function.
+
+    <img class="center" src="/media/images/articles/2016/gnmt_arch_res.svg">
+
+    We can do this by only allowing the later layers to add deltas (updates) to the existing vector.
+    Now, if the next layer is lazy and ouputs nothing but zeroes, that's fine, as you'll still have the original vector.
+
+    $$
+    h_1 = f_1(x) \\\\
+    h_2 = f_2(h_1) + x \\\\
+    h_3 = f_3(h_2) + h_2 = f_3(h_2) + f_2(h_1) + x \\\\
+    $$
+
+    ## The GNMT monster in its full glory (more or less)
+
+    All of these changes build upon their previous iteration to result in the full architecture described in the GNMT paper.
+    Notice that, while far more complex, it still has the same components of the original encoder-decoder architecture.
+    It may look scary, but each change is motivated by a relatively simple idea.
+
+    <img class="center" src="/media/images/articles/2016/gnmt_arch_deep_residuals.svg">
+
+    ## Conclusion
+
+    The Google Neural Machine Translation architecture is an interesting beast.
+    While there's nothing tremendously novel in it, the real innovation is the care to which the architecture has been engineered.
+    If this was a boat, it'd be a chrome speed boat that slices through rough waters with near zero drag.
+    We're already seeing the architecture used in a variety of contexts, both in translating and generating natural language, likely due to the ability to scale to computationally large and intensive tasks cleanly.
+    For that reason, I expect to see it pop up in far more places.
+
+    This article also contains only a small portion of the paper.
+    Not discussed here is what BLEU is, how wordpiece level granularity improves translation over word level, advantages/disadvantages of BLEU, quantization of models for faster models during deployment, or jumping between optimization algorithms for better convergence, or that their datasets are so large they don't use dropout!
+    All of this without mentioning the zero-shot GNMT paper or using the GNMT architecture for conversation models...
+
+    Gosh there's a lot to write about!
+
+    ---
+
+    If you like this content, I share similar things on Twitter a few hundred characters at a time ;)
+
+    <a href="https://twitter.com/Smerity" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @Smerity</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    ---
+
+    **My sincere thanks to:**
+
+    + [James Bradbury](https://twitter.com/jekbradbury), who implemented the world's second best neural machine translation system for English to German while only an intern, and who happily induldges me when I harass him for details :)
+    + [Denny Britz](https://twitter.com/dennybritz), who was happy to clarify some points regarding my reading of the GNMT architecture paper! Check out his articles at [WildML](http://www.wildml.com/) too!

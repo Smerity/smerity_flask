@@ -10,6 +10,13 @@ content: |
     ## Publications
     <span id="pubs"></span>
 
+    __Quasi-Recurrent Neural Networks__ (2016) [[pdf](https://arxiv.org/abs/1611.01576)]  
+    James Bradbury\*, Stephen Merity\*, Caiming Xiong, Richard Socher (\* equal contribution)  
+    _arXiv_
+
+    __The WikiText Long Term Dependency Language Modeling Dataset__ (2016) [[dataset](http://metamind.io/research/the-wikitext-long-term-dependency-language-modeling-dataset/)]  
+    Stephen Merity, Caiming Xiong, James Bradbury, Richard Socher  
+
     __Pointer Sentinel Mixture Models__ (2016) [[pdf](http://arxiv.org/abs/1609.07843)]  
     Stephen Merity, Caiming Xiong, James Bradbury, Richard Socher  
     _arXiv_
@@ -32,36 +39,42 @@ content: |
 
     ## Talks
 
+    [New Methods for Memory, Attention, and Efficiency in Neural Networks](https://slides.com/smerity/netflix-new-methods-for-mem-attn-efficiency-in-neural-networks) (November 2016)  
+    Netflix, Los Gatos (California)
+
+    [The Pointer Sentinel Mixture Model](https://slides.com/smerity/stanford-pointer-sentinel) (October 2016)  
+    Stanford University's Deep Learning Reading Group, Palo Alto (California)
+
     [The Frontiers of Memory and Attention in Deep Learning](http://slides.com/smerity/quora-frontiers-of-memory-and-attention#/) (September 2016)  
-    Quora, Mountain View
+    Quora, Mountain View (California)
 
     [Dynamic memory networks for visual and textual question answering](http://slides.com/smerity/dmn-for-tqa-and-vqa-nvidia-gtc) (April 2016)  
-    [NVIDIA GPU Technology Conference 2016, San Jose](http://www.gputechconf.com/)
+    [NVIDIA GPU Technology Conference 2016, San Jose](http://www.gputechconf.com/) (California)
 
     [Dynamic memory networks for visual and textual question answering](http://slides.com/smerity/dmn-for-tqa-and-vqa-strata-hadoop-world/) (March 2016)  
-    [Strata + Hadoop World 2016, San Jose](http://conferences.oreilly.com/strata/hadoop-big-data-ca/public/schedule/detail/50830)
+    [Strata + Hadoop World 2016, San Jose](http://conferences.oreilly.com/strata/hadoop-big-data-ca/public/schedule/detail/50830) (California)
 
     [Using the whole web as your dataset](http://slides.com/smerity/dato-whole-web-as-your-dataset) [**(Video Link)**](https://www.youtube.com/watch?v=2qPe0iDLTs4&index=21&list=PLykRMO7ZuHwP5cWnbEmP_mUIVgzd5DZgH) (July 2015)  
-    [Dato Science Summit &amp; Dato Conference 2015](http://conf.dato.com/schedule/)
+    [Dato Science Summit &amp; Dato Conference 2015](http://conf.dato.com/schedule/), San Francisco (California)
 
     [Internet Scale Analytics With Common Crawl](http://slides.com/smerity/internet-scale-analytics-with-common-crawl) [**(Video Link)**](https://www.youtube.com/watch?v=JyNijcQjmbA) (May 2015)  
     [Big Data, Analytics & Machine Learning Israeli Innovation Conference, Tel Aviv](http://www.amiando.com/BigAnalyticsIsrael.html)
 
 
     [A Web Worth of Data: Common Crawl for NLP](http://slides.com/smerity/web-worth-of-data) [**(Video Link)**](https://www.youtube.com/watch?v=RjJDLKObas0) (April 2015)  
-    [Text By The Bay, San Francisco](http://text.bythebay.io/schedule.html)
+    [Text By The Bay](http://text.bythebay.io/), San Francisco (California)
 
     [Common Crawl for NLP](http://slides.com/smerity/common-crawl-for-nlp#/) (November 2014)  
-    [Web-Scale Natural Language Processing in Northern Europe, Oslo](http://www.mn.uio.no/ifi/om/aktuelt/arrangementer/andre/nlpg.html)
+    [Web-Scale Natural Language Processing in Northern Europe](http://www.mn.uio.no/ifi/om/aktuelt/arrangementer/andre/nlpg.html), Oslo
 
     [Experiments in web scale data](http://slides.com/smerity/experiments-in-web-scale-data#/) (November 2014)  
-    [Big Data Beers, Berlin](http://www.meetup.com/Big-Data-Beers/events/217301572/)
+    [Big Data Beers](http://www.meetup.com/Big-Data-Beers/events/217301572/), Berlin
 
     [AWS at Common Crawl](http://slides.com/smerity/aws-at-common-crawl#/) (October 2014)  
-    [Advanced Amazon Web Services, San Francisco](http://www.meetup.com/AdvancedAWS/events/208695982/)
+    [Advanced Amazon Web Services](http://www.meetup.com/AdvancedAWS/events/208695982/), San Francisco (California)
 
     [Measuring the impact: Google Analytics](http://slides.com/smerity/measuring-the-impact-google-analytics) (July 2014)  
-    [Open Data Bay Area, San Francisco](http://www.meetup.com/Open-Data-Bay-Area/events/192665352/)
+    [Open Data Bay Area](http://www.meetup.com/Open-Data-Bay-Area/events/192665352/), San Francisco (California)
 
     [Machine Learning Made Scary (All New Content from Cyberdyne Systems & Aperture Labs)](http://www.meetup.com/Sydney-Datapreneurs/events/104220852/) (March 2013)  
     Sydney DataPreneurs, Sydney
