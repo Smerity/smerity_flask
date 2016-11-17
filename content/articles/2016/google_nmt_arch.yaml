@@ -250,5 +250,5 @@ content: |
 
     **My sincere thanks to:**
 
-    + [James Bradbury](https://twitter.com/jekbradbury), who implemented the world's second best neural machine translation system for English to German while only an intern, and who happily induldges me when I harass him for details :)
-    + [Denny Britz](https://twitter.com/dennybritz), who was happy to clarify some points regarding my reading of the GNMT architecture paper! Check out his articles at [WildML](http://www.wildml.com/) too!
+    + [James Bradbury](https://twitter.com/jekbradbury), who implemented the world's second best neural machine translation system for English to German while only an intern at Metamind, and who happily induldges me when I harass him for details :)
+    + [Denny Britz](https://twitter.com/dennybritz), who was happy to clarify some questions I had regarding my reading of the GNMT architecture paper - check out his articles at [WildML](http://www.wildml.com/)!
