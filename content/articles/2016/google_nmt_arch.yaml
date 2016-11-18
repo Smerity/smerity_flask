@@ -89,7 +89,7 @@ content: |
     While not optimal the advantages of the attention mechanism far outweigh the disadvantages, at least for this task.
 
     **Note:**
-    You may notice that the direction connection between the encoder and decoder (**S** in our previous architecture) has disappeared.
+    You may notice that the direct connection between the encoder and decoder (**S** in our previous architecture) has disappeared.
     While many standard encoder-decoder architectures maintain this direct connection, the GNMT architecture decides to remove it.
     The GNMT architectures decides to make the attention mechanism the only way that information can be shifted from the encoder side to the decoder side.
 
@@ -115,7 +115,7 @@ content: |
     Then, for each word, we can either concatenate or add the resulting vector outputs, producing a vector with context from both sides.
     A bi-directional encoder becomes even more important if you're translating to or from a language that has a different ordering (i.e. right-to-left).
     The GNMT architecture concatenates them - potentially advantageous as that results in the both the forward and backward RNN being only half the size.
-    Given the bi-directional layer ends up being a bottleneck in GNMT, and the number of parameters in an RNN scale quadratically, this is not an insignificant saving.
+    Given that the bi-directional layer ends up being a bottleneck in GNMT, and the number of parameters in an RNN scale quadratically, this is not an insignificant saving.
 
     ### V4: "The deep is for deep learning"
 
@@ -222,7 +222,7 @@ content: |
     <img class="center" src="/media/images/articles/2016/gnmt_arch_res.svg">
 
     We can do this by only allowing the later layers to add deltas (updates) to the existing vector.
-    Now, if the next layer is lazy and ouputs nothing but zeroes, that's fine, as you'll still have the original vector.
+    Now, if the next layer is lazy and outputs nothing but zeroes, that's fine, as you'll still have the original vector.
 
     $$
     \text{Starting by processing } x \\\\
@@ -267,3 +267,4 @@ content: |
 
     + [James Bradbury](https://twitter.com/jekbradbury), who implemented the world's second best neural machine translation system for English to German while only an intern at Metamind, and who happily induldges me when I harass him for details :)
     + [Denny Britz](https://twitter.com/dennybritz), who was happy to clarify some questions I had regarding my reading of the GNMT architecture paper and gave early feedback on the article itself - check out his articles at [WildML](http://www.wildml.com/)!
+    + [Jonathan K. Kummerfeld](http://www.jkk.name/) for his read through and suggestions. Among other things, turns out my brain thinks "direction connection" should be amalgamated to "direction" ;)
