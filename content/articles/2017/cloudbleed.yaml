@@ -1,0 +1,82 @@
+title: "Cloudflare's Cloudbleed in plain English"
+description: "A friend asked me to explain Cloudflare's Cloudbleed \"in simple English for simple folk\". This is my attempt."
+image: "http://smerity.com/media/images/articles/2017/cloudbleed.jpg"
+date: 2017-02-23
+
+content: |
+    A friend asked me to explain the [Cloudflare Cloudbleed flaw](https://bugs.chromium.org/p/project-zero/issues/detail?id=1139) "in simple English for simple folk".  
+    This is my attempt.
+
+    <!--Specifically: "How many steps from someone finding my data in this dump. To matching it to me. and then busting into my email account or Facebook or Amazon?"-->
+
+    ## What is (Charlie) Cloudflare?
+
+    Cloudflare sits as a proxy in front of many websites.
+    Think of Cloudflare as **Charlie Cloudflare**, an assistant who prints documents for your entire office.
+    Hundreds of people at work use **Charlie** to print documents instead of doing it themselves.
+    Most of the time everything works out fine.
+    Occasionally however poor **Charlie** gets confused.
+    <!--- especially when we ask **Charlie** to modify the document before handing it back to us.-->
+
+    ## What mistake was Charlie making?
+
+    **Charlie** receives two requests at similar times - **Alice** asks **Charlie** to print her bank statement while **Bob** asks **Charlie** to print a short story.
+
+    **Charlie** accidentally prints **Alice**'s bank statement twice but hands her back a correct copy.
+    When **Charlie** goes to print **Bob**'s short story, **Charlie** grabs a random page or two from **Alice**'s bank statement by accident and ends up inserting it into **Bob**'s stack of pages.
+
+    Most of the time no-one will notice what went wrong, only seeing a brief spurt of gibberish at the end of their document and dismissing it.
+
+    ## Enter Gary Google, the librarian
+    
+    Meanwhile, there are a few people who use the assistant continuously - specifically **Gary Google**.
+
+    **Gary** prints thousands of pages a day and stores them in a little personal library that anyone can look at and copy from.
+    Given **Gary** prints so much, it's likely that **Gary** end up with many random pages, such as a page from **Alice**'s bank statements or the end of **Bob**'s short story.
+    
+    Eventually **Gary** grabs a document from his library and realizes **Charlie** made a mistake.
+    **Gary** looks at a single shelf from his enormous library and finds similar mistakes a number of times.
+    
+    There's an awful lot of bank statements in this section labelled "Romance" ...
+
+    ## Stop it Charlie!
+
+    **Gary** informs **Charlie** of his error.
+    **Charlie** freaks out and tries to fix it.
+    **Charlie** stops accidentally inserting pages into other people's documents, tells everyone to discard any documents that have strange pages in them, and then claims the situation is solved.
+
+    Unfortunately, this doesn't fix the issue - **Gary**'s library might have random snippets of anyone's data in there!
+    Not only is this true for **Gary**, it's also true for anyone else who grabbed print outs from **Charlie** at the time, including **Alice**, **Bob**, or **Gary**.
+
+    Worst of all, if malicious **Mallory** realized **Charlie**'s mistakes, she might have printed thousands of pages on purpose, searching through the contents she retrieved for these accidental leaks.
+    Many of them will likely be innocent enough - maybe a page from **Bob**'s short story - but some many contain the combination to **Alice**'s bank vault.
+   
+    ## The unfortunate summary ...
+ 
+    We don't know what was leaked, where it was leaked to, or whether the people who received them have stored the copy.
+    We only know that any of the documents printed by **Charlie** might have been leaked.
+
+    **Gary Google** is trying to clean his vast library but is still having a real hard time given there are so many files.
+    Occasionally it's not even obvious if a random page was slipped into a document - **Bob**'s short stories can get very strange!
+
+    **Bill Bing**, **Duck DuckGo**, **Malicious Mallory**, **Ian InternetArchive**, and **Chloe CommonCrawl** might also still have random pages without having deleted them.
+ 
+    + Is this likely to directly leak your password? Not likely - but we don't know.
+    + Is this likely to impact a service you use? Maybe - but again we don't know.
+    + Does this impact anyone not using Cloudflare? No.
+    + Does this mean any page you've loaded from Cloudflare might have been leaked? Maybe.
+    
+    There's really not much we can do to know what was leaked unfortunately - or who it was leaked to.
+    
+    That's potentially the worst part ...
+
+    ### Links
+
+    + [Event log from Google's Project Zero](https://bugs.chromium.org/p/project-zero/issues/detail?id=1139) where Tavis discovered and debugged much of the process
+    + Cloudflare's [Incident report on memory leak caused by Cloudflare parser bug](https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug/) which explains the incident in a fairly relaxed tone
+
+    ### Credit
+
+    + Anne-Caroline Alard for [Blood rain on pink background (faux suede)](https://www.flickr.com/photos/petitspixels/15105684096/in/photolist-p1QzBf-6LQDoV-9MsPCk-5kMHfB-8QQHms-6ize3M-7XAwgj-4Yq2Rm-MYgvt3-6sKift-6ckbbH-7h3bVY-8fimB4-ajfW7i-j35fkp-gwmAC2-9nMEfr-8vqJiu-L3NYN-gwmN7H-g1EDcJ-RhLqfC-QzP8Sw-kDxWCW-ej53ZN-RPUwWH-as5UNn-PLLwy-opG7A5-eWmq4-cQvmHW-ohwSMS-8vG3Ff-4wEtmy-izrBeC-4iQqTw-anuEeL-8vnF94-tEsAP-3UN759-bjFkmR-ajtLRr-8DTmhn-R2RnYB-dJPZM8-83W4dQ-94z3vN-cPDW6Y-aa7Qtn-9hdCaX)
+
+    <!--<img class="smooth center" width="50%" src="/media/images/articles/2017/cloudbleed.jpg" />-->
