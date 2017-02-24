@@ -11,7 +11,10 @@ content: |
 
     ## What is (Charlie) Cloudflare?
 
-    Cloudflare sits as a proxy in front of many websites.
+    Cloudflare sits as a proxy in front of many websites across the internet.
+    When you ask for a web page from many of these websites (including Uber, 1Password, FitBit, and OKCupid), you're actually asking Cloudflare.
+    Cloudflare goes to the relevant company, gets the content you request, then gives the reply back to you.
+
     Think of Cloudflare as **Charlie Cloudflare**, an assistant who prints documents for your entire office.
     Hundreds of people at work use **Charlie** to print documents instead of doing it themselves.
     Most of the time everything works out fine.
@@ -25,7 +28,7 @@ content: |
     **Charlie** accidentally prints **Alice**'s bank statement twice but hands her back a correct copy.
     When **Charlie** goes to print **Bob**'s short story, **Charlie** grabs a random page or two from **Alice**'s bank statement by accident and ends up inserting it into **Bob**'s stack of pages.
 
-    Most of the time no-one will notice what went wrong, only seeing a brief spurt of gibberish at the end of their document and dismissing it.
+    Most of the time no-one will notice that anything went wrong, only seeing a brief spurt of gibberish at the end of their document and dismissing it.
 
     ## Enter Gary Google, the librarian
     
@@ -77,6 +80,7 @@ content: |
 
     ### Credit
 
+    + My friend Jay for asking :)
     + Anne-Caroline Alard for [Blood rain on pink background (faux suede)](https://www.flickr.com/photos/petitspixels/15105684096/in/photolist-p1QzBf-6LQDoV-9MsPCk-5kMHfB-8QQHms-6ize3M-7XAwgj-4Yq2Rm-MYgvt3-6sKift-6ckbbH-7h3bVY-8fimB4-ajfW7i-j35fkp-gwmAC2-9nMEfr-8vqJiu-L3NYN-gwmN7H-g1EDcJ-RhLqfC-QzP8Sw-kDxWCW-ej53ZN-RPUwWH-as5UNn-PLLwy-opG7A5-eWmq4-cQvmHW-ohwSMS-8vG3Ff-4wEtmy-izrBeC-4iQqTw-anuEeL-8vnF94-tEsAP-3UN759-bjFkmR-ajtLRr-8DTmhn-R2RnYB-dJPZM8-83W4dQ-94z3vN-cPDW6Y-aa7Qtn-9hdCaX)
 
     <!--<img class="smooth center" width="50%" src="/media/images/articles/2017/cloudbleed.jpg" />-->
