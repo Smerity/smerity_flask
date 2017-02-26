@@ -1,0 +1,211 @@
+title: "Stop saying DeepCoder steals code from StackOverflow"
+description: "Contrary to what you might have heard, DeepCoder doesn't steal code from humans. At all."
+image: "http://smerity.com/media/images/articles/2017/deepcoder_brain_virus.png"
+date: 2017-02-26
+
+content: |
+    As a researcher in the rapidly progressing field of machine learning, I see no need to fictionalize the tremendous advances we see.
+    I believe AI hype actively harms our field.
+    It's not just that this misrepresentation provokes retaliation from AI winters long since past, it's that facts are actively discarded from science in order to craft a romanticized but entirely inaccurate fiction.
+    As [I previously wrote](/articles/2016/ml_not_magic.html), combating this fictionalization of research and the prevalance of AI hype should be a top priority.
+
+    DeepCoder is an excellent example of this.
+    While the [DeepCoder paper](https://openreview.net/forum?id=ByldLrqlx) is interesting and worthy of merit, the research became a caricature of itself as it was replicated throughout the media.
+    Heralded by many as a new advance in February 2017, the paper was in fact first released in [early November 2016](https://arxiv.org/abs/1611.01989).
+    This may have been as it was accepted to ICLR in early February, though this doesn't justify the rapid fictionalization it endured.
+    If you're interested in hearing the unfiltered thoughts of the official reviewers and other researchers in the field, the ICLR comments are hosted publicly on [OpenReview](https://openreview.net/forum?id=ByldLrqlx).
+
+    In this article, we first break down the DeepCoder work in terms of what it contains and then we explore how it became progressively misconstrued in the media.
+    If you're interested in only the latter you can safely skip to the last section.
+
+    <!--
+    + The DeepCoder paper is interesting and worthy of merit. This is not an attack on their work at all, simply an attempt to understand how the reality of research as presented in a factual and peer reviewed paper devolved into fiction as it was replicated throughout the media. I've not spoken to the authors but am certain they're headdesking as hard as other researchers in the field at the media coverage.
+    + This is not an attack on any particular media article. Some sources reported it well. Many others gave in to AI hype, turning science into clickbait science fiction.
+    + As a researcher in the rapidly progressing field of machine learning, I see no need to fictionalize the tremendous advances we see. I do believe this hype actively harms our field. Not just provoking the AI winters of the past, but also in discarding factual science for a romanticized but entirely inaccurate fiction.
+    -->
+
+    <!--Most audiences likely don't care for the details, instead going to these articles for a story instead of reality.-->
+
+
+    ## What's the task?
+
+    Defining the machine learning task in academia is vitally important.
+    Such definitions help understand the scope of the problem and the limits involved in any potential solution.
+
+    In the standard programming competition setting, you're given two pieces of information:
+
+    + A textual description of the problem
+    + One or more example input / output pairs
+
+    A simple example from the paper is provided below.
+
+    <img class="center smooth round" src="/media/images/articles/2017/deepcoder_simple_program.png" />
+
+    **Important note:** DeepCoder doesn't use textual descriptions for generating a solution - it only uses the input and output pairs. See the section "*Neural networks are better than infinite monkeys*" below.
+
+    From this, your goal is to produce a working program that is (a) consistent with all provided input / output examples and (b) consistent with the task as described.
+    Notice that solving (a) does not imply (b).
+    All programmers will have run into this in the past - specifically when their examples don't cover edge cases they'd never considered and may not have written tests for.
+
+    This task is known as Inductive Program Synthesis (IPS): given input-output examples, produce a program that has behavior consistent with the examples and the defined task.
+    For this work we'll assume that if the program solves all the examples, it's satisfactory.
+    Obviously this assumption becomes a major liability if we were to transition IPS to the real world.
+
+    ## What does DeepCoder do?
+
+    ### The program space with our infinite monkeys
+
+    In the experiments in the paper, each problem is given five example input / output pairs.
+    DeepCoder defines a domain specific language (DSL) that, when composed together, can solve the specified problems.
+    This domain specific language contains 34 different first order and higher order functions and allows all integers from -255 to 255.
+    Essentially, you have a set keyboard of options that you can use to piece together a solution.
+
+        First-order functions: HEAD, LAST, TAKE, DROP, ACCESS, MIN, MAX, REVERSE, SORT, SUM
+        Higher-order functions: MAP, FILTER, COUNT, ZIPWITH, SCANL1.
+        Higher-order MAP allows: (+1), (-1), (*2), (/2), (*(-1)), (**2), (*3), (/3), (*4), (/4)
+        Higher-order FILTER and COUNT allows: (>0), (<0), (%2==0), (%2==1)
+        Higher-order ZIPWITH and SCANL1 allows: (+), (-), (*), MIN, MAX
+
+    Note that this DSL does not contain any explicit control flow such as for loops, while loops, or branching.
+
+    This results in an enormous potential set of programs - one of which is guaranteed to hold the solution.
+    This is referred to as the **program space** and is equivalent to throwing the [infinite monkey theorem](https://en.wikipedia.org/wiki/Infinite_monkey_theorem) at the problem.
+
+    If you had an infinite number of monkeys all in front of specialized keyboards - buttons labeled with functions (SORT, TAKE, SUM), variables (k, b, c), and so on - one of the monkeys would eventually produce the correct program.
+    Obviously monkeys are slow, temperamental, and require bananas, so we'd hope there's a better option.
+
+    One of these better options is depth first search (DFS), where we weight the search towards programs similar in composition to previous working programs we've seen in training and keep testing the program against the input / output examples to see if it works.
+    This is one of the baselines that DeepCoder competes against.
+    Given infinite time (less infinite time than the monkeys need though), DFS would solve our proposed problems using the DSL specified above.
+
+    ### Neural networks are better than infinite monkeys (but way less fun)
+
+    <!--
+    Concise summary of the claims made in the DeepCoder paper:
+    + The paper was on arXiv months ago - early November 2016 - and it's only due to the recent media push (potentially related to the paper's ICLR acceptance on the 6th of February?) that it has resurfaced
+    + If you're interested in hearing the unfiltered thoughts of the official reviewers and other researchers in the field, ICLR was hosted publicly on OpenReview
+    + The problem sets that are tackled are solvable via a brute force search of the program space (search based techniques) and DeepCoder offers significant speed-up over depth first search and other similar methods by integrating neural networks
+    + "In this work, we focus on predicting an order on the program space and show how to use it to guide search-based techniques that are common in the programming languages community."
+    + What DeepCoder provides is primarily suggestions as to what, of the search space of potential solutions, should be attempted first
+    + While a textual description of the problem is used, input / output pairs (five in the paper's case) are also necessary to determine if a given program solves the problem
+    + For the real world, where there's not likely to be input / output pairs (and such pairs are not exhaustive in determining a correct solution), there's also no easy way for DeepCoder to know when the suggested solution is "correct" 
+    + The authors themselves note that "the programs we can synthesize are only the simplest problems on programming competition websites and are simpler than most competition problems"
+    -->
+
+    DeepCoder reads the input and output example pairs and predicts the presence or absence of individual functions from the DSL.
+    <!--As an example, if you see `[2, 6, 8, 10]` you might assume that `SORT`, `FILTER`, and `(%2==0)` are likely to be used.-->
+
+    **Important note:** DeepCoder doesn't even read the problem description yet to help decide which functions are most likely!
+
+    <img class="center smooth round" src="/media/images/articles/2017/deepcoder_model.png" />
+
+    Below, Figure 2 from the paper, is an example of the predicted probability of each DSL function appearing in the source code.
+    The neural network in this case is particularly interested in trying to use `(*4)`, `MAP`, `FILTER`, `SORT`, and `REVERSE` to solve the problem.
+    If the neural network's prediction is accurate, it may possibly find the relevant program quickly and easily without exhaustively searching the program space.
+
+    <img class="center smooth round" src="/media/images/articles/2017/deepcoder_predicted_probs.png" />
+
+    DeepCoder's assistance in directing the search can result in some significant speed-ups over the baseline methods.
+
+    Important to note, the maximal length of the programs is length 5, as in the example below.
+
+    <img class="center smooth round" src="/media/images/articles/2017/deepcoder_complex_program.png" />
+
+    This is still a far cry away from being useful in real world tasks though does represent a strong speed improvement over previous methods that could exhibit these capabilities.
+
+    ## What did people claim DeepCoder could do?
+
+    Like a game of [telephone / Chinese whispers](https://en.wikipedia.org/wiki/Chinese_whispers), errors seem to accumulate in each retelling of scientific research.
+    As this progressed the majority of facts were discarded in favor of a simplistic and inflated narrative such as "DeepCoder copy pastes from Stack Overflow".
+
+    Simple statements meant to improve reader comprehension take on a life of their own.
+
+    Instead of describing that the program was able to use 34 different first order and higher order functions from a domain specific language (a mouthful and complex concept even for programmers), a journalist may instead describe it as "piecing together lines of code taken from existing software".
+
+    Instead of describing the process of training from a specific set of problem descriptions and input / output pairs, a journalist may instead describe it as "using machine learning to scour databases of source code".
+
+    Neither of these are bad - especially within the original article context.
+    A full explanation of the paper is out of scope for such an article.
+    These minor simplifications are used to allow a broader audience of readers to follow the story.
+    This is good - more people should have the opportunity to understand these advances.
+
+    Many articles are even reasonable in their claims, stating that DeepCoder for now only works with programs of length five or less and specifically only over an extreme subset of programming competition problems.
+    These scoping statements as to the capability of DeepCoder quickly disappear however.
+
+    The issue comes as the story is relayed, poorly, over and over again.
+    The incorrect but narratively helpful "piecing together lines of code" suddenly becomes copy and paste.
+    The incorrect but narratively helpful "scouring a database" becomes "stealing from other software" which then jumps to "stealing from StackOverflow".
+    DeepCoder even becomes an active competitor in online programming competitions and capable of already assisting programmers.
+    Reality falls away awfully quickly...
+
+    ---
+
+    + Microsoft's AI writes code by **looting other software**
+    + DeepCoder **takes lines of code from existing software**
+    + Microsoft's new AI can code by **stealing bits of code from other software**
+    + Microsoft DeepCoder AI Produces Its Own Code By **Ripping Off Existing Software**
+    + Microsoft’s AI ‘DeepCoder’ **learns coding by stealing from others**
+    + Now, here is DeepCoder, an AI trained to **use pieces of code from existing software and write a code of its own**.
+    + DeepCoder AI Writes Programs **Using Existing Code Snippets**
+    + DeepCoder builds programs **using code it finds lying around**
+    + ...the system works **by taking lines of code from existing programs and combining them**.
+    + Thus, **the hybrid code was born**.
+
+    ---
+
+    + Called DeepCoder, **the software can take requirements by the developer**, **search through a massive database of code snippets** and deliver working code in seconds...
+    + **They only have to describe their program idea and wait for the system to create it**.
+    + It’s **been used to complete programming competitions** and could be pointed at a larger set of data to build more complex products.
+    + Once the system knows what a human programmer wants it to accomplish, along with the available inputs, the system **can then search more quickly and more completely than any human coder to create a new application**.
+    + DeepCoder **successfully plowed through the basic, input-output style challenges usually set by programming competitions**.
+    + In the paper, the researchers explain that DeepCoder relies on **big data analysis** and machine learning techniques.
+    + Now it's writing its own code **using similar techniques to humans**.
+
+    <!--
+    + The execution works because through deep-learning, and smart AI to make sense of it, pieces of code are taken from existing software, letting the system learn how everything comes together.  
+      (What?)
+    + An awesome example of how this could be used is to improve security of existing applications by replacing sensitive lines of code with good code from other applications.  
+      (Security people - does this sound like a good idea to you?)
+    + DeepCoder can write working code after searching from a huge code database.
+    + It can take design clues and develop a program after harvesting appropriate lines of code from a massive code database using machine learning.
+    + DeepCoder’s efficiency improves over time, as it solves more and more problems.
+    + Microsoft’s new AI sucks at coding as much as the typical Stack Overflow user
+    -->
+
+    ---
+
+    To remind you why the above is stunningly incorrect:
+
+    + DeepCoder did not (and cannot) at any point take code from another piece of software.
+    + Stolen implies code was taken illegally and is likely purely added with the intent of clickbaiting.
+    + DeepCoder can't read or use any of the textual descriptions that might exist for a given problem - so anywhere "reading a problem description" is basically incorrect.
+      Other research has investigated using it but (a) it's not this work and (b) it's not near any level of magic proficiency yet.
+    + No big data analysis was used - though that is a nice buzz word to add to an article already full of artificial intelligence, machine learning, neural networks, and the rest of the AI hype gang...
+    + "More quickly and more completely than any human coder" implies superhuman - a popular Terminator-esque narrative which reality is very far from.
+
+    What you've seen here only becomes worse as it reaches Twitter or the comment section of various websites...
+
+    ## Symptoms
+
+    + Headlines usually contain far more false content than the article, likely clickbait induced, and it's accepted that reality doesn't need to be represented there
+    + A small misrepresentation rapidly grows, especially if it can become the bridge that authors use to try to personify the machine learning model, meaning even articles that do good groundwork in ensuring the content is factual can contribute to the eventual molasses
+    + Factual clarification spreads far slower than clickbait and the majority of articles / comments will only reinforce the fictional narrative
+
+    ## So ... what?
+
+    I'll simply restate - the advances in this field are fascinating enough that we don't need to discard reality for the sake of a storyline.
+    I can only hope that both AI-prefix investing and AI-prefix journalism come to terms with this.
+    AI and machine learning will have an immense - hopefully positive - impact on the world.
+    Misrepresenting the capability and limitations of the technology is simply a disservice.
+
+    What's the best method to shepherd these stories back towards fact from fiction?
+    I'm honestly not sure.
+    Writing an article like this for every misrepresented paper doesn't seem a scalable solution however.
+    Even listing misrepresented papers or concepts in the media would be exhausting!
+
+    I guess I should mediate my complaining at least - the media is helping ensure I've job security until the rolling thunder of the next AI winter comes ;)
+
+    **Thanks to:** [Christiaan Colen](https://www.flickr.com/photos/132889348@N07/20013035013/) for his stylistic shot of the "Brain" virus from 1986, considered one of the first computer viruses.
+    Like DeepCoder it didn't steal code so it seems appropriate!
+
+    <img class="center smooth round" src="/media/images/articles/2017/deepcoder_brain_virus.jpg" />
