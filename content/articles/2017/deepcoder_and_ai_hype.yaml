@@ -4,19 +4,30 @@ image: "http://smerity.com/media/images/articles/2017/deepcoder_brain_virus.png"
 date: 2017-02-26
 
 content: |
+    This is a hard topic to cover.
+    I know a number of journalists and appreciate their work in communicating these advances to a wide audience.
+    It's a hard job to convey complex concepts and in many cases they're not at fault for how it becomes warped by the broader community.
+    Sadly, regardless of the exact way these research stories are warped, most AI and ML stories in the media will result in an audibly groan from researchers.
+
     As a researcher in the rapidly progressing field of machine learning, I see no need to fictionalize the tremendous advances we see.
-    I believe AI hype actively harms our field.
-    It's not just that this misrepresentation provokes retaliation from AI winters long since past, it's that facts are actively discarded from science in order to craft a romanticized but entirely inaccurate fiction.
+    I believe AI hype actively harms us both academically and commercially.
+    It's not just that this misrepresentation provokes potential retaliation from AI winters long since past, it's that facts are actively discarded from science in order to craft a romanticized but entirely inaccurate fiction.
     As [I previously wrote](/articles/2016/ml_not_magic.html), combating this fictionalization of research and the prevalance of AI hype should be a top priority.
 
-    DeepCoder is an excellent example of this.
+    <!--
+    I know many journalists covering machine learning and artificial intelligence.
+    Conveying complex concepts to a broad audience succinctly is a real challenge.
+    They're not at fault for how it becomes warped by the broader community
+    -->
+
+    DeepCoder is an excellent example of the slow decay from an originally well researched story to meandering.
     While the [DeepCoder paper](https://openreview.net/forum?id=ByldLrqlx) is interesting and worthy of merit, the research became a caricature of itself as it was replicated throughout the media.
     Heralded by many as a new advance in February 2017, the paper was in fact first released in [early November 2016](https://arxiv.org/abs/1611.01989).
     This may have been as it was accepted to ICLR in early February, though this doesn't justify the rapid fictionalization it endured.
     If you're interested in hearing the unfiltered thoughts of the official reviewers and other researchers in the field, the ICLR comments are hosted publicly on [OpenReview](https://openreview.net/forum?id=ByldLrqlx).
 
-    In this article, we first break down the DeepCoder work in terms of what it contains and then we explore how it became progressively misconstrued in the media.
-    If you're interested in only the latter you can safely skip to the last section.
+    In this article, we first break down the DeepCoder work in terms of what it contains, then we explore how it became progressively misconstrued in the media, and finally we produce a new version of the DeepCoder article that aims to be broadly understandable whilst trying to avoid any fluff.
+    If you're interested in only the latter two, you can safely skip downwards.
 
     <!--
     + The DeepCoder paper is interesting and worthy of merit. This is not an attack on their work at all, simply an attempt to understand how the reality of research as presented in a factual and peer reviewed paper devolved into fiction as it was replicated throughout the media. I've not spoken to the authors but am certain they're headdesking as hard as other researchers in the field at the media coverage.
@@ -184,6 +195,7 @@ content: |
     + "More quickly and more completely than any human coder" implies superhuman - a popular Terminator-esque narrative which reality is very far from.
 
     What you've seen here only becomes worse as it reaches Twitter or the comment section of various websites...
+    Some knowledgable people might refer to "copying from StackOverflow" as a joke whilst others will misinterpret even the joke as being factual.
 
     ## Symptoms
 
@@ -191,7 +203,90 @@ content: |
     + A small misrepresentation rapidly grows, especially if it can become the bridge that authors use to try to personify the machine learning model, meaning even articles that do good groundwork in ensuring the content is factual can contribute to the eventual molasses
     + Factual clarification spreads far slower than clickbait and the majority of articles / comments will only reinforce the fictional narrative
 
-    ## So ... what?
+    ## Let's try writing the article
+
+    I'm by no means a journalist.
+    My writing above has likely already resulted in a slowly permeating headache radiating from the thinking centres of your brain.
+    With that warning, a journalist friend suggested I "close the loop" by trying to pen an article myself, devoid of fluff.
+    If you're interested in what that looks like, check the bottom of this article.
+    
+    <!--A reasonable request - who knows if I'm up to the task.--> 
+
+    ---
+
+    **Thanks to:** [Christiaan Colen](https://www.flickr.com/photos/132889348@N07/20013035013/) for his stylistic shot of the "Brain" virus from 1986, considered one of the first computer viruses.
+    Like DeepCoder it didn't steal code so it seems appropriate!
+
+    <img class="center smooth round" src="/media/images/articles/2017/deepcoder_brain_virus.png" />
+
+    ## AI coding bootcamps? Microsoft / Cambridge teaches DeepCoder to write simple programming challenge solutions
+
+    A distant goal of artificial intelligence is to have a system that can solve any task an end user might throw at it.
+    Pass in a well written description of your problem, have a well written program given back to you.
+    If we're being even more grandiose, we might ask the machine learning model to try to improve itself.
+    For now that is very far from reality - but what about challenging artificial intelligence with something a tad simpler?
+
+    Programming competition problems are a standard in the industry.
+    Whether programmers tackle these problems for fun, aiming to show their speed and algorithmic knowledge, or whether they're subjected to them as part of a job interview, there's really no escaping them.
+
+    <!--
+    Generally a programming competition problem consists of two things - a problem description and a number of input / output examples.
+    To generate a solution for such a programming problem is called **program synthesis**.
+
+        John finds himself at the store, wanting to get as many flowers as possible for his partner, Addison.
+        Addison only likes flowers with an even number of petals however.
+        Given a list F of the number of petals each flower has and a list P for the cost of each flower, 
+    -->
+
+    Researchers at Microsoft and the University of Cambridge have used examples like these to teach a machine learning model called [DeepCoder](https://openreview.net/forum?id=ByldLrqlx) how to solve simple programming problems.
+    While it's still early days, they've been able to define a simple programming language (a DSL, or *domain specific language*) that their model can use to program.
+    This programming language doesn't yet have the full flexibility of a standard programming language but it's capable enough of solving many simple programming competition problems.
+
+    The concept behind this DSL is relatively intuitive.
+    Imagine [an army of monkeys tapping wildy at a QWERTY keyboard trying to reproduce the work of Shakespeare](https://en.wikipedia.org/wiki/Infinite_monkey_theorem).
+    You'd rightly expect this to take an awfully long time.
+    
+    <!--For computer programs, we need an absolutely perfect copy too, as otherwise the program will never run.-->
+
+    What if we gave the monkeys a custom keyboard however?
+    One where we replace the QWERTY characters with only the words we know to appear in Shakespeare's works?
+    We'd expect the monkeys to solve the task quicker - though it'd still be painfully slow.
+
+    The last step of DeepCoder's ingenuity is to make some of these keys larger or smaller depending on the context.
+    If our monkeys were tasked to reproduce Romeo and Juliet, there would be two massive keys for "Romeo" and "Juliet", a tiny key for "star-cross'd" (it only ever appears once in the prologue), and no key for "Macbeth" as the famous character is never mentioned in this work.
+
+    <img class="center smooth round" src="/media/images/articles/2017/deepcoder_predicted_probs.png" />
+
+    For now, DeepCoder focuses on just using the input / output pairs to come up with a solution, not even bothering to look at the textual description.
+    By looking for patterns between the input and output - such as all even numbers disappearing at the end or all numbers smaller than 42 disappearing - DeepCoder can guess as to what specific functions might be used to solve the task.
+    With this information, instead of searching over all possible programs that DeepCoder's simple programming language might allow, DeepCoder can far more quickly find a working solution.
+    It verifies such a solution by testing whether the suggested program solves all the example input / output pairs the problem specifies.
+
+    Without looking at even the textual description of the problem, DeepCoder has found success tackling many programming challenges with this method.
+    An important note is that it has only tackled problems of five lines so far.
+    This is equivalent to our infinite monkeys being far more successful at crafting individual sentences than paragraphs or chapters.
+    The more keys they have to press, the more opportunities they have to make a mistake.
+
+    <img class="center smooth round" src="/media/images/articles/2017/deepcoder_complex_program.png" />
+
+    So are we likely to see the programming competition boards filled with bots spamming solutions soon?
+    Not any time soon.
+    Defining a large number of input / output example pairs is not only required for this task but is quite exhausting.
+    Anyone capable of doing that would likely also be capable of learning to program more efficiently.
+    Additionally, a solution working for the provided input / output pairs gives no guarantee it's an actual working solution.
+    Edge cases catch human programmers all the time even on simple programs even when a humans thoroughly understands a problem descriptions.
+
+    While this work by Microsoft and Cambridge researchers is certainly impressive, it's by no means alone.
+    Google have [generated code for simulations of Magic the Gathering and Hearthstone by reading card descriptions](https://arxiv.org/abs/1603.06744).
+    Facebook have [taught a machine learning model to copy, add, and multiply purely from examples](https://arxiv.org/abs/1511.07275).
+    Many other groups, both in academia and industry, have tackled similar problems.
+    
+    We'll be sure to tell you which one is the first to tackle an open programming competition such as [TopCoder](https://www.topcoder.com/) - but for now programmers can rest easy.
+    Or at least rest easy assuming they don't have a job interview with a programming challenge - those things are hard!
+
+    ---
+
+    ## So ... where now?
 
     I'll simply restate - the advances in this field are fascinating enough that we don't need to discard reality for the sake of a storyline.
     I can only hope that both AI-prefix investing and AI-prefix journalism come to terms with this.
@@ -204,8 +299,3 @@ content: |
     Even listing misrepresented papers or concepts in the media would be exhausting!
 
     I guess I should mediate my complaining at least - the media is helping ensure I've job security until the rolling thunder of the next AI winter comes ;)
-
-    **Thanks to:** [Christiaan Colen](https://www.flickr.com/photos/132889348@N07/20013035013/) for his stylistic shot of the "Brain" virus from 1986, considered one of the first computer viruses.
-    Like DeepCoder it didn't steal code so it seems appropriate!
-
-    <img class="center smooth round" src="/media/images/articles/2017/deepcoder_brain_virus.png" />
