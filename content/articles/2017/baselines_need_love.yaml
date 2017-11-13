@@ -1,0 +1,127 @@
+title: "Backing off towards simplicity - why baselines need more love"
+description: "When we lose accurate baselines, we lose our ability to accurately measure our progress over time."
+image: "http://smerity.com/media/images/articles/2016/ml_not_magic.jpg"
+date: 2017-11-03
+
+content: |
+    *This was originally presented as "Backing Off Towards Simplicity" at O'Reilly AI San Francisco and Data Institute's Annual Conference (DSCO17)*
+
+    Controversial claim: In deep learning, most models are **overpowered** for what they need to achieve.
+
+    This leads to slower and more complex models, misleading human intuition and poisoning forward progress, especially when compared against sub-optimal baselines.
+
+    **When we lose accurate baselines, we lose our ability to accurately measure our progress over time.**
+
+    ---
+
+    If there are only four things you take away from this article:
+
+    + **Adopt a baseline** and give it the care that it deserves
+    + Ensure the baseline is **fast** and **well tuned** to provide as a bed for rapid experimentation
+    + **Take deliberate and reasoned steps foward** towards the state of the art (SotA) or more complex models
+    + Unless you have strong proof that it's necessary, **don't sacrifice speed**
+
+    It's better to use compute intelligently than to throw more of it at a problem.
+
+    ---
+
+    *New to machine learning or deep learning?* Read my note at the bottom and adopt a baseline!
+
+    ## The issue with complex models
+
+    Complex models can poison forward progress in our field.
+
+    This goes beyond over-parameterizing deep learning models and then pulling them back with regularization.
+    To clarify for those who've not heard that general adage, a standard tactic in deep learning is to keep increasing a model's parameters until it overfits on the dataset and then to increase regularization to prevent overfitting.
+    It's a dance between the model's expressiveness, the speed it takes to train, and the potential for over-parameterization.
+    While this is an issue - primarily that it encourages you to add complexity to models without understanding where that complexity is warranted - it primarily feeds in to larger issues.
+
+    Due to the resilience of deep learning models, kitchen sinking (or throwing every permutation of a feature set and/or set of architectural decisions into a single model) is frequent.
+    Whilst that may improve results, it becomes hard to isolate which components actually contribute meaningfully when there are so many moving parts.
+    This is especially true as such models are almost always invariably slower to train than necessary.
+    When you have slow to train models, the concept of performing ablation analysis (or where you remove a component at a time to see the impact on the final result) is no longer trivially achievable.
+    Without this type of analysis, human intuition (which is already fragile in deep learning to begin with) can be further mislead.
+
+    Rapid iteration is also a prime currency in enabling innovation and discovery, yet we discard it whenever increasing a model's complexity.
+    For researchers without an armada of the latest and greatest rocket ship GPUs, this also leads to disillusioned researchers.
+    Given how valuable a resource curiousity and interest is in this world, ensuring researchers from all areas can contribute is vital, whether they're amateurs on Kaggle or students at a cash-strapped university.
+
+    Given all of this, it's constantly found that many state of the art results can be achieved with simpler architectures and model setups.
+
+    ## The value of baselines
+
+    Baselines are simultaneously one of the most valuable resources we have in deep learning.
+    They provide a sanity check against improvements, an easy avenue for the curious to begin to explore, and a potential foundation for future innovation to be built upon.
+    Sadly, they're also one of the most neglected.
+
+    Baselines frequently stem from educational codebases, primarily as simpler techniques are easier to implement and understand for new users.
+    This becomes a problem when the goals of education and performance stand in conflict.
+    When baselines trade performance for simplicity, you must begin to question how indicative the baseline remains.
+    If a baseline isn't indicative, if it doesn't give you a metric against which to measure progress, the baseline is truly useless, and your results may be too.
+
+    Researchers also aggressively optimize their models but not the baseline they compare against.
+    Baselines are generally an afterthought and something you fear spending equivalent time on given it may decrease your contribution's worth.
+    Sadly this frequently means that baselines are simply a copy and paste of numbers from one paper to another rather than a fair gauge against which you can measure your own progress.
+    From this, baselines tend to be artificial, tiny, ancient, ignored, and rarely updated to modern best practices or techniques.
+
+    **When we lose accurate baselines, we lose our ability to accurately measure our progress over time.**
+
+    ---
+
+    *Random sidenote from outside machine learning:*
+    We're not the only field with this issue. In graph processing, Frank McSherry found that [a cluster of dozens of machines (128 cores) were outperformed by a single threaded (but intelligently optimized) program on his laptop](http://www.frankmcsherry.org/graph/scalability/cost/2015/01/15/COST.html).
+    Indeed, it enabled certain datasets that [were not even possible at all on the cluster](http://www.frankmcsherry.org/graph/scalability/cost/2015/02/04/COST2.html).
+
+    ## Strategically improving baselines to state of the art
+
+    So how do we avoid this complexity?
+    Simple.
+    Ensure you make the model no more complex than you need it to be.
+    If in doubt, start even simpler than you imagined was possible - you might surprise yourself!
+
+    Take an existing baseline or write it yourself, ensure it remains simple and fast.
+    Then take this simple and fast baseline and push it as far as possible.
+    This means tuning hyperparameters extensively, trying a variety of regularization techniques, sanity checking against bugs and potentially flawed assumptions, and delving into the "boring" data processing in detail.
+    All these are made possible due to the simplicity of your baseline.
+
+    **As it is fast, you can spend many runs tuning your hyperparameters.**
+
+    **As it is simple, bugs and flawed assumptions become easier to find as the model isn't powerful enough to hide it from you.**
+
+    From this, you can then inch foward towards more complex models.
+    Add a component, one at a time, evaluate, and then keep it or remove it, always trying to maintain as fast and minimal a baseline as possible.
+    The hope is you'll know what you're trading off.
+
+    + Component X makes the model far slower but achieves gains 
+    + Component Y makes the model less general but helps capture this corner case / speed the model up substantially
+
+    This strategy is reinforced by the fact that models of comparable complexity and compute time from today beat generally beat models of comparable complexity from last year.
+    Almost never has the single solution in machine learning or deep learning been "just scale it", as much as that adage is repeated.
+
+    ## Human intuition in deep learning is bad
+
+    An amplifier for the fears above - that slow training and lack of ablations may mislead us - is that humans are terrible at intuiting what will and won't work in deep learning.
+    Even with the benefit of theory - of which we have precious little for non-simplified systems - our results don't always match what we would expect.
+
+    When attention was first introduced, it achieved lower accuracy than simply increasing the hidden size.
+    For some time people believed that it wasn't even necessary - that increasing the hidden size would always result in a better model.
+    That stance has shifted over time.
+
+    Within recurrent neural networks it was always assumed that a complex recurrent transition - a matrix multiplication when updating your hidden state from one timestep to the next - was necessary.
+    More generally, it was always assumed that to process sequential data you would need to be recurrent.
+    This started shifting in only the last year or two with the advent of many non-traditionally recurrent style networks, such as Strongly Typed Recurrent Neural Networks, PixelCNN, ByteNet, the Transformer Network, or the Quasi-Recurrent Nueral Network (QRNN).
+
+    When my colleague James Bradbury and I started designing the QRNN based upon the foundation established by Strongly Typed Recurrent Neural Networks, we expected the model to be far faster but not to perform better than the LSTM.
+    I'll speak for myself at being shocked at how well it ended up working.
+    In the current baseline state of the art model for word level language modeling on Penn Treebank and WikiText-2, the QRNN can achieve comparable results to the LSTM in a fraction of the time of even the most highly optimized of implementations.
+
+    None of this is to say that the researchers working on these domains or making these discoveries are not incredibly intelligent - other than myself I can almost guarantee they are - it is simply to say that this field doesn't naturally lend itself to human intuition.
+    As such, our preconceived assumptions regarding what is and isn't necessary within an architecture can't be trusted.
+    This only becomes worse when our baselines provide us a poor compass or when we overcomplicate our models preventing proper analysis.
+
+    ## Call to action: adopt a baseline
+
+    If you're new the field, my message to you is two-fold:
+
+    + Adopt a baseline to not only help the field but to also provide a grounded domain in which to hone your skills - you might surprise not just yourself by resesearchers across the community :)
+    + Even if the Goliaths in the space have access to an armada of GPUs, you can still help advance the field forward (I promise!) and there are many counter examples to show that raw compute is no guarantee they'll beat you
