@@ -1,6 +1,6 @@
 title: "Understanding the Mixture of Softmaxes (MoS)"
 description: "The softmax is used in almost all of deep learning but there's a major issue. The mixture of softmaxes fixes that, both theoretically and experimentally."
-image: "http://smerity.com/media/images/articles/2017/matrix_rank.png"
+image: "http://smerity.com/media/images/articles/2017/mixture_of_softmaxes.png"
 date: 2017-11-19
 
 content: |
