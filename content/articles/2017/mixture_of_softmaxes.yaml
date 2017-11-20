@@ -14,7 +14,7 @@ content: |
     The traditional adage in deep learning tells you to increase your model's parameters until it overfits.
     The issue is that, for the situation caused by the softmax bottleneck, it's not possible or even practical to fix this by simply throwing more parameters at the problem.
 
-    ## tdlr; Why mixture of softmaxes matter?
+    ## tldr; Why mixture of softmaxes matter?
 
     **Experimentally:** achieves the best results for word level language modeling on the Penn Treebank and WikiText-2 datasets given the same parameter limit when extending the [AWD-LSTM-LM codebase](https://github.com/salesforce/awd-lstm-lm) ([Smerity et al.](https://arxiv.org/abs/1708.02182)) and [dynamic evaluation code](https://github.com/benkrause/dynamic-evaluation) ([Krause et al.](https://arxiv.org/abs/1709.07432)) ([MoS code](https://github.com/zihangdai/mos)).
 
