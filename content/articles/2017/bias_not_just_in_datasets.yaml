@@ -1,0 +1,104 @@
+title: "Bias is not just in our datasets, it's in our conferences and community"
+description: "NIPS 2017 should have been a decisive win for fairness both within our community and the communities impacted by it. There are many more steps to go however."
+image: "http://smerity.com/media/images/articles/2016/ml_not_magic.jpg"
+date: 2017-12-11
+
+content: |
+    NIPS 2017 should have been a decisive win for fairness both within our community and the communities impacted by it.
+    [Black in AI](https://blackinai.github.io/) had a tremendous debut, [Women in Machine Learning](http://wimlworkshop.org/) continues to be a torch bearer for professional growth and mentorship, [Kate Crawford](https://twitter.com/katecrawford) keynoted [The Trouble with Bias](https://www.facebook.com/nipsfoundation/videos/1553500344741199/), and the [Fairness in ML](http://mrtz.org/nips17/#/) tutorial was filled to the brim, both audience size as well as practical advice.
+
+    We should first thank and congratulate all those who dedicated their time and energy to such great events.
+    Many went above and beyond to ensure these issues are well understood and these communities are well supported, to the cost of their own time and sanity.
+
+    Sadly however these wins aren't the end of the story.
+
+    Across broader society a toxic battle is playing out, with many in our community caught in the crossfire.
+    There are issues that we as a community do not have the immediate power to change.
+    What is within our immediate power to change however is our interactions and support of the communities and groups at our conferences.
+
+    **Note:** *Whilst this post has a focus on NIPS 2017, this is in no way an attack on the overall event or organizers.
+    Conference organizers, like the organizers above, put their time and effort into a task of terrifying enormity and for that they have my sincere thanks.
+    As the largest of our professional conferences, it has a chance to lead and resolve issues both at their conference and the wider community.*
+
+    ## Exclusionary jokes or behaviour doesn't add any value
+
+    Is a risky joke or grimace inducing example worth potentially making someone feel unwelcome and/or wrecking the conference or community for another attendee?
+    Would the removal of that joke or example in any way limit the purpose of the conference or community - sharing knowledge?
+
+    Avoid these jokes.
+    At best, they add little.
+    At worst, they destroy a lot.
+
+    Remember that this is an international event and an international community.
+    Not everyone speaks English fluently.
+    Not everyone has the same monoculture.
+    They should all feel welcome.
+    They all bring value.
+
+    ## ML conferences should have a Code of Conduct
+
+    Globally, both in tech and other fields, the #MeToo movement has helped bring to the forefront the oft-ignored violations of fairness and equality in academia and industry.
+    These remain a problem within our field and a problem that [even post-Weinstein men seem to underestimate](https://twitter.com/firstround/status/938798698934427648).
+
+    <center><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">70% of female founders say sexual harassment in tech is still underreported vs. 35% of male founders. Men were 4 times more likely than women to say the media&#39;s overblown the issue. <a href="https://t.co/ndNAIYP66W">https://t.co/ndNAIYP66W</a></p>&mdash; First Round (@firstround) <a href="https://twitter.com/firstround/status/938798698934427648?ref_src=twsrc%5Etfw">December 7, 2017</a></blockquote></center>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    Some technical conferences have had a Code of Conduct in place for many years, such as [PyCon's](https://github.com/python/pycon-code-of-conduct).
+    Others have recently been added after existing incidents and assaults came to light.
+    The result is that the default conference should now have a Code of Conduct.
+    We've seen the costs come too high for those without one.
+    A Code of Conduct sets community expectations and ensures that, should an incident occur, there are steps in place to properly handle them.
+
+    A conference's Code of Conduct is only as strong as the enforcement of it however.
+    Much of the PyCon Code of Conduct is discussing the channels to raise and resolve incidents and the procedures and responsibilities of the staff.
+    Not having these in place before an incident will not end well.
+
+    ## Visa denials
+
+    Talented researchers and practitioners were denied visas simply due to travel bans against their home countries.
+    Even of those countries not explicitly banned, the Black in AI team had to fight against beauracracy and idiocy to support the visas of many from outside of the country.
+
+    **Many never made it. We should all be angry at the loss for them and ourselves for not being enriched.**
+    
+    Stories of visas being held for weeks at an embassy, candidates being unable to get physical US dollars to pay visa application fees, or the US government fearful that the participant wouldn't return to their country even when they had a family back home.
+    There is no silver bullet to solve this problem but we can take steps.
+    Improving policies regarding absent presenters, ensuring our conferences remain in a welcoming country, and supporting the groups that fight to ensure attendance by our broader disadvantaged community.
+
+    <center><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/blackinai?src=hash&amp;ref_src=twsrc%5Etfw">#blackinai</a> @ <a href="https://twitter.com/hashtag/NIPS2017?src=hash&amp;ref_src=twsrc%5Etfw">#NIPS2017</a> was incredible. I can&#39;t stop thinking about one man telepresenting from Ethiopia whose wifi just wasn&#39;t giving us audio. He would raise his voice to be heard, awaking sleeping neighbors, and still we couldn&#39;t quite make it out. What are solutions?</p>&mdash; MMitchell (@mmitchell_ai) <a href="https://twitter.com/mmitchell_ai/status/939712266198425608?ref_src=twsrc%5Etfw">December 10, 2017</a></blockquote></center>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    ## Supporting good causes against unfair (and insane) backlash
+
+    When Black in AI was announced, there was backlash from a subset of the community on Twitter.
+    Luckily members of the community stepped in to help defend and share the purpose of the group.
+
+    Your voice is important.
+    You don't need to be part of a minority group or community to support them.
+    We will all be richer for having them welcomed and a part of our work.
+
+    ## Childcare at conference venues
+
+    Childcare is nowhere near a trivial task but should be something that we as a community work towards.
+
+    <center><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">That a conference as large and well funded as <a href="https://twitter.com/hashtag/NIPS2017?src=hash&amp;ref_src=twsrc%5Etfw">#NIPS2017</a> doesn&#39;t have day care is a travesty. Imagine if companies spent even a tiny portion of their party budget on sponsored day care? :(</p>&mdash; Smerity (@Smerity) <a href="https://twitter.com/Smerity/status/939249825987543045?ref_src=twsrc%5Etfw">December 8, 2017</a></blockquote></center>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    I would highly recommend reading more of the discussion within that thread.
+    Some issues I was idiotically blind to (such as complications regarding caring for children who might not have English as a first language) but I refuse to believe that a community that solves hard problems continuously couldn't solve these given time, thought, and a few of those sponsor dollars.
+
+    ## Don't discount people based on gender, skin colour, nationality, ...
+
+    Everyone within our community has ideas and insights worth hearing.
+    Everyone is worth speaking to.
+    It shouldn't be necessary to note that we're all human beings but it's worth re-iterating just in case.
+
+    As a male researcher, have you ever pondered adding "Researcher" to your name tag in the hopes more people would discuss technical work with you at a technical conference?
+    Anecdotally that crossed at least one female researcher's mind.
+    If considering that is even necessary, we've failed them, and we're all losing out because of it.
+
+    ## Fin
+
+    Honestly, I'm not the right person to talk about any of this in detail.
+    What I simply want to say is that this is a community issue.
+    It won't be solved by one champion, no matter how brilliant they might be.
+    We all need to play a part in shifting our attitudes and behaviour.
