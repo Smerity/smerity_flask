@@ -1,25 +1,44 @@
 title: "About Me"
 content: |
     My name is Stephen Merity, though I'm most commonly referred to as Smerity.
-    I'm a senior research scientist working on deep learning in San Francisco with [MetaMind](https://www.metamind.io/), acquired by [Salesforce](https://www.salesforce.com/).
 
-    I've been lucky enough to work with fascinating people and groups over the years including Google Sydney, Freelancer.com, the [Schwa Lab](http://schwa.org/) at the University of Sydney, the team at [Grok Learning](https://groklearning.com/), the non-profit [Common Crawl](http://commoncrawl.org/), and [IACS @ Harvard](http://iacs.seas.harvard.edu/).
-    You can read my full history in <a href="/media/files/resume.pdf">my resume</a> or at <a href="http://www.linkedin.com/in/smerity">LinkedIn</a>.
+    I've been lucky enough to work with fascinating people and groups over the years including the [MetaMind](https://www.metamind.io/) and [Salesforce](https://www.salesforce.com/) ohana, Google Sydney, Freelancer.com, the [Schwa Lab](http://schwa.org/) at the University of Sydney, the team at [Grok Learning](https://groklearning.com/), the non-profit [Common Crawl](http://commoncrawl.org/), and [IACS @ Harvard](http://iacs.seas.harvard.edu/).
+    You can read a more full history in <a href="/media/files/resume.pdf">my resume</a> or at <a href="http://www.linkedin.com/in/smerity">LinkedIn</a>.
     Feel free to contact me in person at <a href="mailto:smerity@smerity.com">smerity@smerity.com</a> or stalk me on my various social networks!
 
     ## Publications
     <span id="pubs"></span>
 
+    __An Analysis of Neural Language Modeling at Multiple Scales__ (2018) [[pdf](https://arxiv.org/abs/1803.08240)]  
+    Stephen Merity\*, Nitish Shirish Keskar\*, Richard Socher (\* equal contribution)  
+    _arXiv_
+
+    __Scalable Language Modeling: WikiText-103 on a Single GPU in 12 hours__ (2018)  
+    Stephen Merity\*, Nitish Shirish Keskar\*, James Bradbury, Richard Socher (\* equal contribution)  
+    _SysML_
+
+    __Regularizing and optimizing LSTM language models__ (2018) [[pdf](https://arxiv.org/abs/1708.02182)]  
+    Stephen Merity\*, Nitish Shirish Keskar\*, Richard Socher (\* equal contribution)  
+    _ICLR 2018_
+
+    __Revisiting Activation Regularization for Language RNNs__  [[pdf](https://arxiv.org/abs/1708.01009)]  
+    Stephen Merity, Bryan McCann, Richard Socher  
+    _ICML 2017_
+
+    __A Flexible Approach to Automated RNN Architecture Generation__ [[pdf](https://arxiv.org/abs/1712.07316)]  
+    Martin Schrimpf, Stephen Merity, James Bradbury, Richard Socher  
+    _ICLR 2018 Workshop_
+
     __Quasi-Recurrent Neural Networks__ (2016) [[pdf](https://arxiv.org/abs/1611.01576)]  
     James Bradbury\*, Stephen Merity\*, Caiming Xiong, Richard Socher (\* equal contribution)  
-    _arXiv_
+    _ICLR 2017_
 
     __The WikiText Long Term Dependency Language Modeling Dataset__ (2016) [[dataset](http://metamind.io/research/the-wikitext-long-term-dependency-language-modeling-dataset/)]  
     Stephen Merity, Caiming Xiong, James Bradbury, Richard Socher  
 
     __Pointer Sentinel Mixture Models__ (2016) [[pdf](http://arxiv.org/abs/1609.07843)]  
     Stephen Merity, Caiming Xiong, James Bradbury, Richard Socher  
-    _arXiv_
+    _ICLR 2017_
 
     __Dynamic Memory Networks for Visual and Textual Question Answering__ (2016) [[pdf](http://arxiv.org/abs/1603.01417)]  
     Caiming Xiong\*, Stephen Merity\*, Richard Socher (\* equal contribution)  
@@ -38,6 +57,21 @@ content: |
     _Proceedings of the 2009 Workshop on Text and Citation Analysis for Scholarly Digital Libraries, ACL-IJCNLP 2009, pages 19-26_
 
     ## Talks
+
+    [State-of-the-Art Large Scale Language Modeling in 12 Hours With a Single GPU](https://2018gputechconf.smarteventscloud.com/connect/sessionDetail.ww?SESSION_ID=151364) (March 2018)  
+    NVIDIA GPU Technology Conference, San Jose (California)
+
+    [Backing off towards simplicity - why complex isn't necessarily better in deep learning](http://www.sfdatainstitute.org/conference.html) (October 2017)  
+    Data Institute SF Annual Conference, San Francisco (California)
+
+    [Backing off toward simplicity: Understanding the limits of deep learning](https://conferences.oreilly.com/artificial-intelligence/ai-ca-2017/public/schedule/detail/60516) (September 2017)  
+    O'Reilly AI Conference, San Francisco (California)
+
+    [Attention and Memory in Deep Learning Networks](https://www.youtube.com/watch?v=uuPZFWJ-4bE) (May 2017)  
+    ai.bythebay.io, San Francisco (California)
+
+    [Attention and Memory in Deep Learning Networks](https://www.safaribooksonline.com/library/view/strata-hadoop/9781491976166/video302368.html) (March 2017)  
+    Strata + Hadoop World 2017, San Jose (California)
 
     [New Methods for Memory, Attention, and Efficiency in Neural Networks](https://slides.com/smerity/netflix-new-methods-for-mem-attn-efficiency-in-neural-networks) (November 2016)  
     Netflix, Los Gatos (California)
