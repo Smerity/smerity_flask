@@ -1,0 +1,307 @@
+title: "What to pay attention to in the OpenAI Five Benchmark"
+description: "Humans play around 20 million DotA games per day. OpenAI Five plays about 2 million per day. Here's what I'm looking to see in tomorrow's match."
+image: "http://smerity.com/media/images/articles/2018/roshan_beast.jpg"
+date: 2018-08-04
+
+
+content: |
+
+    If you're interested in the progress of AI, you may well be paying attention to the [OpenAI Five Benchmark](https://blog.openai.com/openai-five-benchmark/) match.
+    DotA is a perfect testbed for AI due to the complexity of interactions that the game allows for, both in strategy and game mechanics.
+    For the same reasons it's a perfect testbed however it can be quite difficult for a new spectator to follow if they don't know DotA.
+
+    Whilst a full introduction to DotA is too lengthy, this post aims to highlight some of the AI capabilities I'll be looking for during the game.
+    Many of these are simple enough for you to follow too!
+
+    # Game Basics
+
+    For game basics, I highly recommend [this four minute video](https://www.youtube.com/watch?v=akUNmFAzS98).
+
+    <center>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/akUNmFAzS98" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </center>
+
+    For discussion in the rest of this post however, all you need to know is:
+
+    + There are two teams composed of five players each
+    + There is a total pool of dozens of characters, all with complex skills, all interacting in strange and wonderful ways
+    + A game is finished when you either destroy the enemy's ancient (a central building in their base) or surrender (gg = good game)
+    + There is only a single map so it's worth looking at and becoming comfortable with it
+    + The map is composed of three primary lanes of battle which lead from one base to another with many smaller paths between them
+    + Creeps, or very dumb AI, spawn every 30 seconds and charge down each of the three lanes of battle
+
+    <img src="/media/images/articles/2018/dota_map_with_roshan.jpg" class="smooth center" width="250px" />
+
+    Poorly annotated (by me!) DotA map.
+    The top, middle, and bot lanes are marked for each side.
+    Roshan is marked in white.
+    The river is marked in a rainbow for good measure.
+    I made this poorly annotated map only as I could not find an up-to-date annotated DotA map.
+    As the developers update the game, the map changes over time, and Roshan has recently moved.
+
+    # AI Mechanics
+
+    ## Teamwork
+
+    Much of this post builds upon a tweestorm I wrote after being invited to the first OpenAI Five match two months ago.
+    If you're interested in the teamwork aspect, this tweetstorm is still likely the best source for my thoughts and opinion.
+    The discussion there was more focused on the high level view of bots being better at team work than humans and where that may lead.
+
+    <center>
+    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">The <a href="https://twitter.com/OpenAI?ref_src=twsrc%5Etfw">@OpenAI</a> team have done amazing work and really opened my eyes towards many of AI&#39;s possibilities, the vast majority positive. Instead of discussing my opinion of the nitty gritty, I&#39;ll try to stay at the highest levels of abstraction as to how this has impacted my thinking. <a href="https://t.co/bEF7Hg3txL">https://t.co/bEF7Hg3txL</a></p>&mdash; Smerity (@Smerity) <a href="https://twitter.com/Smerity/status/1011340815682056192?ref_src=twsrc%5Etfw">June 25, 2018</a></blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </center>
+
+    ## The game meta
+
+    Sadly the aspect I expect to be most exciting is also likely to be the hardest for new spectators to follow.
+    Just as with most games, there are standard strategies that you would expect to see.
+    For those with domain expertise, watching your expectations may well start many discussions about the game itself.
+
+    **If you're a new spectator you should take solace in the fact that this is one of the few times domain experts will likely be just as confused as you ;)**
+
+    DotA, like any complex game, has it's own meta.
+    A game's meta is the set of standard tactics seen in competitive play.
+    Even within a single game, a game's meta can still vary from region to region.
+    Why?
+    As latency is an important component of these games you generally only play against those within your region, defined as the set of servers closest to you.
+    Players from one country may be referred to as "being aggressive in the early game" or "being strategically cautious rather than greedy".
+    The game meta continues to evolve as players test their skills and strategies over millions of games and opponents.
+
+    **At this stage, the human meta-verse and the OpenAI Five meta-verse haven't crossed in any substantial way.
+    Whilst many imagine the human meta-verse to be richer than the bot meta-verse's I would likely disagree.**
+
+    Using back of the envelope estimates, **[humans likely play about 20 million DotA games per day](https://www.quora.com/How-many-games-of-Dota-2-are-played-daily-on-Steam-throughout-the-world).**
+
+    At 40 minutes per game and [180 years worth of gameplay against itself every day](https://blog.openai.com/openai-five/), **OpenAI Five plays over 2 million games per day.**
+
+    *Waiting for clarification:* OpenAI note that "~180 years per day (~900 years per day counting each hero separately)" - but there are two teams of five players each, so that should instead be ~1800 years per day if you count each her separately. Regardless what's more fascinating is that the amount of DotA played per day by bots and by humans is likely within an order of magnitude of each other. It's possible more DotA is played per day by bot than by human.
+
+    ### How strategy is acquired
+
+    For humans, strategies frequently bubble up from amateur matches or from professionals who spend dozens of matches (equating to hours or days of gameplay) seeing if a given strategy is even possible.
+    Humans have to split this knowledge across a few million players of varying skill level.
+    Most of the games are likely to be pretty terrible too, with players tilting (losing control due to anger), flubbing (hitting the wrong key on the keyboard), or just playing casually rather than seriously.
+
+    OpenAI Five has none of these disadvantages.
+    Teammates will be far more reliable than any standard human team.
+    The knowledge gained from each match will be pooled and analyzed in far more detail and at a far grander scale than any human is capable of.
+
+    The strategies that have evolved may be entirely different to how humans see and play the game.
+    Any strategy that looks weird in the context of the human meta-verse may well be a hedge against the winning strategies in the bot meta-verse.
+    If the bot meta-verse is a superset (contains all likely frequent human strategies), these awkward and apparently "wierd" tactics may be definitively better, even if they're not the best way to win a match against humans.
+    If the bots are unsuccessful, we may find that the bots are overfitting against their own meta-verse (only learning how to deal with strategies found in gameplay against bots).
+
+    Regardless, I expect we'll see vastly different behaviour to what humans would traditionally expect.
+    Within DotA there is a complex web of tiny rules and the interactions between them.
+    Humans have never been good at understanding or analyzing that.
+
+    Additional questions:
+
+    + What does an OpenAI Five vs OpenAI Five match look like? What are the standard strategies there?
+    + Has OpenAI Five found any "game breaking" balance issues that Valve (the creators of DotA) would likely patch? (Patches are frequent in many online multiplayer games as balancing any game with so many moving components is quite difficult and unexpected interactions can be overly powerful (OP))
+
+    **Sidenote: Cheese strategies**
+
+    Cheese strategies are highly unconventional strategies that are difficult to fight if you haven't seen them before but easy to counter if you have.
+
+    Amateurs employ well known cheese strats to win online games, much to the annoyance of the opposing team if they can't put together the counter tactic.
+    Professional teams may use one-off secret cheese strats to definitively win a pivotal game.
+    If the tactic is hard to counter, the tactic will likely become part of the professional and amateur scene.
+    If the tactic is easy to counter, it may become a fun part of the game's history but die out in standard play - or if extreme enough patched out of the game by the creators.
+
+    For the non-game analogy, think of the tactics that Kevin from Home Alone used to defeat the two burglars.
+    None of them were particularly conventional yet they were all highly effective - but only if the opposing team hadn't seen them before.
+    If Kevin and the burglars were going to have a rematch, I'd really hope Kevin had updated his tactics!
+
+    Whilst OpenAI Five would likely be a perfect platform for finding cheese strats if it were tweaked, the sad truth is that we likely won't see any of the fun cheese strats they found during those years of gameplay.
+    In human competitions we love the novelty and know when to pull out a given secret cheese strat to win that decisive game, even if it'll never work again.
+    In the bot meta-verse however no single game is more important than any other so the "secret one-time weapon" is not actually important and as such will likely disappear from active gameplay, never recorded, never remembered :(
+
+    # What I'll be watching for
+
+    <img src="/media/images/articles/2018/dota_restrictions.png" class="smooth center" width="500px" />
+
+    The early games of OpenAI Five had a number of fairly strong set of restrictions.
+    For the OpenAI Five Benchmark match however most of these have been lifted.
+    Here I'll comment on some of the changes such as the improved pool of heroes, what Roshan is, what warding is, and a brief comment as to how OpenAI Five behaved in their last match regarding teleportation, ganks, farming, and baiting.
+
+    <!--Here I'll comment on the improved pool of heroes (with a summary of each hero!), what Roshan is, what warding is, and a brief comment as to how OpenAI Five behaved in their last match regarding teleportation, ganks, farming, and baiting.-->
+
+    ## The pool of heroes
+
+    In DotA once you have selected a hero you are stuck with it.
+    Some heroes counter other heroes effectively.
+    Some heroes work well together on the same team.
+
+    Earlier versions of OpenAI Five didn't let you select heroes - you were limited to a predetermined set of five.
+    This version of OpenAI Five has an expanded pool of 18 heroes.
+    Whilst that might not sound impressive when you consider that DotA has a pool of over 100 heroes, going from a predetermined five to any pool of heroes larger than that is actually kind of insane.
+    Why?
+    Combinatorial explosions.
+
+    Many games are based around the potential for combinatorial explosions.
+    A game with heroes `{U,V,W,X} + {Y}` may have entirely different strategies to a game with heroes `{U,V,W,X} + {Z}`.
+    At this stage we also haven't even considered the heroes on the other side!
+    This is used to great effect in DotA, League of Legends, Overwatch, Dominion (a card game), and so on.
+
+    Given each hero has a set of abilities that may look entirely different to any other hero in the game, the potential for strange interactions between the heroes on your team and the heroes on the other team is seemingly never-ending.
+
+    "Just brute-force it" you may say - but that doesn't actually work.
+    For many problems - combinatorials being one of central ones - no amount of computing power will save you.
+    As a brilliant yet brief example, any time you pick up a well-shuffled deck of cards, you are almost certainly holding an arrangement of cards that has never before existed and might not exist again.
+
+    When you factor in all of the interactions and complexity, hero selection in DotA is not a dissimilar problem, especially when you expand it to the strategies you may then try during the game.
+    There are too many possibilities to simply try them all - you need to learn some level of abstraction to have even a chance of winning.
+
+    During the match it will be interesting to see how OpenAI Five counters the human side's choice of heroes and how well they can effectively adapt their strategies to potentially unseen hero choices or team strategies.
+
+    ## Roshan
+
+    <img src="/media/images/articles/2018/roshan_beast.jpg" class="smooth center"  />
+
+    In amateur or professional matches the decision to go for Roshan is a crucial and terrifying moment.
+    Roshan is a big scary beast and frequently requires most of your team to slay it, especially if you want to take him down quickly.
+    If you do slay Roshan however he drops a magical item, the Aegis, which grants a single hero an instant respawn at the location where they died.
+    This is important as traditionally you would die, then wait seconds or minutes to respawn, then have to travel all the way back.
+    For all practical purposes it's as if your five person team became six.
+    Once someone picks up the Aegis, it's bound to them until they die (i.e. non-transferable) or until five minutes has elapsed, at which point it disappears.
+
+    **Roshan's pit**
+
+    Fighting Roshan is dangerous enough.
+    What's even more dangerous is deciding to fight him.
+
+    Roshan lives in a pit with a single entrance and exit.
+    If the enemy team pounces on you in the midst of attacking Roshan, you could find yourself stuck between him and the enemy team.
+    Unsurprisingly this is a terrible spot to be in!
+
+    <img src="/media/images/articles/2018/roshan.jpg" class="smooth center" />
+
+    Hence you generally only attack Roshan in two situations: (1) when the enemy team is unable to counter even if they knew and (2) by sneakily attacking him when they don't.
+    As an example, you would likely go for Roshan in a professional match when you've had a decisive fight and killed key players on the other side.
+    As OpenAI Five have only played against other bots, duplicity is less likely but still possible.
+    How and when they attack Roshan, or counter the other team approaching Roshan, should be interesting to see.
+
+    Related to "cheese strats", it is possible that we may see unconventional strategies regarding when Roshan is attacked, how he is attacked, and who ends up with the Aegis.
+    Certain characters or pairs of characters can kill Roshan by themselves at low levels.
+    Humans may not be giving the Aegis to the hero who may best best utilize it as they can't rely on the skill of their fellow humans.
+    Traditionally "tank" heroes with high health are given the Aegis as it means your team has more sustained pushing power - but could OpenAI Five decide it makes better sense in another strategic hero's hands?
+
+    **The Aegis and fight dynamics**
+
+    Once Roshan has been slain, the second complexity mechanic is how the Aegis is used.
+    The Aegis changes the dynamics of the game substantially.
+    One of the enemy's heroes now has a second life.
+
+    In professsional matches this means that the enemy team now considers you toxic - keeping a distance when possible.
+    The enemy team now can't use all their abilities in one go to take you down - as you'll just respawn a few seconds later (and now you have used all your abilities, most of which have cooldowns).
+    You can now poke and prod their defences with a level of immunity and can capitalize on any weaknesses you might find.
+    With the Aegis, you can walk directly into the heart of the enemy's base, have them rain every single ultimate ability down upon you, die, and then suddenly be standing there five seconds later without a scratch.
+    If your team is well set up, you can continue to push forward.
+    If your team fails to utilize the Aegis effectively, you can still likely retreat without having lost anything.
+
+    Killing the hero who holds the Aegis cleanly and without loss is not impossible but is incredibly difficult.
+    OpenAI Five may find interesting ways to deal with or utilize the Aegis that humans generally haven't.
+    It'll be a sight to see :)
+
+    ## Wards
+
+    The game of DotA uses a "fog of war" mechanic.
+    This is best summarized as "if any of your friendly units can see something, you can see it too".
+    Friendly units include your fellow heroes, any of your creeps, and any of your buildings.
+
+    Visibility is a crucial tool in warfare and DotA is no exception.
+    Holding the high ground increases your sight and limits that of your enemy.
+    If you can't see the area you're going into, you may be walking into a trap.
+
+    To counter this, wards are an asset in the game that may be essentially spy cameras.
+    You can place them in the middle of a forest, the middle of the enemy's base, or at the entrance to Roshan's pit.
+    The enemy can't see these wards unless they have items that can see invisible objects.
+
+    <a href="http://noobplaydota2.blogspot.com/2016/05/dota-2-tips-for-beginners.html">
+    <img src="/media/images/articles/2018/ward.jpg" class="smooth center" />
+    </a>
+
+    If, when, and where the DotA bots use wards should be fascinating.
+    De-warding, or finding an enemy's ward and killing it, is also a thoroughly important tactic.
+
+    ## Teleportation
+
+    When and where to teleport is a key decision.
+    If you have a teleportation scroll, you can teleport to any friendly building on the map.
+    Once you have teleported however, there is a cooldown, so you can't just teleport all over the map.
+
+    If your friend in the top lane is suddenly under attack, they may ask for help.
+    If you're a particularly good friend you may teleport there instantly without investigating further.
+    In a fast-paced game, every second counters.
+    If you're not so good a friend, you may first investigate and see whether you could _actually_ help them.
+    Maybe they're in a certain death situation and it'd be better for you to stay in your lane at bottom and farm (get gold and experience) whilst the enemy heroes slay your poor friend at top instead.
+
+    Humans are unlikely to make the right choice in this scenario quickly.
+    The time pressure means they won't investigate the scenario to the level they're capable of.
+    The loyalty pressure may mean you teleport in to save a friend when it's actually the wrong decision.
+
+    **AI pro-tip:** there are tiny rules that impact teleportation, such as "the first [teleport to a given location] takes 3 seconds, the second 5 seconds, and all following [teleports] take 0.5 seconds longer than the previous one". This means that if all your team teleport to a single location, it'll take longer and longer for your team to get there. This is the type of tiny rule that the bots can pick up on implicitly just through play whereas humans need it explicitly written out - and even then humans may not be able understand and utilize that tiny rule effectively.
+
+    A restricted item in earlier OpenAI Five gameplay is the "Boots of Travel".
+    These boots allow you to teleport not just to friendly buildings but also directly to friendly units, including your creeps and fellow heroes.
+    This mechanic is an important part of standard DotA gameplay as your mobility on the map is suddenly far higher.
+    You can teleport directly to your friend even if they're in the middle of nowhere.
+
+    This enables strategies such as ratting - or striking behind enemy lines. When your team is about to take a massive fight that they're going to lose, you may opt to instead use it as a diversion. If your hero can quickly get behind enemy lines (by teleporting to a creep nearer their base for example) and attack an important target you may be able to turn your team's loss into a win. Teleportation is a key enabler of this. This is referred to as ratting - as you're a rat that scurries up from a hidden place, nibbles your iPhone cable, and then disappears, I guess..?
+
+    # Conclusion and a hope
+
+    As a DotA and AI enthusiast, tomorrow's match should be fascinating!
+
+    In my optimal world, the professional team would beat OpenAI Five.
+    Why do I want that?
+    Not as I care about humans winning.
+    I simply want to see OpenAI Five's full spectrum.
+    In the earlier matches, OpenAI Five won fairly convincingly and didn't have to do anything complex.
+    Are there advanced tactics that eventuate when they realize they can't push as a single group?
+    Do they break off and rat (guerilla warfare) or farm (safely get more gold and experience) before returning?
+    We don't know yet - as they've not lost yet.
+
+    Even if they are beaten tomorrow, which I sadly think is unlikely, I don't expect they'll lose at The International.
+    Even if they lose at both however I am certain that game strategies will move from the bot meta-verse to the human meta-verse as we learn from a source of knowledge impossible for a human to comprehend.
+    Isn't that the kind of future you're excited to see?
+
+    <!--
+    ### Farming and Ganking
+
+    In the past OpenAI Five matches, the bots spent a great deal of time wandering around aimlessly after winning fights.
+    In amateur or professional matches, you'd expect them to instead be farming, or getting gold and experience from enemy creeps in lanes or neutral creeps in the forest.
+    It's potentially true that they found this disadvantageous but it was more likely a bug.
+
+    Similarly, there was little evidence of ganking - or when you try to catch an enemy hero in a vulnerable spot and quickly kill them.
+    The OpenAI Five generally grouped up and attacked as a single unified force instead.
+
+    ### Baiting
+
+    ### Hero selection
+
+    Key roles in DotA:
+    + Tank: High HP (health) player who can take a great deal of damage
+    + Disabler: Can stun or severely incapacitate an enemy, potentially preventing them from using an ability, chasing you, or escaping
+
+    Axe - tank with high HP, can heavily armour himself and force people to attack him (i.e. they no longer have control of their hero)
+    Crystal Maiden - a "glass cannon" that can cause massive damage but doesn't have much health, can freeze people into place
+    Death Prophet - can prevent enemies casting spells for 3-6 seconds, can slow and drain the enemy's health like a beam from ghostbusters, can run around with a swarm of ghosts that will hurt you
+    Earthshaker - can slam the ground and cause a fissure that prevents units moving across it (and can thus separate teams from each other)
+    Gyrocopter - can fire at multiple targets at once and has a massive ultimate that "nukes" an area, great for team fights
+    Lich -
+    Lion -
+    Necrophos -
+    Queen of Pain -
+    Razor -
+    Riki -
+    Shadow Fiend -
+    Slark -
+    Sniper -
+    Sven -
+    Tidehunter -
+    Viper -
+    Witch Doctor -
+    -->

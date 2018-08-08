@@ -1,0 +1,142 @@
+title: "T-Mobile Educational Material on Plaintext Passwords and Computer Security"
+description: "(Parody) Recently T-Mobile Austria launched an innovative campaign to educate the average Joe and Jane on modern computer security, focusing on plaintext passwords but including many other concepts in the expanded scope. Like the Burger King bullying ad, they temporarily embarrass themselves and their company in an effort to educate a broad audience."
+image: "http://smerity.com/media/images/articles/2018/tmobile_by_paul.jpg"
+date: 2018-04-06
+
+content: |
+    **Forewarning:** *This is a **parody** article. Wathing the debacle unfold literally reminded me of a fake exam question in computer and network security - so let's treat it like that!*
+
+    Recently T-Mobile Austria launched an innovative campaign to educate the average Joe and Jane on modern computer security, focusing on plaintext passwords but including many other concepts in the expanded scope.
+    Like the [Burger King bullying ad](https://www.youtube.com/watch?v=mnKPEsbTo9s), they temporarily embarrass themselves and their company in an effort to educate a broad audience.
+
+    This is not the first instance of T-Mobile producing this type of educational campaign.
+    In early 2016, T-Mobile CEO John Legere highlighted the impressive work and independent nature of the [Electronic Frontier Foundation](https://www.eff.org/) (EFF), the leading nonprofit defending digital privacy, free speech, and innovation, by shouting in a short tweeted video ["Who the f**k are you, and who pays you?"](https://arstechnica.com/information-technology/2016/01/john-legere-asks-eff-who-the-fk-are-you-and-who-pays-you/).
+
+    Remember when reading below, the T-Mobile Education Team are purposefully making T-Mobile appear incompetent.
+    No tech company, large or small, would ever be so unaware of computer security as to [store passwords in plaintext](http://plaintextoffenders.com/).
+
+    ## Wait ... the password policy is what now?
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    The elaborate stunt started with an innocuous password validation issue that surely T-Mobile artificially construed.
+
+    <center><blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr">Max. 16 chars, ASCII only, mandatory security question, pasting disabled for confirm password and answer fields. <a href="https://twitter.com/Telekom_hilft?ref_src=twsrc%5Etfw">@Telekom_hilft</a> <a href="https://twitter.com/PWTooStrong?ref_src=twsrc%5Etfw">@PWTooStrong</a> <a href="https://t.co/vbwKuna80M">pic.twitter.com/vbwKuna80M</a></p>&mdash; Claudia Pellegrino (@c_pellegrino) <a href="https://twitter.com/c_pellegrino/status/980422131417862145?ref_src=twsrc%5Etfw">April 1, 2018</a></blockquote></center>
+
+    As you well know, password strength is generally proportional to three things:
+
+    - The length and number of possible tokens (i.e. [a-zA-Z0-9] is stronger than [a-z])
+    - Ensuring unique passwords by usage of password managers
+    - Avoiding security questions which generally use readily available information
+
+    In one fell swoop, T-Mobile highlighted all three issues.
+
+    This would already be a good introduction to password security in and of itself - but the T-Mobile Educational Team aim for excellence, not mediocrity.
+
+    ## Murder on the Plaintext Express
+
+    After the relatively quiet start, a shocking revelation shakes our cast: <strike>the calls are coming from inside the house</strike> the passwords are stored in plaintext! ◉_◉
+
+    <center><blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Had the same issue with T-Mobile Austria. Apparently they are saving the password in clear because employees have access to them (you have tell them your password when you&#39;re taking to them on the phone or in a shop) and they are not case sensitive</p>&mdash; SeloX (@SeloX_AUT) <a href="https://twitter.com/SeloX_AUT/status/981406875811008513?ref_src=twsrc%5Etfw">April 4, 2018</a></blockquote></center>
+
+    As we're all aware, plaintext passwords are a Bad Idea™.
+    Why?
+    The T-Mobile Educational Team help explain below!
+    <!--Any security breach reaching the database, or any employee who snoops more than they should, can walk away with your artisanally crafted, non-GMO, gluten free password.-->
+
+    ## Passwords as combination locks - way less effective if you know part of it
+
+    <center><blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Hello Claudia! The customer service agents see the first four characters of your password. We store the whole password, because you need it for the login for <a href="https://t.co/vJapgJ50qc">https://t.co/vJapgJ50qc</a> ^andrea</p>&mdash; T-Mobile Austria (@tmobileat) <a href="https://twitter.com/tmobileat/status/981418339653300224?ref_src=twsrc%5Etfw">April 4, 2018</a></blockquote></center>
+
+    Even in an optimal world where the rest of the password is properly stored (i.e. hashed, salted, grilled, ...), knowing the first four characters of a password is still a Bad Idea™.
+    In the T-Mobile Educational team example, knowing the first four characters of the password effectively reduces the password length by - surprise - four characters.
+    The average length of a password is only 9.6 characters - meaning that (in this totally hypothetical scenario that would never take place in reality) almost half of a password's length is revealed by storing this information, even if the rest of the system is secure.
+
+    Imagine a padlock with a combination code.
+    To guess the correct four digit code is nearly impossible for a human.
+    Cut down that to a two digit code and it'll take you a few minutes at most.
+    Passwords have the exact same issue.
+    Their strength increases exponentially.
+
+    ## Passwords are frequently re-used
+
+    <center><blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Hi <a href="https://twitter.com/c_pellegrino?ref_src=twsrc%5Etfw">@c_pellegrino</a>, I really do not get why this is a problem. You have so many passwords for evey app, for every mail-account and so on. We secure all data very carefully, so there is not a thing to fear. ^Käthe</p>&mdash; T-Mobile Austria (@tmobileat) <a href="https://twitter.com/tmobileat/status/981785213549383680?ref_src=twsrc%5Etfw">April 5, 2018</a></blockquote></center>
+
+    Users aren't good with passwords.
+    The majority of users re-use passwords across multiple websites.
+    As such, when a password is leaked - such as what would happen if a password were stored in plaintext - this leak can compromise other services for that user across the internet.
+    T-Mobile highlights this by pretending the average user, such as Grandpa Joe or Grandma Julie, are actually aware of the potential dangers of this.
+
+    ## No company's security is perfect
+
+    <center><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/Korni22?ref_src=twsrc%5Etfw">@Korni22</a> What if this doesn&#39;t happen because our security is amazingly good? ^Käthe</p>&mdash; T-Mobile Austria (@tmobileat) <a href="https://twitter.com/tmobileat/status/982187919061303296?ref_src=twsrc%5Etfw">April 6, 2018</a></blockquote></center>
+
+    Optimism isn't a strategy that works in computer security.
+    Computer security has been described by some (= just me) as akin to hiking across a mine field.
+    Whilst wearing skis.
+    Near an active volcano.
+    Whilst being chased by an Internet-of-Things enabled Furby.
+    Which happens to have laser eyes.
+
+    In summary, computer security isn't easy.
+    A single mistake of any size anywhere by anyone is enough for the walls of your kingdom to crumble into dust.
+
+    As such, the best tactic is for a company to act under the assumption that their information may already have been accessed.
+    The simplest tactic for a company to do is to hash and salt passwords, which substantially complicate the re-use of passwords by bad actors on other sites.
+
+    To really drive this point home, a likely fake user created by the T-Mobile Educational Team highlights recent data breaches which potentially exposed the data of 76 million T-Mobile customers.
+
+    <center><blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Hi Käthe, saying T-Mobile&#39;s security is &quot;amazingly good&quot; is contradicting the fact that the company had multiple data breaches in the past. In addition, here&#39;s a big hit from October last year. FYI: clear-text passwords is a fear for everyone, fix it.<a href="https://t.co/pro9McIDQg">https://t.co/pro9McIDQg</a></p>&mdash; Hydrogen (@HydrogenNGU) <a href="https://twitter.com/HydrogenNGU/status/982345572387471360?ref_src=twsrc%5Etfw">April 6, 2018</a></blockquote></center>
+
+    By being so flippant about it, and then pointing out their past folly, T-Mobile successfully highlights that security isn't a guarantee.
+
+    ## Bonus points: ad hominem attacks don't increase security
+
+    <center><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/Korni22?ref_src=twsrc%5Etfw">@Korni22</a> Excuse me? Do you have any idea how telecommunication companies work? Do you know anything about our systems? But I&#39;m glad you have the time to share your view with us. ^Käthe</p>&mdash; T-Mobile Austria (@tmobileat) <a href="https://twitter.com/tmobileat/status/982190220798967809?ref_src=twsrc%5Etfw">April 6, 2018</a></blockquote></center>
+
+    Whilst it may take a computer security professional to actually secure your system, we can all take part in security by pointing out problematic security practices.
+    Many of the tenets of computer security don't change when it's being applied to telecommunication companies, social networks, your friend's soon-to-be-mainstream live streaming website for armadillos, or the Yo app.
+    The principles remain the same.
+
+    As such, the T-Mobile Educational Team wanted to highlight that any user can be part of Team Security.
+    They also ensured that the random Twitter user would not be too injured by their savage artificial ad hominem by providing them the best retort ever.
+
+    <center><blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Well, I do since I worked for <a href="https://twitter.com/deutschetelekom?ref_src=twsrc%5Etfw">@deutschetelekom</a>, but thanks for asking. 3 years of something that’s called „Ausbildung“ a bit more as contractor.</p>&mdash; Eric™ (@Korni22) <a href="https://twitter.com/Korni22/status/982190552127979523?ref_src=twsrc%5Etfw">April 6, 2018</a></blockquote></center>
+
+    ## Bonus points: security disclosures in the computer security community
+
+    The last point is a complex one and I'm impressed the T-Mobile Educational Team decided to tackle it.
+    When security researchers find an exploit, what are they meant to do?
+    Tell the users who are impacted by it?
+    Tell the company who might be able to fix it?
+    Sell the exploit to a foreign nation which promises it only wants to listen in on bedroom conversations to better tailor their line of adult toys to very specific target markets?
+
+    Most security researchers attempt to work with companies in a positive manner.
+    Sadly some companies can be mean and sue the security researchers or claim they're bribing them into fixing the product.
+    Yes.
+    Literally.
+
+    In this exchange, someone noting that "no-one can guarantee perfect security" is interpreted as a threat.
+
+    <center><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/Korni22?ref_src=twsrc%5Etfw">@korni22</a> Well, I said amazingly good  - not 100% secure. And I have to ask: Are you an employee? Is this some kind of warning? ^Käthe</p>&mdash; T-Mobile Austria (@tmobileat) <a href="https://twitter.com/tmobileat/status/982189116090564608?ref_src=twsrc%5Etfw">April 6, 2018</a></blockquote></center>
+
+    **Is this some kind of warning?** is the correct question to ask.
+    Yes, it is.
+    If you attack people who try to do the right thing, or security researchers that do free work in helping make your product more resilient, it acts as a foreshadowing.
+    In the future the only people who will worry about your security are your own flawed internal security teams and potentially black hat hackers who aren't going to tell you about vulnerabilities on Twitter.
+
+    <center><blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Are you nuts?<br>If it’s not 100% secure, make it as hard as you can for any kind of attacker to get to users passwords.<br>And no, I’d never work for a company that stores plaintext passwords and even believes its not a bad idea.</p>&mdash; Eric™ (@Korni22) <a href="https://twitter.com/Korni22/status/982189447490908161?ref_src=twsrc%5Etfw">April 6, 2018</a></blockquote></center>
+
+    As highlighted in the response, talented engineers and employees won't work for companies that keep having and implementing Bad Ideas™ that will eventually hurt their userbase.
+
+    ## Conclusion: unbelievable but impressive production
+
+    Whilst the plot is unbelievable, the execution was flawless.
+    In 2018, decades into the digital revolution, it is simply not a reasonable plot for a large corporation to be unaware of the dangers of plaintext passwords, or for the CEO of a major telecommunications company to attack a non-profit that is known for its dedication to privacy and free speech.
+
+    With that in mind, this was truly an epic stage play, touching many fragmented areas of the computer and network security sphere, performed on a public stage in front of millions of onlookers.
+
+    I can't wait to see what the T-Mobile Educational Team tries next!
+
+    **Thanks to:** Paul L McCord Jr for [their T-Mobile graphic](https://www.flickr.com/photos/plmccordj/15795375053/in/photolist-q4MqGD-62qhUU-6QD73D-5eoBSN-GeVe53-4akVDx-KVSZ6-6wxxM2-5CbPUJ-92zA16-5C7B4v-5x3ijX-jAToF-4jREp2-7okTbB-76VMiL-9jDabf-5MFXCp-5CbUij-6jo3J5-4gXvSz-5DR2KJ-C65wK-59KHUY-6vwFiJ-46RARk-ajaEXX-5iDsyU-3TpNjy-6MEQcR-fwEJ4h-5sxrnS-5hCYTM-4aMJSL-bd4DXR-ebsdiR-4VSVuz-jU9xy-6zWnAF-X9QNh-5Eg2zR-4W5wWc-Ysq9R-6paPtz-5UC9db-5CbQ4f-5CqSLN-78XtdV-X9CXy-5CbQhj).
+
+    <img src="/media/images/articles/2018/tmobile_by_paul.jpg" class="smooth center" />
