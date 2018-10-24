@@ -15,9 +15,17 @@ content: |
     Headlines and hype misrepresent the true pace of progress.
     Numbers are thrown around either as vanity metrics or as a result of misunderstanding how efficiently a task might be solved.
     What is possible has not yet been well defined.
-
+    
+    Our community has an ongoing defeatist narrative whilst every year more and more David v Goliath stories are fought, won, and somehow promptly forgotten.
     Isolate what matters in the long term from what gets the spotlight at this moment.
-    This is a good general life principle and an especially strong guiding principle for sanity in your own work.
+    This is a good general life principle and an especially strong guiding principle for sanity in your own work when the field is full of question marks.
+    
+    Irrational courage is a skill worth cultivating.
+    Why?
+    It may be irrational in the face of the community yet entirely rational in reality.
+    When I was at university neural networks themselves were dismissed as [insane, stupid, wasteful, fanciful, only capable of "local optimimums"] and should therefore be forgetten.
+    Reality took a long time (and many courageous souls) before that perception was overturned.
+    What else is left to discover on the discarded fringes of impossible adjacent?
     
     For machine learning, history has shown compute and data advantages rarely matter in the long run.
     The ongoing trends indicate this will only become more true over time than less.
@@ -128,7 +136,7 @@ content: |
     I removed a small bit of cruft and found the aerodynamic drag disappeared.
     A single modest GPU was beating out all past work in hours.
     The side project of improving a tutorial ended up relighting my passion and confidence in competing in my own field.
-    Brilliant colleagues joined me to 
+    Brilliant colleagues joined me to bring the work from a surprise proof of concept to the [final](https://arxiv.org/abs/1708.01009) [string](https://arxiv.org/abs/1708.02182) [of](https://www.sysml.cc/doc/50.pdf) [papers](https://arxiv.org/abs/1803.08240).
     
     In parallel and independently a brilliant team at DeepMind/University of Oxford realized many of the same efficiency gains (and a far more nuanced analysis) in [On the State of the Art of Evaluation in Neural Language Models](https://arxiv.org/abs/1612.04426).
     I am glad for that.
