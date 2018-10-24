@@ -1,7 +1,7 @@
 title: "The compute and data moats are dead"
-description: "Humans play around 20 million DotA games per day. OpenAI Five plays about 2 million per day. Here's what I'm looking to see in tomorrow's match."
-image: "http://smerity.com/media/images/articles/2018/roshan_beast.jpg"
-date: 2018-10-18
+description: "There is an odd belief perpetuated in the machine learning community that massive compute and \"big data\" represent obstacles that are nearly impossible to scale. They're not. We've defeated those obstacles time and time again."
+image: "http://smerity.com/media/images/articles/2018/limited_compute.png"
+date: 2018-10-25
 
 content: |
     There is an odd belief perpetuated in the machine learning community that massive compute and "big data" represent obstacles that are nearly impossible to scale.
