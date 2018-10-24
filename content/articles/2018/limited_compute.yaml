@@ -1,0 +1,175 @@
+title: "The compute and data moats are dead"
+description: "Humans play around 20 million DotA games per day. OpenAI Five plays about 2 million per day. Here's what I'm looking to see in tomorrow's match."
+image: "http://smerity.com/media/images/articles/2018/roshan_beast.jpg"
+date: 2018-10-18
+
+content: |
+    There is an odd belief perpetuated in the machine learning community that massive compute and "big data" represent obstacles that are nearly impossible to scale.
+    They're not.
+    We've defeated those obstacles time and time again.
+    
+    <!--**While a waterfall may roar it has the same capacity as the quiet stream before and after it.**-->
+    
+    **Over time the roaring waterfall fades back into a quiet stream.**
+    
+    Headlines and hype misrepresent the true pace of progress.
+    Numbers are thrown around either as vanity metrics or as a result of misunderstanding how efficiently a task might be solved.
+    What is possible has not yet been well defined.
+
+    Isolate what matters in the long term from what gets the spotlight at this moment.
+    This is a good general life principle and an especially strong guiding principle for sanity in your own work.
+    
+    For machine learning, history has shown compute and data advantages rarely matter in the long run.
+    The ongoing trends indicate this will only become more true over time than less.
+    You can still contribute to this field with limited compute and even data.
+    It is especially true that you can get almost all the advances of the field with limited compute and data.
+    Those limits may even be to your advantage.
+
+    <!--Did you hear?  
+    Google used 1800 GPUs for three months to calculate inverse kinetic deep HoRSe reinforcement learning on a terabyte sized language singing task!  
+    Facebook now use 8 exabytes of puppy hashtags to calculate optimal profile angle alignment using orthogonal residual highway rotations!  
+    OpenAI compete 180 years worth of DotA against itself every day.-->
+    
+    <!--These headlines likely terrify you, regardless of whether you're in academia, industry, or just the real world.
+    They shouldn't.
+    Local headlines grab but the field ignores all that, even if those contributing to the field don't.
+    
+    A central theme in my writing is in dispelling myths, especially when I think the myths may be harmful.
+    Most of the time it is about the capabilities of AI - but today I'm remarking on something quite different.-->
+
+    Is this true for every application?
+    No.
+    Yet **I genuinely believe it true in most cases.**
+    
+    *Note:* If you're interested in following this line of thought my earlier article [Backing off towards simplicity - why baselines need more love](/articles/2017/baselines_need_love.html) presents a process you can follow for research or implementation.
+
+    ## Examples of perceived necessary compute falling rapidly
+    
+    *Preface:*
+    None of what I note below means massive compute is bad, either in research or implementation.
+    Massive compute frequently results in insight that feed our understanding of later techniques, showing either the full possibility or limits even at tremendous scale.
+    Massive compute rarely results in efficiency gains by itself.
+    
+    Excess compute frequently ends up as a crutch, not a breakthrough.
+    Over time the march of hardware, the march of techniques, and our improved understanding trim away the excess where it isn't needed.
+    
+    **Adding ever more engines may help get the plane off the ground...  
+    but that's not the design planes are destined for.**
+    
+    <!--Early experiments are usually inefficient as all the blinking lights in those early days can lead us astray.-->
+
+    ---
+      
+    Two extremes of this trend to be considered:
+
+    New York Times (2012): "[How Many Computers to Identify a Cat? **16,000 (CPU cores)**](https://www.nytimes.com/2012/06/26/technology/in-a-big-network-of-computers-evidence-of-machine-learning.html)"  
+    One year later: "**[three servers each with two quad-core CPUs and four Nvidia GeForce GTX 680 GPUs](http://proceedings.mlr.press/v28/coates13.html)**"
+
+    Neural Architecture Search: "**32,400-43,200 GPU hours**"  
+    Just over a year later: "**single Nvidia GTX 1080Ti GPU**, the search for architectures takes **less than 16 hours**" (1000x less) ([paper](https://arxiv.org/abs/1802.03268))
+    
+    Whilst there are many many more examples of this trend I could note, a rule of thumb is:  
+    **What may take a cluster to compute one year takes a consumer machine the next.**
+    
+    Is this overly optimistic?
+    Sure.
+    I would argue that it is less wrong than "what took a cluster to compute one year takes a cluster to compute the next" however.
+    Even if it's wrong it's better than our current thinking that may paralyze us with fear rather than exploring what is or isn't possible.
+    Just like Moore's law it may prove a better target for progress than a fundamental law in and of itself.
+    
+    ## Reflecting on data
+    
+    There is a traditional notion that data moats are impossible to cross.
+    In some fields data moats do indeed still hold strong yet the overall trend is that intelligently used small data is better than big data.
+    Even better, the size requirement for annotated data is continuously falling, meaning annotated data moats are also falling away.
+    
+    The largest trend here is unsupervised sequence modeling.
+    I will give an example below but writing in more detail is beyond scope - mainly as I may never get this article out the door otherwise.
+    If you're interested in my thoughts, message me, and I'll add it to my writing queue!
+    
+    ## Why is this important to me?
+    
+    ### Compute
+    
+    I have lost months of my life taunted and terrified by massive compute.
+    Literally.
+    They were the darkest days of my research career.
+    A stage where I felt the walls closing in and the billions of FLoPs that I had access to but a tap trying to fill a river.
+    
+    My focus had been on language modeling.
+    I'd published one strong paper on it - [Pointer Sentinel Mixture Models](https://arxiv.org/abs/1609.07843) - and a team at Facebook had developed [a similar idea independently in parallel with a brilliant speed gain over my work](https://arxiv.org/abs/1612.04426)!
+    I was so happy.
+    I was on the parallel cutting edge, exploring ideas that others found value in.
+    
+    Then [Neural Architecture Search with Reinforcement Learning](https://arxiv.org/abs/1611.01578) came out, blowing my results out of the water.
+    I spent months trying to replicate the work.
+    Part of the issue was missing details in the paper - but every paper has missing details.
+    That's the standard life of a researcher.
+    The other far more pressing issue was that I'd convinced myself that Neural Architecture Search and the many GPUs it used was necessary for that level of performance.
+    This was not true.
+    
+    Under this misguided notion, I scaled my GPUs from the single GPU I had to many.
+    Far too many.
+    I eventually commanded an armada of 40 GPUs.
+    I was trying to use them efficiently, believing there was a better and saner way to the same results, but I was met with obstacles at nearly every turn.
+    I was sticky taping a distributed solution together that slowed my thinking down and distracted me from the core task.
+    Whilst I gained many insights from [that eventual work](https://arxiv.org/abs/1712.07316) (mainly thanks to [Martin Schrimpf](https://twitter.com/martin_schrimpf) for replacing the sticky tape with sound engineering), much of the work I put into the project proved an utter distraction for me.
+    
+    Upon submitting the paper I conceded defeat in my mind.
+    I decided to move away from language modeling and try my hand elsewhere.
+    My lovely subfield was going where I could not follow.
+    
+    As a swansong I decided to improve the PyTorch language modeling example.
+    I always had a sweetspot for good tutorial code and it had proven helpful for my initial implementation.
+    I wanted to give back and give anyone who followed me the best fighting chance possible.
+    I decided to only improve the model in ways that were fast as the end user needed to be able to explore and tinker sanely on any GPU.
+    
+    To my surprise the simple improvement I made got the model to soar.
+    I removed a small bit of cruft and found the aerodynamic drag disappeared.
+    A single modest GPU was beating out all past work in hours.
+    The side project of improving a tutorial ended up relighting my passion and confidence in competing in my own field.
+    Brilliant colleagues joined me to 
+    
+    In parallel and independently a brilliant team at DeepMind/University of Oxford realized many of the same efficiency gains (and a far more nuanced analysis) in [On the State of the Art of Evaluation in Neural Language Models](https://arxiv.org/abs/1612.04426).
+    I am glad for that.
+    Even if I had conceded defeat and never discovered my flawed thinking by chance I would have when they finally published.
+    By this stage I had lost months however - and nearly lost my internal drive.
+    
+    ### Google N-grams
+    
+    Before the new fangled neural language models or even the resurgence of the neural network era, my obsession was with n-grams.
+    They're the simplest things in the world.
+    Take N words - let's say **these five words right here**.
+    That's a five-gram.
+    Imagine seeing all the possible five-grams on earth.
+    
+    If you collect all the occurrences of these n-grams, you gain insight into how words are used.
+    Working out the next word in **The distance from Sydney to New ____** is easy - find all five grams starting with "from Sydney to New"!
+    Want to know flavours are available?
+    Find all the patterns where people are ordering ice cream and extract!
+    
+    The issue is that there are exponentially increasing n-grams as you increase the value of n.
+    If you have a vocabulary of 10,000 then there are 10,000^2 potentially 2-grams, 10,000^3 potential 3-grams, and so on.
+    You need ever more data to try to capture these patterns.
+    
+    Google released [an n-gram dataset](https://ai.googleblog.com/2006/08/all-our-n-gram-are-belong-to-you.html) that was enormous at the time.
+    24 gigabytes compressed - oh geez!
+    Solid state disks weren't a thing and RAM was, as ever, far too few, especially for holding a dataset of that size just for random access.
+    
+    I pondered how to attach dozens or hundreds of USBs - the only sanely cheap solid state disk at the time - through an ever growing vine of USB hubs.
+    This taught me a great deal about the lower levels of compute and storage but it didn't help me solve the task itself.
+    
+    Today, with a tiny slither of the data used to produce n-grams or even store the original n-gram dataset, a single desktop computer can give you a richer representation in under an hour.
+    How?
+    More efficient usage of the data.
+    That was the word2vec and eventually unsupervised language modeling path.
+    
+    ## Conclusion
+
+    I don't want others to lose months of their time or neurons of their sanity like I have done in the past.
+    It's not necessary.
+    It's not productive.
+    It's rarely what you need to achieve your aims or to help forge progress in our field.
+    
+    There's need for courage to push beyond what others tell you is possible.
+    Most of the time what's possible hasn't been properly defined yet.
