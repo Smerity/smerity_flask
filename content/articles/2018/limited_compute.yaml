@@ -92,6 +92,14 @@ content: |
     Even better, the size requirement for annotated data is continuously falling, meaning annotated data moats are also falling away.
     
     The largest trend here is unsupervised sequence modeling.
+    What went from an uncool and "useless" little task (language modeling) is now proving to be [NLP's ImageNet moment](http://ruder.io/nlp-imagenet/).
+    A similar trend is following in vision and many other domains.
+    Understanding a smaller dataset in detail proves far more useful than a large dataset ("big data") with unintelligent methods.
+    Quite literally, only two or so years ago, language modeling papers were a hard sell at conferences.
+    Why?
+    People beleived them to be of limited use and essentially an insular and unimpactful subcommunity.
+    Time and the people within that silly little subfield proved the task's worth.
+    
     I will give an example below but writing in more detail is beyond scope - mainly as I may never get this article out the door otherwise.
     If you're interested in my thoughts, message me, and I'll add it to my writing queue!
     
