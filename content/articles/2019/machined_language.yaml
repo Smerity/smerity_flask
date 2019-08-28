@@ -1,0 +1,58 @@
+title: "Machined Language"
+description: "For natural language to be processed without human intervention is a relatively recent innovation. What does it mean?"
+image: "http://smerity.com/media/images/articles/2018/limited_compute.png"
+date: 2018-08-27
+
+content: |
+    **Warning:** If this prose sounds confused it's as I'm still battling with the enormity of the it myself.
+
+    ## Human language used to be inert unless a human interacted with it
+
+    Decades ago a book remained static until read.
+
+    A few years ago images, video, and audio were static too.
+
+    This may seem obvious but keep iteratively expanding the consequences until you've found a comfy spot between awe and terror.
+
+    Human language used to require humans be involved.
+    That's no longer true.
+    The possibilities are endless.
+    And yet we're still dealing with the simplest of consequences as the results chaotically unfurl across society.
+
+    ## Old school
+
+    This is as true of the earliest of natural language processing as it is of modern machine learning.
+
+    The late 90s saw search engines arrive.
+    They hunt down new text and break natural langauge apart in real time, indexing it for all the world to find.
+
+    Whilst it unlocked massive potential compared to the days of yore we may have been bamboozled.
+    What we have is a giant machine cracking apart language as if it were Lego blocks, entirely oblivious to the knowledge under the covers.
+    We have library shelves that refill themselves depending on whether you walked into the library from a coffee shop or a conference.
+    We have books inserted that are larger if an author is well known (for a specific definition of well known) or if the text in the book fits a certain layout.
+    Even when our finger flicks across the top of a book's spine idly the librarian is taking notes in our file.
+
+    This might sound magical for some - maybe? - but regardless of the awe or terror it invokes it's also entirely out of our control.
+    We still haven't reconciled even the simplest of automated functions - creating a real time index - and yet technology moves forward.
+
+    So far we've only spoken about human language.
+    Human language is usually a poor reflection of or entirely fictional vaiation of an underlying natural language.
+    Many of these natural languages humans can't read or write.
+    There are even more natural languages that we don't even know exist.
+
+    Yet natural language covers far more than written or spoken text.
+    Language is in the pixels of an image, the scientific readings of a complex instrument, and the unfurling of cells into a branch.
+    It might not be a language we're capable of reading yet - just as a book was once inert without a human - but it may soon be a language that we can at least steal glimpses of.
+
+    The machine learning revolution is promising to unlock the hidden structure in many of these languages.
+
+    I've written a language model that can unlock structure in English and XML that I wouldn't be able to capture or describe.
+    In generating samples of text I would need to look up hockey positions to check if my language model was hallucinating or reciting reality.
+
+    Thanks to others that same language model has been retrained to operate in written languages that I wouldn't even identify the alphabet for.
+    The same tool being used across languages, across fields, with the author having no clue what is even possible.
+
+    What we're constructing are generic natural language processors.
+    We don't know what they're capable of or what uses, good or bad, we may have for them.
+
+    ## Language is humanity's longest running program
