@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<div class="hero-box">
+<div class="hero-box" style="background: linear-gradient(#e66465, #97266d); box-shadow: 0px 0 8px rgba(0,0,0,0.8);">
   <div class="hero-inner">
     <h1 class="highlight slogan">Smerity (n):</h1>
     <h2>
@@ -24,16 +24,24 @@
 <header class="navbar">
   <nav class="navbar-inner-clean">
     <div class="container-fluid">
+      <h1 style="border-bottom: 0px;">View my writing at:</h1>
+      <div style="padding: 10px 0;">
+      {#<a style="color: rgba(255, 255, 255, 0.9); background: #e76062; font-size: 24px; padding: 8px 32px; border-radius: 4px;" href="https://state.smerity.com">State of the Smerity</a>#}
+      <a style="color: rgba(255, 255, 255, 0.9); background: linear-gradient(#e66465, #972640); font-size: 24px; padding: 8px 32px; border-radius: 4px;" href="https://state.smerity.com">State of the Smerity</a>
+      {#<a style="font-size: 24px;" href="https://state.smerity.com">State of the Smerity</a>#}
+      </div>
+      {#
       <ul class="nav">
+        <li><a href="https://state.smerity.com">State of the Smerity</a></li>
         <li><a href="/articles/articles.html">Articles</a></li>
-        {#<li><a href="/consulting.html">Consulting</a></li>#}
         <li><a href="/abme.html">About Me</a></li>
-        {#<li><a href="/define.html">Define Me</a></li>#}
       </ul>
+      #}
     </div>
   </nav>
 </header>
 
+    {#
     <div class="row">
       <h1>More specifically...</h1>
     </div>
@@ -41,8 +49,12 @@
     <div class="row">
 
       <div class="offset2 span8">
+
         <p>
-          <b>Simply put:</b> I'm a deep learning researcher who pokes datasets with the entropy stick and complains about deep neural networks converging too slowly.
+        If you're looking for my writing you can find it at <a href="https://state.smerity.com">State of the Smerity</a>.
+        </p>
+        <p>
+          I'm a deep learning researcher who pokes datasets with the entropy stick and complains about deep neural networks converging too slowly.
           I'm passionate about machine learning, open data, and teaching computer science.
         </p>
         <p>
@@ -50,7 +62,6 @@
         I graduated from Sydney University (BIT with First Class Honours &amp; the University Medal) and Harvard University (Master of Science in Computational Science and Engineering).
         </p>
 
-        {#
         <p>
         As successes are boring, you might like to know...
         <ul class="crossed">
@@ -62,10 +73,8 @@
           <li>
         Oh, I've also done good things. I'm not <i>all</i> evil.
         </p>
-        #}
       </div>
 
-      {#
         <p style="border: 1px solid #DDD; border-bottom: 2px solid #DDD; border-right: 2px solid #DDD; padding: 4px 16px;">
           <b>Note:</b> Processor unit may be missing or damaged. Do not shake.
         </p>
@@ -81,8 +90,8 @@
         <p style="border: 1px solid #DDD; border-bottom: 2px solid #DDD; border-right: 2px solid #DDD; padding: 4px 16px;">
           Do not operate production hardware whilst under the influence of Smerity
         </p>
-      #}
     </div>
+    #}
 
   </div>
 </div>
